@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lkbench"
+version = "0.1.0"
+description = "Helpers (test functions, designs, metrics, checks) for the libKriging benchmark notebooks"
+requires-python = ">=3.9"
+dependencies = ["numpy", "scipy", "pandas", "matplotlib"]
+
+[project.optional-dependencies]
+notebooks = ["nbclient", "nbformat", "ipykernel"]
+compare = ["scikit-learn", "smt", "openturns"]
+
+[tool.setuptools]
+packages = ["lkbench"]

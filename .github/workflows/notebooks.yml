@@ -1,0 +1,379 @@
+name: notebooks
+
+# Executes every notebook of the benchmark against libKriging, then aggregates the
+# checks of all languages into one report (tools/report.py), published as the job
+# summary and as an artifact.
+#
+# Two channels:
+#   master   libKriging built from source at `libkriging_ref` (default: master), all
+#            languages: Python (wheel built here), R (rlibkriging repository head,
+#            which follows libKriging master), Octave (mLibKriging built here),
+#            Julia (JLibKriging.jl built against the same libKriging checkout).
+#   release  the last published packages: pylibkriging from PyPI, rlibkriging from
+#            CRAN, mLibKriging built from the last release tag. A feature missing
+#            from the release is recorded as SKIP, not as a failure.
+#
+# A notebook fails (red job) when one of its error-level checks fails; the report
+# job fails when any notebook failed or crashed, or when the bindings disagree
+# (cross-binding protocol, notebooks/python/11_cross_binding.ipynb).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: '17 3 * * 1'   # weekly, Monday 03:17 UTC
+  workflow_dispatch:
+    inputs:
+      libkriging_ref:
+        description: 'libKriging branch, tag or commit for the master channel'
+        default: 'master'
+      libkriging_repo:
+        description: 'libKriging repository (owner/name), e.g. a fork'
+        default: 'libKriging/libKriging'
+      channels:
+        description: 'channels to run: "master", "release" or "master,release"'
+        default: 'master,release'
+  repository_dispatch:
+    # libKriging can trigger a run after a merge:
+    #   POST /repos/<this repo>/dispatches {"event_type": "libkriging-updated", "client_payload": {"ref": "<sha>"}}
+    types: [libkriging-updated]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  LIBKRIGING_REPO: ${{ inputs.libkriging_repo || 'libKriging/libKriging' }}
+  LIBKRIGING_REF: ${{ inputs.libkriging_ref || github.event.client_payload.ref || 'master' }}
+  # cmake >= 4 rejects dependencies declaring cmake_minimum_required < 3.5
+  CMAKE_POLICY_VERSION_MINIMUM: "3.5"
+  # NestedKriging's OpenMP loop can hang on 2-core runners (same workaround as libKriging's CI)
+  OMP_NUM_THREADS: 1
+  PYTHON_VERSION: '3.12'
+
+jobs:
+  # ---------------------------------------------------------------------------
+  setup:
+    runs-on: ubuntu-24.04
+    outputs:
+      sha: ${{ steps.refs.outputs.sha }}
+      release_tag: ${{ steps.refs.outputs.release_tag }}
+      channels: ${{ steps.refs.outputs.channels }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Notebooks in sync with their sources
+        run: |
+          pip install nbformat
+          python tools/py2nb.py --check notebooks/*/src/*
+      - name: Resolve libKriging refs
+        id: refs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          sha=$(git ls-remote "https://github.com/${LIBKRIGING_REPO}" "${LIBKRIGING_REF}" | head -1 | cut -f1)
+          [ -n "$sha" ] || sha="${LIBKRIGING_REF}"   # already a commit
+          tag=$(gh api "repos/${LIBKRIGING_REPO}/releases/latest" --jq .tag_name)
+          channels='${{ inputs.channels || 'master,release' }}'
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          echo "release_tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "channels=$(python -c "import json,sys; print(json.dumps(sys.argv[1].split(',')))" "$channels")" >> "$GITHUB_OUTPUT"
+          echo "libKriging ${LIBKRIGING_REPO}@${LIBKRIGING_REF} = $sha; last release $tag; channels $channels" >> "$GITHUB_STEP_SUMMARY"
+
+  # ---------------------------------------------------------------------------
+  build-python:
+    needs: setup
+    if: contains(needs.setup.outputs.channels, 'master')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - id: cache
+        uses: actions/cache@v4
+        with:
+          path: dist
+          key: pylibkriging-${{ needs.setup.outputs.sha }}-py${{ env.PYTHON_VERSION }}
+      - if: steps.cache.outputs.cache-hit != 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.LIBKRIGING_REPO }}
+          ref: ${{ needs.setup.outputs.sha }}
+          submodules: recursive
+          path: libKriging
+      - name: Build the pylibkriging wheel
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          sudo apt-get update && sudo apt-get install -y liblapack-dev libopenblas-dev
+          python -m pip install --upgrade pip
+          python -m pip install -r libKriging/bindings/Python/pylibkriging/requirements.txt \
+            -r libKriging/bindings/Python/pylibkriging/dev-requirements.txt cmake
+          export CMAKE_BUILD_PARALLEL_LEVEL=4
+          python -m pip wheel --no-build-isolation --no-deps -w dist ./libKriging
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wheel-master
+          path: dist/*.whl
+
+  # ---------------------------------------------------------------------------
+  python:
+    needs: [setup, build-python]
+    if: always() && needs.setup.result == 'success'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        channel: [master, release]
+        notebook:
+          - 00_test_functions
+          - 01_kriging_kernels_trends
+          - 02_objectives_gradients
+          - 03_noise
+          - 04_update_simulate
+          - 05_warpkriging
+          - 06_high_dimension_mlp
+          - 07_scalability
+          - 08_api_persistence
+          - 09_robustness
+          - 10_compare_python_packages
+          - 11_cross_binding
+    name: python ${{ matrix.channel }} ${{ matrix.notebook }}
+    steps:
+      - name: Channel enabled?
+        id: on
+        run: |
+          echo 'enabled=${{ contains(needs.setup.outputs.channels, matrix.channel) && (matrix.channel != 'master' || needs.build-python.result == 'success') }}' >> "$GITHUB_OUTPUT"
+      - if: steps.on.outputs.enabled == 'true'
+        uses: actions/checkout@v4
+      - if: steps.on.outputs.enabled == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - if: steps.on.outputs.enabled == 'true' && matrix.channel == 'master'
+        uses: actions/download-artifact@v4
+        with:
+          name: wheel-master
+          path: dist
+      - name: Install
+        if: steps.on.outputs.enabled == 'true'
+        run: |
+          python -m pip install --upgrade pip
+          if [ "${{ matrix.channel }}" = master ]; then pip install dist/*.whl; else pip install pylibkriging; fi
+          pip install -e ".[notebooks,compare]" jinja2
+          python -c "import pylibkriging as lk; print('pylibkriging', lk.__version__)"
+      - name: Execute the notebook
+        if: steps.on.outputs.enabled == 'true'
+        run: python tools/run_notebooks.py --inplace --timeout 3600 notebooks/python/${{ matrix.notebook }}.ipynb
+      - if: always() && steps.on.outputs.enabled == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-${{ matrix.channel }}-py-${{ matrix.notebook }}
+          path: |
+            results/
+            notebooks/python/${{ matrix.notebook }}.ipynb
+
+  # ---------------------------------------------------------------------------
+  r:
+    needs: setup
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        channel: [master, release]
+    name: R ${{ matrix.channel }}
+    steps:
+      - name: Channel enabled?
+        id: on
+        run: echo 'enabled=${{ contains(needs.setup.outputs.channels, matrix.channel) }}' >> "$GITHUB_OUTPUT"
+      - if: steps.on.outputs.enabled == 'true'
+        uses: actions/checkout@v4
+      - if: steps.on.outputs.enabled == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - if: steps.on.outputs.enabled == 'true'
+        uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      - name: Install
+        if: steps.on.outputs.enabled == 'true'
+        env:
+          GITHUB_PAT: ${{ github.token }}
+        run: |
+          sudo apt-get update && sudo apt-get install -y liblapack-dev gfortran cmake
+          pip install nbclient nbformat ipykernel jupyter_client
+          Rscript -e 'install.packages(c("IRkernel", "DiceKriging", "RobustGaSP", "remotes"))'
+          if [ "${{ matrix.channel }}" = master ]; then
+            Rscript -e 'remotes::install_github("libKriging/rlibkriging", upgrade = "never")'
+          else
+            Rscript -e 'install.packages("rlibkriging")'
+          fi
+          Rscript -e 'IRkernel::installspec(user = TRUE); cat("rlibkriging", as.character(packageVersion("rlibkriging")), "\n")'
+      - name: Execute the notebooks
+        if: steps.on.outputs.enabled == 'true'
+        run: python tools/run_notebooks.py --inplace --timeout 3600 notebooks/r/*.ipynb
+      - if: always() && steps.on.outputs.enabled == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-${{ matrix.channel }}-r
+          path: |
+            results/
+            notebooks/r/*.ipynb
+
+  # ---------------------------------------------------------------------------
+  octave:
+    needs: setup
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        channel: [master, release]
+    name: Octave ${{ matrix.channel }}
+    env:
+      # the release binaries target another Octave version than Ubuntu's: build from source
+      REF: ${{ matrix.channel == 'master' && needs.setup.outputs.sha || needs.setup.outputs.release_tag }}
+    steps:
+      - name: Channel enabled?
+        id: on
+        run: echo 'enabled=${{ contains(needs.setup.outputs.channels, matrix.channel) }}' >> "$GITHUB_OUTPUT"
+      - if: steps.on.outputs.enabled == 'true'
+        uses: actions/checkout@v4
+      - if: steps.on.outputs.enabled == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install Octave
+        if: steps.on.outputs.enabled == 'true'
+        run: |
+          sudo apt-get update && sudo apt-get install -y octave octave-dev liblapack-dev libopenblas-dev
+          pip install nbclient nbformat ipykernel octave_kernel
+          git clone --depth 1 https://github.com/stk-kriging/stk.git "$RUNNER_TEMP/stk"
+      - if: steps.on.outputs.enabled == 'true'
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: mlibkriging
+          key: mlibkriging-${{ env.REF }}-${{ runner.os }}-octave
+      - if: steps.on.outputs.enabled == 'true' && steps.cache.outputs.cache-hit != 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.LIBKRIGING_REPO }}
+          ref: ${{ env.REF }}
+          submodules: recursive
+          path: libKriging
+      - name: Build mLibKriging
+        if: steps.on.outputs.enabled == 'true' && steps.cache.outputs.cache-hit != 'true'
+        run: |
+          cmake -S libKriging -B build -DCMAKE_BUILD_TYPE=Release -DENABLE_OCTAVE_BINDING=on \
+            -DENABLE_PYTHON_BINDING=off -DENABLE_MATLAB_BINDING=off -DBUILD_SHARED_LIBS=off -DSTATIC_LIB=on
+          cmake --build build --target mLibKriging -j 4
+          mkdir -p mlibkriging
+          cp build/bindings/Octave/mlibkriging/mLibKriging.mex libKriging/bindings/Octave/mlibkriging/*.m mlibkriging/
+      - name: Execute the notebooks
+        if: steps.on.outputs.enabled == 'true'
+        run: |
+          export OCTAVE_PATH="$PWD/mlibkriging" STK_PATH="$RUNNER_TEMP/stk"
+          python tools/run_notebooks.py --inplace --timeout 3600 notebooks/octave/*.ipynb
+      - if: always() && steps.on.outputs.enabled == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-${{ matrix.channel }}-octave
+          path: |
+            results/
+            notebooks/octave/*.ipynb
+
+  # ---------------------------------------------------------------------------
+  julia:
+    needs: setup
+    if: contains(needs.setup.outputs.channels, 'master')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    name: Julia master
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ env.LIBKRIGING_REPO }}
+          ref: ${{ needs.setup.outputs.sha }}
+          submodules: recursive
+          path: libKriging
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.11'
+      - name: Install
+        run: |
+          sudo apt-get update && sudo apt-get install -y liblapack-dev libopenblas-dev
+          pip install nbclient nbformat ipykernel jupyter_client
+          # JLibKriging.jl compiles libKriging; LIBKRIGING_SRC_DIR makes it use this exact checkout
+          export LIBKRIGING_SRC_DIR="$PWD/libKriging"
+          julia -e 'using Pkg
+                    Pkg.add(url="https://github.com/libKriging/JLibKriging.jl")
+                    Pkg.add(["IJulia", "DelimitedFiles", "GaussianProcesses", "Optim"])
+                    using IJulia; installkernel("Julia"; specname="julia-1.11")
+                    using JLibKriging'
+      - name: Execute the notebooks
+        run: python tools/run_notebooks.py --inplace --timeout 3600 --kernel julia-1.11 notebooks/julia/*.ipynb
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-master-julia
+          path: |
+            results/
+            notebooks/julia/*.ipynb
+
+  # ---------------------------------------------------------------------------
+  report:
+    needs: [setup, python, r, octave, julia]
+    if: always() && needs.setup.result == 'success'
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        channel: [master, release]
+    name: report ${{ matrix.channel }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - if: contains(needs.setup.outputs.channels, matrix.channel)
+        uses: actions/download-artifact@v4
+        with:
+          pattern: results-${{ matrix.channel }}-*
+          path: artifacts
+      - name: Report
+        if: contains(needs.setup.outputs.channels, matrix.channel)
+        run: |
+          pip install numpy pandas
+          mkdir -p results executed
+          find artifacts -path '*/results/*' -type f -exec cp {} results/ \;
+          for d in artifacts/*/; do if [ -d "$d/notebooks" ]; then cp -r "$d/notebooks/." executed/; fi; done
+          expect="py00_test_functions,py01_kernels_trends,py02_objectives_gradients,py03_noise,py04_update_simulate"
+          expect="$expect,py05_warpkriging,py06_high_dimension_mlp,py07_scalability,py08_api_persistence"
+          expect="$expect,py09_robustness,py10_compare_python_packages,py11_cross_binding"
+          expect="$expect,r01_cross_binding,r02_vs_dicekriging_robustgasp,oct01_cross_binding,oct02_vs_stk"
+          if [ "${{ matrix.channel }}" = master ]; then expect="$expect,jl01_cross_binding"; fi
+          echo "## Channel: ${{ matrix.channel }}" >> "$GITHUB_STEP_SUMMARY"
+          python tools/report.py --results results --expect "$expect" \
+            --baseline baseline/metrics-${{ matrix.channel }}.csv \
+            --write-baseline new-baseline/metrics-${{ matrix.channel }}.csv \
+            --summary "$GITHUB_STEP_SUMMARY" > report.md
+      - if: always() && contains(needs.setup.outputs.channels, matrix.channel)
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-${{ matrix.channel }}
+          path: |
+            report.md
+            results/
+            executed/
+            new-baseline/
