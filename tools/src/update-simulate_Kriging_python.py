@@ -18,6 +18,7 @@
 # Functions: Branin (2D), Hartmann 3 (3D), Hartmann 6 (6D).
 
 # %%
+import matplotlib.pyplot as plt
 import numpy as np
 import pylibkriging as lk
 
@@ -131,6 +132,31 @@ with suite.runs("update_simulate runs"):
     suite.less("update_simulate: mean of corrected paths vs updated model (max |z|)", np.max(np.abs(z)), 5.0)
     rel = np.linalg.norm(np.cov(U) - c) / np.linalg.norm(c)
     suite.less("update_simulate: covariance vs updated model (rel. Frobenius)", rel, 0.1)
+
+# %% [markdown]
+# ## In pictures: Forrester, 6 points, then 2 more
+#
+# Conditional paths of the 6-point model (left), the same paths corrected by
+# `update_simulate` with 2 new observations (right): they now go through the new
+# points, without redrawing them.
+
+# %%
+tf = TESTS["forrester"]
+X = np.array([[0.0], [0.2], [0.4], [0.6], [0.8], [1.0]]); y = tf.unit(X)
+Xu = np.array([[0.7], [0.9]]); yu = tf.unit(Xu)
+G = np.linspace(0, 1, 201).reshape(-1, 1)
+k = lk.Kriging(y, X, "matern5_2")
+P = np.asarray(k.simulate(20, 3, G, will_update=True))
+PU = np.asarray(k.update_simulate(yu, Xu))
+suite.less("update_simulate: corrected paths go through the new points (max |path - y_u| / sd(y))",
+           np.max(np.abs(PU[[140, 180], :] - yu[:, None])) / np.std(y), 1e-3)
+fig, axes = plt.subplots(1, 2, figsize=(11, 3.8), sharey=True)
+for ax, paths, title in [(axes[0], P, "6 points: conditional paths"), (axes[1], PU, "+ 2 points: update_simulate")]:
+    ax.plot(G, paths, color="tab:blue", lw=.6, alpha=.6)
+    ax.plot(G, tf.unit(G), "k--", lw=1, label="Forrester")
+    ax.plot(X, y, "ko", label="design")
+    ax.set_title(title); ax.set_xlabel("x")
+axes[1].plot(Xu, yu, "rs", label="new points"); axes[1].legend(); plt.show()
 
 # %%
 suite.finalize()

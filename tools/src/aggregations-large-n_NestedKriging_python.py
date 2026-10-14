@@ -12,6 +12,9 @@
 # every aggregation on Branin.
 #
 # Checks:
+# * **limit and asymptotic behaviour** at fixed θ (Hartmann 3, n = 300): with one
+#   group, `NK` *is* the exact kriging predictor; the gap to the exact predictor
+#   as the number of groups grows, against the fit and prediction cost;
 # * accuracy close to the exact fit (warn-level gap, error-level floor), and
 #   faster than the exact fit at n = 1500 (warn-level);
 # * `NK` interpolates the data (it is a proper kriging predictor); the PoE family
@@ -21,6 +24,7 @@
 # %%
 import time
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import pylibkriging as lk
@@ -43,6 +47,48 @@ def timed(f):
     t0 = time.time()
     out = f()
     return out, time.time() - t0
+
+# %% [markdown]
+# ## From one group (the exact predictor) to many, at fixed θ
+#
+# Hartmann 3, n = 300, θ of the exact fit kept fixed in every sub-model: the gap
+# is that of the aggregation alone. RMS gap of the predicted mean to the exact
+# predictor on 500 test points, relative to its standard deviation, and fit time.
+
+# %%
+if compat.has("NestedKriging"):
+    tf = TESTS["hartmann3"]
+    X, y, Xt, yt = design.dataset(tf, 300, n_test=500, seed=54)
+    theta = np.asarray(lk.Kriging(y, X, "matern5_2").theta()).reshape(1, -1)
+    fixed = {"theta": theta, "is_theta_estim": False}
+    m_e = pred(lk.Kriging(y, X, "matern5_2", optim="none", parameters=fixed), Xt)[0]
+    rows = []
+    for agg in ["NK", "rBCM"]:
+        for g in [1, 2, 4, 8, 16, 32]:
+            with suite.runs(f"nested {agg}, {g} groups, fixed theta: fit + predict"):
+                k, t = timed(lambda: lk.NestedKriging(y, X, "matern5_2", nb_groups=g, aggregation=agg, seed=1,
+                                                      optim="none", parameters=fixed))
+                m = pred(k, Xt)[0]
+                rows.append(dict(aggregation=agg, groups=g, time_s=t,
+                                 mean_gap=np.sqrt(np.mean((m - m_e) ** 2)) / np.std(m_e),
+                                 q2=metrics.q2(yt, m)))
+    conv = pd.DataFrame(rows)
+    nk = conv[conv["aggregation"] == "NK"]
+    suite.less("nested NK, 1 group == exact predictor (RMS gap / sd)", nk["mean_gap"].iloc[0], 1e-6)
+    suite.less("nested NK, 32 groups: RMS gap to the exact predictor / sd", nk["mean_gap"].iloc[-1], 0.1,
+               severity="warn")
+    rb = conv[conv["aggregation"] == "rBCM"]
+    suite.true("nested NK closer to the exact predictor than rBCM (2 to 32 groups)",
+               bool(np.all(nk["mean_gap"].to_numpy()[1:] <= rb["mean_gap"].to_numpy()[1:])), severity="warn")
+    fig, axes = plt.subplots(1, 2, figsize=(10, 3.8))
+    for agg, g in conv.groupby("aggregation"):
+        axes[0].semilogy(g["groups"], np.maximum(g["mean_gap"], 1e-12), "o-", label=agg)
+        axes[1].plot(g["groups"], g["time_s"], "o-", label=agg)
+    axes[0].set_ylabel("RMS(mean − mean(exact)) / sd"); axes[1].set_ylabel("fit time (s)")
+    for ax in axes:
+        ax.set_xscale("log", base=2); ax.set_xlabel("number of groups"); ax.grid(True, which="both", alpha=.3)
+    axes[0].legend(); fig.suptitle("Hartmann 3, n = 300, θ fixed: NestedKriging vs the exact predictor"); plt.show()
+    display(conv.round(5))
 
 # %% [markdown]
 # ## Accuracy and cost against the exact fit

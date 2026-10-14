@@ -14,7 +14,7 @@ kernel (Python: installed; R: library; Octave: `OCTAVE_PATH`; Julia: environment
 
 Usage:
   python3 tools/run_notebooks.py *_python.ipynb
-  python3 tools/run_notebooks.py --inplace --timeout 3600 --kernel julia-1.11 cross-binding_Kriging_julia.ipynb
+  python3 tools/run_notebooks.py --inplace --timeout 3600 --kernel julia-1.11 cross-binding_all-classes_julia.ipynb
   python3 tools/run_notebooks.py --skip-cell '^repo_root = ' --prelude 'addpath(...)' nb.ipynb
 
 Requires nbclient, nbformat and ipykernel.

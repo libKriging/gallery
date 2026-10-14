@@ -9,9 +9,3 @@ robustness-invalid-inputs_Kriging_python,Inf in y is rejected,Kriging accepts In
 robustness-invalid-inputs_Kriging_python,WarpKriging with 1 spec for 2 columns is rejected,WarpKriging accepts fewer warping specs than columns of X
 robustness-invalid-inputs_Kriging_python,predict(stdev) time growth exponent in q (8000 vs 4000),"predict(return_stdev=True, return_cov=False) is O(q^2) in time and memory (10 000 points: 1.6 GB; 30 000: out of memory)"
 vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,sklearn RBF == libKriging gauss: simple kriging stdev (beta fixed),With beta fixed (is_beta_estim=False) predict still adds the trend-estimation variance (universal kriging) instead of the simple kriging variance
-deep-kernel_MLPKriging_R,MLPKriging: Q2(default optim) - Q2(BFGS10),https://github.com/libKriging/libKriging/issues/382 single-start MLPKriging fit stops after a few ms at a poor optimum
-noisy-data_Kriging-nugget-noise_R,Kriging(nugget): LL(single start) - LL(10 restarts),https://github.com/libKriging/libKriging/issues/383 default single-start nugget fit lands far from the optimum
-deep-kernel_MLPKriging_octave,MLPKriging: Q2(default optim) - Q2(BFGS10),https://github.com/libKriging/libKriging/issues/382 single-start MLPKriging fit stops after a few ms at a poor optimum
-noisy-data_Kriging-nugget-noise_octave,Kriging(nugget): LL(single start) - LL(10 restarts),https://github.com/libKriging/libKriging/issues/383 default single-start nugget fit lands far from the optimum
-deep-kernel_MLPKriging_julia,MLPKriging: Q2(default optim) - Q2(BFGS10),https://github.com/libKriging/libKriging/issues/382 single-start MLPKriging fit stops after a few ms at a poor optimum
-noisy-data_Kriging-nugget-noise_julia,Kriging(nugget): LL(single start) - LL(10 restarts),https://github.com/libKriging/libKriging/issues/383 default single-start nugget fit lands far from the optimum

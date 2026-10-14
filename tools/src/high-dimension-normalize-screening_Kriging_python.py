@@ -25,6 +25,7 @@
 # %%
 import time
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import pylibkriging as lk
@@ -88,6 +89,11 @@ inactive = [7, 15]            # 0-based indices of x8, x16
 active = [0, 3, 4, 11, 18, 19]  # x1, x4, x5, x12, x19, x20
 suite.greater("welch: min theta(inactive) / max theta(active)", theta[inactive].min() / theta[active].max(), 1.0,
               severity="warn")
+colors = ["tab:red" if i in active else "tab:gray" if i in inactive else "tab:blue" for i in range(20)]
+plt.figure(figsize=(9, 3))
+plt.bar([f"x{i + 1}" for i in range(20)], theta, color=colors)
+plt.yscale("log"); plt.ylabel("fitted θ (log)")
+plt.title("Welch (20D): red = most influential inputs, gray = inactive (x8, x16)"); plt.show()
 pd.Series(theta, index=[f"x{i + 1}" for i in range(20)]).round(3).to_frame("theta").T
 
 # %%

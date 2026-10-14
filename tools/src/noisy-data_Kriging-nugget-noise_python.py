@@ -56,6 +56,11 @@ for fname, n, sd, q2_floor in [("forrester", 40, 0.5, 0.95), ("friedman", 200, 1
     res = metrics.all_metrics(yt, m, s)
     suite.metric(fname, "nugget", nugget=nugget, true_var=sd ** 2, **res)
     suite.between(f"{fname}: nugget / true noise variance", nugget / sd ** 2, 1 / 3, 3)
+    k1 = lk.Kriging(y, X, "matern5_2", noise="nugget")   # default single start
+    suite.metric(fname, "nugget, single start", nugget=float(np.ravel(k1.nugget())[0]), ll=float(k1.logLikelihood()),
+                 **metrics.all_metrics(yt, *pred(k1, Xt)))
+    suite.greater(f"{fname}: LL(single start) - LL(10 restarts)", k1.logLikelihood() - k.logLikelihood(), -1,
+                  severity="warn")
     suite.greater(f"{fname}: Q2 vs noise-free truth", res["q2"], q2_floor)
     mX, _ = pred(k, X)
     mX_near, _ = pred(k, np.clip(X + 1e-7, 0, 1))

@@ -3,7 +3,8 @@
 ``% %%`` in Octave) into a notebook without outputs. The notebooks of this repository
 are written this way (sources in ``tools/src/``) so that they review as plain diffs;
 the ``.ipynb`` files, at the repository root, are generated, and CI checks that they
-are in sync (and that no notebook lacks its source).
+are in sync (and that no notebook lacks its source). Every Python notebook gets the
+cell of ``tools/notebook_setup.py`` after its title, to run on Colab or Binder too.
 
 Usage: python tools/py2nb.py [--check] [SRC...]   (default: every tools/src/* file)
   each ``tools/src/<name>.<ext>`` gives ``<name>.ipynb`` at the repository root.
@@ -17,6 +18,9 @@ import nbformat
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "tools" / "src"
+# code cell inserted after the title cell of every Python notebook, so that it also runs
+# outside the repository (Colab, Binder): a no-op in the repository itself
+SETUP = {".py": ROOT / "tools" / "notebook_setup.py"}
 
 KERNELS = {
     ".py": ({"name": "python3", "display_name": "Python 3", "language": "python"},
@@ -51,6 +55,8 @@ def convert(src):
         elif kind is not None:
             buf.append(line)
     flush()
+    if src.suffix in SETUP and cells and cells[0].cell_type == "markdown":
+        cells.insert(1, nbformat.v4.new_code_cell(SETUP[src.suffix].read_text().strip("\n")))
     nb = nbformat.v4.new_notebook(cells=cells)
     nb.metadata["kernelspec"] = kernelspec
     nb.metadata["language_info"] = lang_info

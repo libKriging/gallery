@@ -21,6 +21,7 @@
 # %%
 import time
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pylibkriging as lk
 
@@ -159,6 +160,13 @@ for q in (1000, 2000, 4000, 8000):
 expo = np.log2(times[8000] / times[4000])
 suite.less("predict(stdev) time growth exponent in q (8000 vs 4000)", expo, 1.5,
            detail=", ".join(f"q={q}: {t:.3f}s" for q, t in times.items()))
+qs = np.array(list(times)); ts = np.array(list(times.values()))
+plt.figure(figsize=(5, 3.6))
+plt.loglog(qs, ts, "o-", label="predict(return_stdev=True)")
+plt.loglog(qs, ts[0] * qs / qs[0], "k--", lw=.8, label="O(q) reference")
+plt.loglog(qs, ts[0] * (qs / qs[0]) ** 2, "k:", lw=.8, label="O(q²) reference")
+plt.xlabel("q (prediction points)"); plt.ylabel("time (s)"); plt.legend(); plt.grid(True, which="both", alpha=.3)
+plt.show()
 
 # %%
 suite.finalize()

@@ -14,6 +14,7 @@
 # %%
 import time
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pylibkriging as lk
 
@@ -62,7 +63,10 @@ if compat.has("MLPKriging"):
                     suite.greater(f"{case}: Q2", res["q2"], 0.8)
                 else:
                     suite.greater(f"{case}: Q2 - Q2(Kriging)", res["q2"] - res_k["q2"], -0.1, severity="warn")
-    display(suite.table().loc["projected_branin_10d"].round(4))
+    tab = suite.table().loc["projected_branin_10d"]
+    tab["q2"].plot.barh(figsize=(6, 3)); plt.xlabel("Q² (test set)"); plt.xlim(min(0, tab["q2"].min()), 1)
+    plt.title("Branin(Wx), x in [0,1]^10"); plt.show()
+    display(tab.round(4))
 else:
     suite.skip("MLPKriging", "not available in this pylibkriging")
 

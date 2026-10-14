@@ -18,7 +18,7 @@ name: notebooks
 #
 # A notebook job fails when one of its error-level checks fails; the report job
 # fails when any notebook failed or crashed, or when the bindings disagree
-# (cross-binding protocol, cross-binding-reference_Kriging_python.ipynb).
+# (cross-binding protocol, cross-binding-reference_all-classes_python.ipynb).
 # The binding installations are the scripts of tools/install/, usable locally too.
 
 on:

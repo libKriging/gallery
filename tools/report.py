@@ -15,7 +15,7 @@ and reports:
   3. known issues whose check now passes ("FIXED?": remove them from
      tools/known_issues.csv);
   4. cross-binding consistency: each language against Python, per quantity, with
-     the tolerances of cross-binding-reference_Kriging_python.ipynb;
+     the tolerances of cross-binding-reference_all-classes_python.ipynb;
   5. drifts of the accuracy metrics (q2, rmse, nlpd) and of the fit times against a
      baseline (tools/baseline/metrics-<channel>.csv), when one is given.
 
@@ -47,6 +47,13 @@ XBIND_TOL = {  # quantity: (rtol, atol relative to the scale of the quantity, se
     "llfun": (1e-8, 0, "error"), "llfun_grad": (1e-6, 1e-8, "error"),
     "fit_theta": (1e-4, 1e-6, "warn"), "fit_ll": (1e-4, 0, "warn"), "fit_mean": (1e-4, 1e-6, "warn"),
     "sim": (1e-8, 1e-10, "warn"),
+    "nugget_fixed_mean": (1e-8, 1e-10, "error"), "nugget_fixed_stdev": (1e-6, 1e-8, "error"),
+    "noise_fixed_mean": (1e-8, 1e-10, "error"), "noise_fixed_stdev": (1e-6, 1e-8, "error"),
+    "nugget_fit_ll": (1e-4, 0, "warn"), "nugget_fit_mean": (1e-4, 1e-6, "warn"),
+    "vecchia_fixed_ll": (1e-8, 0, "error"), "vecchia_fixed_mean": (1e-8, 1e-10, "error"),
+    "nystrom_fixed_ll": (1e-8, 0, "error"), "nystrom_fixed_mean": (1e-8, 1e-10, "error"),
+    "warp_fit_mean": (1e-4, 1e-6, "warn"), "mlp_fit_mean": (1e-4, 1e-6, "warn"),
+    "nested_fit_mean": (1e-4, 1e-6, "warn"),
 }
 TRACKED = {"q2": "higher", "rmse": "lower", "nlpd": "lower", "fit_s": "time"}
 
@@ -88,7 +95,8 @@ def xbind_report(results):
             try:
                 r = ref.loc[grp.index]
             except KeyError:
-                rows.append((lang, dataset, quantity, "missing in Python", "", sev, "FAIL" if sev == "error" else "WARN"))
+                # not a disagreement: a feature absent from one binding's version (release channel)
+                rows.append((lang, dataset, quantity, "missing in Python", "", "warn", "WARN"))
                 continue
             a, b = grp.to_numpy(float), r.to_numpy(float)
             scale = max(np.max(np.abs(b)), 1e-300)

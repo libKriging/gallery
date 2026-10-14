@@ -17,6 +17,10 @@
 # for reference) and n = 5000 (approximations only).
 #
 # Checks:
+# * **convergence to the exact model** at fixed θ (Hartmann 3, n = 300): the gap
+#   between the approximate and the exact log-likelihood and predicted mean,
+#   as m (Vecchia) and k (Nyström) grow, down to the limit cases m = n − 1 and
+#   k = n where the approximation *is* the exact model;
 # * **limit cases**: Vecchia with m = n − 1 neighbours *is* the exact likelihood;
 # * the method is explicit at prediction time: `predict(method="exact")` on a
 #   Nyström/Vecchia fit raises, `method=` gives finite predictions;
@@ -26,6 +30,7 @@
 # %%
 import time
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import pylibkriging as lk
@@ -72,6 +77,47 @@ if HAS_METHOD:
                                                                                     method="exact"))
     suite.true("method() reports the fit method", kv.method().startswith("vecchia") and
                kn.method().startswith("nystrom"), detail=f"{kv.method()}, {kn.method()}")
+
+# %% [markdown]
+# ## Convergence to the exact model, at fixed θ
+#
+# Hartmann 3, n = 300, θ of the exact fit kept fixed: the reference is the exact
+# model with the same hyperparameters, so the gap measures the approximation
+# alone (no optimizer effect). Relative gap of the log-likelihood, and RMS gap
+# of the predicted mean on 500 test points relative to its standard deviation.
+
+# %%
+if HAS_METHOD:
+    tf = TESTS["hartmann3"]
+    X, y, Xt, yt = design.dataset(tf, 300, n_test=500, seed=54)
+    n = len(y)
+    theta = np.asarray(lk.Kriging(y, X, "matern5_2").theta()).reshape(1, -1)
+    fixed = {"theta": theta, "is_theta_estim": False}
+    ke = lk.Kriging(y, X, "matern5_2", optim="none", parameters=fixed)
+    ll_e, m_e = ke.logLikelihood(), pred(ke, Xt)[0]
+    rows = []
+    for meth, sizes in [("vecchia", [2, 5, 10, 20, 40, 80, 160, n - 1]), ("nystrom", [10, 25, 50, 100, 200, n])]:
+        for size in sizes:
+            with suite.runs(f"{meth}({size}) at fixed theta: fit + predict"):
+                ka = lk.Kriging(y, X, "matern5_2", optim="none", parameters=fixed, method=f"{meth}({size})")
+                rows.append(dict(method=meth, size=size,
+                                 ll_gap=abs(ka.logLikelihood(method=meth) - ll_e) / abs(ll_e),
+                                 mean_gap=np.sqrt(np.mean((pred(ka, Xt, method=meth)[0] - m_e) ** 2)) / np.std(m_e)))
+    conv = pd.DataFrame(rows)
+    for meth, g in conv.groupby("method"):
+        suite.metric(f"hartmann3/n={n}/fixed theta", meth, **{f"ll_gap_{s}": v for s, v in zip(g["size"], g["ll_gap"])})
+        for col, lim in [("ll_gap", 1e-6), ("mean_gap", 1e-2)]:
+            suite.less(f"{meth}: {col} at the limit size ({g['size'].iloc[-1]})", g[col].iloc[-1], lim)
+            suite.true(f"{meth}: {col} decreases with the size", bool(np.all(np.diff(g[col].to_numpy()) < 0)),
+                       detail=", ".join(f"{v:.2g}" for v in g[col]), severity="warn")
+    fig, axes = plt.subplots(1, 2, figsize=(10, 3.8))
+    for ax, col, label in [(axes[0], "ll_gap", "|LL − LL(exact)| / |LL(exact)|"),
+                           (axes[1], "mean_gap", "RMS(mean − mean(exact)) / sd")]:
+        for meth, g in conv.groupby("method"):
+            ax.loglog(g["size"], g[col], "o-", label=f"{meth}(m)" if meth == "vecchia" else f"{meth}(k)")
+        ax.set_xlabel("m (neighbours) or k (landmarks)"); ax.set_ylabel(label); ax.grid(True, which="both", alpha=.3)
+    axes[0].legend(); fig.suptitle(f"Hartmann 3, n = {n}, θ fixed: approximation → exact model"); plt.show()
+    display(conv.pivot(index="size", columns="method", values=["ll_gap", "mean_gap"]).round(6))
 
 # %% [markdown]
 # ## Accuracy and cost

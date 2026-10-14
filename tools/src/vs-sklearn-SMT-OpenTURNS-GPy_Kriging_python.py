@@ -43,6 +43,7 @@ importlib.invalidate_caches()
 import time
 import warnings
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import pylibkriging as lk
@@ -217,6 +218,12 @@ summary = res.groupby(["function", "package"], sort=False)[["q2", "nlpd", "cover
 for (fname, pkg), r in summary.iterrows():
     suite.metric(fname, pkg, **r.to_dict())
 summary.unstack("package")["q2"].round(4)
+
+# %%
+q2tab = summary.unstack("package")["q2"].clip(lower=-0.1)
+q2tab.plot.bar(figsize=(11, 3.8), width=.8)
+plt.ylabel("median Q² (test set)"); plt.ylim(-0.1, 1.02); plt.legend(ncol=3, fontsize=8); plt.grid(axis="y", alpha=.3)
+plt.title("Default fits: accuracy per function and package"); plt.show()
 
 # %%
 summary.unstack("package")[["fit_s"]].round(3)
