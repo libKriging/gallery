@@ -6,6 +6,24 @@ its releases. Every notebook **checks** what it computes (error-level checks fai
 the run, warn-level ones are reported), and CI executes all of them and
 aggregates the findings of every language into one report.
 
+## Executed notebooks (libKriging master)
+
+CI executes every notebook against the **development head of libKriging and of
+its bindings** (master channel, see [CI](#ci)) and saves it with its outputs,
+failing checks included (a notebook that fails is kept up to its failing cell):
+
+* **[latest executed notebooks (zip)](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-notebooks-master.zip)**:
+  the `executed-notebooks-master` artifact of the last run on `main`
+  (`python/`, `r/`, `octave/`, `julia/`);
+* **[latest report, results and notebooks (zip)](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/report-master.zip)**:
+  the `report-master` artifact (aggregated `report.md`, all CSV results, executed
+  notebooks, refreshed baseline);
+* **[all runs on `main`](https://github.com/libKriging/benchmarks/actions/workflows/notebooks.yml?query=branch%3Amain)**:
+  each run keeps these artifacts for 90 days, and its job summary shows the report.
+
+The same artifacts exist for the release channel (`executed-notebooks-release`,
+`report-release`).
+
 ## What is covered
 
 | notebook | problems (test functions) | libKriging features | compared with |
@@ -66,8 +84,8 @@ mLibKriging on `OCTAVE_PATH`, STK on `STK_PATH` and `octave_kernel`; Julia needs
 
 Notebooks are generated from plain-text sources (`notebooks/<lang>/src/`, cells
 separated by `# %%` / `# %% [markdown]`, or `% %%` in Octave), so that reviews are
-plain diffs; outputs are not committed (CI publishes the executed notebooks as
-artifacts).
+plain diffs; outputs are not committed (CI archives the executed notebooks as
+artifacts, see [Executed notebooks](#executed-notebooks-libkriging-master)).
 
 ```sh
 python tools/py2nb.py notebooks/*/src/*          # regenerate
@@ -94,7 +112,9 @@ pull request, weekly, on demand (`libkriging_ref`, `libkriging_repo`,
   another Octave version than Ubuntu's).
 
 One job per Python notebook, one per language for the others, then one report
-per channel (job summary + artifact with the report, all CSV results, the
-executed notebooks and a refreshed baseline). The initial `baseline/` files come
+per channel (job summary + `report-<channel>` artifact with the report, all CSV
+results, the executed notebooks and a refreshed baseline, + an
+`executed-notebooks-<channel>` artifact with the executed notebooks only; see
+[Executed notebooks](#executed-notebooks-libkriging-master)). The initial `baseline/` files come
 from a local run (Python notebooks only, 4-core container); to refresh them,
 commit the `new-baseline/` files of a trusted CI run.

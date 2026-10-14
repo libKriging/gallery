@@ -16,6 +16,11 @@ name: notebooks
 # A notebook fails (red job) when one of its error-level checks fails; the report
 # job fails when any notebook failed or crashed, or when the bindings disagree
 # (cross-binding protocol, notebooks/python/11_cross_binding.ipynb).
+#
+# The notebooks executed against libKriging master are saved with their outputs
+# (failures included: a notebook whose checks fail is kept up to its failing cell)
+# and archived as the `executed-notebooks-master` artifact of every run, linked
+# from the README.
 
 on:
   push:
@@ -38,6 +43,9 @@ on:
     # libKriging can trigger a run after a merge:
     #   POST /repos/<this repo>/dispatches {"event_type": "libkriging-updated", "client_payload": {"ref": "<sha>"}}
     types: [libkriging-updated]
+
+permissions:
+  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -73,11 +81,12 @@ jobs:
         id: refs
         env:
           GH_TOKEN: ${{ github.token }}
+          CHANNELS: ${{ inputs.channels || 'master,release' }}
         run: |
           sha=$(git ls-remote "https://github.com/${LIBKRIGING_REPO}" "${LIBKRIGING_REF}" | head -1 | cut -f1)
           [ -n "$sha" ] || sha="${LIBKRIGING_REF}"   # already a commit
           tag=$(gh api "repos/${LIBKRIGING_REPO}/releases/latest" --jq .tag_name)
-          channels='${{ inputs.channels || 'master,release' }}'
+          channels="$CHANNELS"
           echo "sha=$sha" >> "$GITHUB_OUTPUT"
           echo "release_tag=$tag" >> "$GITHUB_OUTPUT"
           echo "channels=$(python -c "import json,sys; print(json.dumps(sys.argv[1].split(',')))" "$channels")" >> "$GITHUB_OUTPUT"
@@ -377,3 +386,9 @@ jobs:
             results/
             executed/
             new-baseline/
+      - if: always() && contains(needs.setup.outputs.channels, matrix.channel)
+        uses: actions/upload-artifact@v4
+        with:
+          name: executed-notebooks-${{ matrix.channel }}
+          path: executed/
+          retention-days: 90

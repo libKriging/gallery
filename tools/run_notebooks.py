@@ -1,21 +1,20 @@
 #!/usr/bin/env python3
 """Execute Jupyter notebooks and fail if any cell raises.
 
-Used by CI (.github/workflows/notebooks.yml) to keep the worked notebooks
-runnable, and to refresh their stored outputs (`--inplace`).
+Used by CI (.github/workflows/notebooks.yml) to execute every notebook against the
+installed libKriging and, with `--inplace`, to save the executed notebook with its
+outputs. A notebook that fails is saved too, with the outputs of the cells run up
+to the failing one (the error included): that is the run worth looking at.
 
-The binding notebooks start with an "Installation" section of `%%bash` cells that
-create a virtual environment, install requirements and build libKriging. Those
-cells provision an environment and are not what the notebooks demonstrate: with
-`--skip-setup` no `%%bash` cell (nor the cell that puts a built mlibkriging on the
-Octave path) is run: they keep their stored content, no local path ends up in the
-outputs, and the notebook is executed against the libKriging already available to
-the kernel (Python: installed; Julia: `--project`; Octave: `OCTAVE_PATH`).
+`--skip-setup` does not run the `%%bash` cells (nor a cell starting with
+"% Add mlibkriging to path"), for notebooks that provision their own environment;
+the notebooks of this repository have none and use the libKriging available to the
+kernel (Python: installed; R: library; Octave: `OCTAVE_PATH`; Julia: environment).
 
 Usage:
-  python3 tools/notebooks/run_notebooks.py --skip-setup bindings/Python/*.ipynb
-  python3 tools/notebooks/run_notebooks.py --skip-setup --inplace --kernel python3 nb.ipynb
-  python3 tools/notebooks/run_notebooks.py --skip-cell '^repo_root = ' --prelude 'addpath(...)' nb.ipynb
+  python3 tools/run_notebooks.py notebooks/python/*.ipynb
+  python3 tools/run_notebooks.py --inplace --timeout 3600 --kernel julia-1.11 notebooks/julia/*.ipynb
+  python3 tools/run_notebooks.py --skip-cell '^repo_root = ' --prelude 'addpath(...)' nb.ipynb
 
 Requires nbclient, nbformat and ipykernel.
 """
@@ -74,23 +73,29 @@ def run(path, kernel, timeout, skip_setup, inplace, skip_patterns=(), prelude=No
         record_timing=False,
     )
     start = time.time()
+    ok, info = True, ""
     try:
         client.execute()
-    except CellExecutionError as exc:
-        return False, f"{exc}".strip()[-1500:], time.time() - start
-
-    errors = output_errors(work)
-    if errors:
-        return False, "\n".join(list(dict.fromkeys(errors))[:10]), time.time() - start
+    except Exception as exc:  # noqa: BLE001 - CellExecutionError, timeout, dead kernel
+        msg = str(exc) if isinstance(exc, CellExecutionError) else f"{type(exc).__name__}: {exc}"
+        ok, info = False, msg.strip()[-1500:]
+    if ok:
+        errors = output_errors(work)
+        if errors:
+            ok, info = False, "\n".join(list(dict.fromkeys(errors))[:10])
+    elapsed = time.time() - start
 
     if inplace:
-        # Merge the outputs back, leaving the skipped setup cells as they were.
+        # Merge the outputs back (also after a failure: the cells run so far keep their
+        # outputs, the error included), leaving the skipped setup cells as they were.
         for i, done in zip(kept, work.cells[1 if prelude else 0:]):
             if done.cell_type == "code":
                 nb.cells[i].outputs = done.outputs
                 nb.cells[i].execution_count = done.execution_count
         nbformat.write(nb, path)
-    return True, f"{len(skipped)} setup cell(s) skipped" if skipped else "", time.time() - start
+    if ok and skipped:
+        info = f"{len(skipped)} setup cell(s) skipped"
+    return ok, info, elapsed
 
 
 def main(argv=None):
