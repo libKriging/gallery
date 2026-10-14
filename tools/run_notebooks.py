@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Execute Jupyter notebooks and fail if any cell raises.
 
-Used by CI (.github/workflows/notebooks.yml) to execute every notebook against the
-installed libKriging and, with `--inplace`, to save the executed notebook with its
-outputs. A notebook that fails is saved too, with the outputs of the cells run up
+Each notebook runs in its own directory (the repository root: the paths in the
+notebooks are relative to it). Used by CI (.github/workflows/notebooks.yml) to
+execute every notebook against the installed libKriging and, with `--inplace`, to
+save the executed notebook with its outputs. A notebook that fails is saved too, with the outputs of the cells run up
 to the failing one (the error included): that is the run worth looking at.
 
 `--skip-setup` does not run the `%%bash` cells (nor a cell starting with
@@ -12,8 +13,8 @@ the notebooks of this repository have none and use the libKriging available to t
 kernel (Python: installed; R: library; Octave: `OCTAVE_PATH`; Julia: environment).
 
 Usage:
-  python3 tools/run_notebooks.py notebooks/python/*.ipynb
-  python3 tools/run_notebooks.py --inplace --timeout 3600 --kernel julia-1.11 notebooks/julia/*.ipynb
+  python3 tools/run_notebooks.py python_*.ipynb
+  python3 tools/run_notebooks.py --inplace --timeout 3600 --kernel julia-1.11 julia_Kriging_cross-binding.ipynb
   python3 tools/run_notebooks.py --skip-cell '^repo_root = ' --prelude 'addpath(...)' nb.ipynb
 
 Requires nbclient, nbformat and ipykernel.

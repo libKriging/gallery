@@ -12,21 +12,24 @@ and reports:
 
   1. a status table per notebook (PASS / FAIL / WARN / KNOWN / SKIP);
   2. every FAIL, WARN and KNOWN check, with its value and threshold;
-  3. known issues whose check now passes ("FIXED?": remove them from known_issues.csv);
+  3. known issues whose check now passes ("FIXED?": remove them from
+     tools/known_issues.csv);
   4. cross-binding consistency: each language against Python, per quantity, with
-     the tolerances of notebooks/python/11_cross_binding.ipynb;
+     the tolerances of python_Kriging_cross-binding-reference.ipynb;
   5. drifts of the accuracy metrics (q2, rmse, nlpd) and of the fit times against a
-     baseline (baseline/metrics.csv), when one is given.
+     baseline (tools/baseline/metrics-<channel>.csv), when one is given.
 
 Exit status 1 if any check FAILed, if a cross-binding quantity of error level
 differs, or if --expect lists a suite that produced no output (crashed before
 finalize). The Markdown goes to stdout and, with --summary, is appended to a file
-(e.g. $GITHUB_STEP_SUMMARY).
+(e.g. $GITHUB_STEP_SUMMARY). The suite of a notebook is its file name without
+extension; `--expect python,R` expects one suite per `python_*.ipynb` and
+`R_*.ipynb` notebook of the repository root (names are also accepted).
 
 Usage:
-  python tools/report.py [--results results] [--baseline baseline/metrics.csv]
-                         [--write-baseline baseline/metrics.csv] [--summary FILE]
-                         [--expect py00_test_functions,...]
+  python tools/report.py [--results results] [--baseline tools/baseline/metrics-master.csv]
+                         [--write-baseline new-baseline/metrics-master.csv] [--summary FILE]
+                         [--expect python,R,octave,julia]
 """
 import argparse
 import csv
@@ -136,7 +139,8 @@ def main(argv=None):
     p.add_argument("--baseline", help="metrics CSV of a reference run (drift report)")
     p.add_argument("--write-baseline", help="write the current metrics as a new baseline")
     p.add_argument("--summary", help="also append the report to this file")
-    p.add_argument("--expect", default="", help="comma-separated suites that must have produced output")
+    p.add_argument("--expect", default="",
+                   help="comma-separated suites, or binding prefixes (python, R, octave, julia), that must have output")
     args = p.parse_args(argv)
 
     checks = read_all(args.results, "*.checks.csv")
@@ -156,7 +160,10 @@ def main(argv=None):
         lines += ["## Notebooks\n", md_table(tab)]
         exit_code |= int((checks["status"] == "FAIL").any())
 
-    expected = [s for s in args.expect.split(",") if s]
+    expected = []
+    for item in filter(None, args.expect.split(",")):
+        stems = sorted(nb.stem for nb in ROOT.glob(f"{item}_*.ipynb"))
+        expected += stems or [item]
     missing = sorted(set(expected) - set(checks.get("suite", pd.Series(dtype=str))))
     if missing:
         lines += ["## Notebooks without output (crashed before `finalize`)\n", md_table(pd.DataFrame({"suite": missing}))]
@@ -170,12 +177,12 @@ def main(argv=None):
             lines += [f"## {title} ({len(sub)})\n", md_table(sub)]
 
         # 3. known issues that now pass
-        known_file = ROOT / "known_issues.csv"
+        known_file = ROOT / "tools" / "known_issues.csv"
         if known_file.exists():
             known = pd.read_csv(known_file, dtype=str, keep_default_na=False)
             passing = known.merge(checks[checks["status"] == "PASS"][["suite", "check"]], on=["suite", "check"])
             if not passing.empty:
-                lines += ["## Known issues that now pass — FIXED? (remove them from known_issues.csv)\n",
+                lines += ["## Known issues that now pass — FIXED? (remove them from tools/known_issues.csv)\n",
                           md_table(passing)]
 
     # 4. cross-binding
