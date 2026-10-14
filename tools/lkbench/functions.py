@@ -3,7 +3,7 @@ Experiments (Surjanovic & Bingham, https://www.sfu.ca/~ssurjano/).
 
 Every function takes ``X`` of shape (n, d) in its *native* domain and returns a
 length-n vector. ``TESTS`` gathers the metadata (dimension, domain, a reference
-point with its known value) used by ``python_no-model_test-functions-reference-values.ipynb``
+point with its known value) used by ``test-functions-reference-values_no-model_python.ipynb``
 to check the implementations themselves before anything is benchmarked on them.
 """
 from dataclasses import dataclass, field

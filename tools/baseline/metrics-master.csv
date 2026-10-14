@@ -1,956 +1,956 @@
 suite,lang,case,package,metric,value
-python_Kriging_kernels-trends-interpolation,python,forrester/gauss/constant,pylibkriging,fit_s,0.00161386
-python_Kriging_kernels-trends-interpolation,python,forrester/gauss/constant,pylibkriging,rmse,0.0848271
-python_Kriging_kernels-trends-interpolation,python,forrester/gauss/constant,pylibkriging,q2,0.999634
-python_Kriging_kernels-trends-interpolation,python,forrester/gauss/constant,pylibkriging,nlpd,-3.06486
-python_Kriging_kernels-trends-interpolation,python,forrester/gauss/linear,pylibkriging,fit_s,0.00126195
-python_Kriging_kernels-trends-interpolation,python,forrester/gauss/linear,pylibkriging,rmse,0.0855468
-python_Kriging_kernels-trends-interpolation,python,forrester/gauss/linear,pylibkriging,q2,0.999628
-python_Kriging_kernels-trends-interpolation,python,forrester/gauss/linear,pylibkriging,nlpd,-3.11029
-python_Kriging_kernels-trends-interpolation,python,forrester/gauss/interactive,pylibkriging,fit_s,0.00143647
-python_Kriging_kernels-trends-interpolation,python,forrester/gauss/interactive,pylibkriging,rmse,0.0855468
-python_Kriging_kernels-trends-interpolation,python,forrester/gauss/interactive,pylibkriging,q2,0.999628
-python_Kriging_kernels-trends-interpolation,python,forrester/gauss/interactive,pylibkriging,nlpd,-3.11029
-python_Kriging_kernels-trends-interpolation,python,forrester/gauss/quadratic,pylibkriging,fit_s,0.000566483
-python_Kriging_kernels-trends-interpolation,python,forrester/gauss/quadratic,pylibkriging,rmse,1.57249
-python_Kriging_kernels-trends-interpolation,python,forrester/gauss/quadratic,pylibkriging,q2,0.874394
-python_Kriging_kernels-trends-interpolation,python,forrester/gauss/quadratic,pylibkriging,nlpd,5.33879
-python_Kriging_kernels-trends-interpolation,python,forrester/exp/constant,pylibkriging,fit_s,0.00041604
-python_Kriging_kernels-trends-interpolation,python,forrester/exp/constant,pylibkriging,rmse,0.721582
-python_Kriging_kernels-trends-interpolation,python,forrester/exp/constant,pylibkriging,q2,0.973551
-python_Kriging_kernels-trends-interpolation,python,forrester/exp/constant,pylibkriging,nlpd,1.54551
-python_Kriging_kernels-trends-interpolation,python,forrester/exp/linear,pylibkriging,fit_s,0.000438213
-python_Kriging_kernels-trends-interpolation,python,forrester/exp/linear,pylibkriging,rmse,0.793413
-python_Kriging_kernels-trends-interpolation,python,forrester/exp/linear,pylibkriging,q2,0.968024
-python_Kriging_kernels-trends-interpolation,python,forrester/exp/linear,pylibkriging,nlpd,1.50639
-python_Kriging_kernels-trends-interpolation,python,forrester/exp/interactive,pylibkriging,fit_s,0.000480413
-python_Kriging_kernels-trends-interpolation,python,forrester/exp/interactive,pylibkriging,rmse,0.793413
-python_Kriging_kernels-trends-interpolation,python,forrester/exp/interactive,pylibkriging,q2,0.968024
-python_Kriging_kernels-trends-interpolation,python,forrester/exp/interactive,pylibkriging,nlpd,1.50639
-python_Kriging_kernels-trends-interpolation,python,forrester/exp/quadratic,pylibkriging,fit_s,0.000730038
-python_Kriging_kernels-trends-interpolation,python,forrester/exp/quadratic,pylibkriging,rmse,0.723267
-python_Kriging_kernels-trends-interpolation,python,forrester/exp/quadratic,pylibkriging,q2,0.973428
-python_Kriging_kernels-trends-interpolation,python,forrester/exp/quadratic,pylibkriging,nlpd,1.28782
-python_Kriging_kernels-trends-interpolation,python,forrester/matern3_2/constant,pylibkriging,fit_s,0.00060606
-python_Kriging_kernels-trends-interpolation,python,forrester/matern3_2/constant,pylibkriging,rmse,0.334007
-python_Kriging_kernels-trends-interpolation,python,forrester/matern3_2/constant,pylibkriging,q2,0.994333
-python_Kriging_kernels-trends-interpolation,python,forrester/matern3_2/constant,pylibkriging,nlpd,-0.227715
-python_Kriging_kernels-trends-interpolation,python,forrester/matern3_2/linear,pylibkriging,fit_s,0.000588894
-python_Kriging_kernels-trends-interpolation,python,forrester/matern3_2/linear,pylibkriging,rmse,0.364477
-python_Kriging_kernels-trends-interpolation,python,forrester/matern3_2/linear,pylibkriging,q2,0.993252
-python_Kriging_kernels-trends-interpolation,python,forrester/matern3_2/linear,pylibkriging,nlpd,-0.187262
-python_Kriging_kernels-trends-interpolation,python,forrester/matern3_2/interactive,pylibkriging,fit_s,0.000905514
-python_Kriging_kernels-trends-interpolation,python,forrester/matern3_2/interactive,pylibkriging,rmse,0.364477
-python_Kriging_kernels-trends-interpolation,python,forrester/matern3_2/interactive,pylibkriging,q2,0.993252
-python_Kriging_kernels-trends-interpolation,python,forrester/matern3_2/interactive,pylibkriging,nlpd,-0.187262
-python_Kriging_kernels-trends-interpolation,python,forrester/matern3_2/quadratic,pylibkriging,fit_s,0.000975609
-python_Kriging_kernels-trends-interpolation,python,forrester/matern3_2/quadratic,pylibkriging,rmse,0.435609
-python_Kriging_kernels-trends-interpolation,python,forrester/matern3_2/quadratic,pylibkriging,q2,0.990361
-python_Kriging_kernels-trends-interpolation,python,forrester/matern3_2/quadratic,pylibkriging,nlpd,-0.183076
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/constant,pylibkriging,fit_s,0.000726223
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/constant,pylibkriging,rmse,0.281945
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/constant,pylibkriging,q2,0.995962
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/constant,pylibkriging,nlpd,-1.01945
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/constant,pylibkriging BFGS10,rmse,0.281945
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/constant,pylibkriging BFGS10,q2,0.995962
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/constant,pylibkriging BFGS10,nlpd,-1.01945
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/linear,pylibkriging,fit_s,0.000932932
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/linear,pylibkriging,rmse,0.298959
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/linear,pylibkriging,q2,0.99546
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/linear,pylibkriging,nlpd,-0.95551
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/interactive,pylibkriging,fit_s,0.000725269
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/interactive,pylibkriging,rmse,0.298959
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/interactive,pylibkriging,q2,0.99546
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/interactive,pylibkriging,nlpd,-0.95551
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/quadratic,pylibkriging,fit_s,0.00131941
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/quadratic,pylibkriging,rmse,0.365039
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/quadratic,pylibkriging,q2,0.993231
-python_Kriging_kernels-trends-interpolation,python,forrester/matern5_2/quadratic,pylibkriging,nlpd,-0.790032
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/gauss/constant,pylibkriging,fit_s,0.0016458
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/gauss/constant,pylibkriging,rmse,0.191274
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/gauss/constant,pylibkriging,q2,0.978742
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/gauss/constant,pylibkriging,nlpd,-0.704948
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/gauss/linear,pylibkriging,fit_s,0.00319505
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/gauss/linear,pylibkriging,rmse,0.236028
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/gauss/linear,pylibkriging,q2,0.96763
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/gauss/linear,pylibkriging,nlpd,-0.580993
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/gauss/interactive,pylibkriging,fit_s,0.00250673
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/gauss/interactive,pylibkriging,rmse,0.236028
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/gauss/interactive,pylibkriging,q2,0.96763
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/gauss/interactive,pylibkriging,nlpd,-0.580993
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/gauss/quadratic,pylibkriging,fit_s,0.00243235
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/gauss/quadratic,pylibkriging,rmse,0.138869
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/gauss/quadratic,pylibkriging,q2,0.988795
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/gauss/quadratic,pylibkriging,nlpd,-0.530437
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/exp/constant,pylibkriging,fit_s,0.000752449
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/exp/constant,pylibkriging,rmse,0.196586
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/exp/constant,pylibkriging,q2,0.977545
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/exp/constant,pylibkriging,nlpd,-0.0621192
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/exp/linear,pylibkriging,fit_s,0.0010047
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/exp/linear,pylibkriging,rmse,0.20979
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/exp/linear,pylibkriging,q2,0.974427
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/exp/linear,pylibkriging,nlpd,-0.0466568
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/exp/interactive,pylibkriging,fit_s,0.000931501
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/exp/interactive,pylibkriging,rmse,0.20979
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/exp/interactive,pylibkriging,q2,0.974427
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/exp/interactive,pylibkriging,nlpd,-0.0466568
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/exp/quadratic,pylibkriging,fit_s,0.0025785
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/exp/quadratic,pylibkriging,rmse,0.220579
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/exp/quadratic,pylibkriging,q2,0.971729
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/exp/quadratic,pylibkriging,nlpd,0.136521
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern3_2/constant,pylibkriging,fit_s,0.000761509
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern3_2/constant,pylibkriging,rmse,0.177253
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern3_2/constant,pylibkriging,q2,0.981744
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern3_2/constant,pylibkriging,nlpd,-0.482212
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern3_2/linear,pylibkriging,fit_s,0.00132823
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern3_2/linear,pylibkriging,rmse,0.211499
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern3_2/linear,pylibkriging,q2,0.974009
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern3_2/linear,pylibkriging,nlpd,-0.375844
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern3_2/interactive,pylibkriging,fit_s,0.000978708
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern3_2/interactive,pylibkriging,rmse,0.211499
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern3_2/interactive,pylibkriging,q2,0.974009
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern3_2/interactive,pylibkriging,nlpd,-0.375844
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern3_2/quadratic,pylibkriging,fit_s,0.00228167
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern3_2/quadratic,pylibkriging,rmse,0.173012
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern3_2/quadratic,pylibkriging,q2,0.982607
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern3_2/quadratic,pylibkriging,nlpd,-0.223308
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/constant,pylibkriging,fit_s,0.00131416
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/constant,pylibkriging,rmse,0.177638
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/constant,pylibkriging,q2,0.981665
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/constant,pylibkriging,nlpd,-0.575421
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/constant,pylibkriging BFGS10,rmse,0.177638
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/constant,pylibkriging BFGS10,q2,0.981665
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/constant,pylibkriging BFGS10,nlpd,-0.575422
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/linear,pylibkriging,fit_s,0.00130415
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/linear,pylibkriging,rmse,0.219759
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/linear,pylibkriging,q2,0.971939
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/linear,pylibkriging,nlpd,-0.458933
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/interactive,pylibkriging,fit_s,0.00119758
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/interactive,pylibkriging,rmse,0.219759
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/interactive,pylibkriging,q2,0.971939
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/interactive,pylibkriging,nlpd,-0.458933
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/quadratic,pylibkriging,fit_s,0.00169826
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/quadratic,pylibkriging,rmse,0.160506
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/quadratic,pylibkriging,q2,0.985031
-python_Kriging_kernels-trends-interpolation,python,gramacy_lee_2012/matern5_2/quadratic,pylibkriging,nlpd,-0.337276
-python_Kriging_kernels-trends-interpolation,python,branin/gauss/constant,pylibkriging,fit_s,0.00104284
-python_Kriging_kernels-trends-interpolation,python,branin/gauss/constant,pylibkriging,rmse,7.2629
-python_Kriging_kernels-trends-interpolation,python,branin/gauss/constant,pylibkriging,q2,0.980655
-python_Kriging_kernels-trends-interpolation,python,branin/gauss/constant,pylibkriging,nlpd,4.3152
-python_Kriging_kernels-trends-interpolation,python,branin/gauss/linear,pylibkriging,fit_s,0.00129008
-python_Kriging_kernels-trends-interpolation,python,branin/gauss/linear,pylibkriging,rmse,7.25733
-python_Kriging_kernels-trends-interpolation,python,branin/gauss/linear,pylibkriging,q2,0.980685
-python_Kriging_kernels-trends-interpolation,python,branin/gauss/linear,pylibkriging,nlpd,4.30813
-python_Kriging_kernels-trends-interpolation,python,branin/gauss/interactive,pylibkriging,fit_s,0.00280094
-python_Kriging_kernels-trends-interpolation,python,branin/gauss/interactive,pylibkriging,rmse,7.2576
-python_Kriging_kernels-trends-interpolation,python,branin/gauss/interactive,pylibkriging,q2,0.980683
-python_Kriging_kernels-trends-interpolation,python,branin/gauss/interactive,pylibkriging,nlpd,4.30176
-python_Kriging_kernels-trends-interpolation,python,branin/gauss/quadratic,pylibkriging,fit_s,0.00112319
-python_Kriging_kernels-trends-interpolation,python,branin/gauss/quadratic,pylibkriging,rmse,7.27808
-python_Kriging_kernels-trends-interpolation,python,branin/gauss/quadratic,pylibkriging,q2,0.980574
-python_Kriging_kernels-trends-interpolation,python,branin/gauss/quadratic,pylibkriging,nlpd,4.29399
-python_Kriging_kernels-trends-interpolation,python,branin/exp/constant,pylibkriging,fit_s,0.00222707
-python_Kriging_kernels-trends-interpolation,python,branin/exp/constant,pylibkriging,rmse,14.5887
-python_Kriging_kernels-trends-interpolation,python,branin/exp/constant,pylibkriging,q2,0.921947
-python_Kriging_kernels-trends-interpolation,python,branin/exp/constant,pylibkriging,nlpd,4.09457
-python_Kriging_kernels-trends-interpolation,python,branin/exp/linear,pylibkriging,fit_s,0.00213099
-python_Kriging_kernels-trends-interpolation,python,branin/exp/linear,pylibkriging,rmse,14.9622
-python_Kriging_kernels-trends-interpolation,python,branin/exp/linear,pylibkriging,q2,0.9179
-python_Kriging_kernels-trends-interpolation,python,branin/exp/linear,pylibkriging,nlpd,4.0909
-python_Kriging_kernels-trends-interpolation,python,branin/exp/interactive,pylibkriging,fit_s,0.00196409
-python_Kriging_kernels-trends-interpolation,python,branin/exp/interactive,pylibkriging,rmse,11.6963
-python_Kriging_kernels-trends-interpolation,python,branin/exp/interactive,pylibkriging,q2,0.94983
-python_Kriging_kernels-trends-interpolation,python,branin/exp/interactive,pylibkriging,nlpd,3.79671
-python_Kriging_kernels-trends-interpolation,python,branin/exp/quadratic,pylibkriging,fit_s,0.00227737
-python_Kriging_kernels-trends-interpolation,python,branin/exp/quadratic,pylibkriging,rmse,9.33909
-python_Kriging_kernels-trends-interpolation,python,branin/exp/quadratic,pylibkriging,q2,0.968014
-python_Kriging_kernels-trends-interpolation,python,branin/exp/quadratic,pylibkriging,nlpd,3.62362
-python_Kriging_kernels-trends-interpolation,python,branin/matern3_2/constant,pylibkriging,fit_s,0.00244212
-python_Kriging_kernels-trends-interpolation,python,branin/matern3_2/constant,pylibkriging,rmse,3.24796
-python_Kriging_kernels-trends-interpolation,python,branin/matern3_2/constant,pylibkriging,q2,0.996131
-python_Kriging_kernels-trends-interpolation,python,branin/matern3_2/constant,pylibkriging,nlpd,2.30444
-python_Kriging_kernels-trends-interpolation,python,branin/matern3_2/linear,pylibkriging,fit_s,0.00244641
-python_Kriging_kernels-trends-interpolation,python,branin/matern3_2/linear,pylibkriging,rmse,3.14402
-python_Kriging_kernels-trends-interpolation,python,branin/matern3_2/linear,pylibkriging,q2,0.996375
-python_Kriging_kernels-trends-interpolation,python,branin/matern3_2/linear,pylibkriging,nlpd,2.28067
-python_Kriging_kernels-trends-interpolation,python,branin/matern3_2/interactive,pylibkriging,fit_s,0.00703263
-python_Kriging_kernels-trends-interpolation,python,branin/matern3_2/interactive,pylibkriging,rmse,3.19226
-python_Kriging_kernels-trends-interpolation,python,branin/matern3_2/interactive,pylibkriging,q2,0.996263
-python_Kriging_kernels-trends-interpolation,python,branin/matern3_2/interactive,pylibkriging,nlpd,2.20359
-python_Kriging_kernels-trends-interpolation,python,branin/matern3_2/quadratic,pylibkriging,fit_s,0.00404716
-python_Kriging_kernels-trends-interpolation,python,branin/matern3_2/quadratic,pylibkriging,rmse,3.01232
-python_Kriging_kernels-trends-interpolation,python,branin/matern3_2/quadratic,pylibkriging,q2,0.996672
-python_Kriging_kernels-trends-interpolation,python,branin/matern3_2/quadratic,pylibkriging,nlpd,2.11627
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/constant,pylibkriging,fit_s,0.0029068
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/constant,pylibkriging,rmse,0.52012
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/constant,pylibkriging,q2,0.999901
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/constant,pylibkriging,nlpd,0.283399
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/constant,pylibkriging BFGS10,rmse,0.52012
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/constant,pylibkriging BFGS10,q2,0.999901
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/constant,pylibkriging BFGS10,nlpd,0.283395
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/linear,pylibkriging,fit_s,0.00212407
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/linear,pylibkriging,rmse,0.460868
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/linear,pylibkriging,q2,0.999922
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/linear,pylibkriging,nlpd,0.209741
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/interactive,pylibkriging,fit_s,0.0018971
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/interactive,pylibkriging,rmse,0.498484
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/interactive,pylibkriging,q2,0.999909
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/interactive,pylibkriging,nlpd,0.239079
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/quadratic,pylibkriging,fit_s,0.00570393
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/quadratic,pylibkriging,rmse,0.67472
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/quadratic,pylibkriging,q2,0.999833
-python_Kriging_kernels-trends-interpolation,python,branin/matern5_2/quadratic,pylibkriging,nlpd,0.419266
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/gauss/constant,pylibkriging,fit_s,0.00197244
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/gauss/constant,pylibkriging,rmse,18.9501
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/gauss/constant,pylibkriging,q2,0.536354
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/gauss/constant,pylibkriging,nlpd,84.151
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/gauss/linear,pylibkriging,fit_s,0.00170588
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/gauss/linear,pylibkriging,rmse,18.9579
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/gauss/linear,pylibkriging,q2,0.535976
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/gauss/linear,pylibkriging,nlpd,44.8696
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/gauss/interactive,pylibkriging,fit_s,0.0020082
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/gauss/interactive,pylibkriging,rmse,18.9819
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/gauss/interactive,pylibkriging,q2,0.5348
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/gauss/interactive,pylibkriging,nlpd,35.2765
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/gauss/quadratic,pylibkriging,fit_s,0.00248289
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/gauss/quadratic,pylibkriging,rmse,10.9058
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/gauss/quadratic,pylibkriging,q2,0.846441
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/gauss/quadratic,pylibkriging,nlpd,4.92017
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/exp/constant,pylibkriging,fit_s,0.00100708
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/exp/constant,pylibkriging,rmse,16.9653
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/exp/constant,pylibkriging,q2,0.628393
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/exp/constant,pylibkriging,nlpd,4.48595
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/exp/linear,pylibkriging,fit_s,0.00118208
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/exp/linear,pylibkriging,rmse,17.1781
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/exp/linear,pylibkriging,q2,0.619012
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/exp/linear,pylibkriging,nlpd,4.47061
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/exp/interactive,pylibkriging,fit_s,0.00123763
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/exp/interactive,pylibkriging,rmse,17.1856
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/exp/interactive,pylibkriging,q2,0.618679
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/exp/interactive,pylibkriging,nlpd,4.43133
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/exp/quadratic,pylibkriging,fit_s,0.0013876
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/exp/quadratic,pylibkriging,rmse,7.99484
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/exp/quadratic,pylibkriging,q2,0.917476
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/exp/quadratic,pylibkriging,nlpd,3.35612
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern3_2/constant,pylibkriging,fit_s,0.00175476
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern3_2/constant,pylibkriging,rmse,18.4958
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern3_2/constant,pylibkriging,q2,0.558321
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern3_2/constant,pylibkriging,nlpd,18.8349
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern3_2/linear,pylibkriging,fit_s,0.00206542
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern3_2/linear,pylibkriging,rmse,18.5562
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern3_2/linear,pylibkriging,q2,0.555433
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern3_2/linear,pylibkriging,nlpd,14.9494
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern3_2/interactive,pylibkriging,fit_s,0.00178266
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern3_2/interactive,pylibkriging,rmse,18.561
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern3_2/interactive,pylibkriging,q2,0.555202
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern3_2/interactive,pylibkriging,nlpd,12.9923
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern3_2/quadratic,pylibkriging,fit_s,0.00338221
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern3_2/quadratic,pylibkriging,rmse,8.91645
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern3_2/quadratic,pylibkriging,q2,0.897353
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern3_2/quadratic,pylibkriging,nlpd,3.94939
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/constant,pylibkriging,fit_s,0.00228882
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/constant,pylibkriging,rmse,18.3236
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/constant,pylibkriging,q2,0.566507
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/constant,pylibkriging,nlpd,18.4322
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/constant,pylibkriging BFGS10,rmse,1.36208
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/constant,pylibkriging BFGS10,q2,0.997605
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/constant,pylibkriging BFGS10,nlpd,1.03215
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/linear,pylibkriging,fit_s,0.00242186
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/linear,pylibkriging,rmse,18.7127
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/linear,pylibkriging,q2,0.547901
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/linear,pylibkriging,nlpd,24.5771
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/interactive,pylibkriging,fit_s,0.00234485
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/interactive,pylibkriging,rmse,18.7194
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/interactive,pylibkriging,q2,0.547577
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/interactive,pylibkriging,nlpd,20.4255
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/quadratic,pylibkriging,fit_s,0.00251341
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/quadratic,pylibkriging,rmse,10.2878
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/quadratic,pylibkriging,q2,0.863351
-python_Kriging_kernels-trends-interpolation,python,six_hump_camel/matern5_2/quadratic,pylibkriging,nlpd,4.46344
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/gauss/constant,pylibkriging,fit_s,0.00588727
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/gauss/constant,pylibkriging,rmse,0.295934
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/gauss/constant,pylibkriging,q2,0.920537
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/gauss/constant,pylibkriging,nlpd,1.58666
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/gauss/linear,pylibkriging,fit_s,0.00581551
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/gauss/linear,pylibkriging,rmse,0.296355
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/gauss/linear,pylibkriging,q2,0.92031
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/gauss/linear,pylibkriging,nlpd,1.2962
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/gauss/interactive,pylibkriging,fit_s,0.00644922
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/gauss/interactive,pylibkriging,rmse,0.285136
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/gauss/interactive,pylibkriging,q2,0.926229
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/gauss/interactive,pylibkriging,nlpd,1.04122
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/gauss/quadratic,pylibkriging,fit_s,0.00578475
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/gauss/quadratic,pylibkriging,rmse,0.237308
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/gauss/quadratic,pylibkriging,q2,0.948902
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/gauss/quadratic,pylibkriging,nlpd,0.146484
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/exp/constant,pylibkriging,fit_s,0.00258231
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/exp/constant,pylibkriging,rmse,0.334876
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/exp/constant,pylibkriging,q2,0.898247
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/exp/constant,pylibkriging,nlpd,0.339235
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/exp/linear,pylibkriging,fit_s,0.00211
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/exp/linear,pylibkriging,rmse,0.333447
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/exp/linear,pylibkriging,q2,0.899114
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/exp/linear,pylibkriging,nlpd,0.336515
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/exp/interactive,pylibkriging,fit_s,0.0025239
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/exp/interactive,pylibkriging,rmse,0.336819
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/exp/interactive,pylibkriging,q2,0.897063
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/exp/interactive,pylibkriging,nlpd,0.329566
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/exp/quadratic,pylibkriging,fit_s,0.00309515
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/exp/quadratic,pylibkriging,rmse,0.327816
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/exp/quadratic,pylibkriging,q2,0.902492
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/exp/quadratic,pylibkriging,nlpd,0.322056
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern3_2/constant,pylibkriging,fit_s,0.00425816
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern3_2/constant,pylibkriging,rmse,0.684362
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern3_2/constant,pylibkriging,q2,0.575038
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern3_2/constant,pylibkriging,nlpd,0.972803
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern3_2/linear,pylibkriging,fit_s,0.00413442
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern3_2/linear,pylibkriging,rmse,0.650201
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern3_2/linear,pylibkriging,q2,0.616404
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern3_2/linear,pylibkriging,nlpd,0.921455
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern3_2/interactive,pylibkriging,fit_s,0.00704145
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern3_2/interactive,pylibkriging,rmse,0.274326
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern3_2/interactive,pylibkriging,q2,0.931717
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern3_2/interactive,pylibkriging,nlpd,0.0549679
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern3_2/quadratic,pylibkriging,fit_s,0.00996184
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern3_2/quadratic,pylibkriging,rmse,0.263745
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern3_2/quadratic,pylibkriging,q2,0.936883
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern3_2/quadratic,pylibkriging,nlpd,0.0446267
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/constant,pylibkriging,fit_s,0.00410438
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/constant,pylibkriging,rmse,0.674391
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/constant,pylibkriging,q2,0.58733
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/constant,pylibkriging,nlpd,0.944765
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/constant,pylibkriging BFGS10,rmse,0.268216
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/constant,pylibkriging BFGS10,q2,0.934725
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/constant,pylibkriging BFGS10,nlpd,0.169585
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/linear,pylibkriging,fit_s,0.00728607
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/linear,pylibkriging,rmse,0.268808
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/linear,pylibkriging,q2,0.934436
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/linear,pylibkriging,nlpd,0.142382
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/interactive,pylibkriging,fit_s,0.00524259
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/interactive,pylibkriging,rmse,0.271088
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/interactive,pylibkriging,q2,0.933319
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/interactive,pylibkriging,nlpd,0.128788
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/quadratic,pylibkriging,fit_s,0.011641
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/quadratic,pylibkriging,rmse,0.253093
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/quadratic,pylibkriging,q2,0.941878
-python_Kriging_kernels-trends-interpolation,python,log_goldstein_price/matern5_2/quadratic,pylibkriging,nlpd,0.025469
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/gauss/constant,pylibkriging,fit_s,0.00113583
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/gauss/constant,pylibkriging,rmse,0.026127
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/gauss/constant,pylibkriging,q2,0.999737
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/gauss/constant,pylibkriging,nlpd,-2.69817
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/gauss/linear,pylibkriging,fit_s,0.00152946
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/gauss/linear,pylibkriging,rmse,1.06243
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/gauss/linear,pylibkriging,q2,0.564691
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/gauss/linear,pylibkriging,nlpd,2.7394
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/gauss/interactive,pylibkriging,fit_s,0.00153446
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/gauss/interactive,pylibkriging,rmse,1.06504
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/gauss/interactive,pylibkriging,q2,0.562551
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/gauss/interactive,pylibkriging,nlpd,2.33575
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/gauss/quadratic,pylibkriging,fit_s,0.00196862
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/gauss/quadratic,pylibkriging,rmse,0.281816
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/gauss/quadratic,pylibkriging,q2,0.969371
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/gauss/quadratic,pylibkriging,nlpd,0.71682
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/exp/constant,pylibkriging,fit_s,0.000828028
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/exp/constant,pylibkriging,rmse,0.249023
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/exp/constant,pylibkriging,q2,0.976085
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/exp/constant,pylibkriging,nlpd,0.394159
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/exp/linear,pylibkriging,fit_s,0.000962973
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/exp/linear,pylibkriging,rmse,0.245558
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/exp/linear,pylibkriging,q2,0.976746
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/exp/linear,pylibkriging,nlpd,0.224593
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/exp/interactive,pylibkriging,fit_s,0.00143671
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/exp/interactive,pylibkriging,rmse,0.239032
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/exp/interactive,pylibkriging,q2,0.977965
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/exp/interactive,pylibkriging,nlpd,0.226133
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/exp/quadratic,pylibkriging,fit_s,0.00274634
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/exp/quadratic,pylibkriging,rmse,0.237713
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/exp/quadratic,pylibkriging,q2,0.978208
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/exp/quadratic,pylibkriging,nlpd,-0.139582
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern3_2/constant,pylibkriging,fit_s,0.0011251
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern3_2/constant,pylibkriging,rmse,0.0600911
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern3_2/constant,pylibkriging,q2,0.998607
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern3_2/constant,pylibkriging,nlpd,-1.34658
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern3_2/linear,pylibkriging,fit_s,0.000877857
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern3_2/linear,pylibkriging,rmse,0.0584376
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern3_2/linear,pylibkriging,q2,0.998683
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern3_2/linear,pylibkriging,nlpd,-1.34912
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern3_2/interactive,pylibkriging,fit_s,0.00140738
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern3_2/interactive,pylibkriging,rmse,0.0576096
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern3_2/interactive,pylibkriging,q2,0.99872
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern3_2/interactive,pylibkriging,nlpd,-1.35376
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern3_2/quadratic,pylibkriging,fit_s,0.00383472
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern3_2/quadratic,pylibkriging,rmse,0.215336
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern3_2/quadratic,pylibkriging,q2,0.982117
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern3_2/quadratic,pylibkriging,nlpd,-0.350837
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/constant,pylibkriging,fit_s,0.000718832
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/constant,pylibkriging,rmse,0.0246348
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/constant,pylibkriging,q2,0.999766
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/constant,pylibkriging,nlpd,-2.59598
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/constant,pylibkriging BFGS10,rmse,0.0246338
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/constant,pylibkriging BFGS10,q2,0.999766
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/constant,pylibkriging BFGS10,nlpd,-2.59598
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/linear,pylibkriging,fit_s,0.0013113
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/linear,pylibkriging,rmse,0.0232483
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/linear,pylibkriging,q2,0.999792
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/linear,pylibkriging,nlpd,-2.58843
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/interactive,pylibkriging,fit_s,0.00150442
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/interactive,pylibkriging,rmse,0.0230248
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/interactive,pylibkriging,q2,0.999796
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/interactive,pylibkriging,nlpd,-2.58839
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/quadratic,pylibkriging,fit_s,0.00300908
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/quadratic,pylibkriging,rmse,0.209802
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/quadratic,pylibkriging,q2,0.983025
-python_Kriging_kernels-trends-interpolation,python,lim_polynomial/matern5_2/quadratic,pylibkriging,nlpd,-0.403998
-python_Kriging_kernels-trends-interpolation,python,ishigami/gauss/constant,pylibkriging,fit_s,0.0101857
-python_Kriging_kernels-trends-interpolation,python,ishigami/gauss/constant,pylibkriging,rmse,2.07486
-python_Kriging_kernels-trends-interpolation,python,ishigami/gauss/constant,pylibkriging,q2,0.668191
-python_Kriging_kernels-trends-interpolation,python,ishigami/gauss/constant,pylibkriging,nlpd,2.80326
-python_Kriging_kernels-trends-interpolation,python,ishigami/gauss/linear,pylibkriging,fit_s,0.0193923
-python_Kriging_kernels-trends-interpolation,python,ishigami/gauss/linear,pylibkriging,rmse,2.8459
-python_Kriging_kernels-trends-interpolation,python,ishigami/gauss/linear,pylibkriging,q2,0.375762
-python_Kriging_kernels-trends-interpolation,python,ishigami/gauss/linear,pylibkriging,nlpd,3.41919
-python_Kriging_kernels-trends-interpolation,python,ishigami/gauss/interactive,pylibkriging,fit_s,0.0174267
-python_Kriging_kernels-trends-interpolation,python,ishigami/gauss/interactive,pylibkriging,rmse,2.85366
-python_Kriging_kernels-trends-interpolation,python,ishigami/gauss/interactive,pylibkriging,q2,0.372353
-python_Kriging_kernels-trends-interpolation,python,ishigami/gauss/interactive,pylibkriging,nlpd,3.28643
-python_Kriging_kernels-trends-interpolation,python,ishigami/gauss/quadratic,pylibkriging,fit_s,0.00865173
-python_Kriging_kernels-trends-interpolation,python,ishigami/gauss/quadratic,pylibkriging,rmse,2.08981
-python_Kriging_kernels-trends-interpolation,python,ishigami/gauss/quadratic,pylibkriging,q2,0.663392
-python_Kriging_kernels-trends-interpolation,python,ishigami/gauss/quadratic,pylibkriging,nlpd,2.80097
-python_Kriging_kernels-trends-interpolation,python,ishigami/exp/constant,pylibkriging,fit_s,0.00899458
-python_Kriging_kernels-trends-interpolation,python,ishigami/exp/constant,pylibkriging,rmse,1.41632
-python_Kriging_kernels-trends-interpolation,python,ishigami/exp/constant,pylibkriging,q2,0.845391
-python_Kriging_kernels-trends-interpolation,python,ishigami/exp/constant,pylibkriging,nlpd,1.75239
-python_Kriging_kernels-trends-interpolation,python,ishigami/exp/linear,pylibkriging,fit_s,0.0115979
-python_Kriging_kernels-trends-interpolation,python,ishigami/exp/linear,pylibkriging,rmse,1.4095
-python_Kriging_kernels-trends-interpolation,python,ishigami/exp/linear,pylibkriging,q2,0.846877
-python_Kriging_kernels-trends-interpolation,python,ishigami/exp/linear,pylibkriging,nlpd,1.74779
-python_Kriging_kernels-trends-interpolation,python,ishigami/exp/interactive,pylibkriging,fit_s,0.00745058
-python_Kriging_kernels-trends-interpolation,python,ishigami/exp/interactive,pylibkriging,rmse,1.41511
-python_Kriging_kernels-trends-interpolation,python,ishigami/exp/interactive,pylibkriging,q2,0.845657
-python_Kriging_kernels-trends-interpolation,python,ishigami/exp/interactive,pylibkriging,nlpd,1.75024
-python_Kriging_kernels-trends-interpolation,python,ishigami/exp/quadratic,pylibkriging,fit_s,0.00843048
-python_Kriging_kernels-trends-interpolation,python,ishigami/exp/quadratic,pylibkriging,rmse,1.40329
-python_Kriging_kernels-trends-interpolation,python,ishigami/exp/quadratic,pylibkriging,q2,0.848223
-python_Kriging_kernels-trends-interpolation,python,ishigami/exp/quadratic,pylibkriging,nlpd,1.73254
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern3_2/constant,pylibkriging,fit_s,0.0480943
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern3_2/constant,pylibkriging,rmse,1.32971
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern3_2/constant,pylibkriging,q2,0.863723
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern3_2/constant,pylibkriging,nlpd,1.50265
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern3_2/linear,pylibkriging,fit_s,0.047653
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern3_2/linear,pylibkriging,rmse,1.30244
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern3_2/linear,pylibkriging,q2,0.869255
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern3_2/linear,pylibkriging,nlpd,1.47906
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern3_2/interactive,pylibkriging,fit_s,0.060349
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern3_2/interactive,pylibkriging,rmse,1.30591
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern3_2/interactive,pylibkriging,q2,0.868558
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern3_2/interactive,pylibkriging,nlpd,1.47384
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern3_2/quadratic,pylibkriging,fit_s,0.0471144
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern3_2/quadratic,pylibkriging,rmse,1.32197
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern3_2/quadratic,pylibkriging,q2,0.865305
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern3_2/quadratic,pylibkriging,nlpd,1.46827
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/constant,pylibkriging,fit_s,0.0145204
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/constant,pylibkriging,rmse,3.00566
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/constant,pylibkriging,q2,0.303709
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/constant,pylibkriging,nlpd,3.42085
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/constant,pylibkriging BFGS10,rmse,1.33903
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/constant,pylibkriging BFGS10,q2,0.861806
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/constant,pylibkriging BFGS10,nlpd,1.66132
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/linear,pylibkriging,fit_s,0.0518982
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/linear,pylibkriging,rmse,1.3434
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/linear,pylibkriging,q2,0.860901
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/linear,pylibkriging,nlpd,1.65103
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/interactive,pylibkriging,fit_s,0.0539804
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/interactive,pylibkriging,rmse,1.34479
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/interactive,pylibkriging,q2,0.860615
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/interactive,pylibkriging,nlpd,1.64153
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/quadratic,pylibkriging,fit_s,0.052948
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/quadratic,pylibkriging,rmse,1.37082
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/quadratic,pylibkriging,q2,0.855166
-python_Kriging_kernels-trends-interpolation,python,ishigami/matern5_2/quadratic,pylibkriging,nlpd,1.62228
-python_Kriging_kernels-trends-interpolation,python,hartmann3/gauss/constant,pylibkriging,fit_s,0.00805306
-python_Kriging_kernels-trends-interpolation,python,hartmann3/gauss/constant,pylibkriging,rmse,0.156226
-python_Kriging_kernels-trends-interpolation,python,hartmann3/gauss/constant,pylibkriging,q2,0.971116
-python_Kriging_kernels-trends-interpolation,python,hartmann3/gauss/constant,pylibkriging,nlpd,-0.555623
-python_Kriging_kernels-trends-interpolation,python,hartmann3/gauss/linear,pylibkriging,fit_s,0.0129044
-python_Kriging_kernels-trends-interpolation,python,hartmann3/gauss/linear,pylibkriging,rmse,0.153297
-python_Kriging_kernels-trends-interpolation,python,hartmann3/gauss/linear,pylibkriging,q2,0.972189
-python_Kriging_kernels-trends-interpolation,python,hartmann3/gauss/linear,pylibkriging,nlpd,-0.568404
-python_Kriging_kernels-trends-interpolation,python,hartmann3/gauss/interactive,pylibkriging,fit_s,0.00773382
-python_Kriging_kernels-trends-interpolation,python,hartmann3/gauss/interactive,pylibkriging,rmse,0.712948
-python_Kriging_kernels-trends-interpolation,python,hartmann3/gauss/interactive,pylibkriging,q2,0.398455
-python_Kriging_kernels-trends-interpolation,python,hartmann3/gauss/interactive,pylibkriging,nlpd,1.74554
-python_Kriging_kernels-trends-interpolation,python,hartmann3/gauss/quadratic,pylibkriging,fit_s,0.00593877
-python_Kriging_kernels-trends-interpolation,python,hartmann3/gauss/quadratic,pylibkriging,rmse,0.73238
-python_Kriging_kernels-trends-interpolation,python,hartmann3/gauss/quadratic,pylibkriging,q2,0.365217
-python_Kriging_kernels-trends-interpolation,python,hartmann3/gauss/quadratic,pylibkriging,nlpd,2.14587
-python_Kriging_kernels-trends-interpolation,python,hartmann3/exp/constant,pylibkriging,fit_s,0.00374722
-python_Kriging_kernels-trends-interpolation,python,hartmann3/exp/constant,pylibkriging,rmse,0.347348
-python_Kriging_kernels-trends-interpolation,python,hartmann3/exp/constant,pylibkriging,q2,0.857215
-python_Kriging_kernels-trends-interpolation,python,hartmann3/exp/constant,pylibkriging,nlpd,0.352683
-python_Kriging_kernels-trends-interpolation,python,hartmann3/exp/linear,pylibkriging,fit_s,0.00216174
-python_Kriging_kernels-trends-interpolation,python,hartmann3/exp/linear,pylibkriging,rmse,0.347273
-python_Kriging_kernels-trends-interpolation,python,hartmann3/exp/linear,pylibkriging,q2,0.857276
-python_Kriging_kernels-trends-interpolation,python,hartmann3/exp/linear,pylibkriging,nlpd,0.343631
-python_Kriging_kernels-trends-interpolation,python,hartmann3/exp/interactive,pylibkriging,fit_s,0.0024302
-python_Kriging_kernels-trends-interpolation,python,hartmann3/exp/interactive,pylibkriging,rmse,0.378349
-python_Kriging_kernels-trends-interpolation,python,hartmann3/exp/interactive,pylibkriging,q2,0.83059
-python_Kriging_kernels-trends-interpolation,python,hartmann3/exp/interactive,pylibkriging,nlpd,0.385842
-python_Kriging_kernels-trends-interpolation,python,hartmann3/exp/quadratic,pylibkriging,fit_s,0.0039556
-python_Kriging_kernels-trends-interpolation,python,hartmann3/exp/quadratic,pylibkriging,rmse,0.355119
-python_Kriging_kernels-trends-interpolation,python,hartmann3/exp/quadratic,pylibkriging,q2,0.850755
-python_Kriging_kernels-trends-interpolation,python,hartmann3/exp/quadratic,pylibkriging,nlpd,0.334371
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern3_2/constant,pylibkriging,fit_s,0.0110524
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern3_2/constant,pylibkriging,rmse,0.227521
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern3_2/constant,pylibkriging,q2,0.938737
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern3_2/constant,pylibkriging,nlpd,-0.181207
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern3_2/linear,pylibkriging,fit_s,0.00763154
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern3_2/linear,pylibkriging,rmse,0.23038
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern3_2/linear,pylibkriging,q2,0.937188
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern3_2/linear,pylibkriging,nlpd,-0.162203
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern3_2/interactive,pylibkriging,fit_s,0.00412679
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern3_2/interactive,pylibkriging,rmse,0.315752
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern3_2/interactive,pylibkriging,q2,0.88201
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern3_2/interactive,pylibkriging,nlpd,0.898253
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern3_2/quadratic,pylibkriging,fit_s,0.00620675
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern3_2/quadratic,pylibkriging,rmse,0.291393
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern3_2/quadratic,pylibkriging,q2,0.899513
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern3_2/quadratic,pylibkriging,nlpd,0.53743
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/constant,pylibkriging,fit_s,0.00997186
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/constant,pylibkriging,rmse,0.190287
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/constant,pylibkriging,q2,0.957148
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/constant,pylibkriging,nlpd,-0.403054
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/constant,pylibkriging BFGS10,rmse,0.190286
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/constant,pylibkriging BFGS10,q2,0.957148
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/constant,pylibkriging BFGS10,nlpd,-0.40306
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/linear,pylibkriging,fit_s,0.0127335
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/linear,pylibkriging,rmse,0.189633
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/linear,pylibkriging,q2,0.957442
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/linear,pylibkriging,nlpd,-0.410075
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/interactive,pylibkriging,fit_s,0.0101018
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/interactive,pylibkriging,rmse,0.307114
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/interactive,pylibkriging,q2,0.888377
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/interactive,pylibkriging,nlpd,1.50063
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/quadratic,pylibkriging,fit_s,0.0101326
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/quadratic,pylibkriging,rmse,0.285355
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/quadratic,pylibkriging,q2,0.903634
-python_Kriging_kernels-trends-interpolation,python,hartmann3/matern5_2/quadratic,pylibkriging,nlpd,0.898128
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,branin/LL,pylibkriging,rmse,0.833715
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,branin/LL,pylibkriging,q2,0.999729
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,branin/LL,pylibkriging,nlpd,0.697034
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,branin/LOO,pylibkriging,rmse,0.550995
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,branin/LOO,pylibkriging,q2,0.999882
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,branin/LOO,pylibkriging,nlpd,0.471613
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,branin/LMP,pylibkriging,rmse,0.66967
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,branin/LMP,pylibkriging,q2,0.999825
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,branin/LMP,pylibkriging,nlpd,0.617527
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,hartmann3/LL,pylibkriging,rmse,0.157276
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,hartmann3/LL,pylibkriging,q2,0.970945
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,hartmann3/LL,pylibkriging,nlpd,-0.497548
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,hartmann3/LOO,pylibkriging,rmse,0.144982
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,hartmann3/LOO,pylibkriging,q2,0.97531
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,hartmann3/LOO,pylibkriging,nlpd,-0.584885
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,hartmann3/LMP,pylibkriging,rmse,0.150075
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,hartmann3/LMP,pylibkriging,q2,0.973544
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,hartmann3/LMP,pylibkriging,nlpd,-0.528379
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,ishigami/LL,pylibkriging,rmse,3.41501
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,ishigami/LL,pylibkriging,q2,0.203357
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,ishigami/LL,pylibkriging,nlpd,4.86258
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,ishigami/LOO,pylibkriging,rmse,2.45853
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,ishigami/LOO,pylibkriging,q2,0.587112
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,ishigami/LOO,pylibkriging,nlpd,2.72077
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,ishigami/LMP,pylibkriging,rmse,3.47385
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,ishigami/LMP,pylibkriging,q2,0.175667
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,ishigami/LMP,pylibkriging,nlpd,5.27033
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,friedman/LL,pylibkriging,rmse,0.273164
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,friedman/LL,pylibkriging,q2,0.996855
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,friedman/LL,pylibkriging,nlpd,-0.118408
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,friedman/LOO,pylibkriging,rmse,0.233921
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,friedman/LOO,pylibkriging,q2,0.997694
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,friedman/LOO,pylibkriging,nlpd,-0.169369
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,friedman/LMP,pylibkriging,rmse,0.269913
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,friedman/LMP,pylibkriging,q2,0.996929
-python_Kriging_objectives-LL-LOO-LMP-gradients,python,friedman/LMP,pylibkriging,nlpd,-0.122709
-python_Kriging-nugget-noise_noisy-data,python,forrester,nugget,rmse,0.198091
-python_Kriging-nugget-noise_noisy-data,python,forrester,nugget,q2,0.998087
-python_Kriging-nugget-noise_noisy-data,python,forrester,nugget,nlpd,0.286631
-python_Kriging-nugget-noise_noisy-data,python,forrester,noise-free fit,rmse,0.487916
-python_Kriging-nugget-noise_noisy-data,python,forrester,noise-free fit,q2,0.988392
-python_Kriging-nugget-noise_noisy-data,python,forrester,noise-free fit,nlpd,862.67
-python_Kriging-nugget-noise_noisy-data,python,friedman,nugget,rmse,0.467335
-python_Kriging-nugget-noise_noisy-data,python,friedman,nugget,q2,0.99089
-python_Kriging-nugget-noise_noisy-data,python,friedman,nugget,nlpd,1.07073
-python_Kriging-nugget-noise_noisy-data,python,friedman,noise-free fit,rmse,1.27157
-python_Kriging-nugget-noise_noisy-data,python,friedman,noise-free fit,q2,0.932558
-python_Kriging-nugget-noise_noisy-data,python,friedman,noise-free fit,nlpd,1.64497
-python_Kriging-nugget-noise_noisy-data,python,gramacy_lee_2012/hetero,known variances,rmse,0.168741
-python_Kriging-nugget-noise_noisy-data,python,gramacy_lee_2012/hetero,known variances,q2,0.982515
-python_Kriging-nugget-noise_noisy-data,python,gramacy_lee_2012/hetero,known variances,nlpd,-0.570574
-python_Kriging-nugget-noise_noisy-data,python,gramacy_lee_2012/hetero,nugget,rmse,0.170945
-python_Kriging-nugget-noise_noisy-data,python,gramacy_lee_2012/hetero,nugget,q2,0.982055
-python_Kriging-nugget-noise_noisy-data,python,gramacy_lee_2012/hetero,nugget,nlpd,-0.221568
-python_WarpKriging_warpings-categorical-ordinal,python,gl2012,Kriging,rmse,0.167263
-python_WarpKriging_warpings-categorical-ordinal,python,gl2012,Kriging,q2,0.981176
-python_WarpKriging_warpings-categorical-ordinal,python,gl2012,Kriging,nlpd,-1.08917
-python_WarpKriging_warpings-categorical-ordinal,python,gl2012,affine,rmse,0.167263
-python_WarpKriging_warpings-categorical-ordinal,python,gl2012,affine,q2,0.981176
-python_WarpKriging_warpings-categorical-ordinal,python,gl2012,affine,nlpd,-1.08917
-python_WarpKriging_warpings-categorical-ordinal,python,gl2012,boxcox,rmse,0.16759
-python_WarpKriging_warpings-categorical-ordinal,python,gl2012,boxcox,q2,0.981103
-python_WarpKriging_warpings-categorical-ordinal,python,gl2012,boxcox,nlpd,282.422
-python_WarpKriging_warpings-categorical-ordinal,python,gl2012,kumaraswamy,rmse,0.168286
-python_WarpKriging_warpings-categorical-ordinal,python,gl2012,kumaraswamy,q2,0.980945
-python_WarpKriging_warpings-categorical-ordinal,python,gl2012,kumaraswamy,nlpd,2.04577e+06
-python_WarpKriging_warpings-categorical-ordinal,python,gl2012,knots(5),rmse,0.16791
-python_WarpKriging_warpings-categorical-ordinal,python,gl2012,knots(5),q2,0.98103
-python_WarpKriging_warpings-categorical-ordinal,python,gl2012,knots(5),nlpd,2.04376e+06
-python_WarpKriging_warpings-categorical-ordinal,python,gl2012,neural_mono(8),rmse,0.170824
-python_WarpKriging_warpings-categorical-ordinal,python,gl2012,neural_mono(8),q2,0.980366
-python_WarpKriging_warpings-categorical-ordinal,python,gl2012,neural_mono(8),nlpd,-0.265141
-python_WarpKriging_warpings-categorical-ordinal,python,gl2008,Kriging,rmse,0.0534649
-python_WarpKriging_warpings-categorical-ordinal,python,gl2008,Kriging,q2,0.585636
-python_WarpKriging_warpings-categorical-ordinal,python,gl2008,Kriging,nlpd,-1.74569
-python_WarpKriging_warpings-categorical-ordinal,python,gl2008,kumaraswamy,rmse,0.0535298
-python_WarpKriging_warpings-categorical-ordinal,python,gl2008,kumaraswamy,q2,0.58463
-python_WarpKriging_warpings-categorical-ordinal,python,gl2008,kumaraswamy,nlpd,-1.74552
-python_WarpKriging_warpings-categorical-ordinal,python,mixed,Kriging (level as number),rmse,16.7693
-python_WarpKriging_warpings-categorical-ordinal,python,mixed,Kriging (level as number),q2,0.838452
-python_WarpKriging_warpings-categorical-ordinal,python,mixed,Kriging (level as number),nlpd,3.81063
-python_WarpKriging_warpings-categorical-ordinal,python,mixed,"categorical(5,2)",rmse,16.1438
-python_WarpKriging_warpings-categorical-ordinal,python,mixed,"categorical(5,2)",q2,0.85028
-python_WarpKriging_warpings-categorical-ordinal,python,mixed,"categorical(5,2)",nlpd,3.3206
-python_WarpKriging_warpings-categorical-ordinal,python,ordinal,Kriging (rank as number),rmse,0.213845
-python_WarpKriging_warpings-categorical-ordinal,python,ordinal,Kriging (rank as number),q2,0.953177
-python_WarpKriging_warpings-categorical-ordinal,python,ordinal,Kriging (rank as number),nlpd,0.810969
-python_WarpKriging_warpings-categorical-ordinal,python,ordinal,ordinal(6),rmse,0.213043
-python_WarpKriging_warpings-categorical-ordinal,python,ordinal,ordinal(6),q2,0.953528
-python_WarpKriging_warpings-categorical-ordinal,python,ordinal,ordinal(6),nlpd,0.78888
-python_Kriging_high-dimension-normalize-screening,python,otl_circuit,unit cube,fit_s,0.00789523
-python_Kriging_high-dimension-normalize-screening,python,otl_circuit,unit cube,rmse,0.0150514
-python_Kriging_high-dimension-normalize-screening,python,otl_circuit,unit cube,q2,0.999836
-python_Kriging_high-dimension-normalize-screening,python,otl_circuit,unit cube,nlpd,-2.90452
-python_Kriging_high-dimension-normalize-screening,python,otl_circuit,native + normalize,rmse,0.0150514
-python_Kriging_high-dimension-normalize-screening,python,otl_circuit,native + normalize,q2,0.999836
-python_Kriging_high-dimension-normalize-screening,python,otl_circuit,native + normalize,nlpd,-2.90452
-python_Kriging_high-dimension-normalize-screening,python,piston,unit cube,fit_s,0.0197392
-python_Kriging_high-dimension-normalize-screening,python,piston,unit cube,rmse,0.0104258
-python_Kriging_high-dimension-normalize-screening,python,piston,unit cube,q2,0.994462
-python_Kriging_high-dimension-normalize-screening,python,piston,unit cube,nlpd,-3.49038
-python_Kriging_high-dimension-normalize-screening,python,piston,native + normalize,rmse,0.0104258
-python_Kriging_high-dimension-normalize-screening,python,piston,native + normalize,q2,0.994462
-python_Kriging_high-dimension-normalize-screening,python,piston,native + normalize,nlpd,-3.49038
-python_Kriging_high-dimension-normalize-screening,python,borehole,unit cube,fit_s,0.0140877
-python_Kriging_high-dimension-normalize-screening,python,borehole,unit cube,rmse,0.893341
-python_Kriging_high-dimension-normalize-screening,python,borehole,unit cube,q2,0.999599
-python_Kriging_high-dimension-normalize-screening,python,borehole,unit cube,nlpd,1.08433
-python_Kriging_high-dimension-normalize-screening,python,borehole,native + normalize,rmse,0.893341
-python_Kriging_high-dimension-normalize-screening,python,borehole,native + normalize,q2,0.999599
-python_Kriging_high-dimension-normalize-screening,python,borehole,native + normalize,nlpd,1.08433
-python_Kriging_high-dimension-normalize-screening,python,robot_arm,unit cube,fit_s,0.167482
-python_Kriging_high-dimension-normalize-screening,python,robot_arm,unit cube,rmse,0.358507
-python_Kriging_high-dimension-normalize-screening,python,robot_arm,unit cube,q2,0.571154
-python_Kriging_high-dimension-normalize-screening,python,robot_arm,unit cube,nlpd,0.355106
-python_Kriging_high-dimension-normalize-screening,python,robot_arm,native + normalize,rmse,0.358507
-python_Kriging_high-dimension-normalize-screening,python,robot_arm,native + normalize,q2,0.571154
-python_Kriging_high-dimension-normalize-screening,python,robot_arm,native + normalize,nlpd,0.355106
-python_Kriging_high-dimension-normalize-screening,python,dette_pepelyshev,unit cube,fit_s,0.0246282
-python_Kriging_high-dimension-normalize-screening,python,dette_pepelyshev,unit cube,rmse,0.424908
-python_Kriging_high-dimension-normalize-screening,python,dette_pepelyshev,unit cube,q2,0.997757
-python_Kriging_high-dimension-normalize-screening,python,dette_pepelyshev,unit cube,nlpd,0.510276
-python_Kriging_high-dimension-normalize-screening,python,dette_pepelyshev,native + normalize,rmse,0.424908
-python_Kriging_high-dimension-normalize-screening,python,dette_pepelyshev,native + normalize,q2,0.997757
-python_Kriging_high-dimension-normalize-screening,python,dette_pepelyshev,native + normalize,nlpd,0.510276
-python_Kriging_high-dimension-normalize-screening,python,wing_weight,unit cube,fit_s,0.0245481
-python_Kriging_high-dimension-normalize-screening,python,wing_weight,unit cube,rmse,0.809743
-python_Kriging_high-dimension-normalize-screening,python,wing_weight,unit cube,q2,0.999716
-python_Kriging_high-dimension-normalize-screening,python,wing_weight,unit cube,nlpd,1.07161
-python_Kriging_high-dimension-normalize-screening,python,wing_weight,native + normalize,rmse,0.809743
-python_Kriging_high-dimension-normalize-screening,python,wing_weight,native + normalize,q2,0.999716
-python_Kriging_high-dimension-normalize-screening,python,wing_weight,native + normalize,nlpd,1.07161
-python_Kriging_high-dimension-normalize-screening,python,welch,unit cube,fit_s,0.564758
-python_Kriging_high-dimension-normalize-screening,python,welch,unit cube,rmse,0.167729
-python_Kriging_high-dimension-normalize-screening,python,welch,unit cube,q2,0.993452
-python_Kriging_high-dimension-normalize-screening,python,welch,unit cube,nlpd,-0.429138
-python_Kriging_high-dimension-normalize-screening,python,welch,native + normalize,rmse,0.167692
-python_Kriging_high-dimension-normalize-screening,python,welch,native + normalize,q2,0.993454
-python_Kriging_high-dimension-normalize-screening,python,welch,native + normalize,nlpd,-0.429291
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,Kriging,rmse,4.42284
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,Kriging,q2,0.959122
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,Kriging,nlpd,2.89997
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,MLPKriging tanh BFGS,fit_s,0.130867
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,MLPKriging tanh BFGS,rmse,57.402
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,MLPKriging tanh BFGS,q2,-5.88553
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,MLPKriging tanh BFGS,nlpd,136.771
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,MLPKriging tanh BFGS10,fit_s,0.442791
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,MLPKriging tanh BFGS10,rmse,4.28606
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,MLPKriging tanh BFGS10,q2,0.961612
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,MLPKriging tanh BFGS10,nlpd,29.0854
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,MLPKriging selu BFGS,fit_s,0.139126
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,MLPKriging selu BFGS,rmse,58.9913
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,MLPKriging selu BFGS,q2,-6.2721
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,MLPKriging selu BFGS,nlpd,46.9788
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,MLPKriging selu BFGS10,fit_s,0.440179
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,MLPKriging selu BFGS10,rmse,4.39195
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,MLPKriging selu BFGS10,q2,0.959691
-python_MLPKriging_deep-kernel-projected-branin,python,projected_branin_10d,MLPKriging selu BFGS10,nlpd,10.6053
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=1500,exact,fit_s,11.1133
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=1500,exact,fit_s,11.1133
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=1500,exact,rmse,0.000259233
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=1500,exact,rmse,0.000259233
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=1500,exact,q2,1
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=1500,exact,q2,1
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=1500,exact,nlpd,-6.92184
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=1500,exact,nlpd,-6.92184
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=1500,vecchia(30),fit_s,5.43768
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=1500,vecchia(30),rmse,0.00353225
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=1500,vecchia(30),q2,0.999987
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=1500,vecchia(30),nlpd,-4.6266
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=5000,vecchia(30),fit_s,16.2077
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=5000,vecchia(30),rmse,0.000851738
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=5000,vecchia(30),q2,0.999999
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=5000,vecchia(30),nlpd,-5.95078
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=1500,nystrom(100),fit_s,2.04779
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=1500,nystrom(100),rmse,1.51127
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=1500,nystrom(100),q2,-1.39237
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=1500,nystrom(100),nlpd,1.14197e+24
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=5000,nystrom(100),fit_s,3.25622
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=5000,nystrom(100),rmse,9.95398
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=5000,nystrom(100),q2,-102.786
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=5000,nystrom(100),nlpd,4.95409e+25
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=1500,nested NK (20 groups),fit_s,0.269932
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=1500,nested NK (20 groups),rmse,0.0029908
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=1500,nested NK (20 groups),q2,0.999991
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=1500,nested NK (20 groups),nlpd,-4.85946
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=5000,nested NK (20 groups),fit_s,2.87469
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=5000,nested NK (20 groups),rmse,0.000222655
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=5000,nested NK (20 groups),q2,1
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=5000,nested NK (20 groups),nlpd,-7.44453
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=1500,nested rBCM (20 groups),fit_s,0.25767
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=1500,nested rBCM (20 groups),rmse,0.00304431
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=1500,nested rBCM (20 groups),q2,0.99999
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=1500,nested rBCM (20 groups),nlpd,-4.50201
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=5000,nested rBCM (20 groups),fit_s,2.5369
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=5000,nested rBCM (20 groups),rmse,0.000224517
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=5000,nested rBCM (20 groups),q2,1
-python_NestedKriging_aggregations-large-n,python,hartmann3/n=5000,nested rBCM (20 groups),nlpd,-7.18182
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=1500,subset of data (500),fit_s,0.712767
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=1500,subset of data (500),rmse,0.00269153
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=1500,subset of data (500),q2,0.999992
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=1500,subset of data (500),nlpd,-4.68641
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=5000,subset of data (500),fit_s,0.950298
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=5000,subset of data (500),rmse,0.00247552
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=5000,subset of data (500),q2,0.999994
-python_Kriging-vecchia-nystrom_large-n,python,hartmann3/n=5000,subset of data (500),nlpd,-4.71359
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=1500,exact,fit_s,10.6103
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=1500,exact,fit_s,10.6103
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=1500,exact,rmse,9.81598e-05
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=1500,exact,rmse,9.81598e-05
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=1500,exact,q2,1
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=1500,exact,q2,1
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=1500,exact,nlpd,-8.21962
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=1500,exact,nlpd,-8.21962
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=1500,vecchia(30),fit_s,4.73217
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=1500,vecchia(30),rmse,0.00629979
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=1500,vecchia(30),q2,0.999969
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=1500,vecchia(30),nlpd,-3.95617
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=5000,vecchia(30),fit_s,14.5549
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=5000,vecchia(30),rmse,0.00312888
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=5000,vecchia(30),q2,0.999992
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=5000,vecchia(30),nlpd,-4.57612
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=1500,nystrom(100),fit_s,1.47345
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=1500,nystrom(100),rmse,0.392811
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=1500,nystrom(100),q2,0.880908
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=1500,nystrom(100),nlpd,7.06156e+22
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=5000,nystrom(100),fit_s,4.69579
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=5000,nystrom(100),rmse,1.11526
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=5000,nystrom(100),q2,0.0400057
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=5000,nystrom(100),nlpd,5.31511e+23
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=1500,nested NK (20 groups),fit_s,0.278129
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=1500,nested NK (20 groups),rmse,0.00226873
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=1500,nested NK (20 groups),q2,0.999996
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=1500,nested NK (20 groups),nlpd,-4.90542
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=5000,nested NK (20 groups),fit_s,3.62576
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=5000,nested NK (20 groups),rmse,0.000261686
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=5000,nested NK (20 groups),q2,1
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=5000,nested NK (20 groups),nlpd,-7.20623
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=1500,nested rBCM (20 groups),fit_s,0.315619
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=1500,nested rBCM (20 groups),rmse,0.00291869
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=1500,nested rBCM (20 groups),q2,0.999993
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=1500,nested rBCM (20 groups),nlpd,-2.55512
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=5000,nested rBCM (20 groups),fit_s,3.39037
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=5000,nested rBCM (20 groups),rmse,0.000278149
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=5000,nested rBCM (20 groups),q2,1
-python_NestedKriging_aggregations-large-n,python,otl_circuit/n=5000,nested rBCM (20 groups),nlpd,-4.34927
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=1500,subset of data (500),fit_s,0.672431
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=1500,subset of data (500),rmse,0.0004286
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=1500,subset of data (500),q2,1
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=1500,subset of data (500),nlpd,-6.72678
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=5000,subset of data (500),fit_s,0.692672
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=5000,subset of data (500),rmse,0.000446879
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=5000,subset of data (500),q2,1
-python_Kriging-vecchia-nystrom_large-n,python,otl_circuit/n=5000,subset of data (500),nlpd,-6.78844
-python_NestedKriging_aggregations-large-n,python,branin/nested,NK,rmse,0.0343984
-python_NestedKriging_aggregations-large-n,python,branin/nested,NK,q2,1
-python_NestedKriging_aggregations-large-n,python,branin/nested,NK,nlpd,2.00082e+14
-python_NestedKriging_aggregations-large-n,python,branin/nested,PoE,rmse,0.0354265
-python_NestedKriging_aggregations-large-n,python,branin/nested,PoE,q2,1
-python_NestedKriging_aggregations-large-n,python,branin/nested,PoE,nlpd,-1.64533
-python_NestedKriging_aggregations-large-n,python,branin/nested,gPoE,rmse,0.0354265
-python_NestedKriging_aggregations-large-n,python,branin/nested,gPoE,q2,1
-python_NestedKriging_aggregations-large-n,python,branin/nested,gPoE,nlpd,-0.621836
-python_NestedKriging_aggregations-large-n,python,branin/nested,BCM,rmse,0.0354196
-python_NestedKriging_aggregations-large-n,python,branin/nested,BCM,q2,1
-python_NestedKriging_aggregations-large-n,python,branin/nested,BCM,nlpd,-1.64533
-python_NestedKriging_aggregations-large-n,python,branin/nested,rBCM,rmse,0.035287
-python_NestedKriging_aggregations-large-n,python,branin/nested,rBCM,q2,1
-python_NestedKriging_aggregations-large-n,python,branin/nested,rBCM,nlpd,-2.61369
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,branin,pylibkriging,q2,0.999944
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,branin,pylibkriging,nlpd,0.137225
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,branin,pylibkriging,fit_s,0.00261593
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,branin,pylibkriging BFGS10,q2,0.999945
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,branin,pylibkriging BFGS10,nlpd,0.137254
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,branin,pylibkriging BFGS10,fit_s,0.02301
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,branin,scikit-learn,q2,0.999597
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,branin,scikit-learn,nlpd,0.928508
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,branin,scikit-learn,fit_s,0.169693
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,branin,SMT,q2,0.999944
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,branin,SMT,nlpd,0.137259
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,branin,SMT,fit_s,0.833295
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,branin,OpenTURNS,q2,0.998221
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,branin,OpenTURNS,nlpd,1.55599
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,branin,OpenTURNS,fit_s,0.00490117
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,six_hump_camel,pylibkriging,q2,0.999418
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,six_hump_camel,pylibkriging,nlpd,0.0429342
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,six_hump_camel,pylibkriging,fit_s,0.00324678
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,six_hump_camel,pylibkriging BFGS10,q2,0.999418
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,six_hump_camel,pylibkriging BFGS10,nlpd,0.0429386
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,six_hump_camel,pylibkriging BFGS10,fit_s,0.060586
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,six_hump_camel,scikit-learn,q2,0.0163311
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,six_hump_camel,scikit-learn,nlpd,4.63763
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,six_hump_camel,scikit-learn,fit_s,0.206083
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,six_hump_camel,SMT,q2,0.999594
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,six_hump_camel,SMT,nlpd,-0.121007
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,six_hump_camel,SMT,fit_s,1.03758
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,six_hump_camel,OpenTURNS,q2,0.956713
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,six_hump_camel,OpenTURNS,nlpd,2.55446
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,six_hump_camel,OpenTURNS,fit_s,0.00741315
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann3,pylibkriging,q2,0.986148
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann3,pylibkriging,nlpd,-0.847247
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann3,pylibkriging,fit_s,0.0169713
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann3,pylibkriging BFGS10,q2,0.986148
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann3,pylibkriging BFGS10,nlpd,-0.847249
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann3,pylibkriging BFGS10,fit_s,0.139588
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann3,scikit-learn,q2,0.983889
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann3,scikit-learn,nlpd,-0.782697
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann3,scikit-learn,fit_s,0.188796
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann3,SMT,q2,0.986148
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann3,SMT,nlpd,-0.847249
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann3,SMT,fit_s,1.02907
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann3,OpenTURNS,q2,0.984712
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann3,OpenTURNS,nlpd,-0.809851
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann3,OpenTURNS,fit_s,0.0153861
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,ishigami,pylibkriging,q2,0.259556
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,ishigami,pylibkriging,nlpd,4.38991
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,ishigami,pylibkriging,fit_s,0.0256422
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,ishigami,pylibkriging BFGS10,q2,0.935722
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,ishigami,pylibkriging BFGS10,nlpd,0.857443
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,ishigami,pylibkriging BFGS10,fit_s,0.308839
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,ishigami,scikit-learn,q2,0.831142
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,ishigami,scikit-learn,nlpd,1.5455
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,ishigami,scikit-learn,fit_s,0.51733
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,ishigami,SMT,q2,0.51196
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,ishigami,SMT,nlpd,3.31349
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,ishigami,SMT,fit_s,2.77225
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,ishigami,OpenTURNS,q2,0.887251
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,ishigami,OpenTURNS,nlpd,1.39348
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,ishigami,OpenTURNS,fit_s,0.0499659
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,friedman,pylibkriging,q2,0.999771
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,friedman,pylibkriging,nlpd,-1.29726
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,friedman,pylibkriging,fit_s,0.0181558
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,friedman,pylibkriging BFGS10,q2,0.999771
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,friedman,pylibkriging BFGS10,nlpd,-1.29727
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,friedman,pylibkriging BFGS10,fit_s,0.215106
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,friedman,scikit-learn,q2,0.999754
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,friedman,scikit-learn,nlpd,-1.37702
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,friedman,scikit-learn,fit_s,0.283978
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,friedman,SMT,q2,0.999899
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,friedman,SMT,nlpd,-1.871
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,friedman,SMT,fit_s,4.3249
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,friedman,OpenTURNS,q2,0.990862
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,friedman,OpenTURNS,nlpd,0.469828
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,friedman,OpenTURNS,fit_s,0.0293689
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,otl_circuit,pylibkriging,q2,0.999922
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,otl_circuit,pylibkriging,nlpd,-3.46228
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,otl_circuit,pylibkriging,fit_s,0.013788
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,otl_circuit,pylibkriging BFGS10,q2,0.999922
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,otl_circuit,pylibkriging BFGS10,nlpd,-3.46227
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,otl_circuit,pylibkriging BFGS10,fit_s,0.141071
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,otl_circuit,scikit-learn,q2,0.999906
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,otl_circuit,scikit-learn,nlpd,-3.43062
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,otl_circuit,scikit-learn,fit_s,0.51218
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,otl_circuit,SMT,q2,0.999954
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,otl_circuit,SMT,nlpd,-3.35016
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,otl_circuit,SMT,fit_s,7.1224
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,otl_circuit,OpenTURNS,q2,0.99777
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,otl_circuit,OpenTURNS,nlpd,-1.61723
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,otl_circuit,OpenTURNS,fit_s,0.0603108
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,piston,pylibkriging,q2,0.997498
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,piston,pylibkriging,nlpd,-3.80667
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,piston,pylibkriging,fit_s,0.0395648
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,piston,pylibkriging BFGS10,q2,0.997498
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,piston,pylibkriging BFGS10,nlpd,-3.8067
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,piston,pylibkriging BFGS10,fit_s,0.327989
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,piston,scikit-learn,q2,0.998684
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,piston,scikit-learn,nlpd,-4.10497
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,piston,scikit-learn,fit_s,1.11386
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,piston,SMT,q2,0.997511
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,piston,SMT,nlpd,-3.86618
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,piston,SMT,fit_s,12.649
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,piston,OpenTURNS,q2,0.990631
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,piston,OpenTURNS,nlpd,-2.9906
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,piston,OpenTURNS,fit_s,0.11631
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,borehole,pylibkriging,q2,0.999694
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,borehole,pylibkriging,nlpd,1.00118
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,borehole,pylibkriging,fit_s,0.0149446
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,borehole,pylibkriging BFGS10,q2,0.999694
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,borehole,pylibkriging BFGS10,nlpd,1.00121
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,borehole,pylibkriging BFGS10,fit_s,0.164608
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,borehole,scikit-learn,q2,0.999929
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,borehole,scikit-learn,nlpd,0.194455
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,borehole,scikit-learn,fit_s,1.04563
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,borehole,SMT,q2,0.999925
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,borehole,SMT,nlpd,0.279122
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,borehole,SMT,fit_s,11.8531
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,borehole,OpenTURNS,q2,0.996206
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,borehole,OpenTURNS,nlpd,2.55431
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,borehole,OpenTURNS,fit_s,0.12395
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,wing_weight,pylibkriging,q2,0.99972
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,wing_weight,pylibkriging,nlpd,1.11517
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,wing_weight,pylibkriging,fit_s,0.0290489
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,wing_weight,pylibkriging BFGS10,q2,0.99972
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,wing_weight,pylibkriging BFGS10,nlpd,1.11512
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,wing_weight,pylibkriging BFGS10,fit_s,0.314707
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,wing_weight,scikit-learn,q2,0.998048
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,wing_weight,scikit-learn,nlpd,2.57304
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,wing_weight,scikit-learn,fit_s,0.729278
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,wing_weight,SMT,q2,0.999898
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,wing_weight,SMT,nlpd,0.604023
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,wing_weight,SMT,fit_s,25.8262
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,wing_weight,OpenTURNS,q2,0.993145
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,wing_weight,OpenTURNS,nlpd,2.83627
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,wing_weight,OpenTURNS,fit_s,0.280434
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann6,pylibkriging,q2,0.422938
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann6,pylibkriging,nlpd,0.0965167
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann6,pylibkriging,fit_s,0.0562823
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann6,pylibkriging BFGS10,q2,0.72352
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann6,pylibkriging BFGS10,nlpd,-0.156898
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann6,pylibkriging BFGS10,fit_s,0.822745
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann6,scikit-learn,q2,0.69049
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann6,scikit-learn,nlpd,-0.137845
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann6,scikit-learn,fit_s,1.3155
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann6,SMT,q2,0.708463
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann6,SMT,nlpd,-0.0177081
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann6,SMT,fit_s,12.0578
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann6,OpenTURNS,q2,0.696177
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann6,OpenTURNS,nlpd,-0.132838
-python_Kriging_vs-sklearn-SMT-OpenTURNS-GPy,python,hartmann6,OpenTURNS,fit_s,0.133332
+kernels-trends-interpolation_Kriging_python,python,forrester/gauss/constant,pylibkriging,fit_s,0.00161386
+kernels-trends-interpolation_Kriging_python,python,forrester/gauss/constant,pylibkriging,rmse,0.0848271
+kernels-trends-interpolation_Kriging_python,python,forrester/gauss/constant,pylibkriging,q2,0.999634
+kernels-trends-interpolation_Kriging_python,python,forrester/gauss/constant,pylibkriging,nlpd,-3.06486
+kernels-trends-interpolation_Kriging_python,python,forrester/gauss/linear,pylibkriging,fit_s,0.00126195
+kernels-trends-interpolation_Kriging_python,python,forrester/gauss/linear,pylibkriging,rmse,0.0855468
+kernels-trends-interpolation_Kriging_python,python,forrester/gauss/linear,pylibkriging,q2,0.999628
+kernels-trends-interpolation_Kriging_python,python,forrester/gauss/linear,pylibkriging,nlpd,-3.11029
+kernels-trends-interpolation_Kriging_python,python,forrester/gauss/interactive,pylibkriging,fit_s,0.00143647
+kernels-trends-interpolation_Kriging_python,python,forrester/gauss/interactive,pylibkriging,rmse,0.0855468
+kernels-trends-interpolation_Kriging_python,python,forrester/gauss/interactive,pylibkriging,q2,0.999628
+kernels-trends-interpolation_Kriging_python,python,forrester/gauss/interactive,pylibkriging,nlpd,-3.11029
+kernels-trends-interpolation_Kriging_python,python,forrester/gauss/quadratic,pylibkriging,fit_s,0.000566483
+kernels-trends-interpolation_Kriging_python,python,forrester/gauss/quadratic,pylibkriging,rmse,1.57249
+kernels-trends-interpolation_Kriging_python,python,forrester/gauss/quadratic,pylibkriging,q2,0.874394
+kernels-trends-interpolation_Kriging_python,python,forrester/gauss/quadratic,pylibkriging,nlpd,5.33879
+kernels-trends-interpolation_Kriging_python,python,forrester/exp/constant,pylibkriging,fit_s,0.00041604
+kernels-trends-interpolation_Kriging_python,python,forrester/exp/constant,pylibkriging,rmse,0.721582
+kernels-trends-interpolation_Kriging_python,python,forrester/exp/constant,pylibkriging,q2,0.973551
+kernels-trends-interpolation_Kriging_python,python,forrester/exp/constant,pylibkriging,nlpd,1.54551
+kernels-trends-interpolation_Kriging_python,python,forrester/exp/linear,pylibkriging,fit_s,0.000438213
+kernels-trends-interpolation_Kriging_python,python,forrester/exp/linear,pylibkriging,rmse,0.793413
+kernels-trends-interpolation_Kriging_python,python,forrester/exp/linear,pylibkriging,q2,0.968024
+kernels-trends-interpolation_Kriging_python,python,forrester/exp/linear,pylibkriging,nlpd,1.50639
+kernels-trends-interpolation_Kriging_python,python,forrester/exp/interactive,pylibkriging,fit_s,0.000480413
+kernels-trends-interpolation_Kriging_python,python,forrester/exp/interactive,pylibkriging,rmse,0.793413
+kernels-trends-interpolation_Kriging_python,python,forrester/exp/interactive,pylibkriging,q2,0.968024
+kernels-trends-interpolation_Kriging_python,python,forrester/exp/interactive,pylibkriging,nlpd,1.50639
+kernels-trends-interpolation_Kriging_python,python,forrester/exp/quadratic,pylibkriging,fit_s,0.000730038
+kernels-trends-interpolation_Kriging_python,python,forrester/exp/quadratic,pylibkriging,rmse,0.723267
+kernels-trends-interpolation_Kriging_python,python,forrester/exp/quadratic,pylibkriging,q2,0.973428
+kernels-trends-interpolation_Kriging_python,python,forrester/exp/quadratic,pylibkriging,nlpd,1.28782
+kernels-trends-interpolation_Kriging_python,python,forrester/matern3_2/constant,pylibkriging,fit_s,0.00060606
+kernels-trends-interpolation_Kriging_python,python,forrester/matern3_2/constant,pylibkriging,rmse,0.334007
+kernels-trends-interpolation_Kriging_python,python,forrester/matern3_2/constant,pylibkriging,q2,0.994333
+kernels-trends-interpolation_Kriging_python,python,forrester/matern3_2/constant,pylibkriging,nlpd,-0.227715
+kernels-trends-interpolation_Kriging_python,python,forrester/matern3_2/linear,pylibkriging,fit_s,0.000588894
+kernels-trends-interpolation_Kriging_python,python,forrester/matern3_2/linear,pylibkriging,rmse,0.364477
+kernels-trends-interpolation_Kriging_python,python,forrester/matern3_2/linear,pylibkriging,q2,0.993252
+kernels-trends-interpolation_Kriging_python,python,forrester/matern3_2/linear,pylibkriging,nlpd,-0.187262
+kernels-trends-interpolation_Kriging_python,python,forrester/matern3_2/interactive,pylibkriging,fit_s,0.000905514
+kernels-trends-interpolation_Kriging_python,python,forrester/matern3_2/interactive,pylibkriging,rmse,0.364477
+kernels-trends-interpolation_Kriging_python,python,forrester/matern3_2/interactive,pylibkriging,q2,0.993252
+kernels-trends-interpolation_Kriging_python,python,forrester/matern3_2/interactive,pylibkriging,nlpd,-0.187262
+kernels-trends-interpolation_Kriging_python,python,forrester/matern3_2/quadratic,pylibkriging,fit_s,0.000975609
+kernels-trends-interpolation_Kriging_python,python,forrester/matern3_2/quadratic,pylibkriging,rmse,0.435609
+kernels-trends-interpolation_Kriging_python,python,forrester/matern3_2/quadratic,pylibkriging,q2,0.990361
+kernels-trends-interpolation_Kriging_python,python,forrester/matern3_2/quadratic,pylibkriging,nlpd,-0.183076
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/constant,pylibkriging,fit_s,0.000726223
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/constant,pylibkriging,rmse,0.281945
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/constant,pylibkriging,q2,0.995962
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/constant,pylibkriging,nlpd,-1.01945
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/constant,pylibkriging BFGS10,rmse,0.281945
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/constant,pylibkriging BFGS10,q2,0.995962
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/constant,pylibkriging BFGS10,nlpd,-1.01945
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/linear,pylibkriging,fit_s,0.000932932
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/linear,pylibkriging,rmse,0.298959
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/linear,pylibkriging,q2,0.99546
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/linear,pylibkriging,nlpd,-0.95551
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/interactive,pylibkriging,fit_s,0.000725269
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/interactive,pylibkriging,rmse,0.298959
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/interactive,pylibkriging,q2,0.99546
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/interactive,pylibkriging,nlpd,-0.95551
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/quadratic,pylibkriging,fit_s,0.00131941
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/quadratic,pylibkriging,rmse,0.365039
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/quadratic,pylibkriging,q2,0.993231
+kernels-trends-interpolation_Kriging_python,python,forrester/matern5_2/quadratic,pylibkriging,nlpd,-0.790032
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/gauss/constant,pylibkriging,fit_s,0.0016458
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/gauss/constant,pylibkriging,rmse,0.191274
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/gauss/constant,pylibkriging,q2,0.978742
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/gauss/constant,pylibkriging,nlpd,-0.704948
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/gauss/linear,pylibkriging,fit_s,0.00319505
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/gauss/linear,pylibkriging,rmse,0.236028
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/gauss/linear,pylibkriging,q2,0.96763
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/gauss/linear,pylibkriging,nlpd,-0.580993
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/gauss/interactive,pylibkriging,fit_s,0.00250673
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/gauss/interactive,pylibkriging,rmse,0.236028
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/gauss/interactive,pylibkriging,q2,0.96763
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/gauss/interactive,pylibkriging,nlpd,-0.580993
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/gauss/quadratic,pylibkriging,fit_s,0.00243235
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/gauss/quadratic,pylibkriging,rmse,0.138869
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/gauss/quadratic,pylibkriging,q2,0.988795
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/gauss/quadratic,pylibkriging,nlpd,-0.530437
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/exp/constant,pylibkriging,fit_s,0.000752449
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/exp/constant,pylibkriging,rmse,0.196586
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/exp/constant,pylibkriging,q2,0.977545
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/exp/constant,pylibkriging,nlpd,-0.0621192
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/exp/linear,pylibkriging,fit_s,0.0010047
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/exp/linear,pylibkriging,rmse,0.20979
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/exp/linear,pylibkriging,q2,0.974427
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/exp/linear,pylibkriging,nlpd,-0.0466568
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/exp/interactive,pylibkriging,fit_s,0.000931501
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/exp/interactive,pylibkriging,rmse,0.20979
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/exp/interactive,pylibkriging,q2,0.974427
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/exp/interactive,pylibkriging,nlpd,-0.0466568
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/exp/quadratic,pylibkriging,fit_s,0.0025785
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/exp/quadratic,pylibkriging,rmse,0.220579
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/exp/quadratic,pylibkriging,q2,0.971729
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/exp/quadratic,pylibkriging,nlpd,0.136521
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern3_2/constant,pylibkriging,fit_s,0.000761509
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern3_2/constant,pylibkriging,rmse,0.177253
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern3_2/constant,pylibkriging,q2,0.981744
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern3_2/constant,pylibkriging,nlpd,-0.482212
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern3_2/linear,pylibkriging,fit_s,0.00132823
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern3_2/linear,pylibkriging,rmse,0.211499
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern3_2/linear,pylibkriging,q2,0.974009
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern3_2/linear,pylibkriging,nlpd,-0.375844
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern3_2/interactive,pylibkriging,fit_s,0.000978708
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern3_2/interactive,pylibkriging,rmse,0.211499
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern3_2/interactive,pylibkriging,q2,0.974009
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern3_2/interactive,pylibkriging,nlpd,-0.375844
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern3_2/quadratic,pylibkriging,fit_s,0.00228167
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern3_2/quadratic,pylibkriging,rmse,0.173012
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern3_2/quadratic,pylibkriging,q2,0.982607
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern3_2/quadratic,pylibkriging,nlpd,-0.223308
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/constant,pylibkriging,fit_s,0.00131416
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/constant,pylibkriging,rmse,0.177638
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/constant,pylibkriging,q2,0.981665
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/constant,pylibkriging,nlpd,-0.575421
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/constant,pylibkriging BFGS10,rmse,0.177638
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/constant,pylibkriging BFGS10,q2,0.981665
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/constant,pylibkriging BFGS10,nlpd,-0.575422
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/linear,pylibkriging,fit_s,0.00130415
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/linear,pylibkriging,rmse,0.219759
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/linear,pylibkriging,q2,0.971939
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/linear,pylibkriging,nlpd,-0.458933
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/interactive,pylibkriging,fit_s,0.00119758
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/interactive,pylibkriging,rmse,0.219759
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/interactive,pylibkriging,q2,0.971939
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/interactive,pylibkriging,nlpd,-0.458933
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/quadratic,pylibkriging,fit_s,0.00169826
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/quadratic,pylibkriging,rmse,0.160506
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/quadratic,pylibkriging,q2,0.985031
+kernels-trends-interpolation_Kriging_python,python,gramacy_lee_2012/matern5_2/quadratic,pylibkriging,nlpd,-0.337276
+kernels-trends-interpolation_Kriging_python,python,branin/gauss/constant,pylibkriging,fit_s,0.00104284
+kernels-trends-interpolation_Kriging_python,python,branin/gauss/constant,pylibkriging,rmse,7.2629
+kernels-trends-interpolation_Kriging_python,python,branin/gauss/constant,pylibkriging,q2,0.980655
+kernels-trends-interpolation_Kriging_python,python,branin/gauss/constant,pylibkriging,nlpd,4.3152
+kernels-trends-interpolation_Kriging_python,python,branin/gauss/linear,pylibkriging,fit_s,0.00129008
+kernels-trends-interpolation_Kriging_python,python,branin/gauss/linear,pylibkriging,rmse,7.25733
+kernels-trends-interpolation_Kriging_python,python,branin/gauss/linear,pylibkriging,q2,0.980685
+kernels-trends-interpolation_Kriging_python,python,branin/gauss/linear,pylibkriging,nlpd,4.30813
+kernels-trends-interpolation_Kriging_python,python,branin/gauss/interactive,pylibkriging,fit_s,0.00280094
+kernels-trends-interpolation_Kriging_python,python,branin/gauss/interactive,pylibkriging,rmse,7.2576
+kernels-trends-interpolation_Kriging_python,python,branin/gauss/interactive,pylibkriging,q2,0.980683
+kernels-trends-interpolation_Kriging_python,python,branin/gauss/interactive,pylibkriging,nlpd,4.30176
+kernels-trends-interpolation_Kriging_python,python,branin/gauss/quadratic,pylibkriging,fit_s,0.00112319
+kernels-trends-interpolation_Kriging_python,python,branin/gauss/quadratic,pylibkriging,rmse,7.27808
+kernels-trends-interpolation_Kriging_python,python,branin/gauss/quadratic,pylibkriging,q2,0.980574
+kernels-trends-interpolation_Kriging_python,python,branin/gauss/quadratic,pylibkriging,nlpd,4.29399
+kernels-trends-interpolation_Kriging_python,python,branin/exp/constant,pylibkriging,fit_s,0.00222707
+kernels-trends-interpolation_Kriging_python,python,branin/exp/constant,pylibkriging,rmse,14.5887
+kernels-trends-interpolation_Kriging_python,python,branin/exp/constant,pylibkriging,q2,0.921947
+kernels-trends-interpolation_Kriging_python,python,branin/exp/constant,pylibkriging,nlpd,4.09457
+kernels-trends-interpolation_Kriging_python,python,branin/exp/linear,pylibkriging,fit_s,0.00213099
+kernels-trends-interpolation_Kriging_python,python,branin/exp/linear,pylibkriging,rmse,14.9622
+kernels-trends-interpolation_Kriging_python,python,branin/exp/linear,pylibkriging,q2,0.9179
+kernels-trends-interpolation_Kriging_python,python,branin/exp/linear,pylibkriging,nlpd,4.0909
+kernels-trends-interpolation_Kriging_python,python,branin/exp/interactive,pylibkriging,fit_s,0.00196409
+kernels-trends-interpolation_Kriging_python,python,branin/exp/interactive,pylibkriging,rmse,11.6963
+kernels-trends-interpolation_Kriging_python,python,branin/exp/interactive,pylibkriging,q2,0.94983
+kernels-trends-interpolation_Kriging_python,python,branin/exp/interactive,pylibkriging,nlpd,3.79671
+kernels-trends-interpolation_Kriging_python,python,branin/exp/quadratic,pylibkriging,fit_s,0.00227737
+kernels-trends-interpolation_Kriging_python,python,branin/exp/quadratic,pylibkriging,rmse,9.33909
+kernels-trends-interpolation_Kriging_python,python,branin/exp/quadratic,pylibkriging,q2,0.968014
+kernels-trends-interpolation_Kriging_python,python,branin/exp/quadratic,pylibkriging,nlpd,3.62362
+kernels-trends-interpolation_Kriging_python,python,branin/matern3_2/constant,pylibkriging,fit_s,0.00244212
+kernels-trends-interpolation_Kriging_python,python,branin/matern3_2/constant,pylibkriging,rmse,3.24796
+kernels-trends-interpolation_Kriging_python,python,branin/matern3_2/constant,pylibkriging,q2,0.996131
+kernels-trends-interpolation_Kriging_python,python,branin/matern3_2/constant,pylibkriging,nlpd,2.30444
+kernels-trends-interpolation_Kriging_python,python,branin/matern3_2/linear,pylibkriging,fit_s,0.00244641
+kernels-trends-interpolation_Kriging_python,python,branin/matern3_2/linear,pylibkriging,rmse,3.14402
+kernels-trends-interpolation_Kriging_python,python,branin/matern3_2/linear,pylibkriging,q2,0.996375
+kernels-trends-interpolation_Kriging_python,python,branin/matern3_2/linear,pylibkriging,nlpd,2.28067
+kernels-trends-interpolation_Kriging_python,python,branin/matern3_2/interactive,pylibkriging,fit_s,0.00703263
+kernels-trends-interpolation_Kriging_python,python,branin/matern3_2/interactive,pylibkriging,rmse,3.19226
+kernels-trends-interpolation_Kriging_python,python,branin/matern3_2/interactive,pylibkriging,q2,0.996263
+kernels-trends-interpolation_Kriging_python,python,branin/matern3_2/interactive,pylibkriging,nlpd,2.20359
+kernels-trends-interpolation_Kriging_python,python,branin/matern3_2/quadratic,pylibkriging,fit_s,0.00404716
+kernels-trends-interpolation_Kriging_python,python,branin/matern3_2/quadratic,pylibkriging,rmse,3.01232
+kernels-trends-interpolation_Kriging_python,python,branin/matern3_2/quadratic,pylibkriging,q2,0.996672
+kernels-trends-interpolation_Kriging_python,python,branin/matern3_2/quadratic,pylibkriging,nlpd,2.11627
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/constant,pylibkriging,fit_s,0.0029068
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/constant,pylibkriging,rmse,0.52012
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/constant,pylibkriging,q2,0.999901
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/constant,pylibkriging,nlpd,0.283399
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/constant,pylibkriging BFGS10,rmse,0.52012
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/constant,pylibkriging BFGS10,q2,0.999901
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/constant,pylibkriging BFGS10,nlpd,0.283395
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/linear,pylibkriging,fit_s,0.00212407
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/linear,pylibkriging,rmse,0.460868
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/linear,pylibkriging,q2,0.999922
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/linear,pylibkriging,nlpd,0.209741
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/interactive,pylibkriging,fit_s,0.0018971
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/interactive,pylibkriging,rmse,0.498484
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/interactive,pylibkriging,q2,0.999909
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/interactive,pylibkriging,nlpd,0.239079
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/quadratic,pylibkriging,fit_s,0.00570393
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/quadratic,pylibkriging,rmse,0.67472
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/quadratic,pylibkriging,q2,0.999833
+kernels-trends-interpolation_Kriging_python,python,branin/matern5_2/quadratic,pylibkriging,nlpd,0.419266
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/gauss/constant,pylibkriging,fit_s,0.00197244
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/gauss/constant,pylibkriging,rmse,18.9501
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/gauss/constant,pylibkriging,q2,0.536354
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/gauss/constant,pylibkriging,nlpd,84.151
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/gauss/linear,pylibkriging,fit_s,0.00170588
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/gauss/linear,pylibkriging,rmse,18.9579
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/gauss/linear,pylibkriging,q2,0.535976
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/gauss/linear,pylibkriging,nlpd,44.8696
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/gauss/interactive,pylibkriging,fit_s,0.0020082
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/gauss/interactive,pylibkriging,rmse,18.9819
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/gauss/interactive,pylibkriging,q2,0.5348
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/gauss/interactive,pylibkriging,nlpd,35.2765
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/gauss/quadratic,pylibkriging,fit_s,0.00248289
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/gauss/quadratic,pylibkriging,rmse,10.9058
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/gauss/quadratic,pylibkriging,q2,0.846441
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/gauss/quadratic,pylibkriging,nlpd,4.92017
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/exp/constant,pylibkriging,fit_s,0.00100708
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/exp/constant,pylibkriging,rmse,16.9653
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/exp/constant,pylibkriging,q2,0.628393
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/exp/constant,pylibkriging,nlpd,4.48595
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/exp/linear,pylibkriging,fit_s,0.00118208
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/exp/linear,pylibkriging,rmse,17.1781
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/exp/linear,pylibkriging,q2,0.619012
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/exp/linear,pylibkriging,nlpd,4.47061
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/exp/interactive,pylibkriging,fit_s,0.00123763
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/exp/interactive,pylibkriging,rmse,17.1856
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/exp/interactive,pylibkriging,q2,0.618679
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/exp/interactive,pylibkriging,nlpd,4.43133
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/exp/quadratic,pylibkriging,fit_s,0.0013876
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/exp/quadratic,pylibkriging,rmse,7.99484
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/exp/quadratic,pylibkriging,q2,0.917476
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/exp/quadratic,pylibkriging,nlpd,3.35612
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern3_2/constant,pylibkriging,fit_s,0.00175476
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern3_2/constant,pylibkriging,rmse,18.4958
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern3_2/constant,pylibkriging,q2,0.558321
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern3_2/constant,pylibkriging,nlpd,18.8349
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern3_2/linear,pylibkriging,fit_s,0.00206542
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern3_2/linear,pylibkriging,rmse,18.5562
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern3_2/linear,pylibkriging,q2,0.555433
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern3_2/linear,pylibkriging,nlpd,14.9494
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern3_2/interactive,pylibkriging,fit_s,0.00178266
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern3_2/interactive,pylibkriging,rmse,18.561
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern3_2/interactive,pylibkriging,q2,0.555202
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern3_2/interactive,pylibkriging,nlpd,12.9923
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern3_2/quadratic,pylibkriging,fit_s,0.00338221
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern3_2/quadratic,pylibkriging,rmse,8.91645
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern3_2/quadratic,pylibkriging,q2,0.897353
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern3_2/quadratic,pylibkriging,nlpd,3.94939
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/constant,pylibkriging,fit_s,0.00228882
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/constant,pylibkriging,rmse,18.3236
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/constant,pylibkriging,q2,0.566507
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/constant,pylibkriging,nlpd,18.4322
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/constant,pylibkriging BFGS10,rmse,1.36208
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/constant,pylibkriging BFGS10,q2,0.997605
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/constant,pylibkriging BFGS10,nlpd,1.03215
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/linear,pylibkriging,fit_s,0.00242186
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/linear,pylibkriging,rmse,18.7127
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/linear,pylibkriging,q2,0.547901
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/linear,pylibkriging,nlpd,24.5771
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/interactive,pylibkriging,fit_s,0.00234485
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/interactive,pylibkriging,rmse,18.7194
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/interactive,pylibkriging,q2,0.547577
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/interactive,pylibkriging,nlpd,20.4255
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/quadratic,pylibkriging,fit_s,0.00251341
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/quadratic,pylibkriging,rmse,10.2878
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/quadratic,pylibkriging,q2,0.863351
+kernels-trends-interpolation_Kriging_python,python,six_hump_camel/matern5_2/quadratic,pylibkriging,nlpd,4.46344
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/gauss/constant,pylibkriging,fit_s,0.00588727
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/gauss/constant,pylibkriging,rmse,0.295934
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/gauss/constant,pylibkriging,q2,0.920537
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/gauss/constant,pylibkriging,nlpd,1.58666
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/gauss/linear,pylibkriging,fit_s,0.00581551
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/gauss/linear,pylibkriging,rmse,0.296355
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/gauss/linear,pylibkriging,q2,0.92031
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/gauss/linear,pylibkriging,nlpd,1.2962
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/gauss/interactive,pylibkriging,fit_s,0.00644922
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/gauss/interactive,pylibkriging,rmse,0.285136
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/gauss/interactive,pylibkriging,q2,0.926229
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/gauss/interactive,pylibkriging,nlpd,1.04122
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/gauss/quadratic,pylibkriging,fit_s,0.00578475
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/gauss/quadratic,pylibkriging,rmse,0.237308
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/gauss/quadratic,pylibkriging,q2,0.948902
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/gauss/quadratic,pylibkriging,nlpd,0.146484
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/exp/constant,pylibkriging,fit_s,0.00258231
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/exp/constant,pylibkriging,rmse,0.334876
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/exp/constant,pylibkriging,q2,0.898247
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/exp/constant,pylibkriging,nlpd,0.339235
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/exp/linear,pylibkriging,fit_s,0.00211
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/exp/linear,pylibkriging,rmse,0.333447
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/exp/linear,pylibkriging,q2,0.899114
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/exp/linear,pylibkriging,nlpd,0.336515
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/exp/interactive,pylibkriging,fit_s,0.0025239
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/exp/interactive,pylibkriging,rmse,0.336819
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/exp/interactive,pylibkriging,q2,0.897063
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/exp/interactive,pylibkriging,nlpd,0.329566
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/exp/quadratic,pylibkriging,fit_s,0.00309515
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/exp/quadratic,pylibkriging,rmse,0.327816
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/exp/quadratic,pylibkriging,q2,0.902492
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/exp/quadratic,pylibkriging,nlpd,0.322056
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern3_2/constant,pylibkriging,fit_s,0.00425816
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern3_2/constant,pylibkriging,rmse,0.684362
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern3_2/constant,pylibkriging,q2,0.575038
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern3_2/constant,pylibkriging,nlpd,0.972803
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern3_2/linear,pylibkriging,fit_s,0.00413442
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern3_2/linear,pylibkriging,rmse,0.650201
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern3_2/linear,pylibkriging,q2,0.616404
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern3_2/linear,pylibkriging,nlpd,0.921455
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern3_2/interactive,pylibkriging,fit_s,0.00704145
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern3_2/interactive,pylibkriging,rmse,0.274326
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern3_2/interactive,pylibkriging,q2,0.931717
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern3_2/interactive,pylibkriging,nlpd,0.0549679
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern3_2/quadratic,pylibkriging,fit_s,0.00996184
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern3_2/quadratic,pylibkriging,rmse,0.263745
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern3_2/quadratic,pylibkriging,q2,0.936883
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern3_2/quadratic,pylibkriging,nlpd,0.0446267
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/constant,pylibkriging,fit_s,0.00410438
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/constant,pylibkriging,rmse,0.674391
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/constant,pylibkriging,q2,0.58733
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/constant,pylibkriging,nlpd,0.944765
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/constant,pylibkriging BFGS10,rmse,0.268216
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/constant,pylibkriging BFGS10,q2,0.934725
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/constant,pylibkriging BFGS10,nlpd,0.169585
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/linear,pylibkriging,fit_s,0.00728607
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/linear,pylibkriging,rmse,0.268808
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/linear,pylibkriging,q2,0.934436
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/linear,pylibkriging,nlpd,0.142382
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/interactive,pylibkriging,fit_s,0.00524259
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/interactive,pylibkriging,rmse,0.271088
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/interactive,pylibkriging,q2,0.933319
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/interactive,pylibkriging,nlpd,0.128788
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/quadratic,pylibkriging,fit_s,0.011641
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/quadratic,pylibkriging,rmse,0.253093
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/quadratic,pylibkriging,q2,0.941878
+kernels-trends-interpolation_Kriging_python,python,log_goldstein_price/matern5_2/quadratic,pylibkriging,nlpd,0.025469
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/gauss/constant,pylibkriging,fit_s,0.00113583
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/gauss/constant,pylibkriging,rmse,0.026127
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/gauss/constant,pylibkriging,q2,0.999737
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/gauss/constant,pylibkriging,nlpd,-2.69817
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/gauss/linear,pylibkriging,fit_s,0.00152946
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/gauss/linear,pylibkriging,rmse,1.06243
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/gauss/linear,pylibkriging,q2,0.564691
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/gauss/linear,pylibkriging,nlpd,2.7394
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/gauss/interactive,pylibkriging,fit_s,0.00153446
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/gauss/interactive,pylibkriging,rmse,1.06504
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/gauss/interactive,pylibkriging,q2,0.562551
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/gauss/interactive,pylibkriging,nlpd,2.33575
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/gauss/quadratic,pylibkriging,fit_s,0.00196862
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/gauss/quadratic,pylibkriging,rmse,0.281816
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/gauss/quadratic,pylibkriging,q2,0.969371
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/gauss/quadratic,pylibkriging,nlpd,0.71682
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/exp/constant,pylibkriging,fit_s,0.000828028
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/exp/constant,pylibkriging,rmse,0.249023
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/exp/constant,pylibkriging,q2,0.976085
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/exp/constant,pylibkriging,nlpd,0.394159
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/exp/linear,pylibkriging,fit_s,0.000962973
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/exp/linear,pylibkriging,rmse,0.245558
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/exp/linear,pylibkriging,q2,0.976746
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/exp/linear,pylibkriging,nlpd,0.224593
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/exp/interactive,pylibkriging,fit_s,0.00143671
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/exp/interactive,pylibkriging,rmse,0.239032
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/exp/interactive,pylibkriging,q2,0.977965
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/exp/interactive,pylibkriging,nlpd,0.226133
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/exp/quadratic,pylibkriging,fit_s,0.00274634
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/exp/quadratic,pylibkriging,rmse,0.237713
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/exp/quadratic,pylibkriging,q2,0.978208
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/exp/quadratic,pylibkriging,nlpd,-0.139582
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern3_2/constant,pylibkriging,fit_s,0.0011251
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern3_2/constant,pylibkriging,rmse,0.0600911
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern3_2/constant,pylibkriging,q2,0.998607
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern3_2/constant,pylibkriging,nlpd,-1.34658
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern3_2/linear,pylibkriging,fit_s,0.000877857
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern3_2/linear,pylibkriging,rmse,0.0584376
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern3_2/linear,pylibkriging,q2,0.998683
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern3_2/linear,pylibkriging,nlpd,-1.34912
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern3_2/interactive,pylibkriging,fit_s,0.00140738
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern3_2/interactive,pylibkriging,rmse,0.0576096
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern3_2/interactive,pylibkriging,q2,0.99872
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern3_2/interactive,pylibkriging,nlpd,-1.35376
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern3_2/quadratic,pylibkriging,fit_s,0.00383472
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern3_2/quadratic,pylibkriging,rmse,0.215336
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern3_2/quadratic,pylibkriging,q2,0.982117
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern3_2/quadratic,pylibkriging,nlpd,-0.350837
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/constant,pylibkriging,fit_s,0.000718832
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/constant,pylibkriging,rmse,0.0246348
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/constant,pylibkriging,q2,0.999766
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/constant,pylibkriging,nlpd,-2.59598
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/constant,pylibkriging BFGS10,rmse,0.0246338
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/constant,pylibkriging BFGS10,q2,0.999766
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/constant,pylibkriging BFGS10,nlpd,-2.59598
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/linear,pylibkriging,fit_s,0.0013113
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/linear,pylibkriging,rmse,0.0232483
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/linear,pylibkriging,q2,0.999792
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/linear,pylibkriging,nlpd,-2.58843
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/interactive,pylibkriging,fit_s,0.00150442
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/interactive,pylibkriging,rmse,0.0230248
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/interactive,pylibkriging,q2,0.999796
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/interactive,pylibkriging,nlpd,-2.58839
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/quadratic,pylibkriging,fit_s,0.00300908
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/quadratic,pylibkriging,rmse,0.209802
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/quadratic,pylibkriging,q2,0.983025
+kernels-trends-interpolation_Kriging_python,python,lim_polynomial/matern5_2/quadratic,pylibkriging,nlpd,-0.403998
+kernels-trends-interpolation_Kriging_python,python,ishigami/gauss/constant,pylibkriging,fit_s,0.0101857
+kernels-trends-interpolation_Kriging_python,python,ishigami/gauss/constant,pylibkriging,rmse,2.07486
+kernels-trends-interpolation_Kriging_python,python,ishigami/gauss/constant,pylibkriging,q2,0.668191
+kernels-trends-interpolation_Kriging_python,python,ishigami/gauss/constant,pylibkriging,nlpd,2.80326
+kernels-trends-interpolation_Kriging_python,python,ishigami/gauss/linear,pylibkriging,fit_s,0.0193923
+kernels-trends-interpolation_Kriging_python,python,ishigami/gauss/linear,pylibkriging,rmse,2.8459
+kernels-trends-interpolation_Kriging_python,python,ishigami/gauss/linear,pylibkriging,q2,0.375762
+kernels-trends-interpolation_Kriging_python,python,ishigami/gauss/linear,pylibkriging,nlpd,3.41919
+kernels-trends-interpolation_Kriging_python,python,ishigami/gauss/interactive,pylibkriging,fit_s,0.0174267
+kernels-trends-interpolation_Kriging_python,python,ishigami/gauss/interactive,pylibkriging,rmse,2.85366
+kernels-trends-interpolation_Kriging_python,python,ishigami/gauss/interactive,pylibkriging,q2,0.372353
+kernels-trends-interpolation_Kriging_python,python,ishigami/gauss/interactive,pylibkriging,nlpd,3.28643
+kernels-trends-interpolation_Kriging_python,python,ishigami/gauss/quadratic,pylibkriging,fit_s,0.00865173
+kernels-trends-interpolation_Kriging_python,python,ishigami/gauss/quadratic,pylibkriging,rmse,2.08981
+kernels-trends-interpolation_Kriging_python,python,ishigami/gauss/quadratic,pylibkriging,q2,0.663392
+kernels-trends-interpolation_Kriging_python,python,ishigami/gauss/quadratic,pylibkriging,nlpd,2.80097
+kernels-trends-interpolation_Kriging_python,python,ishigami/exp/constant,pylibkriging,fit_s,0.00899458
+kernels-trends-interpolation_Kriging_python,python,ishigami/exp/constant,pylibkriging,rmse,1.41632
+kernels-trends-interpolation_Kriging_python,python,ishigami/exp/constant,pylibkriging,q2,0.845391
+kernels-trends-interpolation_Kriging_python,python,ishigami/exp/constant,pylibkriging,nlpd,1.75239
+kernels-trends-interpolation_Kriging_python,python,ishigami/exp/linear,pylibkriging,fit_s,0.0115979
+kernels-trends-interpolation_Kriging_python,python,ishigami/exp/linear,pylibkriging,rmse,1.4095
+kernels-trends-interpolation_Kriging_python,python,ishigami/exp/linear,pylibkriging,q2,0.846877
+kernels-trends-interpolation_Kriging_python,python,ishigami/exp/linear,pylibkriging,nlpd,1.74779
+kernels-trends-interpolation_Kriging_python,python,ishigami/exp/interactive,pylibkriging,fit_s,0.00745058
+kernels-trends-interpolation_Kriging_python,python,ishigami/exp/interactive,pylibkriging,rmse,1.41511
+kernels-trends-interpolation_Kriging_python,python,ishigami/exp/interactive,pylibkriging,q2,0.845657
+kernels-trends-interpolation_Kriging_python,python,ishigami/exp/interactive,pylibkriging,nlpd,1.75024
+kernels-trends-interpolation_Kriging_python,python,ishigami/exp/quadratic,pylibkriging,fit_s,0.00843048
+kernels-trends-interpolation_Kriging_python,python,ishigami/exp/quadratic,pylibkriging,rmse,1.40329
+kernels-trends-interpolation_Kriging_python,python,ishigami/exp/quadratic,pylibkriging,q2,0.848223
+kernels-trends-interpolation_Kriging_python,python,ishigami/exp/quadratic,pylibkriging,nlpd,1.73254
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern3_2/constant,pylibkriging,fit_s,0.0480943
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern3_2/constant,pylibkriging,rmse,1.32971
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern3_2/constant,pylibkriging,q2,0.863723
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern3_2/constant,pylibkriging,nlpd,1.50265
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern3_2/linear,pylibkriging,fit_s,0.047653
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern3_2/linear,pylibkriging,rmse,1.30244
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern3_2/linear,pylibkriging,q2,0.869255
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern3_2/linear,pylibkriging,nlpd,1.47906
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern3_2/interactive,pylibkriging,fit_s,0.060349
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern3_2/interactive,pylibkriging,rmse,1.30591
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern3_2/interactive,pylibkriging,q2,0.868558
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern3_2/interactive,pylibkriging,nlpd,1.47384
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern3_2/quadratic,pylibkriging,fit_s,0.0471144
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern3_2/quadratic,pylibkriging,rmse,1.32197
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern3_2/quadratic,pylibkriging,q2,0.865305
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern3_2/quadratic,pylibkriging,nlpd,1.46827
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/constant,pylibkriging,fit_s,0.0145204
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/constant,pylibkriging,rmse,3.00566
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/constant,pylibkriging,q2,0.303709
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/constant,pylibkriging,nlpd,3.42085
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/constant,pylibkriging BFGS10,rmse,1.33903
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/constant,pylibkriging BFGS10,q2,0.861806
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/constant,pylibkriging BFGS10,nlpd,1.66132
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/linear,pylibkriging,fit_s,0.0518982
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/linear,pylibkriging,rmse,1.3434
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/linear,pylibkriging,q2,0.860901
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/linear,pylibkriging,nlpd,1.65103
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/interactive,pylibkriging,fit_s,0.0539804
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/interactive,pylibkriging,rmse,1.34479
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/interactive,pylibkriging,q2,0.860615
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/interactive,pylibkriging,nlpd,1.64153
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/quadratic,pylibkriging,fit_s,0.052948
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/quadratic,pylibkriging,rmse,1.37082
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/quadratic,pylibkriging,q2,0.855166
+kernels-trends-interpolation_Kriging_python,python,ishigami/matern5_2/quadratic,pylibkriging,nlpd,1.62228
+kernels-trends-interpolation_Kriging_python,python,hartmann3/gauss/constant,pylibkriging,fit_s,0.00805306
+kernels-trends-interpolation_Kriging_python,python,hartmann3/gauss/constant,pylibkriging,rmse,0.156226
+kernels-trends-interpolation_Kriging_python,python,hartmann3/gauss/constant,pylibkriging,q2,0.971116
+kernels-trends-interpolation_Kriging_python,python,hartmann3/gauss/constant,pylibkriging,nlpd,-0.555623
+kernels-trends-interpolation_Kriging_python,python,hartmann3/gauss/linear,pylibkriging,fit_s,0.0129044
+kernels-trends-interpolation_Kriging_python,python,hartmann3/gauss/linear,pylibkriging,rmse,0.153297
+kernels-trends-interpolation_Kriging_python,python,hartmann3/gauss/linear,pylibkriging,q2,0.972189
+kernels-trends-interpolation_Kriging_python,python,hartmann3/gauss/linear,pylibkriging,nlpd,-0.568404
+kernels-trends-interpolation_Kriging_python,python,hartmann3/gauss/interactive,pylibkriging,fit_s,0.00773382
+kernels-trends-interpolation_Kriging_python,python,hartmann3/gauss/interactive,pylibkriging,rmse,0.712948
+kernels-trends-interpolation_Kriging_python,python,hartmann3/gauss/interactive,pylibkriging,q2,0.398455
+kernels-trends-interpolation_Kriging_python,python,hartmann3/gauss/interactive,pylibkriging,nlpd,1.74554
+kernels-trends-interpolation_Kriging_python,python,hartmann3/gauss/quadratic,pylibkriging,fit_s,0.00593877
+kernels-trends-interpolation_Kriging_python,python,hartmann3/gauss/quadratic,pylibkriging,rmse,0.73238
+kernels-trends-interpolation_Kriging_python,python,hartmann3/gauss/quadratic,pylibkriging,q2,0.365217
+kernels-trends-interpolation_Kriging_python,python,hartmann3/gauss/quadratic,pylibkriging,nlpd,2.14587
+kernels-trends-interpolation_Kriging_python,python,hartmann3/exp/constant,pylibkriging,fit_s,0.00374722
+kernels-trends-interpolation_Kriging_python,python,hartmann3/exp/constant,pylibkriging,rmse,0.347348
+kernels-trends-interpolation_Kriging_python,python,hartmann3/exp/constant,pylibkriging,q2,0.857215
+kernels-trends-interpolation_Kriging_python,python,hartmann3/exp/constant,pylibkriging,nlpd,0.352683
+kernels-trends-interpolation_Kriging_python,python,hartmann3/exp/linear,pylibkriging,fit_s,0.00216174
+kernels-trends-interpolation_Kriging_python,python,hartmann3/exp/linear,pylibkriging,rmse,0.347273
+kernels-trends-interpolation_Kriging_python,python,hartmann3/exp/linear,pylibkriging,q2,0.857276
+kernels-trends-interpolation_Kriging_python,python,hartmann3/exp/linear,pylibkriging,nlpd,0.343631
+kernels-trends-interpolation_Kriging_python,python,hartmann3/exp/interactive,pylibkriging,fit_s,0.0024302
+kernels-trends-interpolation_Kriging_python,python,hartmann3/exp/interactive,pylibkriging,rmse,0.378349
+kernels-trends-interpolation_Kriging_python,python,hartmann3/exp/interactive,pylibkriging,q2,0.83059
+kernels-trends-interpolation_Kriging_python,python,hartmann3/exp/interactive,pylibkriging,nlpd,0.385842
+kernels-trends-interpolation_Kriging_python,python,hartmann3/exp/quadratic,pylibkriging,fit_s,0.0039556
+kernels-trends-interpolation_Kriging_python,python,hartmann3/exp/quadratic,pylibkriging,rmse,0.355119
+kernels-trends-interpolation_Kriging_python,python,hartmann3/exp/quadratic,pylibkriging,q2,0.850755
+kernels-trends-interpolation_Kriging_python,python,hartmann3/exp/quadratic,pylibkriging,nlpd,0.334371
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern3_2/constant,pylibkriging,fit_s,0.0110524
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern3_2/constant,pylibkriging,rmse,0.227521
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern3_2/constant,pylibkriging,q2,0.938737
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern3_2/constant,pylibkriging,nlpd,-0.181207
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern3_2/linear,pylibkriging,fit_s,0.00763154
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern3_2/linear,pylibkriging,rmse,0.23038
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern3_2/linear,pylibkriging,q2,0.937188
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern3_2/linear,pylibkriging,nlpd,-0.162203
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern3_2/interactive,pylibkriging,fit_s,0.00412679
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern3_2/interactive,pylibkriging,rmse,0.315752
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern3_2/interactive,pylibkriging,q2,0.88201
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern3_2/interactive,pylibkriging,nlpd,0.898253
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern3_2/quadratic,pylibkriging,fit_s,0.00620675
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern3_2/quadratic,pylibkriging,rmse,0.291393
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern3_2/quadratic,pylibkriging,q2,0.899513
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern3_2/quadratic,pylibkriging,nlpd,0.53743
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/constant,pylibkriging,fit_s,0.00997186
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/constant,pylibkriging,rmse,0.190287
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/constant,pylibkriging,q2,0.957148
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/constant,pylibkriging,nlpd,-0.403054
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/constant,pylibkriging BFGS10,rmse,0.190286
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/constant,pylibkriging BFGS10,q2,0.957148
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/constant,pylibkriging BFGS10,nlpd,-0.40306
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/linear,pylibkriging,fit_s,0.0127335
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/linear,pylibkriging,rmse,0.189633
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/linear,pylibkriging,q2,0.957442
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/linear,pylibkriging,nlpd,-0.410075
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/interactive,pylibkriging,fit_s,0.0101018
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/interactive,pylibkriging,rmse,0.307114
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/interactive,pylibkriging,q2,0.888377
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/interactive,pylibkriging,nlpd,1.50063
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/quadratic,pylibkriging,fit_s,0.0101326
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/quadratic,pylibkriging,rmse,0.285355
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/quadratic,pylibkriging,q2,0.903634
+kernels-trends-interpolation_Kriging_python,python,hartmann3/matern5_2/quadratic,pylibkriging,nlpd,0.898128
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,branin/LL,pylibkriging,rmse,0.833715
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,branin/LL,pylibkriging,q2,0.999729
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,branin/LL,pylibkriging,nlpd,0.697034
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,branin/LOO,pylibkriging,rmse,0.550995
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,branin/LOO,pylibkriging,q2,0.999882
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,branin/LOO,pylibkriging,nlpd,0.471613
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,branin/LMP,pylibkriging,rmse,0.66967
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,branin/LMP,pylibkriging,q2,0.999825
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,branin/LMP,pylibkriging,nlpd,0.617527
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,hartmann3/LL,pylibkriging,rmse,0.157276
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,hartmann3/LL,pylibkriging,q2,0.970945
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,hartmann3/LL,pylibkriging,nlpd,-0.497548
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,hartmann3/LOO,pylibkriging,rmse,0.144982
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,hartmann3/LOO,pylibkriging,q2,0.97531
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,hartmann3/LOO,pylibkriging,nlpd,-0.584885
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,hartmann3/LMP,pylibkriging,rmse,0.150075
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,hartmann3/LMP,pylibkriging,q2,0.973544
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,hartmann3/LMP,pylibkriging,nlpd,-0.528379
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,ishigami/LL,pylibkriging,rmse,3.41501
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,ishigami/LL,pylibkriging,q2,0.203357
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,ishigami/LL,pylibkriging,nlpd,4.86258
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,ishigami/LOO,pylibkriging,rmse,2.45853
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,ishigami/LOO,pylibkriging,q2,0.587112
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,ishigami/LOO,pylibkriging,nlpd,2.72077
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,ishigami/LMP,pylibkriging,rmse,3.47385
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,ishigami/LMP,pylibkriging,q2,0.175667
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,ishigami/LMP,pylibkriging,nlpd,5.27033
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,friedman/LL,pylibkriging,rmse,0.273164
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,friedman/LL,pylibkriging,q2,0.996855
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,friedman/LL,pylibkriging,nlpd,-0.118408
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,friedman/LOO,pylibkriging,rmse,0.233921
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,friedman/LOO,pylibkriging,q2,0.997694
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,friedman/LOO,pylibkriging,nlpd,-0.169369
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,friedman/LMP,pylibkriging,rmse,0.269913
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,friedman/LMP,pylibkriging,q2,0.996929
+objectives-LL-LOO-LMP-gradients_Kriging_python,python,friedman/LMP,pylibkriging,nlpd,-0.122709
+noisy-data_Kriging-nugget-noise_python,python,forrester,nugget,rmse,0.198091
+noisy-data_Kriging-nugget-noise_python,python,forrester,nugget,q2,0.998087
+noisy-data_Kriging-nugget-noise_python,python,forrester,nugget,nlpd,0.286631
+noisy-data_Kriging-nugget-noise_python,python,forrester,noise-free fit,rmse,0.487916
+noisy-data_Kriging-nugget-noise_python,python,forrester,noise-free fit,q2,0.988392
+noisy-data_Kriging-nugget-noise_python,python,forrester,noise-free fit,nlpd,862.67
+noisy-data_Kriging-nugget-noise_python,python,friedman,nugget,rmse,0.467335
+noisy-data_Kriging-nugget-noise_python,python,friedman,nugget,q2,0.99089
+noisy-data_Kriging-nugget-noise_python,python,friedman,nugget,nlpd,1.07073
+noisy-data_Kriging-nugget-noise_python,python,friedman,noise-free fit,rmse,1.27157
+noisy-data_Kriging-nugget-noise_python,python,friedman,noise-free fit,q2,0.932558
+noisy-data_Kriging-nugget-noise_python,python,friedman,noise-free fit,nlpd,1.64497
+noisy-data_Kriging-nugget-noise_python,python,gramacy_lee_2012/hetero,known variances,rmse,0.168741
+noisy-data_Kriging-nugget-noise_python,python,gramacy_lee_2012/hetero,known variances,q2,0.982515
+noisy-data_Kriging-nugget-noise_python,python,gramacy_lee_2012/hetero,known variances,nlpd,-0.570574
+noisy-data_Kriging-nugget-noise_python,python,gramacy_lee_2012/hetero,nugget,rmse,0.170945
+noisy-data_Kriging-nugget-noise_python,python,gramacy_lee_2012/hetero,nugget,q2,0.982055
+noisy-data_Kriging-nugget-noise_python,python,gramacy_lee_2012/hetero,nugget,nlpd,-0.221568
+warpings-categorical-ordinal_WarpKriging_python,python,gl2012,Kriging,rmse,0.167263
+warpings-categorical-ordinal_WarpKriging_python,python,gl2012,Kriging,q2,0.981176
+warpings-categorical-ordinal_WarpKriging_python,python,gl2012,Kriging,nlpd,-1.08917
+warpings-categorical-ordinal_WarpKriging_python,python,gl2012,affine,rmse,0.167263
+warpings-categorical-ordinal_WarpKriging_python,python,gl2012,affine,q2,0.981176
+warpings-categorical-ordinal_WarpKriging_python,python,gl2012,affine,nlpd,-1.08917
+warpings-categorical-ordinal_WarpKriging_python,python,gl2012,boxcox,rmse,0.16759
+warpings-categorical-ordinal_WarpKriging_python,python,gl2012,boxcox,q2,0.981103
+warpings-categorical-ordinal_WarpKriging_python,python,gl2012,boxcox,nlpd,282.422
+warpings-categorical-ordinal_WarpKriging_python,python,gl2012,kumaraswamy,rmse,0.168286
+warpings-categorical-ordinal_WarpKriging_python,python,gl2012,kumaraswamy,q2,0.980945
+warpings-categorical-ordinal_WarpKriging_python,python,gl2012,kumaraswamy,nlpd,2.04577e+06
+warpings-categorical-ordinal_WarpKriging_python,python,gl2012,knots(5),rmse,0.16791
+warpings-categorical-ordinal_WarpKriging_python,python,gl2012,knots(5),q2,0.98103
+warpings-categorical-ordinal_WarpKriging_python,python,gl2012,knots(5),nlpd,2.04376e+06
+warpings-categorical-ordinal_WarpKriging_python,python,gl2012,neural_mono(8),rmse,0.170824
+warpings-categorical-ordinal_WarpKriging_python,python,gl2012,neural_mono(8),q2,0.980366
+warpings-categorical-ordinal_WarpKriging_python,python,gl2012,neural_mono(8),nlpd,-0.265141
+warpings-categorical-ordinal_WarpKriging_python,python,gl2008,Kriging,rmse,0.0534649
+warpings-categorical-ordinal_WarpKriging_python,python,gl2008,Kriging,q2,0.585636
+warpings-categorical-ordinal_WarpKriging_python,python,gl2008,Kriging,nlpd,-1.74569
+warpings-categorical-ordinal_WarpKriging_python,python,gl2008,kumaraswamy,rmse,0.0535298
+warpings-categorical-ordinal_WarpKriging_python,python,gl2008,kumaraswamy,q2,0.58463
+warpings-categorical-ordinal_WarpKriging_python,python,gl2008,kumaraswamy,nlpd,-1.74552
+warpings-categorical-ordinal_WarpKriging_python,python,mixed,Kriging (level as number),rmse,16.7693
+warpings-categorical-ordinal_WarpKriging_python,python,mixed,Kriging (level as number),q2,0.838452
+warpings-categorical-ordinal_WarpKriging_python,python,mixed,Kriging (level as number),nlpd,3.81063
+warpings-categorical-ordinal_WarpKriging_python,python,mixed,"categorical(5,2)",rmse,16.1438
+warpings-categorical-ordinal_WarpKriging_python,python,mixed,"categorical(5,2)",q2,0.85028
+warpings-categorical-ordinal_WarpKriging_python,python,mixed,"categorical(5,2)",nlpd,3.3206
+warpings-categorical-ordinal_WarpKriging_python,python,ordinal,Kriging (rank as number),rmse,0.213845
+warpings-categorical-ordinal_WarpKriging_python,python,ordinal,Kriging (rank as number),q2,0.953177
+warpings-categorical-ordinal_WarpKriging_python,python,ordinal,Kriging (rank as number),nlpd,0.810969
+warpings-categorical-ordinal_WarpKriging_python,python,ordinal,ordinal(6),rmse,0.213043
+warpings-categorical-ordinal_WarpKriging_python,python,ordinal,ordinal(6),q2,0.953528
+warpings-categorical-ordinal_WarpKriging_python,python,ordinal,ordinal(6),nlpd,0.78888
+high-dimension-normalize-screening_Kriging_python,python,otl_circuit,unit cube,fit_s,0.00789523
+high-dimension-normalize-screening_Kriging_python,python,otl_circuit,unit cube,rmse,0.0150514
+high-dimension-normalize-screening_Kriging_python,python,otl_circuit,unit cube,q2,0.999836
+high-dimension-normalize-screening_Kriging_python,python,otl_circuit,unit cube,nlpd,-2.90452
+high-dimension-normalize-screening_Kriging_python,python,otl_circuit,native + normalize,rmse,0.0150514
+high-dimension-normalize-screening_Kriging_python,python,otl_circuit,native + normalize,q2,0.999836
+high-dimension-normalize-screening_Kriging_python,python,otl_circuit,native + normalize,nlpd,-2.90452
+high-dimension-normalize-screening_Kriging_python,python,piston,unit cube,fit_s,0.0197392
+high-dimension-normalize-screening_Kriging_python,python,piston,unit cube,rmse,0.0104258
+high-dimension-normalize-screening_Kriging_python,python,piston,unit cube,q2,0.994462
+high-dimension-normalize-screening_Kriging_python,python,piston,unit cube,nlpd,-3.49038
+high-dimension-normalize-screening_Kriging_python,python,piston,native + normalize,rmse,0.0104258
+high-dimension-normalize-screening_Kriging_python,python,piston,native + normalize,q2,0.994462
+high-dimension-normalize-screening_Kriging_python,python,piston,native + normalize,nlpd,-3.49038
+high-dimension-normalize-screening_Kriging_python,python,borehole,unit cube,fit_s,0.0140877
+high-dimension-normalize-screening_Kriging_python,python,borehole,unit cube,rmse,0.893341
+high-dimension-normalize-screening_Kriging_python,python,borehole,unit cube,q2,0.999599
+high-dimension-normalize-screening_Kriging_python,python,borehole,unit cube,nlpd,1.08433
+high-dimension-normalize-screening_Kriging_python,python,borehole,native + normalize,rmse,0.893341
+high-dimension-normalize-screening_Kriging_python,python,borehole,native + normalize,q2,0.999599
+high-dimension-normalize-screening_Kriging_python,python,borehole,native + normalize,nlpd,1.08433
+high-dimension-normalize-screening_Kriging_python,python,robot_arm,unit cube,fit_s,0.167482
+high-dimension-normalize-screening_Kriging_python,python,robot_arm,unit cube,rmse,0.358507
+high-dimension-normalize-screening_Kriging_python,python,robot_arm,unit cube,q2,0.571154
+high-dimension-normalize-screening_Kriging_python,python,robot_arm,unit cube,nlpd,0.355106
+high-dimension-normalize-screening_Kriging_python,python,robot_arm,native + normalize,rmse,0.358507
+high-dimension-normalize-screening_Kriging_python,python,robot_arm,native + normalize,q2,0.571154
+high-dimension-normalize-screening_Kriging_python,python,robot_arm,native + normalize,nlpd,0.355106
+high-dimension-normalize-screening_Kriging_python,python,dette_pepelyshev,unit cube,fit_s,0.0246282
+high-dimension-normalize-screening_Kriging_python,python,dette_pepelyshev,unit cube,rmse,0.424908
+high-dimension-normalize-screening_Kriging_python,python,dette_pepelyshev,unit cube,q2,0.997757
+high-dimension-normalize-screening_Kriging_python,python,dette_pepelyshev,unit cube,nlpd,0.510276
+high-dimension-normalize-screening_Kriging_python,python,dette_pepelyshev,native + normalize,rmse,0.424908
+high-dimension-normalize-screening_Kriging_python,python,dette_pepelyshev,native + normalize,q2,0.997757
+high-dimension-normalize-screening_Kriging_python,python,dette_pepelyshev,native + normalize,nlpd,0.510276
+high-dimension-normalize-screening_Kriging_python,python,wing_weight,unit cube,fit_s,0.0245481
+high-dimension-normalize-screening_Kriging_python,python,wing_weight,unit cube,rmse,0.809743
+high-dimension-normalize-screening_Kriging_python,python,wing_weight,unit cube,q2,0.999716
+high-dimension-normalize-screening_Kriging_python,python,wing_weight,unit cube,nlpd,1.07161
+high-dimension-normalize-screening_Kriging_python,python,wing_weight,native + normalize,rmse,0.809743
+high-dimension-normalize-screening_Kriging_python,python,wing_weight,native + normalize,q2,0.999716
+high-dimension-normalize-screening_Kriging_python,python,wing_weight,native + normalize,nlpd,1.07161
+high-dimension-normalize-screening_Kriging_python,python,welch,unit cube,fit_s,0.564758
+high-dimension-normalize-screening_Kriging_python,python,welch,unit cube,rmse,0.167729
+high-dimension-normalize-screening_Kriging_python,python,welch,unit cube,q2,0.993452
+high-dimension-normalize-screening_Kriging_python,python,welch,unit cube,nlpd,-0.429138
+high-dimension-normalize-screening_Kriging_python,python,welch,native + normalize,rmse,0.167692
+high-dimension-normalize-screening_Kriging_python,python,welch,native + normalize,q2,0.993454
+high-dimension-normalize-screening_Kriging_python,python,welch,native + normalize,nlpd,-0.429291
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,Kriging,rmse,4.42284
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,Kriging,q2,0.959122
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,Kriging,nlpd,2.89997
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,MLPKriging tanh BFGS,fit_s,0.130867
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,MLPKriging tanh BFGS,rmse,57.402
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,MLPKriging tanh BFGS,q2,-5.88553
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,MLPKriging tanh BFGS,nlpd,136.771
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,MLPKriging tanh BFGS10,fit_s,0.442791
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,MLPKriging tanh BFGS10,rmse,4.28606
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,MLPKriging tanh BFGS10,q2,0.961612
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,MLPKriging tanh BFGS10,nlpd,29.0854
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,MLPKriging selu BFGS,fit_s,0.139126
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,MLPKriging selu BFGS,rmse,58.9913
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,MLPKriging selu BFGS,q2,-6.2721
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,MLPKriging selu BFGS,nlpd,46.9788
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,MLPKriging selu BFGS10,fit_s,0.440179
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,MLPKriging selu BFGS10,rmse,4.39195
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,MLPKriging selu BFGS10,q2,0.959691
+deep-kernel-projected-branin_MLPKriging_python,python,projected_branin_10d,MLPKriging selu BFGS10,nlpd,10.6053
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=1500,exact,fit_s,11.1133
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=1500,exact,fit_s,11.1133
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=1500,exact,rmse,0.000259233
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=1500,exact,rmse,0.000259233
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=1500,exact,q2,1
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=1500,exact,q2,1
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=1500,exact,nlpd,-6.92184
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=1500,exact,nlpd,-6.92184
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=1500,vecchia(30),fit_s,5.43768
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=1500,vecchia(30),rmse,0.00353225
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=1500,vecchia(30),q2,0.999987
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=1500,vecchia(30),nlpd,-4.6266
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=5000,vecchia(30),fit_s,16.2077
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=5000,vecchia(30),rmse,0.000851738
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=5000,vecchia(30),q2,0.999999
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=5000,vecchia(30),nlpd,-5.95078
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=1500,nystrom(100),fit_s,2.04779
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=1500,nystrom(100),rmse,1.51127
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=1500,nystrom(100),q2,-1.39237
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=1500,nystrom(100),nlpd,1.14197e+24
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=5000,nystrom(100),fit_s,3.25622
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=5000,nystrom(100),rmse,9.95398
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=5000,nystrom(100),q2,-102.786
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=5000,nystrom(100),nlpd,4.95409e+25
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=1500,nested NK (20 groups),fit_s,0.269932
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=1500,nested NK (20 groups),rmse,0.0029908
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=1500,nested NK (20 groups),q2,0.999991
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=1500,nested NK (20 groups),nlpd,-4.85946
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=5000,nested NK (20 groups),fit_s,2.87469
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=5000,nested NK (20 groups),rmse,0.000222655
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=5000,nested NK (20 groups),q2,1
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=5000,nested NK (20 groups),nlpd,-7.44453
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=1500,nested rBCM (20 groups),fit_s,0.25767
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=1500,nested rBCM (20 groups),rmse,0.00304431
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=1500,nested rBCM (20 groups),q2,0.99999
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=1500,nested rBCM (20 groups),nlpd,-4.50201
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=5000,nested rBCM (20 groups),fit_s,2.5369
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=5000,nested rBCM (20 groups),rmse,0.000224517
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=5000,nested rBCM (20 groups),q2,1
+aggregations-large-n_NestedKriging_python,python,hartmann3/n=5000,nested rBCM (20 groups),nlpd,-7.18182
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=1500,subset of data (500),fit_s,0.712767
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=1500,subset of data (500),rmse,0.00269153
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=1500,subset of data (500),q2,0.999992
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=1500,subset of data (500),nlpd,-4.68641
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=5000,subset of data (500),fit_s,0.950298
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=5000,subset of data (500),rmse,0.00247552
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=5000,subset of data (500),q2,0.999994
+large-n_Kriging-vecchia-nystrom_python,python,hartmann3/n=5000,subset of data (500),nlpd,-4.71359
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=1500,exact,fit_s,10.6103
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=1500,exact,fit_s,10.6103
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=1500,exact,rmse,9.81598e-05
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=1500,exact,rmse,9.81598e-05
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=1500,exact,q2,1
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=1500,exact,q2,1
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=1500,exact,nlpd,-8.21962
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=1500,exact,nlpd,-8.21962
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=1500,vecchia(30),fit_s,4.73217
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=1500,vecchia(30),rmse,0.00629979
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=1500,vecchia(30),q2,0.999969
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=1500,vecchia(30),nlpd,-3.95617
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=5000,vecchia(30),fit_s,14.5549
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=5000,vecchia(30),rmse,0.00312888
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=5000,vecchia(30),q2,0.999992
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=5000,vecchia(30),nlpd,-4.57612
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=1500,nystrom(100),fit_s,1.47345
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=1500,nystrom(100),rmse,0.392811
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=1500,nystrom(100),q2,0.880908
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=1500,nystrom(100),nlpd,7.06156e+22
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=5000,nystrom(100),fit_s,4.69579
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=5000,nystrom(100),rmse,1.11526
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=5000,nystrom(100),q2,0.0400057
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=5000,nystrom(100),nlpd,5.31511e+23
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=1500,nested NK (20 groups),fit_s,0.278129
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=1500,nested NK (20 groups),rmse,0.00226873
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=1500,nested NK (20 groups),q2,0.999996
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=1500,nested NK (20 groups),nlpd,-4.90542
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=5000,nested NK (20 groups),fit_s,3.62576
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=5000,nested NK (20 groups),rmse,0.000261686
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=5000,nested NK (20 groups),q2,1
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=5000,nested NK (20 groups),nlpd,-7.20623
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=1500,nested rBCM (20 groups),fit_s,0.315619
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=1500,nested rBCM (20 groups),rmse,0.00291869
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=1500,nested rBCM (20 groups),q2,0.999993
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=1500,nested rBCM (20 groups),nlpd,-2.55512
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=5000,nested rBCM (20 groups),fit_s,3.39037
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=5000,nested rBCM (20 groups),rmse,0.000278149
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=5000,nested rBCM (20 groups),q2,1
+aggregations-large-n_NestedKriging_python,python,otl_circuit/n=5000,nested rBCM (20 groups),nlpd,-4.34927
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=1500,subset of data (500),fit_s,0.672431
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=1500,subset of data (500),rmse,0.0004286
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=1500,subset of data (500),q2,1
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=1500,subset of data (500),nlpd,-6.72678
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=5000,subset of data (500),fit_s,0.692672
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=5000,subset of data (500),rmse,0.000446879
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=5000,subset of data (500),q2,1
+large-n_Kriging-vecchia-nystrom_python,python,otl_circuit/n=5000,subset of data (500),nlpd,-6.78844
+aggregations-large-n_NestedKriging_python,python,branin/nested,NK,rmse,0.0343984
+aggregations-large-n_NestedKriging_python,python,branin/nested,NK,q2,1
+aggregations-large-n_NestedKriging_python,python,branin/nested,NK,nlpd,2.00082e+14
+aggregations-large-n_NestedKriging_python,python,branin/nested,PoE,rmse,0.0354265
+aggregations-large-n_NestedKriging_python,python,branin/nested,PoE,q2,1
+aggregations-large-n_NestedKriging_python,python,branin/nested,PoE,nlpd,-1.64533
+aggregations-large-n_NestedKriging_python,python,branin/nested,gPoE,rmse,0.0354265
+aggregations-large-n_NestedKriging_python,python,branin/nested,gPoE,q2,1
+aggregations-large-n_NestedKriging_python,python,branin/nested,gPoE,nlpd,-0.621836
+aggregations-large-n_NestedKriging_python,python,branin/nested,BCM,rmse,0.0354196
+aggregations-large-n_NestedKriging_python,python,branin/nested,BCM,q2,1
+aggregations-large-n_NestedKriging_python,python,branin/nested,BCM,nlpd,-1.64533
+aggregations-large-n_NestedKriging_python,python,branin/nested,rBCM,rmse,0.035287
+aggregations-large-n_NestedKriging_python,python,branin/nested,rBCM,q2,1
+aggregations-large-n_NestedKriging_python,python,branin/nested,rBCM,nlpd,-2.61369
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,branin,pylibkriging,q2,0.999944
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,branin,pylibkriging,nlpd,0.137225
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,branin,pylibkriging,fit_s,0.00261593
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,branin,pylibkriging BFGS10,q2,0.999945
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,branin,pylibkriging BFGS10,nlpd,0.137254
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,branin,pylibkriging BFGS10,fit_s,0.02301
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,branin,scikit-learn,q2,0.999597
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,branin,scikit-learn,nlpd,0.928508
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,branin,scikit-learn,fit_s,0.169693
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,branin,SMT,q2,0.999944
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,branin,SMT,nlpd,0.137259
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,branin,SMT,fit_s,0.833295
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,branin,OpenTURNS,q2,0.998221
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,branin,OpenTURNS,nlpd,1.55599
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,branin,OpenTURNS,fit_s,0.00490117
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,six_hump_camel,pylibkriging,q2,0.999418
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,six_hump_camel,pylibkriging,nlpd,0.0429342
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,six_hump_camel,pylibkriging,fit_s,0.00324678
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,six_hump_camel,pylibkriging BFGS10,q2,0.999418
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,six_hump_camel,pylibkriging BFGS10,nlpd,0.0429386
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,six_hump_camel,pylibkriging BFGS10,fit_s,0.060586
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,six_hump_camel,scikit-learn,q2,0.0163311
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,six_hump_camel,scikit-learn,nlpd,4.63763
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,six_hump_camel,scikit-learn,fit_s,0.206083
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,six_hump_camel,SMT,q2,0.999594
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,six_hump_camel,SMT,nlpd,-0.121007
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,six_hump_camel,SMT,fit_s,1.03758
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,six_hump_camel,OpenTURNS,q2,0.956713
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,six_hump_camel,OpenTURNS,nlpd,2.55446
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,six_hump_camel,OpenTURNS,fit_s,0.00741315
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann3,pylibkriging,q2,0.986148
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann3,pylibkriging,nlpd,-0.847247
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann3,pylibkriging,fit_s,0.0169713
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann3,pylibkriging BFGS10,q2,0.986148
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann3,pylibkriging BFGS10,nlpd,-0.847249
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann3,pylibkriging BFGS10,fit_s,0.139588
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann3,scikit-learn,q2,0.983889
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann3,scikit-learn,nlpd,-0.782697
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann3,scikit-learn,fit_s,0.188796
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann3,SMT,q2,0.986148
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann3,SMT,nlpd,-0.847249
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann3,SMT,fit_s,1.02907
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann3,OpenTURNS,q2,0.984712
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann3,OpenTURNS,nlpd,-0.809851
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann3,OpenTURNS,fit_s,0.0153861
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,ishigami,pylibkriging,q2,0.259556
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,ishigami,pylibkriging,nlpd,4.38991
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,ishigami,pylibkriging,fit_s,0.0256422
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,ishigami,pylibkriging BFGS10,q2,0.935722
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,ishigami,pylibkriging BFGS10,nlpd,0.857443
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,ishigami,pylibkriging BFGS10,fit_s,0.308839
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,ishigami,scikit-learn,q2,0.831142
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,ishigami,scikit-learn,nlpd,1.5455
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,ishigami,scikit-learn,fit_s,0.51733
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,ishigami,SMT,q2,0.51196
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,ishigami,SMT,nlpd,3.31349
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,ishigami,SMT,fit_s,2.77225
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,ishigami,OpenTURNS,q2,0.887251
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,ishigami,OpenTURNS,nlpd,1.39348
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,ishigami,OpenTURNS,fit_s,0.0499659
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,friedman,pylibkriging,q2,0.999771
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,friedman,pylibkriging,nlpd,-1.29726
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,friedman,pylibkriging,fit_s,0.0181558
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,friedman,pylibkriging BFGS10,q2,0.999771
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,friedman,pylibkriging BFGS10,nlpd,-1.29727
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,friedman,pylibkriging BFGS10,fit_s,0.215106
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,friedman,scikit-learn,q2,0.999754
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,friedman,scikit-learn,nlpd,-1.37702
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,friedman,scikit-learn,fit_s,0.283978
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,friedman,SMT,q2,0.999899
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,friedman,SMT,nlpd,-1.871
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,friedman,SMT,fit_s,4.3249
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,friedman,OpenTURNS,q2,0.990862
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,friedman,OpenTURNS,nlpd,0.469828
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,friedman,OpenTURNS,fit_s,0.0293689
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,otl_circuit,pylibkriging,q2,0.999922
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,otl_circuit,pylibkriging,nlpd,-3.46228
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,otl_circuit,pylibkriging,fit_s,0.013788
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,otl_circuit,pylibkriging BFGS10,q2,0.999922
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,otl_circuit,pylibkriging BFGS10,nlpd,-3.46227
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,otl_circuit,pylibkriging BFGS10,fit_s,0.141071
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,otl_circuit,scikit-learn,q2,0.999906
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,otl_circuit,scikit-learn,nlpd,-3.43062
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,otl_circuit,scikit-learn,fit_s,0.51218
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,otl_circuit,SMT,q2,0.999954
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,otl_circuit,SMT,nlpd,-3.35016
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,otl_circuit,SMT,fit_s,7.1224
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,otl_circuit,OpenTURNS,q2,0.99777
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,otl_circuit,OpenTURNS,nlpd,-1.61723
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,otl_circuit,OpenTURNS,fit_s,0.0603108
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,piston,pylibkriging,q2,0.997498
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,piston,pylibkriging,nlpd,-3.80667
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,piston,pylibkriging,fit_s,0.0395648
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,piston,pylibkriging BFGS10,q2,0.997498
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,piston,pylibkriging BFGS10,nlpd,-3.8067
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,piston,pylibkriging BFGS10,fit_s,0.327989
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,piston,scikit-learn,q2,0.998684
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,piston,scikit-learn,nlpd,-4.10497
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,piston,scikit-learn,fit_s,1.11386
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,piston,SMT,q2,0.997511
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,piston,SMT,nlpd,-3.86618
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,piston,SMT,fit_s,12.649
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,piston,OpenTURNS,q2,0.990631
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,piston,OpenTURNS,nlpd,-2.9906
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,piston,OpenTURNS,fit_s,0.11631
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,borehole,pylibkriging,q2,0.999694
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,borehole,pylibkriging,nlpd,1.00118
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,borehole,pylibkriging,fit_s,0.0149446
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,borehole,pylibkriging BFGS10,q2,0.999694
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,borehole,pylibkriging BFGS10,nlpd,1.00121
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,borehole,pylibkriging BFGS10,fit_s,0.164608
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,borehole,scikit-learn,q2,0.999929
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,borehole,scikit-learn,nlpd,0.194455
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,borehole,scikit-learn,fit_s,1.04563
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,borehole,SMT,q2,0.999925
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,borehole,SMT,nlpd,0.279122
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,borehole,SMT,fit_s,11.8531
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,borehole,OpenTURNS,q2,0.996206
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,borehole,OpenTURNS,nlpd,2.55431
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,borehole,OpenTURNS,fit_s,0.12395
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,wing_weight,pylibkriging,q2,0.99972
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,wing_weight,pylibkriging,nlpd,1.11517
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,wing_weight,pylibkriging,fit_s,0.0290489
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,wing_weight,pylibkriging BFGS10,q2,0.99972
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,wing_weight,pylibkriging BFGS10,nlpd,1.11512
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,wing_weight,pylibkriging BFGS10,fit_s,0.314707
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,wing_weight,scikit-learn,q2,0.998048
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,wing_weight,scikit-learn,nlpd,2.57304
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,wing_weight,scikit-learn,fit_s,0.729278
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,wing_weight,SMT,q2,0.999898
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,wing_weight,SMT,nlpd,0.604023
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,wing_weight,SMT,fit_s,25.8262
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,wing_weight,OpenTURNS,q2,0.993145
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,wing_weight,OpenTURNS,nlpd,2.83627
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,wing_weight,OpenTURNS,fit_s,0.280434
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann6,pylibkriging,q2,0.422938
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann6,pylibkriging,nlpd,0.0965167
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann6,pylibkriging,fit_s,0.0562823
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann6,pylibkriging BFGS10,q2,0.72352
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann6,pylibkriging BFGS10,nlpd,-0.156898
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann6,pylibkriging BFGS10,fit_s,0.822745
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann6,scikit-learn,q2,0.69049
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann6,scikit-learn,nlpd,-0.137845
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann6,scikit-learn,fit_s,1.3155
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann6,SMT,q2,0.708463
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann6,SMT,nlpd,-0.0177081
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann6,SMT,fit_s,12.0578
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann6,OpenTURNS,q2,0.696177
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann6,OpenTURNS,nlpd,-0.132838
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,python,hartmann6,OpenTURNS,fit_s,0.133332

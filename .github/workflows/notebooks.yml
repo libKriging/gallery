@@ -18,7 +18,7 @@ name: notebooks
 #
 # A notebook job fails when one of its error-level checks fails; the report job
 # fails when any notebook failed or crashed, or when the bindings disagree
-# (cross-binding protocol, python_Kriging_cross-binding-reference.ipynb).
+# (cross-binding protocol, cross-binding-reference_Kriging_python.ipynb).
 # The binding installations are the scripts of tools/install/, usable locally too.
 
 on:
@@ -111,10 +111,10 @@ jobs:
           import json, os
           from pathlib import Path
           channels = os.environ["CHANNELS"].split(",")
-          for lang, prefix in [("python", "python"), ("r", "R"), ("octave", "octave"), ("julia", "julia")]:
+          for lang, binding in [("python", "python"), ("r", "R"), ("octave", "octave"), ("julia", "julia")]:
               chans = [c for c in channels if c == "master" or lang != "julia"]  # no Julia release
               include = [{"channel": c, "notebook": nb.stem} for c in chans
-                         for nb in sorted(Path(".").glob(f"{prefix}_*.ipynb"))]
+                         for nb in sorted(Path(".").glob(f"*_{binding}.ipynb"))]
               print(f"{lang}={json.dumps({'include': include or [{'channel': 'none', 'notebook': 'none'}]})}")
           EOF
           cat "$GITHUB_OUTPUT"

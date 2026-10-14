@@ -15,7 +15,7 @@ and reports:
   3. known issues whose check now passes ("FIXED?": remove them from
      tools/known_issues.csv);
   4. cross-binding consistency: each language against Python, per quantity, with
-     the tolerances of python_Kriging_cross-binding-reference.ipynb;
+     the tolerances of cross-binding-reference_Kriging_python.ipynb;
   5. drifts of the accuracy metrics (q2, rmse, nlpd) and of the fit times against a
      baseline (tools/baseline/metrics-<channel>.csv), when one is given.
 
@@ -23,8 +23,8 @@ Exit status 1 if any check FAILed, if a cross-binding quantity of error level
 differs, or if --expect lists a suite that produced no output (crashed before
 finalize). The Markdown goes to stdout and, with --summary, is appended to a file
 (e.g. $GITHUB_STEP_SUMMARY). The suite of a notebook is its file name without
-extension; `--expect python,R` expects one suite per `python_*.ipynb` and
-`R_*.ipynb` notebook of the repository root (names are also accepted).
+extension; `--expect python,R` expects one suite per `*_python.ipynb` and
+`*_R.ipynb` notebook of the repository root (names are also accepted).
 
 Usage:
   python tools/report.py [--results results] [--baseline tools/baseline/metrics-master.csv]
@@ -140,7 +140,7 @@ def main(argv=None):
     p.add_argument("--write-baseline", help="write the current metrics as a new baseline")
     p.add_argument("--summary", help="also append the report to this file")
     p.add_argument("--expect", default="",
-                   help="comma-separated suites, or binding prefixes (python, R, octave, julia), that must have output")
+                   help="comma-separated suites, or bindings (python, R, octave, julia), that must have output")
     args = p.parse_args(argv)
 
     checks = read_all(args.results, "*.checks.csv")
@@ -162,7 +162,7 @@ def main(argv=None):
 
     expected = []
     for item in filter(None, args.expect.split(",")):
-        stems = sorted(nb.stem for nb in ROOT.glob(f"{item}_*.ipynb"))
+        stems = sorted(nb.stem for nb in ROOT.glob(f"*_{item}.ipynb"))
         expected += stems or [item]
     missing = sorted(set(expected) - set(checks.get("suite", pd.Series(dtype=str))))
     if missing:
