@@ -1,6 +1,13 @@
 # %% [markdown]
 # # Python · Kriging — save/load, pickle, copy, accessors
 #
+# **Idea.** A model must survive a round trip (file, pickle, copy) unchanged, and
+# expose its settings and hyperparameters: for every noise model, objective and fit
+# method of `Kriging`.
+#
+# **Reference.** The original model: predictions and hyperparameters must be identical
+# to the last bit (1e-12).
+#
 # Persistence and introspection of `Kriging`, for each of its variants (noise
 # models, objectives, approximate fit methods):
 #
@@ -14,6 +21,9 @@
 # The same persistence checks for the other classes are in their own notebooks
 # (`*_WarpKriging_python`, `*_MLPKriging_python`, `*_NestedKriging_python`); the
 # scikit-learn estimators in `sklearn-estimators_Kriging_python.ipynb`.
+#
+# An API notebook: its results are identities (to 1e-12), so they are given as
+# the table of checks of the Summary rather than as plots.
 
 # %%
 import copy
@@ -94,6 +104,17 @@ suite.close("normalize=True: y() is the response as given", np.ravel(kn.y()), y,
 suite.true("Kriging.beta() has 1 + d coefficients (linear trend)", np.ravel(k.beta()).size == 1 + X.shape[1])
 suite.true("summary() is a non-empty string", isinstance(k.summary(), str) and len(k.summary()) > 20)
 suite.true("is_theta_estim() after an optimized fit", bool(k.is_theta_estim()))
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/save-load-pickle-copy-accessors_Kriging_python.checks.csv` and `.metrics.csv`.
+
+# %%
+suite.summary()
 
 # %%
 suite.finalize()

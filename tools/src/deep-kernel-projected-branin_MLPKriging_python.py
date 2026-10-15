@@ -1,6 +1,12 @@
 # %% [markdown]
 # # Python · MLPKriging — deep kernel on a 10D function with a 2D structure
 #
+# **Idea.** A deep kernel (an MLP feature map before the kernel) can find a low-
+# dimensional structure that a per-axis kernel cannot: Branin of a 2D projection of 10
+# inputs.
+#
+# **Reference.** Plain `Kriging` on the same data.
+#
 # f(x) = Branin(Wx) for x ∈ [0,1]¹⁰ and a fixed 2 × 10 projection W: the
 # function only varies in a 2D subspace, which a joint feature map (an MLP from
 # ℝ¹⁰ to ℝ², then a stationary kernel) can find, whereas a per-axis kernel
@@ -83,6 +89,17 @@ if compat.has("MLPKriging"):
     with suite.runs("MLPKriging: fit (persistence)"):
         lkbench.persistence.check(suite, "MLPKriging", lk.MLPKriging(y, X, hidden_dims=[8], d_out=2, activation="tanh",
                                                        kernel="matern5_2"), Xt, pred)
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/deep-kernel-projected-branin_MLPKriging_python.checks.csv` and `.metrics.csv`.
+
+# %%
+suite.summary()
 
 # %%
 suite.finalize()

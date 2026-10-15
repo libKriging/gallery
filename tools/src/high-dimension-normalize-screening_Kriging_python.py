@@ -1,6 +1,13 @@
 # %% [markdown]
 # # Python · Kriging — moderate and high dimension: engineering functions, `normalize`, screening
 #
+# **Idea.** From 6 to 20 inputs on engineering functions: accuracy, the effect of
+# `normalize` on inputs in physical units, and the ability of the fitted ranges θ to
+# tell influential inputs from inactive ones.
+#
+# **Reference.** The same model on inputs rescaled by hand, and the known active
+# inputs of the Welch function.
+#
 # | function | d | character |
 # |---|---|---|
 # | OTL circuit | 6 | smooth, inputs on very different scales |
@@ -95,6 +102,17 @@ plt.bar([f"x{i + 1}" for i in range(20)], theta, color=colors)
 plt.yscale("log"); plt.ylabel("fitted θ (log)")
 plt.title("Welch (20D): red = most influential inputs, gray = inactive (x8, x16)"); plt.show()
 pd.Series(theta, index=[f"x{i + 1}" for i in range(20)]).round(3).to_frame("theta").T
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/high-dimension-normalize-screening_Kriging_python.checks.csv` and `.metrics.csv`.
+
+# %%
+suite.summary()
 
 # %%
 suite.finalize()

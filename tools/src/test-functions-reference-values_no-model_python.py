@@ -1,7 +1,14 @@
 # %% [markdown]
 # # Python · no model — the test functions against their published reference values
 #
-# Every benchmark of this repository relies on the test functions of
+# **Idea.** Every example of this gallery is only as good as its test functions:
+# before fitting anything, each of the 21 functions is evaluated at points where its
+# value is published, and its range and shape are plotted.
+#
+# **Reference.** Published optima and nominal values (Virtual Library of Simulation
+# Experiments, Surjanovic & Bingham).
+#
+# Every notebook of this gallery relies on the test functions of
 # `lkbench.functions` (after the [Virtual Library of Simulation Experiments](https://www.sfu.ca/~ssurjano/)).
 # A typo in one of them would silently bias every result built on it, so they are
 # checked first, against the reference values published on the library pages
@@ -61,7 +68,7 @@ pd.DataFrame(summary, columns=["function", "d", "tags", "min", "max", "std"])
 # ## Designs
 #
 # The designs are seeded: the same seed gives the same points (reproducibility of
-# every benchmark), and the optimized LHS is a Latin hypercube (one point per
+# every notebook), and the optimized LHS is a Latin hypercube (one point per
 # stratum in each dimension).
 
 # %%
@@ -84,6 +91,17 @@ for ax, name in zip(axes[2:], ["branin", "gramacy_lee_2008"]):
     ax.contourf(g, g, tf.unit(G).reshape(100, 100), 30)
     ax.set_title(name)
 plt.tight_layout()
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/test-functions-reference-values_no-model_python.checks.csv` and `.metrics.csv`.
+
+# %%
+suite.summary()
 
 # %%
 suite.finalize()

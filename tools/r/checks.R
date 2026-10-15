@@ -55,6 +55,21 @@ add_metric <- function(s, case, package, ...) {
     package = package, metric = n, value = .fmt(v[[n]]), stringsAsFactors = FALSE)
 }
 
+summary_suite <- function(s) {
+  # end-of-notebook summary: metrics, count per status, every check that did not pass
+  if (length(s$metrics) > 0) {
+    me <- do.call(rbind, s$metrics)
+    me$value <- as.numeric(me$value)
+    print(reshape(me[, c("case", "package", "metric", "value")], idvar = c("case", "package"),
+                  timevar = "metric", direction = "wide"), row.names = FALSE)
+  }
+  ch <- do.call(rbind, s$checks)
+  print(table(factor(ch$status, levels = c("PASS", "FAIL", "WARN", "KNOWN", "SKIP"))))
+  other <- ch[ch$status != "PASS", c("status", "severity", "check", "value", "expected", "detail")]
+  if (nrow(other) > 0) print(other, row.names = FALSE)
+  invisible(ch)
+}
+
 finalize <- function(s) {
   add_metric(s, "_suite", "_", elapsed_s = as.numeric(difftime(Sys.time(), s$t0, units = "secs")))
   ch <- do.call(rbind, s$checks)

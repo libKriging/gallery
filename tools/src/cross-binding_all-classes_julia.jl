@@ -1,6 +1,12 @@
 # %% [markdown]
 # # Julia · all classes — cross-binding consistency: the Julia side
 #
+# **Idea.** The Julia side of the cross-binding protocol: JLibKriging must give the
+# numbers of pylibkriging on the same data, for every model class and fit method.
+#
+# **Reference.** The Python values (`cross-binding-reference_all-
+# classes_python.ipynb`), compared by `tools/report.py`.
+#
 # Same protocol as `cross-binding-reference_all-classes_python.ipynb` (see there), on
 # the shared datasets of `data/`; writes `results/xbind_julia.csv`, compared with
 # the Python values by `tools/report.py`.
@@ -80,6 +86,29 @@ open(joinpath(RESULTS_DIR, "xbind_julia.csv"), "w") do io
     for r in rows; println(io, join(r, ",")); end
 end
 println(length(rows), " values written")
+
+# %% [markdown]
+# ## The values written
+#
+# First value of each quantity and dataset (each compared with Python by the
+# report; plots are left to the Python reference, to avoid a plotting package here).
+
+# %%
+for key in unique([(r[2], r[3]) for r in rows])
+    vals = [r[5] for r in rows if (r[2], r[3]) == key]
+    println(rpad("$(key[1]) $(key[2])", 36), vals[1], " (", length(vals), " values)")
+end
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/cross-binding_all-classes_julia.checks.csv` and `.metrics.csv`.
+
+# %%
+summary!(s)
 
 # %%
 finalize!(s)

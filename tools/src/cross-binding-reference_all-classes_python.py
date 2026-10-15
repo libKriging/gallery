@@ -1,6 +1,13 @@
 # %% [markdown]
 # # Python · all classes — cross-binding consistency: the Python reference
 #
+# **Idea.** All bindings wrap the same C++ library: on the same data with the same
+# options, they must give the same numbers, for every model class and fit method. This
+# notebook writes the Python values, the reference of the comparison.
+#
+# **Reference.** The R, Octave and Julia notebooks `cross-binding_all-classes_*`,
+# compared by `tools/report.py`.
+#
 # All bindings (Python, R, Octave, Julia) wrap the same C++ library: on the
 # same data with the same options they must return the same numbers. Each
 # language runs the protocol below on the shared datasets of `data/` and writes
@@ -37,7 +44,9 @@
 # %%
 import csv
 
+import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 import pylibkriging as lk
 
 import lkbench
@@ -121,6 +130,38 @@ with open(RESULTS_DIR / "xbind_python.csv", "w", newline="") as fh:
     w.writerow(["lang", "dataset", "quantity", "index", "value"])
     w.writerows(rows)
 print(len(rows), "values written")
+
+# %% [markdown]
+# ## The reference values
+#
+# Number of values per quantity and dataset (the report compares each of them
+# with the other bindings), and the default fits they come from: predicted vs
+# true values on the 50 test points.
+
+# %%
+ref = pd.DataFrame(rows, columns=["lang", "dataset", "quantity", "index", "value"])
+ref["value"] = ref["value"].astype(float)
+display(ref.groupby(["quantity", "dataset"])["value"].agg(["size", "first"]).unstack("dataset"))
+fig, axes = plt.subplots(1, len(DATASETS), figsize=(12, 3.6))
+for ax, name in zip(axes, DATASETS):
+    yt = load(name, "yt").ravel()[:50]
+    m = ref[(ref.dataset == name) & (ref.quantity == "fit_mean")]["value"].to_numpy()
+    ax.plot(yt, m, "o", ms=4); ax.plot([yt.min(), yt.max()], [yt.min(), yt.max()], "k--", lw=.8)
+    q2 = 1 - np.sum((yt - m) ** 2) / np.sum((yt - yt.mean()) ** 2)
+    suite.metric(name, "pylibkriging default fit", q2=q2)
+    ax.set_title(f"{name}: Q² = {q2:.3f}"); ax.set_xlabel("true"); ax.set_ylabel("predicted")
+plt.tight_layout(); plt.show()
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/cross-binding-reference_all-classes_python.checks.csv` and `.metrics.csv`.
+
+# %%
+suite.summary()
 
 # %%
 suite.finalize()

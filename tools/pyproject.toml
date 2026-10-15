@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "lkbench"
 version = "0.1.0"
-description = "Helpers (test functions, designs, metrics, checks) for the libKriging benchmark notebooks"
+description = "Helpers (test functions, designs, metrics, checks) for the notebooks of the libKriging gallery"
 requires-python = ">=3.9"
 dependencies = ["numpy", "scipy", "pandas", "matplotlib", "jinja2"]  # jinja2: DataFrame.style
 

@@ -1,6 +1,13 @@
 # %% [markdown]
 # # Python · Kriging — robustness: degenerate and adversarial inputs
 #
+# **Idea.** What happens off the happy path: invalid, degenerate or ill-conditioned
+# inputs must be rejected or handled, results must not depend on the units, and the
+# prediction cost must grow linearly with the number of points.
+#
+# **Reference.** Equivariance identities (rescaled inputs / outputs give rescaled
+# results) and the O(q) cost of `predict`.
+#
 # What a user eventually feeds a surrogate model, and what must happen:
 #
 # | input | expected behaviour |
@@ -167,6 +174,17 @@ plt.loglog(qs, ts[0] * qs / qs[0], "k--", lw=.8, label="O(q) reference")
 plt.loglog(qs, ts[0] * (qs / qs[0]) ** 2, "k:", lw=.8, label="O(q²) reference")
 plt.xlabel("q (prediction points)"); plt.ylabel("time (s)"); plt.legend(); plt.grid(True, which="both", alpha=.3)
 plt.show()
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/robustness-invalid-inputs_Kriging_python.checks.csv` and `.metrics.csv`.
+
+# %%
+suite.summary()
 
 # %%
 suite.finalize()

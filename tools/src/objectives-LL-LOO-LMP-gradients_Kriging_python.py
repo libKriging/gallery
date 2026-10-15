@@ -1,6 +1,13 @@
 # %% [markdown]
 # # Python · Kriging — objectives (LL, LOO, LMP), their gradients and optima
 #
+# **Idea.** The three estimation criteria (likelihood, leave-one-out, marginal
+# posterior) must be computed and differentiated correctly, and the fitted θ̂ must be
+# an optimum of the criterion it maximises.
+#
+# **Reference.** Finite differences of each criterion, explicit leave-one-out refits,
+# and the criterion profile around θ̂.
+#
 # The hyperparameters θ of `Kriging` are estimated by maximizing the
 # log-likelihood (`LL`), maximizing the log marginal posterior (`LMP`), or
 # minimizing the leave-one-out error (`LOO`). This notebook checks the machinery
@@ -25,6 +32,7 @@
 # Functions: Branin (2D), Hartmann 3 (3D), Ishigami (3D), Friedman (5D).
 
 # %%
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import pylibkriging as lk
@@ -105,6 +113,30 @@ tab[["function", "objective"]] = tab["case"].str.split("/", expand=True)
 tab.pivot_table(index="function", columns="objective", values=["q2", "coverage95"]).round(3)
 
 # %% [markdown]
+# ## In pictures: each criterion along θ = t · θ̂ (Branin)
+#
+# Each criterion fitted on its own, then evaluated along the ray t · θ̂ through its
+# optimum (t = 1, dashed line): a maximum for LL and LMP, a minimum for LOO.
+# The three optima are not the same θ, which is why the fitted models differ.
+
+# %%
+tf = TESTS["branin"]
+X, y, _, _ = design.dataset(tf, CASES["branin"], seed=2)
+ts = np.exp(np.linspace(np.log(0.2), np.log(5), 61))
+fig, axes = plt.subplots(1, 3, figsize=(13, 3.6))
+for ax, objective in zip(axes, ["LL", "LOO", "LMP"]):
+    k = lk.Kriging(y, X, "matern5_2", objective=objective)
+    theta = np.asarray(k.theta()).ravel()
+    f = objective_fun(k, objective)
+    vals = [f(t * theta, False)[0] for t in ts]
+    ax.semilogx(ts, vals); ax.axvline(1, color="k", ls="--", lw=.8)
+    ax.set_title(f"{objective}, θ̂ = {np.round(theta, 3)}"); ax.set_xlabel("t (θ = t · θ̂)")
+    i = int(np.argmax(vals) if SIGN[objective] > 0 else np.argmin(vals))
+    suite.between(f"branin/{objective}: optimum of the profile along t * theta_hat (t)", ts[i], 0.8, 1.25,
+                  severity="warn")
+axes[0].set_ylabel("criterion"); plt.tight_layout(); plt.show()
+
+# %% [markdown]
 # ## `logLikelihood()` == `logLikelihoodFun(theta())` (and the same for LOO, LMP)
 
 # %%
@@ -169,6 +201,17 @@ for fname, n in CASES.items():
     suite.less(f"{fname}: LL(BFGS20) - LL(BFGS) (default fit far from the best optimum)", ll20 - ll1, 1.0,
                severity="warn")
 suite.table().loc[list(CASES)].unstack("package")
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/objectives-LL-LOO-LMP-gradients_Kriging_python.checks.csv` and `.metrics.csv`.
+
+# %%
+suite.summary()
 
 # %%
 suite.finalize()

@@ -1,6 +1,12 @@
 % %% [markdown]
 % # Octave · Kriging vs STK
 %
+% **Idea.** The Octave/MATLAB reference toolbox, STK: at the same hyperparameters
+% (Gaussian kernel) both must give the same predictor, and their default fits are
+% compared.
+%
+% **Reference.** STK (exact equality, then accuracy and cost).
+%
 % [STK](https://github.com/stk-kriging/stk) (Small Toolbox for Kriging) is the
 % reference kriging toolbox for Octave/MATLAB.
 %
@@ -98,6 +104,17 @@ for i = 1:numel(datasets)
   end
 end
 disp(s.metrics(:, 3:6))
+
+% %% [markdown]
+% ## Summary
+%
+% The metrics of this notebook, the number of checks per status, and every check that
+% did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+% `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+% All of them are also written to `results/vs-STK_Kriging_octave.checks.csv` and `.metrics.csv`.
+
+% %%
+lkb_summary(s);
 
 % %%
 lkb_finalize(s);

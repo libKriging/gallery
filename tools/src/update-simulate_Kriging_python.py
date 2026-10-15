@@ -1,6 +1,12 @@
 # %% [markdown]
 # # Python · Kriging — `update`, `simulate`, `update_simulate`
 #
+# **Idea.** Adding observations (`update`) and drawing conditional paths (`simulate`,
+# `update_simulate`) are shortcuts: they must give what the long way gives.
+#
+# **Reference.** A model fitted from scratch on all the data, and Monte Carlo moments
+# against the predictive mean and covariance.
+#
 # Sequential use of a fitted model (sequential design, Bayesian optimization):
 #
 # * `update(y_u, X_u, refit=False)` adds observations through a Cholesky
@@ -157,6 +163,17 @@ for ax, paths, title in [(axes[0], P, "6 points: conditional paths"), (axes[1], 
     ax.plot(X, y, "ko", label="design")
     ax.set_title(title); ax.set_xlabel("x")
 axes[1].plot(Xu, yu, "rs", label="new points"); axes[1].legend(); plt.show()
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/update-simulate_Kriging_python.checks.csv` and `.metrics.csv`.
+
+# %%
+suite.summary()
 
 # %%
 suite.finalize()

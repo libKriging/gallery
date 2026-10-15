@@ -1,6 +1,13 @@
 # %% [markdown]
 # # Python · Kriging with noise (`noise="nugget"`, known variances) — noisy observations
 #
+# **Idea.** Kriging with noisy observations: an estimated homogeneous nugget, or known
+# (heteroscedastic) noise variances, must recover the noise level and predict the
+# noise-free function with calibrated intervals.
+#
+# **Reference.** The true noise variance, replicate averaging, and the interpolating
+# (noise-free) fit on the same data.
+#
 # `Kriging` handles noisy responses through its `noise` argument: `"nugget"`
 # estimates one homogeneous noise variance, a vector gives a known variance per
 # observation (heteroscedastic case).
@@ -151,6 +158,17 @@ suite.close("replicates == averages with variance/r (mean)", pred(k_rep, Xt)[0],
             rtol=1e-6, atol=1e-6 * np.std(yr))
 suite.close("replicates == averages with variance/r (stdev)", pred(k_rep, Xt)[1], pred(k_avg, Xt)[1],
             rtol=1e-4, atol=1e-6 * np.std(yr))
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/noisy-data_Kriging-nugget-noise_python.checks.csv` and `.metrics.csv`.
+
+# %%
+suite.summary()
 
 # %%
 suite.finalize()

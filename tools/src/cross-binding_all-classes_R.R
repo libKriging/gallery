@@ -1,6 +1,12 @@
 # %% [markdown]
 # # R · all classes — cross-binding consistency: the R side
 #
+# **Idea.** The R side of the cross-binding protocol: rlibkriging must give the
+# numbers of pylibkriging on the same data, for every model class and fit method.
+#
+# **Reference.** The Python values (`cross-binding-reference_all-
+# classes_python.ipynb`), compared by `tools/report.py`.
+#
 # Same protocol as `cross-binding-reference_all-classes_python.ipynb` (see there), on the
 # shared datasets of `data/`; writes `results/xbind_R.csv`, compared with the
 # Python values by `tools/report.py`.
@@ -77,6 +83,35 @@ put(name, "nested_fit_mean", predict(kk, Xt, return_stdev = FALSE)$mean)
 out <- do.call(rbind, rows)
 write.csv(out, file.path(results_dir, "xbind_R.csv"), row.names = FALSE, quote = FALSE)
 cat(nrow(out), "values written\n")
+
+# %% [markdown]
+# ## The values written
+#
+# Number of values per quantity and dataset (each compared with Python by the
+# report), and the default fits they come from: predicted vs true on the 50 test points.
+
+# %%
+print(with(out, table(quantity, dataset)))
+op <- par(mfrow = c(1, 3), mar = c(4, 4, 2, 1))
+for (name in c("branin", "hartmann3", "borehole")) {
+  yt <- as.numeric(read_data(name, "yt"))[1:50]
+  m <- as.numeric(out$value[out$dataset == name & out$quantity == "fit_mean"])
+  q <- q2(yt, m); add_metric(s, name, "rlibkriging default fit", q2 = q)
+  plot(yt, m, xlab = "true", ylab = "predicted", main = sprintf("%s: Q2 = %.3f", name, q), pch = 16, cex = .7)
+  abline(0, 1, lty = 2)
+}
+par(op)
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/cross-binding_all-classes_R.checks.csv` and `.metrics.csv`.
+
+# %%
+summary_suite(s)
 
 # %%
 finalize(s)

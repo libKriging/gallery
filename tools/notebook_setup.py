@@ -8,9 +8,9 @@ import sys
 from pathlib import Path
 
 if not Path("tools/known_issues.csv").is_file():
-    if not Path("benchmarks/tools/known_issues.csv").is_file():
-        subprocess.run(["git", "clone", "--depth", "1", "https://github.com/libKriging/benchmarks"], check=True)
-    os.chdir("benchmarks")
+    if not Path("gallery/tools/known_issues.csv").is_file():
+        subprocess.run(["git", "clone", "--depth", "1", "https://github.com/libKriging/gallery"], check=True)
+    os.chdir("gallery")
     try:
         import pylibkriging  # noqa: F401
     except ImportError:

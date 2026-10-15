@@ -1,6 +1,13 @@
 # %% [markdown]
 # # Python · NestedKriging — aggregations, large n
 #
+# **Idea.** NestedKriging splits a large design into groups and aggregates their
+# predictions; how far is it from the exact predictor as the number of groups grows,
+# and which aggregation is closest?
+#
+# **Reference.** The exact predictor at the same θ (limit: 1 group), and the exact
+# fit.
+#
 # `NestedKriging` partitions the design into groups, fits one `Kriging`
 # sub-model per group (common hyperparameters), and aggregates the sub-model
 # predictions: `NK` (nested kriging: kriging of the sub-predictors, a proper
@@ -155,6 +162,17 @@ if compat.has("NestedKriging"):
     X, y, Xt, yt = design.dataset(TESTS["hartmann3"], 40, n_test=100, seed=61)
     with suite.runs("NestedKriging: fit (persistence)"):
         lkbench.persistence.check(suite, "NestedKriging", lk.NestedKriging(y, X, "matern5_2", nb_groups=4, seed=1), Xt, pred)
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/aggregations-large-n_NestedKriging_python.checks.csv` and `.metrics.csv`.
+
+# %%
+suite.summary()
 
 # %%
 suite.finalize()

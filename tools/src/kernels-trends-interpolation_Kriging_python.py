@@ -1,6 +1,14 @@
 # %% [markdown]
 # # Python · Kriging — kernels × trends, interpolation, predict (covariance, derivatives)
 #
+# **Idea.** The basic promise of noise-free Kriging, over the whole grid of kernels
+# and trends: it interpolates the data, its predictive variance vanishes at the design
+# points, its predicted derivatives are the derivatives of its prediction, and it is
+# accurate on smooth 1D to 3D functions.
+#
+# **Reference.** Finite differences of the prediction, the data themselves, and per-
+# function Q² floors.
+#
 # Plain noise-free `Kriging`, every kernel (`gauss`, `exp`, `matern3_2`,
 # `matern5_2`) crossed with every trend (`constant`, `linear`, `interactive`,
 # `quadratic`) on functions of different regularity:
@@ -189,6 +197,17 @@ for ax, fname in zip(axes, ["forrester", "gramacy_lee_2012"]):
     ax.plot(X, y, "ko")
     ax.set_title(fname)
     ax.legend()
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/kernels-trends-interpolation_Kriging_python.checks.csv` and `.metrics.csv`.
+
+# %%
+suite.summary()
 
 # %%
 suite.finalize()

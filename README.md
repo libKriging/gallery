@@ -1,74 +1,103 @@
-# libKriging benchmarks
+# libKriging gallery
 
-Test and benchmark notebooks for [libKriging](https://github.com/libKriging/libKriging),
-kept outside the library so that they can follow both its development head and
-its releases. Every notebook **checks** what it computes (error-level checks fail
-the run, warn-level ones are reported), and CI executes each of them against the
-**development head of libKriging and of its bindings**, saves it with its outputs,
-and aggregates the findings of every language into one report.
+Worked examples of [libKriging](https://github.com/libKriging/libKriging), one per
+use case: every model class (`Kriging` with its noise models and approximate fit
+methods, `NestedKriging`, `WarpKriging`, `MLPKriging`) on classical test problems,
+explained, plotted and tabulated, next to the packages it is usually compared with.
 
-The notebooks are at the root of the repository, named
-`<theme>_<kriging type>_<binding>.ipynb`; everything else (notebook sources,
-helpers, binding installation, CI scripts, known issues, baselines) is under
-[`tools/`](tools), the shared datasets under [`data/`](data), and the Binder
-environment under [`.binder/`](.binder).
+Each example is also a **validation**: what it shows is checked against a reference
+(finite differences, a fit from scratch, the exact model an approximation converges
+to, another kriging package at the same hyperparameters, the other bindings).
+CI runs every notebook against the **development head of libKriging and of its
+bindings** (and weekly against the releases), saves it with its outputs, and turns
+the checks into a report: the gallery is libKriging's end-to-end acceptance test.
 
-## Notebooks
+Every notebook starts with its **idea** and its **reference**, and ends with a
+**summary** of its checks; error-level checks fail the run, warn-level ones are
+reported (see [Checks and statuses](#checks-and-statuses)).
 
-The **executed** column links to the notebook as executed by the last CI run on
-`main` against libKriging master (outputs saved, failing checks included: a
-notebook that fails is kept up to its failing cell), a zip of the
-`executed-master-<notebook>` artifact (through [nightly.link](https://nightly.link),
-which serves the last artifact of a branch at a stable URL). Every run keeps
-these artifacts for 90 days: [all runs on `main`](https://github.com/libKriging/benchmarks/actions/workflows/notebooks.yml?query=branch%3Amain).
-All the executed notebooks of a run, in one zip:
-[executed-notebooks-master](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-notebooks-master.zip);
-the aggregated report with all CSV results:
-[report-master](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/report-master.zip).
+## The examples
 
-One binding per theme and Kriging type: Python, the most complete binding, unless the
-reference is specific to another language (DiceKriging and RobustGaSP in R, STK in
-Octave, GaussianProcesses.jl in Julia). The other bindings are checked against
-Python on every model class and fit method by the cross-binding notebooks.
+**executed**: the notebook as run by the last CI run on `main` against libKriging
+master, with its outputs (a zip of the `executed-master-<notebook>` artifact through
+[nightly.link](https://nightly.link), which serves the last artifact of a branch at a
+stable URL; [all runs on `main`](https://github.com/libKriging/gallery/actions/workflows/notebooks.yml?query=branch%3Amain)
+keep them 90 days; all of a run at once:
+[executed-notebooks-master](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-notebooks-master.zip),
+and the aggregated report: [report-master](https://nightly.link/libKriging/gallery/workflows/notebooks/main/report-master.zip)).
+**open in**: run it in a free hosted service (see [below](#running-a-notebook-in-colab-or-binder)).
 
-### Python (`pylibkriging`)
+One binding per use case: Python, the most complete binding, unless the reference
+belongs to another language (DiceKriging and RobustGaSP in R, STK in Octave,
+GaussianProcesses.jl in Julia); the cross-binding notebooks check that every
+binding gives the same numbers as Python, for every class and fit method.
 
-| notebook | kriging type | theme: problems, features | reference: compared with | executed | open in |
-|---|---|---|---|---|---|
-| [test-functions-reference-values_no-model_python](test-functions-reference-values_no-model_python.ipynb) | — | the 21 test functions of [`tools/lkbench/functions.py`](tools/lkbench/functions.py), plotted | published optima / values | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-test-functions-reference-values_no-model_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/benchmarks/blob/main/test-functions-reference-values_no-model_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/benchmarks/main?labpath=test-functions-reference-values_no-model_python.ipynb) |
-| [kernels-trends-interpolation_Kriging_python](kernels-trends-interpolation_Kriging_python.ipynb) | `Kriging` | 4 kernels × 4 trends on 8 functions (1D to 3D): interpolation, `predict` with covariance and derivatives | finite differences, Q² floors | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-kernels-trends-interpolation_Kriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/benchmarks/blob/main/kernels-trends-interpolation_Kriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/benchmarks/main?labpath=kernels-trends-interpolation_Kriging_python.ipynb) |
-| [objectives-LL-LOO-LMP-gradients_Kriging_python](objectives-LL-LOO-LMP-gradients_Kriging_python.ipynb) | `Kriging` | `LL` / `LOO` / `LMP` objectives and gradients, optimality of θ̂, `leaveOneOutVec`, multistart | finite differences, explicit refits | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-objectives-LL-LOO-LMP-gradients_Kriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/benchmarks/blob/main/objectives-LL-LOO-LMP-gradients_Kriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/benchmarks/main?labpath=objectives-LL-LOO-LMP-gradients_Kriging_python.ipynb) |
-| [update-simulate_Kriging_python](update-simulate_Kriging_python.ipynb) | `Kriging` | `update`, `simulate`, `update_simulate`, conditional paths in pictures | fit from scratch, Monte Carlo moments | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-update-simulate_Kriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/benchmarks/blob/main/update-simulate_Kriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/benchmarks/main?labpath=update-simulate_Kriging_python.ipynb) |
-| [high-dimension-normalize-screening_Kriging_python](high-dimension-normalize-screening_Kriging_python.ipynb) | `Kriging` | 6D to 20D engineering functions, `normalize`, screening (Welch) | explicit rescaling, known active inputs | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-high-dimension-normalize-screening_Kriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/benchmarks/blob/main/high-dimension-normalize-screening_Kriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/benchmarks/main?labpath=high-dimension-normalize-screening_Kriging_python.ipynb) |
-| [robustness-invalid-inputs_Kriging_python](robustness-invalid-inputs_Kriging_python.ipynb) | `Kriging` | invalid and degenerate inputs, ill-conditioning, scale equivariance, extrapolation, cost in q | equivariance identities, O(q) cost | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-robustness-invalid-inputs_Kriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/benchmarks/blob/main/robustness-invalid-inputs_Kriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/benchmarks/main?labpath=robustness-invalid-inputs_Kriging_python.ipynb) |
-| [save-load-pickle-copy-accessors_Kriging_python](save-load-pickle-copy-accessors_Kriging_python.ipynb) | `Kriging` | `save`/`load`, pickle, copy, accessors, for every noise model, objective and fit method | the original model | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-save-load-pickle-copy-accessors_Kriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/benchmarks/blob/main/save-load-pickle-copy-accessors_Kriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/benchmarks/main?labpath=save-load-pickle-copy-accessors_Kriging_python.ipynb) |
-| [sklearn-estimators_Kriging_python](sklearn-estimators_Kriging_python.ipynb) | `Kriging` | `pylibkriging.sklearn`: `Pipeline`, `GridSearchCV`, `clone`, `sample_y` | the native class | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-sklearn-estimators_Kriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/benchmarks/blob/main/sklearn-estimators_Kriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/benchmarks/main?labpath=sklearn-estimators_Kriging_python.ipynb) |
-| [vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python](vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.ipynb) | `Kriging` | default fits on 10 functions, 2D to 10D | scikit-learn, SMT, OpenTURNS, GPy (equality at fixed hyperparameters, accuracy, cost) | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/benchmarks/blob/main/vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/benchmarks/main?labpath=vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.ipynb) |
-| [noisy-data_Kriging-nugget-noise_python](noisy-data_Kriging-nugget-noise_python.ipynb) | `Kriging` with `noise="nugget"` or variances | estimated nugget, heteroscedastic noise, calibration, single start vs multistart | true noise, replicate averaging, interpolating fit | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-noisy-data_Kriging-nugget-noise_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/benchmarks/blob/main/noisy-data_Kriging-nugget-noise_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/benchmarks/main?labpath=noisy-data_Kriging-nugget-noise_python.ipynb) |
-| [large-n_Kriging-vecchia-nystrom_python](large-n_Kriging-vecchia-nystrom_python.ipynb) | `Kriging` with `method="vecchia(m)"` / `"nystrom(k)"` | large n (up to 5000), convergence to the exact model as m, k grow, `subsetOfData` | exact model (limit m = n − 1, k = n), exact fit | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-large-n_Kriging-vecchia-nystrom_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/benchmarks/blob/main/large-n_Kriging-vecchia-nystrom_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/benchmarks/main?labpath=large-n_Kriging-vecchia-nystrom_python.ipynb) |
-| [aggregations-large-n_NestedKriging_python](aggregations-large-n_NestedKriging_python.ipynb) | `NestedKriging` | `NK`, `PoE`, `gPoE`, `BCM`, `rBCM`, from 1 group to 32, large n; save/load, pickle | exact predictor (limit: 1 group), exact fit | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-aggregations-large-n_NestedKriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/benchmarks/blob/main/aggregations-large-n_NestedKriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/benchmarks/main?labpath=aggregations-large-n_NestedKriging_python.ipynb) |
-| [warpings-categorical-ordinal_WarpKriging_python](warpings-categorical-ordinal_WarpKriging_python.ipynb) | `WarpKriging` | affine, boxcox, kumaraswamy, knots, neural_mono, categorical, ordinal warpings; save/load, pickle | plain `Kriging` | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-warpings-categorical-ordinal_WarpKriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/benchmarks/blob/main/warpings-categorical-ordinal_WarpKriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/benchmarks/main?labpath=warpings-categorical-ordinal_WarpKriging_python.ipynb) |
-| [deep-kernel-projected-branin_MLPKriging_python](deep-kernel-projected-branin_MLPKriging_python.ipynb) | `MLPKriging` | deep kernel on a 10D function with a 2D structure, activations, multistart; save/load, pickle | plain `Kriging` | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-deep-kernel-projected-branin_MLPKriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/benchmarks/blob/main/deep-kernel-projected-branin_MLPKriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/benchmarks/main?labpath=deep-kernel-projected-branin_MLPKriging_python.ipynb) |
-| [cross-binding-reference_all-classes_python](cross-binding-reference_all-classes_python.ipynb) | all classes | the cross-binding protocol (all classes and fit methods): the Python reference | the other bindings (report) | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-cross-binding-reference_all-classes_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/benchmarks/blob/main/cross-binding-reference_all-classes_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/benchmarks/main?labpath=cross-binding-reference_all-classes_python.ipynb) |
+### Kriging: the basics
 
-### R, Octave, Julia (`rlibkriging`, `mLibKriging`, `JLibKriging`)
+| notebook | binding | kriging type | what it shows | validated against | executed | open in |
+|---|---|---|---|---|---|---|
+| [update-simulate_Kriging_python](update-simulate_Kriging_python.ipynb) | python | `Kriging` | the workflow on 1D to 6D functions: fit, `predict`, conditional paths, `update` with new data, `update_simulate`, in pictures | fit from scratch, Monte Carlo moments | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-update-simulate_Kriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/gallery/blob/main/update-simulate_Kriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/gallery/main?labpath=update-simulate_Kriging_python.ipynb) |
+| [kernels-trends-interpolation_Kriging_python](kernels-trends-interpolation_Kriging_python.ipynb) | python | `Kriging` | choosing a kernel and a trend: 4 × 4 combinations on 8 functions, interpolation, predicted covariance and derivatives | finite differences, Q² floors | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-kernels-trends-interpolation_Kriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/gallery/blob/main/kernels-trends-interpolation_Kriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/gallery/main?labpath=kernels-trends-interpolation_Kriging_python.ipynb) |
+| [objectives-LL-LOO-LMP-gradients_Kriging_python](objectives-LL-LOO-LMP-gradients_Kriging_python.ipynb) | python | `Kriging` | choosing the estimation criterion (`LL`, `LOO`, `LMP`), its profile around θ̂, multistart | finite differences, explicit leave-one-out refits | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-objectives-LL-LOO-LMP-gradients_Kriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/gallery/blob/main/objectives-LL-LOO-LMP-gradients_Kriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/gallery/main?labpath=objectives-LL-LOO-LMP-gradients_Kriging_python.ipynb) |
+| [high-dimension-normalize-screening_Kriging_python](high-dimension-normalize-screening_Kriging_python.ipynb) | python | `Kriging` | 6 to 20 inputs in physical units: `normalize`, reading the fitted θ to screen inputs (Welch) | explicit rescaling, known active inputs | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-high-dimension-normalize-screening_Kriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/gallery/blob/main/high-dimension-normalize-screening_Kriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/gallery/main?labpath=high-dimension-normalize-screening_Kriging_python.ipynb) |
+| [save-load-pickle-copy-accessors_Kriging_python](save-load-pickle-copy-accessors_Kriging_python.ipynb) | python | `Kriging` | saving, loading, pickling, copying a model; reading its settings back | the original model (to 1e-12) | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-save-load-pickle-copy-accessors_Kriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/gallery/blob/main/save-load-pickle-copy-accessors_Kriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/gallery/main?labpath=save-load-pickle-copy-accessors_Kriging_python.ipynb) |
+| [sklearn-estimators_Kriging_python](sklearn-estimators_Kriging_python.ipynb) | python | `Kriging` | libKriging inside scikit-learn: `Pipeline`, `GridSearchCV` over kernels, `cross_val_score`, `sample_y` | the native class | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-sklearn-estimators_Kriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/gallery/blob/main/sklearn-estimators_Kriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/gallery/main?labpath=sklearn-estimators_Kriging_python.ipynb) |
 
-| notebook | kriging type | theme: problems, features | reference: compared with | executed | open in |
-|---|---|---|---|---|---|
-| [vs-DiceKriging-RobustGaSP_Kriging_R](vs-DiceKriging-RobustGaSP_Kriging_R.ipynb) | `Kriging` | rlibkriging: default fits (Branin, Hartmann 3, Borehole) | DiceKriging (equality at fixed hyperparameters), RobustGaSP | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-vs-DiceKriging-RobustGaSP_Kriging_R.zip) | — |
-| [vs-STK_Kriging_octave](vs-STK_Kriging_octave.ipynb) | `Kriging` | mLibKriging: default fits (Branin, Hartmann 3, Borehole) | STK (equality at fixed hyperparameters, Gaussian kernel) | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-vs-STK_Kriging_octave.zip) | — |
-| [vs-GaussianProcesses_Kriging_julia](vs-GaussianProcesses_Kriging_julia.ipynb) | `Kriging` | JLibKriging: default fits (Branin, Hartmann 3, Borehole) | GaussianProcesses.jl | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-vs-GaussianProcesses_Kriging_julia.zip) | — |
-| [cross-binding_all-classes_R](cross-binding_all-classes_R.ipynb) | all classes | the cross-binding protocol, R side | Python (report) | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-cross-binding_all-classes_R.zip) | — |
-| [cross-binding_all-classes_octave](cross-binding_all-classes_octave.ipynb) | all classes | the cross-binding protocol, Octave side | Python (report) | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-cross-binding_all-classes_octave.zip) | — |
-| [cross-binding_all-classes_julia](cross-binding_all-classes_julia.ipynb) | all classes | the cross-binding protocol, Julia side | Python (report) | [zip](https://nightly.link/libKriging/benchmarks/workflows/notebooks/main/executed-master-cross-binding_all-classes_julia.zip) | — |
+### Noisy observations
 
-A notebook that compares libKriging with another package installs that package
-itself, in its first cells (pip, CRAN, `Pkg.add`, or a clone of STK); a package
-that cannot be installed is reported (warn-level) and its comparison skipped.
+| notebook | binding | kriging type | what it shows | validated against | executed | open in |
+|---|---|---|---|---|---|---|
+| [noisy-data_Kriging-nugget-noise_python](noisy-data_Kriging-nugget-noise_python.ipynb) | python | `Kriging` with `noise="nugget"` or variances | estimated nugget vs known noise variances, replicates, calibrated intervals on the noise-free function | true noise, replicate averaging, interpolating fit | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-noisy-data_Kriging-nugget-noise_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/gallery/blob/main/noisy-data_Kriging-nugget-noise_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/gallery/main?labpath=noisy-data_Kriging-nugget-noise_python.ipynb) |
 
-Test functions: [`tools/lkbench/functions.py`](tools/lkbench/functions.py), after the
+### Large datasets
+
+| notebook | binding | kriging type | what it shows | validated against | executed | open in |
+|---|---|---|---|---|---|---|
+| [large-n_Kriging-vecchia-nystrom_python](large-n_Kriging-vecchia-nystrom_python.ipynb) | python | `Kriging` with `method="vecchia(m)"` / `"nystrom(k)"` | n up to 5000: Vecchia and Nyström fits, their convergence to the exact model as m and k grow, `subsetOfData` | exact model (limits m = n − 1, k = n), exact fit | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-large-n_Kriging-vecchia-nystrom_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/gallery/blob/main/large-n_Kriging-vecchia-nystrom_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/gallery/main?labpath=large-n_Kriging-vecchia-nystrom_python.ipynb) |
+| [aggregations-large-n_NestedKriging_python](aggregations-large-n_NestedKriging_python.ipynb) | python | `NestedKriging` | splitting a design into groups: `NK`, `PoE`, `gPoE`, `BCM`, `rBCM`, from 1 group to 32 | exact predictor (limit: 1 group), exact fit | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-aggregations-large-n_NestedKriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/gallery/blob/main/aggregations-large-n_NestedKriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/gallery/main?labpath=aggregations-large-n_NestedKriging_python.ipynb) |
+
+### Non-stationary, categorical and ordinal inputs
+
+| notebook | binding | kriging type | what it shows | validated against | executed | open in |
+|---|---|---|---|---|---|---|
+| [warpings-categorical-ordinal_WarpKriging_python](warpings-categorical-ordinal_WarpKriging_python.ipynb) | python | `WarpKriging` | input warpings (affine, boxcox, kumaraswamy, knots, neural_mono), categorical and ordinal inputs | plain `Kriging` (accuracy, NLPD), `none` warping = `Kriging` | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-warpings-categorical-ordinal_WarpKriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/gallery/blob/main/warpings-categorical-ordinal_WarpKriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/gallery/main?labpath=warpings-categorical-ordinal_WarpKriging_python.ipynb) |
+
+### Deep kernels
+
+| notebook | binding | kriging type | what it shows | validated against | executed | open in |
+|---|---|---|---|---|---|---|
+| [deep-kernel-projected-branin_MLPKriging_python](deep-kernel-projected-branin_MLPKriging_python.ipynb) | python | `MLPKriging` | an MLP feature map finding the 2D structure of a 10D function; activations, multistart | plain `Kriging` | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-deep-kernel-projected-branin_MLPKriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/gallery/blob/main/deep-kernel-projected-branin_MLPKriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/gallery/main?labpath=deep-kernel-projected-branin_MLPKriging_python.ipynb) |
+
+### libKriging and other kriging packages
+
+| notebook | binding | kriging type | what it shows | validated against | executed | open in |
+|---|---|---|---|---|---|---|
+| [vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python](vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.ipynb) | python | `Kriging` | same hyperparameters → same numbers, then default fits on 10 functions (accuracy, calibration, cost) | scikit-learn, SMT, OpenTURNS, GPy | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/gallery/blob/main/vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/gallery/main?labpath=vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.ipynb) |
+| [vs-DiceKriging-RobustGaSP_Kriging_R](vs-DiceKriging-RobustGaSP_Kriging_R.ipynb) | R | `Kriging` | rlibkriging next to the R references: equality at fixed hyperparameters, default fits | DiceKriging, RobustGaSP | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-vs-DiceKriging-RobustGaSP_Kriging_R.zip) | — |
+| [vs-STK_Kriging_octave](vs-STK_Kriging_octave.ipynb) | octave | `Kriging` | mLibKriging next to STK: equality at fixed hyperparameters (Gaussian kernel), default fits | STK | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-vs-STK_Kriging_octave.zip) | — |
+| [vs-GaussianProcesses_Kriging_julia](vs-GaussianProcesses_Kriging_julia.ipynb) | julia | `Kriging` | JLibKriging next to GaussianProcesses.jl: default fits | GaussianProcesses.jl | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-vs-GaussianProcesses_Kriging_julia.zip) | — |
+
+### Validation only
+
+| notebook | binding | kriging type | what it shows | validated against | executed | open in |
+|---|---|---|---|---|---|---|
+| [test-functions-reference-values_no-model_python](test-functions-reference-values_no-model_python.ipynb) | python | — | the 21 test functions used throughout, plotted and checked | published optima / values | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-test-functions-reference-values_no-model_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/gallery/blob/main/test-functions-reference-values_no-model_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/gallery/main?labpath=test-functions-reference-values_no-model_python.ipynb) |
+| [robustness-invalid-inputs_Kriging_python](robustness-invalid-inputs_Kriging_python.ipynb) | python | `Kriging` | invalid and degenerate inputs, ill-conditioning, units, extrapolation, prediction cost in q | equivariance identities, O(q) cost | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-robustness-invalid-inputs_Kriging_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/gallery/blob/main/robustness-invalid-inputs_Kriging_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/gallery/main?labpath=robustness-invalid-inputs_Kriging_python.ipynb) |
+| [cross-binding-reference_all-classes_python](cross-binding-reference_all-classes_python.ipynb) | python | all classes | the same data and options in every binding, every class and fit method: the Python values | R, Octave, Julia (report) | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-cross-binding-reference_all-classes_python.zip) | [Colab](https://colab.research.google.com/github/libKriging/gallery/blob/main/cross-binding-reference_all-classes_python.ipynb) · [Binder](https://mybinder.org/v2/gh/libKriging/gallery/main?labpath=cross-binding-reference_all-classes_python.ipynb) |
+| [cross-binding_all-classes_R](cross-binding_all-classes_R.ipynb) | R | all classes | the R side of the cross-binding protocol | Python (report) | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-cross-binding_all-classes_R.zip) | — |
+| [cross-binding_all-classes_octave](cross-binding_all-classes_octave.ipynb) | octave | all classes | the Octave side | Python (report) | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-cross-binding_all-classes_octave.zip) | — |
+| [cross-binding_all-classes_julia](cross-binding_all-classes_julia.ipynb) | julia | all classes | the Julia side | Python (report) | [zip](https://nightly.link/libKriging/gallery/workflows/notebooks/main/executed-master-cross-binding_all-classes_julia.zip) | — |
+
+Notebooks are named `<theme>_<kriging type>_<binding>.ipynb`. Those comparing
+with another package install it themselves, in their first cells (pip, CRAN,
+`Pkg.add`, or a clone of STK); a package that cannot be installed is reported
+(warn-level) and its comparison skipped. Test functions:
+[`tools/lkbench/functions.py`](tools/lkbench/functions.py), after the
 [Virtual Library of Simulation Experiments](https://www.sfu.ca/~ssurjano/)
-(Surjanovic & Bingham).
+(Surjanovic & Bingham). Everything that is not a notebook is under
+[`tools/`](tools) (sources of the notebooks, helpers, installation of the bindings,
+CI scripts, known issues, baselines), the shared datasets under [`data/`](data),
+the Binder environment under [`.binder/`](.binder).
 
 ## Running a notebook in Colab or Binder
 
@@ -132,16 +161,19 @@ what it needs (BLAS/LAPACK headers, Octave, R, Julia).
 
 Notebooks are generated from plain-text sources ([`tools/src/`](tools/src), cells
 separated by `# %%` / `# %% [markdown]`, or `% %%` in Octave), so that reviews are
-plain diffs, and get the setup cell of `tools/notebook_setup.py` (Python); outputs are not committed (CI archives the executed notebooks as
-artifacts, see [Notebooks](#notebooks)).
+plain diffs, and get the setup cell of `tools/notebook_setup.py` (Python); outputs
+are not committed (CI archives the executed notebooks as artifacts, see
+[The examples](#the-examples)).
 
 ```sh
 python tools/py2nb.py           # regenerate every notebook from tools/src/
 python tools/py2nb.py --check   # CI: sources and notebooks in sync, no notebook without source
 ```
 
-A new notebook is a new source in `tools/src/` named `<theme>_<kriging type>_<binding>`,
-with its suite named the same, and a line in the tables above (CI checks that
+A new example is a new source in `tools/src/` named `<theme>_<kriging type>_<binding>`,
+with its suite named the same, an **Idea** and a **Reference** paragraph after its
+title, plots and tables of its results, its checks, a final `## Summary` cell, and a
+line in the tables above (CI checks that
 every notebook is linked from this README); CI picks it up automatically.
 
 Shared datasets (`data/`, used by the cross-binding notebooks of every language)

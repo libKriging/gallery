@@ -1,6 +1,13 @@
 # %% [markdown]
 # # Python · WarpKriging — non-stationarity, categorical and ordinal inputs
 #
+# **Idea.** Input warpings handle non-stationarity and categorical or ordinal inputs;
+# each warping must beat, or at least match, plain Kriging where it is meant to help,
+# without making the predictive variance overconfident.
+#
+# **Reference.** Plain `Kriging` on the same data (accuracy and NLPD), and `none`
+# warping = `Kriging`.
+#
 # `WarpKriging` learns a transform per input variable jointly with the GP
 # hyperparameters. Problems where a plain stationary GP is the wrong model:
 #
@@ -191,6 +198,17 @@ if compat.has("WarpKriging"):
     X, y, Xt, yt = design.dataset(TESTS["hartmann3"], 40, n_test=100, seed=61)
     with suite.runs("WarpKriging: fit (persistence)"):
         lkbench.persistence.check(suite, "WarpKriging", lk.WarpKriging(y, X, ["kumaraswamy", "none", "affine"], "matern5_2"), Xt, pred)
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/warpings-categorical-ordinal_WarpKriging_python.checks.csv` and `.metrics.csv`.
+
+# %%
+suite.summary()
 
 # %%
 suite.finalize()

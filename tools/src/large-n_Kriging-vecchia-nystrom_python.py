@@ -1,6 +1,13 @@
 # %% [markdown]
 # # Python · Kriging with `method="vecchia"` / `"nystrom"` — large n
 #
+# **Idea.** Vecchia and Nyström approximations make Kriging affordable for large n;
+# how much accuracy do they cost, and do they converge to the exact model as their
+# size parameter grows?
+#
+# **Reference.** The exact model at the same θ (limits m = n − 1 and k = n), and the
+# exact fit.
+#
 # The exact fit costs O(n³). `Kriging` offers:
 #
 # * `method="vecchia(m)"`: Vecchia likelihood with m conditioning neighbours
@@ -160,6 +167,17 @@ for fname, (n_mid, n_big) in CASES.items():
                                   severity="warn")
                     suite.less(f"{case}/{label}: fit time / exact fit time", t / t_exact, 1.0, severity="warn")
 suite.table().round(4)
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/large-n_Kriging-vecchia-nystrom_python.checks.csv` and `.metrics.csv`.
+
+# %%
+suite.summary()
 
 # %%
 suite.finalize()

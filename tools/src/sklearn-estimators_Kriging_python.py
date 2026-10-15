@@ -1,13 +1,21 @@
 # %% [markdown]
 # # Python · Kriging — scikit-learn estimators (`pylibkriging.sklearn`)
 #
+# **Idea.** `pylibkriging.sklearn` makes `Kriging` a scikit-learn estimator, usable in
+# pipelines, grid searches and cross-validation.
+#
+# **Reference.** The native `Kriging` class on the same data (same predictions), and
+# scikit-learn's estimator conventions.
+#
 # `KrigingRegressor` (the scikit-learn face of `Kriging`) on Hartmann 3:
 # `fit`/`predict` (scikit-learn conventions), the same predictions as the native
 # class, `get_params`/`set_params`/`clone`, use inside `Pipeline`,
 # `GridSearchCV`, `cross_val_score`, and `sample_y`.
 
 # %%
+import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 import pylibkriging as lk
 
 import lkbench
@@ -75,6 +83,14 @@ if compat.has("sklearn"):
         gs = GridSearchCV(KrigingRegressor(), {"kernel": ["gauss", "matern3_2", "matern5_2"]}, cv=3).fit(X, y)
         suite.true("GridSearchCV picked a kernel", gs.best_params_["kernel"] in ("gauss", "matern3_2", "matern5_2"),
                    detail=str(gs.best_params_))
+        cv = pd.DataFrame(gs.cv_results_)[["param_kernel", "mean_test_score", "std_test_score", "mean_fit_time"]]
+        for _, r in cv.iterrows():
+            suite.metric("hartmann3/GridSearchCV", str(r["param_kernel"]), cv_r2=r["mean_test_score"],
+                         cv_r2_sd=r["std_test_score"], fit_s=r["mean_fit_time"])
+        plt.figure(figsize=(5, 3.2))
+        plt.bar(cv["param_kernel"].astype(str), cv["mean_test_score"], yerr=cv["std_test_score"], capsize=4)
+        plt.ylabel("3-fold CV R²"); plt.title(f"GridSearchCV(KrigingRegressor): best = {gs.best_params_['kernel']}")
+        plt.ylim(min(0, cv["mean_test_score"].min() - .05), 1.02); plt.show()
     with suite.runs("cross_val_score"):
         sc = cross_val_score(KrigingRegressor(kernel="matern5_2"), X, y, cv=4)
         suite.finite("cross_val_score finite", sc)
@@ -83,6 +99,17 @@ if compat.has("sklearn"):
         suite.true("sample_y shape (q, n_samples)", np.shape(S) == (10, 5), detail=str(np.shape(S)))
 else:
     suite.skip("sklearn estimators", "pylibkriging.sklearn or scikit-learn not available")
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/sklearn-estimators_Kriging_python.checks.csv` and `.metrics.csv`.
+
+# %%
+suite.summary()
 
 # %%
 suite.finalize()

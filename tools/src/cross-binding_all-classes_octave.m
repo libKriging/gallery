@@ -1,6 +1,12 @@
 % %% [markdown]
 % # Octave · all classes — cross-binding consistency: the Octave side
 %
+% **Idea.** The Octave side of the cross-binding protocol: mLibKriging must give the
+% numbers of pylibkriging on the same data, for every model class and fit method.
+%
+% **Reference.** The Python values (`cross-binding-reference_all-
+% classes_python.ipynb`), compared by `tools/report.py`.
+%
 % Same protocol as `cross-binding-reference_all-classes_python.ipynb` (see there), on the
 % shared datasets of `data/`; writes `results/xbind_octave.csv`, compared with
 % the Python values by `tools/report.py`. mLibKriging must be on the path
@@ -96,6 +102,31 @@ for i = 1:size(out, 1)
 end
 fclose(fid);
 printf("%d values written\n", size(out, 1));
+
+% %% [markdown]
+% ## The values written
+%
+% First value of each quantity and dataset (each compared with Python by the
+% report; plots are left to the Python reference, Octave's graphics toolkit not
+% being available on every runner).
+
+% %%
+keys = strcat(out(:, 2), " ", out(:, 3));
+[u, first] = unique(keys, "first");
+for i = 1:numel(u)
+  printf("%-36s %s (%d values)\n", u{i}, out{first(i), 5}, sum(strcmp(keys, u{i})));
+end
+
+% %% [markdown]
+% ## Summary
+%
+% The metrics of this notebook, the number of checks per status, and every check that
+% did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+% `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+% All of them are also written to `results/cross-binding_all-classes_octave.checks.csv` and `.metrics.csv`.
+
+% %%
+lkb_summary(s);
 
 % %%
 lkb_finalize(s);

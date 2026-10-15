@@ -1,6 +1,12 @@
 # %% [markdown]
 # # R · Kriging vs DiceKriging and RobustGaSP
 #
+# **Idea.** libKriging's `Kriging` follows DiceKriging: at the same hyperparameters it
+# must give DiceKriging's numbers, and its default fit must be as accurate as the R
+# references.
+#
+# **Reference.** DiceKriging (exact equality) and RobustGaSP (accuracy, cost).
+#
 # DiceKriging is the reference implementation libKriging's `Kriging` follows
 # (same product-form kernels and range parametrization, same concentrated
 # likelihood). Hence two levels of comparison:
@@ -101,7 +107,14 @@ for (name in DATASETS) {
   }
 }
 res <- do.call(rbind, results)
-print(reshape(res[, c("dataset", "package", "q2")], idvar = "dataset", timevar = "package", direction = "wide"))
+print(reshape(res[, c("dataset", "package", "q2", "fit_s")], idvar = "dataset", timevar = "package", direction = "wide"))
+op <- par(mfrow = c(1, 2), mar = c(4, 4, 2, 1))
+q <- tapply(res$q2, list(res$package, res$dataset), mean)
+barplot(pmax(q, 0), beside = TRUE, legend.text = rownames(q), args.legend = list(x = "bottomright", cex = .7),
+        ylim = c(0, 1), ylab = "Q2 (test set)", main = "Default fits: accuracy")
+t <- tapply(res$fit_s, list(res$package, res$dataset), mean)
+barplot(t, beside = TRUE, log = "y", ylab = "fit time (s)", main = "Default fits: cost")
+par(op)
 
 # %%
 for (name in DATASETS) {
@@ -110,6 +123,17 @@ for (name in DATASETS) {
   check_greater(s, paste0(name, ": Q2(rlibkriging) - best other package"), r$q2[r$package == "rlibkriging"] - best_other, -0.02, severity = "warn")
   check_greater(s, paste0(name, ": Q2(rlibkriging BFGS10) > 0.9"), r$q2[r$package == "rlibkriging BFGS10"], 0.9)
 }
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/vs-DiceKriging-RobustGaSP_Kriging_R.checks.csv` and `.metrics.csv`.
+
+# %%
+summary_suite(s)
 
 # %%
 finalize(s)

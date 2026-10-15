@@ -1,6 +1,12 @@
 # %% [markdown]
 # # Python · Kriging vs scikit-learn, SMT, OpenTURNS, GPy
 #
+# **Idea.** How does libKriging compare with the Python GP packages, first as an
+# implementation (same hyperparameters → same numbers), then as a tool (default fits:
+# accuracy, calibration, cost) on 10 functions?
+#
+# **Reference.** Scikit-learn, SMT, OpenTURNS and GPy.
+#
 # Two kinds of comparisons, which should not be confused:
 #
 # 1. **Same model, same hyperparameters → same numbers.** With θ, σ², β fixed,
@@ -238,6 +244,17 @@ for fname in CASES:
     suite.greater(f"{fname}: Q2(pylibkriging BFGS10) - best other package", s["pylibkriging BFGS10"] - others.max(),
                   -0.05, detail=f"best: {others.idxmax()}") if len(others) else None
     suite.greater(f"{fname}: Q2(pylibkriging BFGS10) > 0.5", s["pylibkriging BFGS10"], 0.5)
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.checks.csv` and `.metrics.csv`.
+
+# %%
+suite.summary()
 
 # %%
 suite.finalize()

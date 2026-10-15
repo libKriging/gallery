@@ -42,7 +42,7 @@ def _find_root():
     for d in [Path.cwd(), *Path.cwd().parents]:
         if (d / "tools" / "known_issues.csv").is_file():
             return d
-    raise RuntimeError("libKriging benchmarks repository not found from the working directory "
+    raise RuntimeError("libKriging gallery repository not found from the working directory "
                        f"{Path.cwd()}: run the notebooks from the repository root, or set LKBENCH_ROOT")
 
 
@@ -162,6 +162,23 @@ class Suite:
         df = pd.DataFrame(self.metrics)
         df["value"] = pd.to_numeric(df["value"], errors="coerce")
         return df.pivot_table(index=["case", "package"], columns="metric", values="value", sort=False)
+
+    def summary(self):
+        """End-of-notebook summary: the metrics table, the count per status, and every check
+        that did not pass (with its value, threshold and, for KNOWN, its issue)."""
+        import pandas as pd
+        try:
+            from IPython.display import display
+        except ImportError:  # outside Jupyter
+            display = print
+        if self.metrics:
+            display(self.table().round(4))
+        df = pd.DataFrame(self.checks, columns=CHECK_FIELDS)
+        counts = {s: int((df["status"] == s).sum()) for s in ("PASS", "FAIL", "WARN", "KNOWN", "SKIP")}
+        print(f"{len(df)} checks: " + ", ".join(f"{k} {v}" for k, v in counts.items()))
+        others = df[df["status"] != "PASS"][["status", "severity", "check", "value", "expected", "detail"]]
+        if len(others):
+            display(others.reset_index(drop=True))
 
     # -- output ---------------------------------------------------------------
 

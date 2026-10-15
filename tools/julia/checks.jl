@@ -56,6 +56,18 @@ function write_rows(f, header, rows)
     end
 end
 
+function summary!(s::Suite)
+    # end-of-notebook summary: metrics, count per status, every check that did not pass
+    for r in s.metrics
+        println(rpad(r[3], 28), rpad(r[4], 28), rpad(r[5], 12), r[6])
+    end
+    st = [c[5] for c in s.checks]
+    println(length(st), " checks: ", join(["$k $(count(==(k), st))" for k in ("PASS", "FAIL", "WARN", "KNOWN", "SKIP")], ", "))
+    for c in s.checks
+        c[5] == "PASS" || println(rpad(c[5], 7), rpad(c[4], 7), c[3], ": value ", c[6], ", expected ", c[7], " ", c[8])
+    end
+end
+
 function finalize!(s::Suite)
     add_metric!(s, "_suite", "_"; elapsed_s=time() - s.t0)
     write_rows(joinpath(RESULTS_DIR, s.name * ".checks.csv"),

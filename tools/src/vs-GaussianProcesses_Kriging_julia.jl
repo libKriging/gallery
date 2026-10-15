@@ -1,6 +1,11 @@
 # %% [markdown]
 # # Julia · Kriging vs GaussianProcesses.jl
 #
+# **Idea.** JLibKriging against the main Julia GP package: default fits on the shared
+# datasets.
+#
+# **Reference.** GaussianProcesses.jl (accuracy and cost).
+#
 # Default fits on the shared datasets of `data/` (Branin, Hartmann 3, Borehole):
 # JLibKriging (`matern5_2`, constant trend, single start and 10 restarts) against
 # [GaussianProcesses.jl](https://github.com/STOR-i/GaussianProcesses.jl)
@@ -66,6 +71,17 @@ for name in ("branin", "hartmann3", "borehole")
 end
 have_gp || add_check!(s, "GaussianProcesses.jl available", false; value="absent", severity="warn")
 foreach(r -> println(join(r[3:6], "  ")), s.metrics)
+
+# %% [markdown]
+# ## Summary
+#
+# The metrics of this notebook, the number of checks per status, and every check that
+# did not pass (FAIL: error-level, fails the run; WARN: warn-level; KNOWN: listed in
+# `tools/known_issues.csv`, with its issue; SKIP: feature absent from the installed version).
+# All of them are also written to `results/vs-GaussianProcesses_Kriging_julia.checks.csv` and `.metrics.csv`.
+
+# %%
+summary!(s)
 
 # %%
 finalize!(s)

@@ -153,7 +153,7 @@ def main(argv=None):
 
     checks = read_all(args.results, "*.checks.csv")
     metrics = read_all(args.results, "*.metrics.csv")
-    lines = ["# libKriging benchmark report\n"]
+    lines = ["# libKriging gallery: validation report\n"]
     exit_code = 0
 
     # 1. status per notebook
