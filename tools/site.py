@@ -27,6 +27,7 @@ import base64
 import csv
 import html
 import json
+import re
 import shutil
 import sys
 from collections import Counter
@@ -250,6 +251,8 @@ def build(args):
         else:
             nb, ran = py2nb.convert(src), False
         nbformat.write(nb, out / "notebooks" / f"{src.stem}.ipynb")
+        for key in ("title", "idea", "reference"):  # plain text on the cards
+            meta[key] = re.sub(r"`([^`]*)`", r"\1", meta[key] or "").replace("**", "")
         title = meta["title"].split(" · ", 1)[-1]
         img = first_image(nb)
         ext, data = img if img else ("svg", placeholder(meta["language"], title))
