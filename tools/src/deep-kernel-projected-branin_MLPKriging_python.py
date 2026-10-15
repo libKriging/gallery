@@ -24,10 +24,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pylibkriging as lk
 
-import lkgallery
-from lkgallery import TESTS, design, metrics, compat
+import gallery
+from gallery import TESTS, design, metrics, compat
 
-suite = lkgallery.Suite("deep-kernel-projected-branin_MLPKriging_python")
+suite = gallery.Suite("deep-kernel-projected-branin_MLPKriging_python")
 print("pylibkriging", compat.version())
 
 
@@ -55,26 +55,26 @@ if compat.has("MLPKriging"):
     for act in ["tanh", "selu"]:
         for optim in ["BFGS", "BFGS10"]:
             case = f"MLPKriging({act}, {optim})"
-            with suite.runs(f"{case}: fit"):
+            with suite.check_runs(f"{case}: fit"):
                 t0 = time.time()
                 km = lk.MLPKriging(y, X, hidden_dims=[16, 8], d_out=2, activation=act, kernel="matern5_2",
                                    optim=optim)
                 fit_s = time.time() - t0
                 m, s = pred(km, Xt)
-                suite.finite(f"{case}: predictions finite", m)
+                suite.check_finite(f"{case}: predictions finite", m)
                 res = metrics.all_metrics(yt, m, s)
                 suite.metric("projected_branin_10d", f"MLPKriging {act} {optim}", fit_s=fit_s,
                              ll=float(km.logLikelihood()), **res)
                 if optim == "BFGS10":
-                    suite.greater(f"{case}: Q2", res["q2"], 0.8)
+                    suite.check_greater(f"{case}: Q2", res["q2"], 0.8)
                 else:
-                    suite.greater(f"{case}: Q2 - Q2(Kriging)", res["q2"] - res_k["q2"], -0.1, severity="warn")
+                    suite.check_greater(f"{case}: Q2 - Q2(Kriging)", res["q2"] - res_k["q2"], -0.1, severity="warn")
     tab = suite.table().loc["projected_branin_10d"]
     tab["q2"].plot.barh(figsize=(6, 3)); plt.xlabel("Q² (test set)"); plt.xlim(min(0, tab["q2"].min()), 1)
     plt.title("Branin(Wx), x in [0,1]^10"); plt.show()
     display(tab.round(4))
 else:
-    suite.skip("MLPKriging", "not available in this pylibkriging")
+    suite.check_skip("MLPKriging", "not available in this pylibkriging")
 
 # %% [markdown]
 # ## save / load, pickle, copy
@@ -86,8 +86,8 @@ else:
 # %%
 if compat.has("MLPKriging"):
     X, y, Xt, yt = design.dataset(TESTS["hartmann3"], 40, n_test=100, seed=61)
-    with suite.runs("MLPKriging: fit (persistence)"):
-        lkgallery.persistence.check(suite, "MLPKriging", lk.MLPKriging(y, X, hidden_dims=[8], d_out=2, activation="tanh",
+    with suite.check_runs("MLPKriging: fit (persistence)"):
+        gallery.persistence.check(suite, "MLPKriging", lk.MLPKriging(y, X, hidden_dims=[8], d_out=2, activation="tanh",
                                                        kernel="matern5_2"), Xt, pred)
 
 # %% [markdown]

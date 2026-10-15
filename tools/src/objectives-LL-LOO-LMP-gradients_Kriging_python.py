@@ -37,10 +37,10 @@ import numpy as np
 import pandas as pd
 import pylibkriging as lk
 
-import lkgallery
-from lkgallery import TESTS, design, metrics, compat
+import gallery
+from gallery import TESTS, design, metrics, compat
 
-suite = lkgallery.Suite("objectives-LL-LOO-LMP-gradients_Kriging_python")
+suite = gallery.Suite("objectives-LL-LOO-LMP-gradients_Kriging_python")
 print("pylibkriging", compat.version())
 CASES = {"branin": 25, "hartmann3": 40, "ishigami": 60, "friedman": 50}
 KERNELS = ["gauss", "exp", "matern3_2", "matern5_2"]
@@ -76,7 +76,7 @@ for fname, n in CASES.items():
                 err = np.max(np.abs(grad - fd)) / max(np.max(np.abs(fd)), 1e-8)
                 worst = max(worst, err)
             rows.append((fname, kernel, objective, worst))
-            suite.less(f"{fname}/{kernel}/{objective}: gradient vs finite diff (rel. err)", worst, 1e-3)
+            suite.check_less(f"{fname}/{kernel}/{objective}: gradient vs finite diff (rel. err)", worst, 1e-3)
 pd.DataFrame(rows, columns=["function", "kernel", "objective", "max rel. error"]).pivot_table(
     index=["function", "kernel"], columns="objective", values="max rel. error").style.format("{:.1e}")
 
@@ -102,7 +102,7 @@ for fname, n in CASES.items():
                 tol = 1e-4 * abs(best) + (0.0 if objective == "LOO" else 1e-2)
                 if SIGN[objective] * f(t, False)[0] > best + tol and not at_bound:
                     improved.append(f"theta{j + 1}*{fac}")
-        suite.true(f"{fname}/{objective}: theta_hat not improved by +/-10% moves", not improved,
+        suite.check_true(f"{fname}/{objective}: theta_hat not improved by +/-10% moves", not improved,
                    detail=f"theta={np.round(theta, 4)}; improving moves: {improved}")
         m, s, *_ = k.predict(Xt, return_stdev=True)
         suite.metric(f"{fname}/{objective}", "pylibkriging", **metrics.all_metrics(yt, m, s))
@@ -132,7 +132,7 @@ for ax, objective in zip(axes, ["LL", "LOO", "LMP"]):
     ax.semilogx(ts, vals); ax.axvline(1, color="k", ls="--", lw=.8)
     ax.set_title(f"{objective}, θ̂ = {np.round(theta, 3)}"); ax.set_xlabel("t (θ = t · θ̂)")
     i = int(np.argmax(vals) if SIGN[objective] > 0 else np.argmin(vals))
-    suite.between(f"branin/{objective}: optimum of the profile along t * theta_hat (t)", ts[i], 0.8, 1.25,
+    suite.check_between(f"branin/{objective}: optimum of the profile along t * theta_hat (t)", ts[i], 0.8, 1.25,
                   severity="warn")
 axes[0].set_ylabel("criterion"); plt.tight_layout(); plt.show()
 
@@ -145,7 +145,7 @@ X, y, _, _ = design.dataset(tf, 40, seed=5)
 for objective, getter in [("LL", "logLikelihood"), ("LOO", "leaveOneOut"), ("LMP", "logMargPost")]:
     k = lk.Kriging(y, X, "matern5_2", objective=objective)
     v_fun = objective_fun(k, objective)(np.asarray(k.theta()).ravel(), False)[0]
-    suite.close(f"{getter}() == {objective} function at theta()", getattr(k, getter)(), v_fun, rtol=1e-8)
+    suite.check_close(f"{getter}() == {objective} function at theta()", getattr(k, getter)(), v_fun, rtol=1e-8)
 
 # %% [markdown]
 # ## Closed-form leave-one-out vs explicit refits
@@ -171,14 +171,14 @@ for fname in ["branin", "hartmann3"]:
                                         "sigma2": sigma2, "is_sigma2_estim": False})
             mi, si, *_ = ki.predict(X[i:i + 1], return_stdev=True)
             m_ref[i], s_ref[i] = np.ravel(mi)[0], np.ravel(si)[0]
-        suite.close(f"{fname}/{trend}: leaveOneOutVec mean == explicit refits", m_loo, m_ref,
+        suite.check_close(f"{fname}/{trend}: leaveOneOutVec mean == explicit refits", m_loo, m_ref,
                     rtol=1e-6, atol=1e-8 * np.std(y))
-        suite.close(f"{fname}/{trend}: leaveOneOutVec stdev == explicit refits", s_loo, s_ref,
+        suite.check_close(f"{fname}/{trend}: leaveOneOutVec stdev == explicit refits", s_loo, s_ref,
                     rtol=1e-4, atol=1e-8 * np.std(y), severity="warn")
         # leaveOneOut() is the mean squared LOO error at the fitted theta
         k_loo = lk.Kriging(y, X, "matern5_2", regmodel=trend, objective="LOO")
         m2, _ = k_loo.leaveOneOutVec(np.asarray(k_loo.theta()).ravel())
-        suite.close(f"{fname}/{trend}: leaveOneOut() == mean squared LOO error", k_loo.leaveOneOut(),
+        suite.check_close(f"{fname}/{trend}: leaveOneOut() == mean squared LOO error", k_loo.leaveOneOut(),
                     np.mean((np.ravel(m2) - y) ** 2), rtol=1e-6, severity="warn")
 
 # %% [markdown]
@@ -197,8 +197,8 @@ for fname, n in CASES.items():
     suite.metric(fname, "BFGS", ll=ll1)
     suite.metric(fname, "BFGS10", ll=ll10)
     suite.metric(fname, "BFGS20", ll=ll20)
-    suite.greater(f"{fname}: LL(BFGS10) - LL(BFGS)", ll10 - ll1, -1e-3 * abs(ll1), severity="warn")
-    suite.less(f"{fname}: LL(BFGS20) - LL(BFGS) (default fit far from the best optimum)", ll20 - ll1, 1.0,
+    suite.check_greater(f"{fname}: LL(BFGS10) - LL(BFGS)", ll10 - ll1, -1e-3 * abs(ll1), severity="warn")
+    suite.check_less(f"{fname}: LL(BFGS20) - LL(BFGS) (default fit far from the best optimum)", ll20 - ll1, 1.0,
                severity="warn")
 suite.table().loc[list(CASES)].unstack("package")
 

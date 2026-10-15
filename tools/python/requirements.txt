@@ -1,0 +1,11 @@
+# What the Python notebooks need besides pylibkriging (tools/install/python.sh installs it):
+# the dependencies of gallery.py, and the notebook runner. The comparison packages
+# (scikit-learn, SMT, OpenTURNS, GPy, ...) are installed by the notebooks that use them.
+numpy
+scipy
+pandas
+matplotlib
+jinja2        # DataFrame.style
+nbclient
+nbformat
+ipykernel

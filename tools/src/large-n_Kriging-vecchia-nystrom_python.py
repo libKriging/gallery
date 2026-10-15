@@ -42,14 +42,14 @@ import numpy as np
 import pandas as pd
 import pylibkriging as lk
 
-import lkgallery
-from lkgallery import TESTS, design, metrics, compat
+import gallery
+from gallery import TESTS, design, metrics, compat
 
-suite = lkgallery.Suite("large-n_Kriging-vecchia-nystrom_python")
+suite = gallery.Suite("large-n_Kriging-vecchia-nystrom_python")
 print("pylibkriging", compat.version())
 HAS_METHOD = compat.has("method")
 if not HAS_METHOD:
-    suite.skip("method=vecchia/nystrom", "pylibkriging without the method= argument")
+    suite.check_skip("method=vecchia/nystrom", "pylibkriging without the method= argument")
 
 
 def pred(k, X, **kw):
@@ -72,17 +72,17 @@ if HAS_METHOD:
     ke = lk.Kriging(y, X, "matern5_2")
     fixed = {"theta": np.asarray(ke.theta()).reshape(1, -1), "is_theta_estim": False}
     kv = lk.Kriging(y, X, "matern5_2", optim="none", parameters=fixed, method=f"vecchia({len(y) - 1})")
-    suite.close("vecchia(n-1) LL == exact LL (same theta)", kv.logLikelihood(method="vecchia"),
+    suite.check_close("vecchia(n-1) LL == exact LL (same theta)", kv.logLikelihood(method="vecchia"),
                 ke.logLikelihood(), rtol=1e-6)
-    suite.close("vecchia(n-1) predict == exact predict", pred(kv, Xt, method="vecchia")[0], pred(ke, Xt)[0],
+    suite.check_close("vecchia(n-1) predict == exact predict", pred(kv, Xt, method="vecchia")[0], pred(ke, Xt)[0],
                 rtol=1e-5, atol=1e-6 * np.std(y), severity="warn")
     kn = lk.Kriging(y, X, "matern5_2", optim="none", parameters=fixed, method=f"nystrom({len(y)})")
-    suite.close("nystrom(n) LL == exact LL (same theta)", kn.logLikelihood(method="nystrom"), ke.logLikelihood(),
+    suite.check_close("nystrom(n) LL == exact LL (same theta)", kn.logLikelihood(method="nystrom"), ke.logLikelihood(),
                 rtol=1e-3, severity="warn")
     # the method must be explicit after an approximate fit
-    suite.raises("nystrom fit: predict(method='exact') raises", lambda: kn.predict(Xt, return_stdev=True,
+    suite.check_raises("nystrom fit: predict(method='exact') raises", lambda: kn.predict(Xt, return_stdev=True,
                                                                                     method="exact"))
-    suite.true("method() reports the fit method", kv.method().startswith("vecchia") and
+    suite.check_true("method() reports the fit method", kv.method().startswith("vecchia") and
                kn.method().startswith("nystrom"), detail=f"{kv.method()}, {kn.method()}")
 
 # %% [markdown]
@@ -105,7 +105,7 @@ if HAS_METHOD:
     rows = []
     for meth, sizes in [("vecchia", [2, 5, 10, 20, 40, 80, 160, n - 1]), ("nystrom", [10, 25, 50, 100, 200, n])]:
         for size in sizes:
-            with suite.runs(f"{meth}({size}) at fixed theta: fit + predict"):
+            with suite.check_runs(f"{meth}({size}) at fixed theta: fit + predict"):
                 ka = lk.Kriging(y, X, "matern5_2", optim="none", parameters=fixed, method=f"{meth}({size})")
                 rows.append(dict(method=meth, size=size,
                                  ll_gap=abs(ka.logLikelihood(method=meth) - ll_e) / abs(ll_e),
@@ -114,8 +114,8 @@ if HAS_METHOD:
     for meth, g in conv.groupby("method"):
         suite.metric(f"hartmann3/n={n}/fixed theta", meth, **{f"ll_gap_{s}": v for s, v in zip(g["size"], g["ll_gap"])})
         for col, lim in [("ll_gap", 1e-6), ("mean_gap", 1e-2)]:
-            suite.less(f"{meth}: {col} at the limit size ({g['size'].iloc[-1]})", g[col].iloc[-1], lim)
-            suite.true(f"{meth}: {col} decreases with the size", bool(np.all(np.diff(g[col].to_numpy()) < 0)),
+            suite.check_less(f"{meth}: {col} at the limit size ({g['size'].iloc[-1]})", g[col].iloc[-1], lim)
+            suite.check_true(f"{meth}: {col} decreases with the size", bool(np.all(np.diff(g[col].to_numpy()) < 0)),
                        detail=", ".join(f"{v:.2g}" for v in g[col]), severity="warn")
     fig, axes = plt.subplots(1, 2, figsize=(10, 3.8))
     for ax, col, label in [(axes[0], "ll_gap", "|LL − LL(exact)| / |LL(exact)|"),
@@ -139,7 +139,7 @@ for fname, (n_mid, n_big) in CASES.items():
     ke, t_exact = timed(lambda: lk.Kriging(ym, Xm, "matern5_2"))
     res_e = metrics.all_metrics(yt, *pred(ke, Xt))
     suite.metric(f"{fname}/n={n_mid}", "exact", fit_s=t_exact, **res_e)
-    suite.greater(f"{fname}/n={n_mid}: Q2 exact", res_e["q2"], FLOORS[fname])
+    suite.check_greater(f"{fname}/n={n_mid}: Q2 exact", res_e["q2"], FLOORS[fname])
     variants = {}
     if HAS_METHOD:
         variants.update({
@@ -154,18 +154,18 @@ for fname, (n_mid, n_big) in CASES.items():
     for label, make in variants.items():
         for n in (n_mid, n_big):
             case = f"{fname}/n={n}"
-            with suite.runs(f"{case}/{label}: fit + predict"):
+            with suite.check_runs(f"{case}/{label}: fit + predict"):
                 (k, meth), t = timed(lambda: make(X[:n], y[:n]))
                 m, s = pred(k, Xt, method=meth) if meth else (
                     lambda o: (np.ravel(o[0]), np.ravel(o[1])))(k.predict(Xt, return_stdev=True))
-                suite.finite(f"{case}/{label}: finite predictions", m)
+                suite.check_finite(f"{case}/{label}: finite predictions", m)
                 res = metrics.all_metrics(yt, m, s)
                 suite.metric(case, label, fit_s=t, **res)
-                suite.greater(f"{case}/{label}: Q2", res["q2"], FLOORS[fname] - 0.05)
+                suite.check_greater(f"{case}/{label}: Q2", res["q2"], FLOORS[fname] - 0.05)
                 if n == n_mid:
-                    suite.greater(f"{case}/{label}: Q2 - Q2(exact)", res["q2"] - res_e["q2"], -0.02,
+                    suite.check_greater(f"{case}/{label}: Q2 - Q2(exact)", res["q2"] - res_e["q2"], -0.02,
                                   severity="warn")
-                    suite.less(f"{case}/{label}: fit time / exact fit time", t / t_exact, 1.0, severity="warn")
+                    suite.check_less(f"{case}/{label}: fit time / exact fit time", t / t_exact, 1.0, severity="warn")
 suite.table().round(4)
 
 # %% [markdown]

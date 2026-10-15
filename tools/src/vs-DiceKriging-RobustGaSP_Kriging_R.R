@@ -43,8 +43,8 @@ suppressPackageStartupMessages({
   library(DiceKriging)
 })
 has_rgasp <- requireNamespace("RobustGaSP", quietly = TRUE)
-source("tools/r/checks.R")
-s <- new_suite("vs-DiceKriging-RobustGaSP_Kriging_R")
+source("tools/R/gallery.R")
+s <- suite("vs-DiceKriging-RobustGaSP_Kriging_R")
 cat("rlibkriging", as.character(packageVersion("rlibkriging")), "| DiceKriging", as.character(packageVersion("DiceKriging")),
     "| RobustGaSP", if (has_rgasp) as.character(packageVersion("RobustGaSP")) else "absent", "\n")
 DATASETS <- c("branin", "hartmann3", "borehole")
@@ -98,11 +98,11 @@ for (name in DATASETS) {
     r <- tryCatch(fits[[pkg]](), error = function(e) e)
     t_fit <- as.numeric(difftime(Sys.time(), t0, units = "secs"))
     if (inherits(r, "error")) {
-      if (startsWith(pkg, "rlibkriging")) add_check(s, paste0(name, "/", pkg, ": fit"), FALSE, detail = conditionMessage(r))
+      if (startsWith(pkg, "rlibkriging")) check(s, paste0(name, "/", pkg, ": fit"), FALSE, detail = conditionMessage(r))
       next
     }
     m <- as.numeric(r(Xt))
-    add_metric(s, name, pkg, q2 = q2(yt, m), rmse = rmse(yt, m), fit_s = t_fit)
+    metric(s, name, pkg, q2 = q2(yt, m), rmse = rmse(yt, m), fit_s = t_fit)
     results[[length(results) + 1]] <- data.frame(dataset = name, package = pkg, q2 = q2(yt, m), fit_s = t_fit)
   }
 }
@@ -133,7 +133,7 @@ for (name in DATASETS) {
 # All of them are also written to `results/vs-DiceKriging-RobustGaSP_Kriging_R.checks.csv` and `.metrics.csv`.
 
 # %%
-summary_suite(s)
+suite_summary(s)
 
 # %%
-finalize(s)
+suite_finalize(s)

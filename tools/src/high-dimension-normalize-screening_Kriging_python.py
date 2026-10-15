@@ -37,10 +37,10 @@ import numpy as np
 import pandas as pd
 import pylibkriging as lk
 
-import lkgallery
-from lkgallery import TESTS, design, metrics, compat
+import gallery
+from gallery import TESTS, design, metrics, compat
 
-suite = lkgallery.Suite("high-dimension-normalize-screening_Kriging_python")
+suite = gallery.Suite("high-dimension-normalize-screening_Kriging_python")
 print("pylibkriging", compat.version())
 
 
@@ -69,14 +69,14 @@ for fname, (n, floor) in CASES.items():
     fit_s = time.time() - t0
     res = metrics.all_metrics(yt, *pred(k, Ut))
     suite.metric(fname, "unit cube", fit_s=fit_s, **res)
-    suite.greater(f"{fname}: Q2 (unit cube, matern5_2)", res["q2"], floor)
+    suite.check_greater(f"{fname}: Q2 (unit cube, matern5_2)", res["q2"], floor)
     # same problem in native units, rescaled internally
     Xn, Xtn = tf.scale(U), tf.scale(Ut)
-    with suite.runs(f"{fname}: fit on native inputs with normalize=True"):
+    with suite.check_runs(f"{fname}: fit on native inputs with normalize=True"):
         kn = lk.Kriging(y, Xn, "matern5_2", normalize=True)
         res_n = metrics.all_metrics(yt, *pred(kn, Xtn))
         suite.metric(fname, "native + normalize", **res_n)
-        suite.greater(f"{fname}: Q2(normalize) - Q2(unit cube)", res_n["q2"] - res["q2"], -0.02)
+        suite.check_greater(f"{fname}: Q2(normalize) - Q2(unit cube)", res_n["q2"] - res["q2"], -0.02)
 tab = suite.table()
 tab.round(4)
 
@@ -94,7 +94,7 @@ k = lk.Kriging(y, U, "matern5_2")
 theta = np.ravel(k.theta())
 inactive = [7, 15]            # 0-based indices of x8, x16
 active = [0, 3, 4, 11, 18, 19]  # x1, x4, x5, x12, x19, x20
-suite.greater("welch: min theta(inactive) / max theta(active)", theta[inactive].min() / theta[active].max(), 1.0,
+suite.check_greater("welch: min theta(inactive) / max theta(active)", theta[inactive].min() / theta[active].max(), 1.0,
               severity="warn")
 colors = ["tab:red" if i in active else "tab:gray" if i in inactive else "tab:blue" for i in range(20)]
 plt.figure(figsize=(9, 3))

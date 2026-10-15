@@ -1,6 +1,6 @@
 # Binder (mybinder.org) environment for the Python notebooks: the released pylibkriging
-# (PyPI wheels exist for CPython 3.10 to 3.12, hence runtime.txt) and lkgallery's
-# dependencies; lkgallery itself is found in tools/ by the notebooks' setup cell, and the
+# (PyPI wheels exist for CPython 3.10 to 3.12, hence runtime.txt) and the dependencies of
+# tools/python/gallery.py, which the notebooks load from the repository; the
 # comparison packages are installed by the notebooks that use them.
 pylibkriging
 numpy

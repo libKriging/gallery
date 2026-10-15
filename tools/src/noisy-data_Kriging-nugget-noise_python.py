@@ -39,10 +39,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import pylibkriging as lk
 
-import lkgallery
-from lkgallery import TESTS, design, metrics, compat
+import gallery
+from gallery import TESTS, design, metrics, compat
 
-suite = lkgallery.Suite("noisy-data_Kriging-nugget-noise_python")
+suite = gallery.Suite("noisy-data_Kriging-nugget-noise_python")
 print("pylibkriging", compat.version())
 
 
@@ -62,26 +62,26 @@ for fname, n, sd, q2_floor in [("forrester", 40, 0.5, 0.95), ("friedman", 200, 1
     m, s = pred(k, Xt)
     res = metrics.all_metrics(yt, m, s)
     suite.metric(fname, "nugget", nugget=nugget, true_var=sd ** 2, **res)
-    suite.between(f"{fname}: nugget / true noise variance", nugget / sd ** 2, 1 / 3, 3)
+    suite.check_between(f"{fname}: nugget / true noise variance", nugget / sd ** 2, 1 / 3, 3)
     k1 = lk.Kriging(y, X, "matern5_2", noise="nugget")   # default single start
     suite.metric(fname, "nugget, single start", nugget=float(np.ravel(k1.nugget())[0]), ll=float(k1.logLikelihood()),
                  **metrics.all_metrics(yt, *pred(k1, Xt)))
-    suite.greater(f"{fname}: LL(single start) - LL(10 restarts)", k1.logLikelihood() - k.logLikelihood(), -1,
+    suite.check_greater(f"{fname}: LL(single start) - LL(10 restarts)", k1.logLikelihood() - k.logLikelihood(), -1,
                   severity="warn")
-    suite.greater(f"{fname}: Q2 vs noise-free truth", res["q2"], q2_floor)
+    suite.check_greater(f"{fname}: Q2 vs noise-free truth", res["q2"], q2_floor)
     mX, _ = pred(k, X)
     mX_near, _ = pred(k, np.clip(X + 1e-7, 0, 1))
     suite.metric(fname, "nugget", rms_resid_at_X=metrics.rmse(y, mX) / sd,
                  rms_resid_near_X=metrics.rmse(y, mX_near) / sd)
-    suite.greater(f"{fname}: smooths the noisy data next to the design points (rms residual / sd)",
+    suite.check_greater(f"{fname}: smooths the noisy data next to the design points (rms residual / sd)",
                   metrics.rmse(y, mX_near) / sd, 0.3)
-    suite.between(f"{fname}: coverage of the 95% intervals (noise-free truth)", res["coverage95"], 0.80, 1.0,
+    suite.check_between(f"{fname}: coverage of the 95% intervals (noise-free truth)", res["coverage95"], 0.80, 1.0,
                   severity="warn")
     # the noise-free model on the same noisy data interpolates, and generalizes worse
     k0 = lk.Kriging(y, X, "matern5_2")
     m0, s0 = pred(k0, Xt)
     suite.metric(fname, "noise-free fit", **metrics.all_metrics(yt, m0, s0))
-    suite.less(f"{fname}: RMSE(nugget) < RMSE(interpolating fit)", res["rmse"], metrics.rmse(yt, m0),
+    suite.check_less(f"{fname}: RMSE(nugget) < RMSE(interpolating fit)", res["rmse"], metrics.rmse(yt, m0),
                severity="warn")
 suite.table()
 
@@ -95,13 +95,13 @@ k0 = lk.Kriging(y, X, "matern5_2")
 theta = np.asarray(k0.theta()).reshape(1, -1)
 fixed = {"theta": theta, "is_theta_estim": False, "sigma2": float(k0.sigma2()), "is_sigma2_estim": False}
 kf = lk.Kriging(y, X, "matern5_2", optim="none", parameters=fixed)
-with suite.runs("noise=zeros, theta and sigma2 fixed: fit"):
+with suite.check_runs("noise=zeros, theta and sigma2 fixed: fit"):
     kz = lk.Kriging(y, X, "matern5_2", noise=np.zeros(len(y)), optim="none", parameters=fixed)
-    suite.close("noise=zeros: same mean as the noise-free model", pred(kz, Xt)[0], pred(kf, Xt)[0], rtol=1e-6,
+    suite.check_close("noise=zeros: same mean as the noise-free model", pred(kz, Xt)[0], pred(kf, Xt)[0], rtol=1e-6,
                 atol=1e-8 * np.std(y))
-    suite.close("noise=zeros: same stdev as the noise-free model", pred(kz, Xt)[1], pred(kf, Xt)[1], rtol=1e-4,
+    suite.check_close("noise=zeros: same stdev as the noise-free model", pred(kz, Xt)[1], pred(kf, Xt)[1], rtol=1e-4,
                 atol=1e-6 * np.std(y))
-with suite.runs("noise=zeros, sigma2 estimated: fit", severity="warn"):
+with suite.check_runs("noise=zeros, sigma2 estimated: fit", severity="warn"):
     lk.Kriging(y, X, "matern5_2", noise=np.zeros(len(y)), optim="none",
                parameters={"theta": theta, "is_theta_estim": False})
 
@@ -120,10 +120,10 @@ res_known = metrics.all_metrics(yt, *pred(k_known, Xt))
 res_nug = metrics.all_metrics(yt, *pred(k_nug, Xt))
 suite.metric("gramacy_lee_2012/hetero", "known variances", **res_known)
 suite.metric("gramacy_lee_2012/hetero", "nugget", **res_nug)
-suite.finite("hetero: predictions finite", pred(k_known, Xt)[0])
-suite.less("hetero: NLPD(known variances) <= NLPD(nugget)", res_known["nlpd"] - res_nug["nlpd"], 0.05,
+suite.check_finite("hetero: predictions finite", pred(k_known, Xt)[0])
+suite.check_less("hetero: NLPD(known variances) <= NLPD(nugget)", res_known["nlpd"] - res_nug["nlpd"], 0.05,
            severity="warn")
-suite.close("noise(): returns the given variances", np.ravel(k_known.noise()), sd_x ** 2, rtol=1e-12)
+suite.check_close("noise(): returns the given variances", np.ravel(k_known.noise()), sd_x ** 2, rtol=1e-12)
 
 u = np.linspace(0, 1, 400)[:, None]
 fig, ax = plt.subplots(figsize=(10, 4))
@@ -154,9 +154,9 @@ fixed = {"theta": np.asarray(k_rep.theta()).reshape(1, -1), "is_theta_estim": Fa
          "sigma2": float(k_rep.sigma2()), "is_sigma2_estim": False}
 k_rep = lk.Kriging(yr, Xr, "matern5_2", noise=np.full(len(yr), sd ** 2), optim="none", parameters=fixed)
 k_avg = lk.Kriging(ybar, X1, "matern5_2", noise=np.full(len(ybar), sd ** 2 / r), optim="none", parameters=fixed)
-suite.close("replicates == averages with variance/r (mean)", pred(k_rep, Xt)[0], pred(k_avg, Xt)[0],
+suite.check_close("replicates == averages with variance/r (mean)", pred(k_rep, Xt)[0], pred(k_avg, Xt)[0],
             rtol=1e-6, atol=1e-6 * np.std(yr))
-suite.close("replicates == averages with variance/r (stdev)", pred(k_rep, Xt)[1], pred(k_avg, Xt)[1],
+suite.check_close("replicates == averages with variance/r (stdev)", pred(k_rep, Xt)[1], pred(k_avg, Xt)[1],
             rtol=1e-4, atol=1e-6 * np.std(yr))
 
 # %% [markdown]

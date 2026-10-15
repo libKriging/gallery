@@ -24,8 +24,8 @@
 % `tools/install/octave.sh`.
 
 % %%
-addpath(fullfile(pwd, "tools", "octave"));
-s = lkb_suite("vs-STK_Kriging_octave");
+source("tools/octave/gallery.m");
+s = suite("vs-STK_Kriging_octave");
 
 % %% [markdown]
 % ## Installing STK
@@ -48,9 +48,8 @@ if have_stk
   run(fullfile(stk_path, "stk_init.m"));
   printf("STK %s from %s\n", stk_version(), stk_path);
 else
-  s = lkb_check(s, "STK available", false, "absent", stk_path, "STK could not be installed: comparison skipped", "warn");
+  s = check(s, "STK available", false, "absent", stk_path, "STK could not be installed: comparison skipped", "warn");
 end
-q2 = @(y, m) 1 - sum((y - m).^2) / sum((y - mean(y)).^2);
 datasets = {"branin", "hartmann3", "borehole"};
 
 % %% [markdown]
@@ -70,8 +69,8 @@ if have_stk
     model.param = [log(sigma2); -log(theta(:) * sqrt(2))];
     model.lm = stk_lm_constant();
     zp = stk_predict(model, X, y, Xt);
-    s = lkb_close(s, [name ": gauss UK mean == STK"], m_lk, zp.mean, 1e-6, 1e-8 * std(y));
-    s = lkb_close(s, [name ": gauss UK variance == STK"], s_lk.^2, zp.var, 1e-4, 1e-8 * sigma2);
+    s = check_close(s, [name ": gauss UK mean == STK"], m_lk, zp.mean, 1e-6, 1e-8 * std(y));
+    s = check_close(s, [name ": gauss UK variance == STK"], s_lk.^2, zp.var, 1e-4, 1e-8 * sigma2);
   end
 end
 
@@ -86,12 +85,12 @@ for i = 1:numel(datasets)
   tic; k = Kriging(y, X, "matern5_2"); t = toc;
   [m, ~] = k.predict(Xt, false, false, false);
   q_lk = q2(yt, m);
-  s = lkb_metric(s, name, "mLibKriging", "q2", q_lk); s = lkb_metric(s, name, "mLibKriging", "fit_s", t);
+  s = metric(s, name, "mLibKriging", "q2", q_lk); s = metric(s, name, "mLibKriging", "fit_s", t);
   tic; k10 = Kriging(y, X, "matern5_2", "constant", false, "BFGS10", "LL"); t = toc;
   [m, ~] = k10.predict(Xt, false, false, false);
   q_lk10 = q2(yt, m);
-  s = lkb_metric(s, name, "mLibKriging BFGS10", "q2", q_lk10); s = lkb_metric(s, name, "mLibKriging BFGS10", "fit_s", t);
-  s = lkb_check(s, [name ": Q2(mLibKriging BFGS10) > 0.9"], q_lk10 > 0.9, q_lk10, "> 0.9");
+  s = metric(s, name, "mLibKriging BFGS10", "q2", q_lk10); s = metric(s, name, "mLibKriging BFGS10", "fit_s", t);
+  s = check(s, [name ": Q2(mLibKriging BFGS10) > 0.9"], q_lk10 > 0.9, q_lk10, "> 0.9");
   if have_stk
     tic;
     model = stk_model(@stk_materncov52_aniso, d);
@@ -99,8 +98,8 @@ for i = 1:numel(datasets)
     zp = stk_predict(model, X, y, Xt);
     t = toc;
     q_stk = q2(yt, zp.mean);
-    s = lkb_metric(s, name, "STK", "q2", q_stk); s = lkb_metric(s, name, "STK", "fit_s", t);
-    s = lkb_check(s, [name ": Q2(mLibKriging) - Q2(STK)"], q_lk - q_stk > -0.02, q_lk - q_stk, "> -0.02", "", "warn");
+    s = metric(s, name, "STK", "q2", q_stk); s = metric(s, name, "STK", "fit_s", t);
+    s = check(s, [name ": Q2(mLibKriging) - Q2(STK)"], q_lk - q_stk > -0.02, q_lk - q_stk, "> -0.02", "", "warn");
   end
 end
 disp(s.metrics(:, 3:6))
@@ -114,7 +113,7 @@ disp(s.metrics(:, 3:6))
 % All of them are also written to `results/vs-STK_Kriging_octave.checks.csv` and `.metrics.csv`.
 
 % %%
-lkb_summary(s);
+suite_summary(s);
 
 % %%
-lkb_finalize(s);
+suite_finalize(s);

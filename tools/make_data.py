@@ -5,11 +5,13 @@ language read these exact files, so that all bindings fit the very same points.
 Plain CSV, no header, full precision; X is n x d (rows = observations), y is a column.
 Regenerating them is only needed when a dataset is added: the files are the reference,
 not the script (a new scipy could draw other LHS points)."""
+import sys
 from pathlib import Path
 
 import numpy as np
 
-from lkgallery import TESTS, design
+sys.path.insert(0, str(Path(__file__).resolve().parent / "python"))
+from gallery import TESTS, design  # noqa: E402  (tools/python/gallery.py)
 
 DATA = Path(__file__).resolve().parents[1] / "data"
 DATASETS = [("branin", 25), ("hartmann3", 40), ("borehole", 80)]

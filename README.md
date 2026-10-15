@@ -92,7 +92,7 @@ Notebooks are named `<theme>_<kriging type>_<binding>.ipynb`. Those comparing
 with another package install it themselves, in their first cells (pip, CRAN,
 `Pkg.add`, or a clone of STK); a package that cannot be installed is reported
 (warn-level) and its comparison skipped. Test functions:
-[`tools/lkgallery/functions.py`](tools/lkgallery/functions.py), after the
+[`tools/python/gallery.py`](tools/python/gallery.py) (section 1), after the
 [Virtual Library of Simulation Experiments](https://www.sfu.ca/~ssurjano/)
 (Surjanovic & Bingham). Everything that is not a notebook is under
 [`tools/`](tools) (sources of the notebooks, helpers, installation of the bindings,
@@ -122,10 +122,24 @@ and the installation of rlibkriging (compiled from CRAN sources) and of JLibKrig
 
 ## Checks and statuses
 
-Each notebook records its checks with `lkgallery.Suite` (Python) or the small
-equivalents of `tools/r`, `tools/octave` and `tools/julia`, under a suite named
-after the notebook, and writes `results/<notebook>.checks.csv` and
-`results/<notebook>.metrics.csv`.
+Each notebook records its checks in a suite named after the notebook, and writes
+`results/<notebook>.checks.csv` and `results/<notebook>.metrics.csv`, with the helpers
+of one file per language, loaded by the notebook (not installed):
+
+| | Python | R | Octave | Julia |
+|---|---|---|---|---|
+| file | [`tools/python/gallery.py`](tools/python/gallery.py) | [`tools/R/gallery.R`](tools/R/gallery.R) | [`tools/octave/gallery.m`](tools/octave/gallery.m) | [`tools/julia/gallery.jl`](tools/julia/gallery.jl) |
+| loaded by | `import gallery` (path set by the setup cell) | `source("tools/R/gallery.R")` | `source("tools/octave/gallery.m")` | `include("tools/julia/gallery.jl")` |
+| a suite | `suite = gallery.Suite(name)` | `s <- suite(name)` | `s = suite(name)` | `s = Suite(name)` |
+| a check | `suite.check(name, ok, ...)` | `check(s, name, ok, ...)` | `s = check(s, name, ok, ...)` | `check!(s, name, ok; ...)` |
+| usual checks | `suite.check_close`, `check_less`, `check_greater`, `check_between`, `check_true`, `check_finite`, `check_runs`, `check_skip`, `check_raises` | `check_close(s, ...)`, ... | `s = check_close(s, ...)`, ... (no `check_runs`: `try`) | `check_close!(s, ...)`, ..., `check_runs!(s, name) do ... end` |
+| metrics | `suite.metric(case, package, q2=...)` | `metric(s, case, package, q2 = ...)` | `s = metric(s, case, package, "q2", v)` | `metric!(s, case, package; q2=...)` |
+| end of notebook | `suite.summary()`, `suite.finalize()` | `suite_summary(s)`, `suite_finalize(s)` | `suite_summary(s)`, `suite_finalize(s)` | `suite_summary(s)`, `suite_finalize!(s)` |
+| data, errors | `gallery.read_data`, `metrics.rmse`, `metrics.q2`, `metrics.nlpd`, ... | `read_data`, `rmse`, `q2`, `nlpd`, `coverage` | `read_data`, `rmse`, `q2` | `read_data`, `rmse`, `q2` |
+
+The Python file also holds the test functions (`TESTS`), the designs (`design.lhs`,
+`design.dataset`), what the installed pylibkriging offers (`compat.has`) and the
+persistence checks (`persistence.check`), used by the Python notebooks only.
 
 | status | meaning | fails CI |
 |---|---|---|

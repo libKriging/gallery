@@ -54,11 +54,11 @@ import numpy as np
 import pandas as pd
 import pylibkriging as lk
 
-import lkgallery
-from lkgallery import TESTS, design, metrics, compat
+import gallery
+from gallery import TESTS, design, metrics, compat
 
 warnings.filterwarnings("ignore")
-suite = lkgallery.Suite("vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python")
+suite = gallery.Suite("vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python")
 sk = compat.optional("sklearn.gaussian_process")
 smt = compat.optional("smt.surrogate_models")
 ot = compat.optional("openturns")
@@ -91,9 +91,9 @@ if sk is not None:
     kern = ConstantKernel(sigma2, "fixed") * RBF(theta, "fixed")
     gp = GaussianProcessRegressor(kern, alpha=1e-12, optimizer=None, normalize_y=False).fit(X, y - beta)
     m_sk, s_sk = gp.predict(Xt, return_std=True)
-    suite.close("sklearn RBF == libKriging gauss: simple kriging mean", m_sk + beta, m_lk, rtol=1e-6,
+    suite.check_close("sklearn RBF == libKriging gauss: simple kriging mean", m_sk + beta, m_lk, rtol=1e-6,
                 atol=1e-7 * np.std(y))
-    suite.close("sklearn RBF == libKriging gauss: simple kriging stdev (beta fixed)", s_sk, s_lk, rtol=1e-4,
+    suite.check_close("sklearn RBF == libKriging gauss: simple kriging stdev (beta fixed)", s_sk, s_lk, rtol=1e-4,
                 atol=1e-6 * np.sqrt(sigma2))
     # with beta estimated, libKriging's stdev is the universal kriging one: the simple kriging variance
     # plus the trend-estimation term (f - F'C^-1 c)^2 / (F'C^-1 F), computed here by hand
@@ -102,14 +102,14 @@ if sk is not None:
     one = np.ones((len(y), 1))
     v_uk = s_sk ** 2 + ((1 - one.T @ w) ** 2).ravel() / (one.T @ np.linalg.solve(C, one)).item()
     s_uk = np.ravel(kg.predict(Xt, return_stdev=True)[1])
-    suite.close("libKriging gauss (beta estimated) stdev == universal kriging formula", s_uk, np.sqrt(v_uk),
+    suite.check_close("libKriging gauss (beta estimated) stdev == universal kriging formula", s_uk, np.sqrt(v_uk),
                 rtol=1e-4, atol=1e-6 * np.sqrt(sigma2))
     # the (concentrated) log-likelihood at the MLE equals the full Gaussian log-density at (theta, sigma2, beta)
     lml = gp.log_marginal_likelihood_value_
-    suite.close("sklearn log-marginal-likelihood == libKriging logLikelihood()", lml, kg.logLikelihood(),
+    suite.check_close("sklearn log-marginal-likelihood == libKriging logLikelihood()", lml, kg.logLikelihood(),
                 rtol=1e-6)
 else:
-    suite.skip("sklearn exact comparison", "scikit-learn not installed")
+    suite.check_skip("sklearn exact comparison", "scikit-learn not installed")
 
 # %%
 if ot is not None:
@@ -130,12 +130,12 @@ if ot is not None:
                     parameters={"theta": th.reshape(1, -1), "is_theta_estim": False,
                                 "sigma2": s2, "is_sigma2_estim": False})
     m_u, s_u = (np.ravel(a) for a in ku.predict(Xt, return_stdev=True)[:2])
-    suite.close("OpenTURNS product Matern 5/2 == libKriging matern5_2: mean", m_ot, m_u, rtol=1e-6,
+    suite.check_close("OpenTURNS product Matern 5/2 == libKriging matern5_2: mean", m_ot, m_u, rtol=1e-6,
                 atol=1e-6 * np.std(y))
-    suite.close("OpenTURNS product Matern 5/2 == libKriging matern5_2: variance (universal kriging)", v_ot, s_u ** 2,
+    suite.check_close("OpenTURNS product Matern 5/2 == libKriging matern5_2: variance (universal kriging)", v_ot, s_u ** 2,
                 rtol=1e-4, atol=1e-8 * s2)
 else:
-    suite.skip("OpenTURNS exact comparison", "openturns not installed")
+    suite.check_skip("OpenTURNS exact comparison", "openturns not installed")
 
 # %% [markdown]
 # ## 2. Default fits on a set of test functions
@@ -218,7 +218,7 @@ for fname, n in CASES.items():
             except Exception as exc:  # noqa: BLE001
                 rows.append(dict(function=fname, n=n, rep=rep, package=pkg, error=str(exc)[:100]))
                 if pkg.startswith("pylibkriging"):
-                    suite.true(f"{fname}/rep{rep}/{pkg}: fit", False, detail=str(exc)[:200])
+                    suite.check_true(f"{fname}/rep{rep}/{pkg}: fit", False, detail=str(exc)[:200])
 res = pd.DataFrame(rows)
 summary = res.groupby(["function", "package"], sort=False)[["q2", "nlpd", "coverage95", "fit_s"]].median()
 for (fname, pkg), r in summary.iterrows():
@@ -239,11 +239,11 @@ for fname in CASES:
     s = summary.loc[fname]["q2"]
     others = s.drop(index=[p for p in s.index if p.startswith("pylibkriging")])
     if len(others):
-        suite.greater(f"{fname}: Q2(pylibkriging) - best other package", s["pylibkriging"] - others.max(), -0.02,
+        suite.check_greater(f"{fname}: Q2(pylibkriging) - best other package", s["pylibkriging"] - others.max(), -0.02,
                       severity="warn", detail=f"best: {others.idxmax()}")
-    suite.greater(f"{fname}: Q2(pylibkriging BFGS10) - best other package", s["pylibkriging BFGS10"] - others.max(),
+    suite.check_greater(f"{fname}: Q2(pylibkriging BFGS10) - best other package", s["pylibkriging BFGS10"] - others.max(),
                   -0.05, detail=f"best: {others.idxmax()}") if len(others) else None
-    suite.greater(f"{fname}: Q2(pylibkriging BFGS10) > 0.5", s["pylibkriging BFGS10"], 0.5)
+    suite.check_greater(f"{fname}: Q2(pylibkriging BFGS10) > 0.5", s["pylibkriging BFGS10"], 0.5)
 
 # %% [markdown]
 # ## Summary

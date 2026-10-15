@@ -31,10 +31,10 @@ import copy
 import numpy as np
 import pylibkriging as lk
 
-import lkgallery
-from lkgallery import TESTS, design, compat
+import gallery
+from gallery import TESTS, design, compat
 
-suite = lkgallery.Suite("save-load-pickle-copy-accessors_Kriging_python")
+suite = gallery.Suite("save-load-pickle-copy-accessors_Kriging_python")
 print("pylibkriging", compat.version())
 
 tf = TESTS["hartmann3"]
@@ -70,8 +70,8 @@ def predict_any(k, Xn):
 
 # %%
 for name, make in MODELS.items():
-    with suite.runs(f"{name}: fit"):
-        lkgallery.persistence.check(suite, name, make(), Xt, predict_any)
+    with suite.check_runs(f"{name}: fit"):
+        gallery.persistence.check(suite, name, make(), Xt, predict_any)
 
 # %% [markdown]
 # A copy is independent: updating it leaves the original model unchanged.
@@ -81,8 +81,8 @@ k = lk.Kriging(y[:30], X[:30], "matern5_2")
 m_before = mean_sd(k, Xt)[0]
 kc = k.copy() if hasattr(k, "copy") else copy.deepcopy(k)
 kc.update(y[30:], X[30:], refit=False)
-suite.close("update on a copy leaves the original unchanged", mean_sd(k, Xt)[0], m_before, rtol=0, atol=0)
-suite.true("the updated copy did change", not np.allclose(mean_sd(kc, Xt)[0], m_before))
+suite.check_close("update on a copy leaves the original unchanged", mean_sd(k, Xt)[0], m_before, rtol=0, atol=0)
+suite.check_true("the updated copy did change", not np.allclose(mean_sd(kc, Xt)[0], m_before))
 
 # %% [markdown]
 # ## Accessors mirror the constructor
@@ -91,19 +91,19 @@ suite.true("the updated copy did change", not np.allclose(mean_sd(kc, Xt)[0], m_
 k = lk.Kriging(y, X, "matern3_2", regmodel="linear", normalize=False, optim="BFGS", objective="LMP")
 for acc, expected in [("kernel", "matern3_2"), ("regmodel", "linear"), ("optim", "BFGS"), ("objective", "LMP"),
                       ("normalize", False)]:
-    suite.true(f"Kriging.{acc}() == {expected!r}", getattr(k, acc)() == expected, detail=str(getattr(k, acc)()))
-suite.close("Kriging.X() is the design", np.asarray(k.X()), X, rtol=0, atol=0)
-suite.close("Kriging.y() is the response", np.ravel(k.y()), y, rtol=0, atol=0)
+    suite.check_true(f"Kriging.{acc}() == {expected!r}", getattr(k, acc)() == expected, detail=str(getattr(k, acc)()))
+suite.check_close("Kriging.X() is the design", np.asarray(k.X()), X, rtol=0, atol=0)
+suite.check_close("Kriging.y() is the response", np.ravel(k.y()), y, rtol=0, atol=0)
 # with normalize=True: do the accessors return the data as given, or as rescaled internally?
 kn = lk.Kriging(y, X * 10, "matern3_2", normalize=True)
-suite.true("Kriging.normalize() == True", kn.normalize() is True or kn.normalize() == 1)
-suite.close("normalize=True: X() is the design as given", np.asarray(kn.X()), X * 10, rtol=1e-12, atol=0,
+suite.check_true("Kriging.normalize() == True", kn.normalize() is True or kn.normalize() == 1)
+suite.check_close("normalize=True: X() is the design as given", np.asarray(kn.X()), X * 10, rtol=1e-12, atol=0,
             severity="warn")
-suite.close("normalize=True: y() is the response as given", np.ravel(kn.y()), y, rtol=1e-12, atol=0,
+suite.check_close("normalize=True: y() is the response as given", np.ravel(kn.y()), y, rtol=1e-12, atol=0,
             severity="warn")
-suite.true("Kriging.beta() has 1 + d coefficients (linear trend)", np.ravel(k.beta()).size == 1 + X.shape[1])
-suite.true("summary() is a non-empty string", isinstance(k.summary(), str) and len(k.summary()) > 20)
-suite.true("is_theta_estim() after an optimized fit", bool(k.is_theta_estim()))
+suite.check_true("Kriging.beta() has 1 + d coefficients (linear trend)", np.ravel(k.beta()).size == 1 + X.shape[1])
+suite.check_true("summary() is a non-empty string", isinstance(k.summary(), str) and len(k.summary()) > 20)
+suite.check_true("is_theta_estim() after an optimized fit", bool(k.is_theta_estim()))
 
 # %% [markdown]
 # ## Summary

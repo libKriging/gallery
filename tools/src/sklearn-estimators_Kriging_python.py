@@ -18,10 +18,10 @@ import numpy as np
 import pandas as pd
 import pylibkriging as lk
 
-import lkgallery
-from lkgallery import TESTS, design, compat
+import gallery
+from gallery import TESTS, design, compat
 
-suite = lkgallery.Suite("sklearn-estimators_Kriging_python")
+suite = gallery.Suite("sklearn-estimators_Kriging_python")
 print("pylibkriging", compat.version())
 
 tf = TESTS["hartmann3"]
@@ -66,22 +66,22 @@ if compat.has("sklearn"):
 
     est = KrigingRegressor(kernel="matern5_2").fit(X, y)
     m_sk, s_sk = est.predict(Xt, return_std=True)
-    suite.true("KrigingRegressor.predict returns 1-D arrays (scikit-learn convention)",
+    suite.check_true("KrigingRegressor.predict returns 1-D arrays (scikit-learn convention)",
                np.ndim(m_sk) == 1 and np.ndim(s_sk) == 1, detail=f"shapes {np.shape(m_sk)}, {np.shape(s_sk)}",
                severity="warn")
     m_sk, s_sk = np.ravel(m_sk), np.ravel(s_sk)
     m_nat, s_nat = mean_sd(lk.Kriging(y, X, "matern5_2"), Xt)
-    suite.close("KrigingRegressor == Kriging (mean)", m_sk, m_nat, rtol=1e-8, atol=1e-10)
-    suite.close("KrigingRegressor == Kriging (stdev)", s_sk, s_nat, rtol=1e-6, atol=1e-10)
+    suite.check_close("KrigingRegressor == Kriging (mean)", m_sk, m_nat, rtol=1e-8, atol=1e-10)
+    suite.check_close("KrigingRegressor == Kriging (stdev)", s_sk, s_nat, rtol=1e-6, atol=1e-10)
     est2 = clone(est).set_params(kernel="gauss")
-    suite.true("clone + set_params", est2.get_params()["kernel"] == "gauss" and est.get_params()["kernel"] ==
+    suite.check_true("clone + set_params", est2.get_params()["kernel"] == "gauss" and est.get_params()["kernel"] ==
                "matern5_2")
-    with suite.runs("Pipeline(MinMaxScaler, KrigingRegressor)"):
+    with suite.check_runs("Pipeline(MinMaxScaler, KrigingRegressor)"):
         pipe = make_pipeline(MinMaxScaler(), KrigingRegressor(kernel="matern5_2")).fit(tf.scale(X), y)
-        suite.greater("pipeline Q2 on native inputs", pipe.score(tf.scale(Xt), yt), 0.8)
-    with suite.runs("GridSearchCV over kernels"):
+        suite.check_greater("pipeline Q2 on native inputs", pipe.score(tf.scale(Xt), yt), 0.8)
+    with suite.check_runs("GridSearchCV over kernels"):
         gs = GridSearchCV(KrigingRegressor(), {"kernel": ["gauss", "matern3_2", "matern5_2"]}, cv=3).fit(X, y)
-        suite.true("GridSearchCV picked a kernel", gs.best_params_["kernel"] in ("gauss", "matern3_2", "matern5_2"),
+        suite.check_true("GridSearchCV picked a kernel", gs.best_params_["kernel"] in ("gauss", "matern3_2", "matern5_2"),
                    detail=str(gs.best_params_))
         cv = pd.DataFrame(gs.cv_results_)[["param_kernel", "mean_test_score", "std_test_score", "mean_fit_time"]]
         for _, r in cv.iterrows():
@@ -91,14 +91,14 @@ if compat.has("sklearn"):
         plt.bar(cv["param_kernel"].astype(str), cv["mean_test_score"], yerr=cv["std_test_score"], capsize=4)
         plt.ylabel("3-fold CV R²"); plt.title(f"GridSearchCV(KrigingRegressor): best = {gs.best_params_['kernel']}")
         plt.ylim(min(0, cv["mean_test_score"].min() - .05), 1.02); plt.show()
-    with suite.runs("cross_val_score"):
+    with suite.check_runs("cross_val_score"):
         sc = cross_val_score(KrigingRegressor(kernel="matern5_2"), X, y, cv=4)
-        suite.finite("cross_val_score finite", sc)
-    with suite.runs("sample_y"):
+        suite.check_finite("cross_val_score finite", sc)
+    with suite.check_runs("sample_y"):
         S = est.sample_y(Xt[:10], n_samples=5, random_state=1)
-        suite.true("sample_y shape (q, n_samples)", np.shape(S) == (10, 5), detail=str(np.shape(S)))
+        suite.check_true("sample_y shape (q, n_samples)", np.shape(S) == (10, 5), detail=str(np.shape(S)))
 else:
-    suite.skip("sklearn estimators", "pylibkriging.sklearn or scikit-learn not available")
+    suite.check_skip("sklearn estimators", "pylibkriging.sklearn or scikit-learn not available")
 
 # %% [markdown]
 # ## Summary

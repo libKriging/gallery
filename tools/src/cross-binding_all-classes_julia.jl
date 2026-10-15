@@ -17,7 +17,7 @@
 
 # %%
 import JLibKriging as LK
-include("tools/julia/checks.jl")
+include("tools/julia/gallery.jl")
 s = Suite("cross-binding_all-classes_julia")
 rows = Vector{Vector{String}}()
 record!(dataset, quantity, values) =
@@ -108,7 +108,7 @@ end
 # All of them are also written to `results/cross-binding_all-classes_julia.checks.csv` and `.metrics.csv`.
 
 # %%
-summary!(s)
+suite_summary(s)
 
 # %%
-finalize!(s)
+suite_finalize!(s)

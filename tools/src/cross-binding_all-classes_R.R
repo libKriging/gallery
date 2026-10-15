@@ -13,8 +13,8 @@
 
 # %%
 suppressPackageStartupMessages(library(rlibkriging))
-source("tools/r/checks.R")
-s <- new_suite("cross-binding_all-classes_R")
+source("tools/R/gallery.R")
+s <- suite("cross-binding_all-classes_R")
 cat("rlibkriging", as.character(packageVersion("rlibkriging")), "\n")
 rows <- list()
 put <- function(dataset, quantity, values) {
@@ -96,7 +96,7 @@ op <- par(mfrow = c(1, 3), mar = c(4, 4, 2, 1))
 for (name in c("branin", "hartmann3", "borehole")) {
   yt <- as.numeric(read_data(name, "yt"))[1:50]
   m <- as.numeric(out$value[out$dataset == name & out$quantity == "fit_mean"])
-  q <- q2(yt, m); add_metric(s, name, "rlibkriging default fit", q2 = q)
+  q <- q2(yt, m); metric(s, name, "rlibkriging default fit", q2 = q)
   plot(yt, m, xlab = "true", ylab = "predicted", main = sprintf("%s: Q2 = %.3f", name, q), pch = 16, cex = .7)
   abline(0, 1, lty = 2)
 }
@@ -111,7 +111,7 @@ par(op)
 # All of them are also written to `results/cross-binding_all-classes_R.checks.csv` and `.metrics.csv`.
 
 # %%
-summary_suite(s)
+suite_summary(s)
 
 # %%
-finalize(s)
+suite_finalize(s)

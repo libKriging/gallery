@@ -1,6 +1,6 @@
 # Setup for running this notebook outside the repository (Colab, Binder, a lone copy):
 # nothing to do in the repository itself (CI, local runs). Otherwise the repository
-# (datasets of data/, helpers of tools/) is cloned and the released pylibkriging installed.
+# (datasets of data/, helpers of tools/python/gallery.py) is cloned and the released pylibkriging installed.
 import importlib
 import os
 import subprocess
@@ -22,5 +22,5 @@ if not Path("tools/known_issues.csv").is_file():
                 "(PyPI has wheels for CPython 3.10 to 3.12 only). On Colab: Runtime > Change runtime version > "
                 "2026.07 (Python 3.12), then run again.\n" + r.stderr[-500:])
         importlib.invalidate_caches()
-sys.path.insert(0, str(Path("tools").resolve()))  # lkgallery, when not installed (Colab, Binder)
+sys.path.insert(0, str(Path("tools/python").resolve()))  # for "import gallery" (tools/python/gallery.py)
 print("working directory:", os.getcwd())

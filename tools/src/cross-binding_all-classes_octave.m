@@ -13,8 +13,8 @@
 % (`OCTAVE_PATH` or `addpath`).
 
 % %%
-addpath(fullfile(pwd, "tools", "octave"));
-s = lkb_suite("cross-binding_all-classes_octave");
+source("tools/octave/gallery.m");
+s = suite("cross-binding_all-classes_octave");
 out = {};
 function out = put(out, dataset, quantity, values)
   v = double(values(:));
@@ -42,7 +42,7 @@ for name = {"branin", "hartmann3", "borehole"}
   [llf, grad] = kf.logLikelihoodFun(theta0', true, false);
   out = put(out, name, "llfun", llf);
   out = put(out, name, "llfun_grad", grad);
-  s = lkb_close(s, [name ": logLikelihood() == logLikelihoodFun(theta0)"], ll, llf, 1e-10);
+  s = check_close(s, [name ": logLikelihood() == logLikelihoodFun(theta0)"], ll, llf, 1e-10);
   k = Kriging(y, X, "matern5_2");
   v = k.theta(); out = put(out, name, "fit_theta", v);
   llk = k.logLikelihood();
@@ -126,7 +126,7 @@ end
 % All of them are also written to `results/cross-binding_all-classes_octave.checks.csv` and `.metrics.csv`.
 
 % %%
-lkb_summary(s);
+suite_summary(s);
 
 % %%
-lkb_finalize(s);
+suite_finalize(s);

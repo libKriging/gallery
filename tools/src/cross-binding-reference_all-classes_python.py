@@ -49,11 +49,11 @@ import numpy as np
 import pandas as pd
 import pylibkriging as lk
 
-import lkgallery
-from lkgallery import compat
-from lkgallery.checks import DATA_DIR as DATA, RESULTS_DIR
+import gallery
+from gallery import compat
+from gallery import DATA_DIR as DATA, RESULTS_DIR
 
-suite = lkgallery.Suite("cross-binding-reference_all-classes_python")
+suite = gallery.Suite("cross-binding-reference_all-classes_python")
 print("pylibkriging", compat.version())
 DATASETS = ["branin", "hartmann3", "borehole"]
 rows = []
@@ -84,7 +84,7 @@ for name in DATASETS:
     ll, grad, _ = kf.logLikelihoodFun(theta0.ravel(), True)
     put(name, "llfun", ll)
     put(name, "llfun_grad", grad)
-    suite.close(f"{name}: logLikelihood() == logLikelihoodFun(theta0)", kf.logLikelihood(), ll, rtol=1e-10)
+    suite.check_close(f"{name}: logLikelihood() == logLikelihoodFun(theta0)", kf.logLikelihood(), ll, rtol=1e-10)
     k = lk.Kriging(y, X, "matern5_2")
     put(name, "fit_theta", k.theta())
     put(name, "fit_ll", k.logLikelihood())
@@ -115,7 +115,7 @@ for meth in ["vecchia", "nystrom"] if compat.has("method") else []:
     put(name, f"{meth}_fixed_ll", ka.logLikelihood(method=meth))
     put(name, f"{meth}_fixed_mean", ka.predict(Xt, return_stdev=False, method=meth)[0])
 if not compat.has("method"):
-    suite.skip("vecchia / nystrom quantities", "pylibkriging without the method= argument")
+    suite.check_skip("vecchia / nystrom quantities", "pylibkriging without the method= argument")
 kw = lk.WarpKriging(y, X, ["kumaraswamy", "kumaraswamy"], "matern5_2")
 put(name, "warp_fit_mean", kw.predict(Xt, return_stdev=False)[0])
 km = lk.MLPKriging(y, X, hidden_dims=[8], d_out=2, activation="tanh", kernel="matern5_2", optim="BFGS10")

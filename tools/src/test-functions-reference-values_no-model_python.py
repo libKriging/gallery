@@ -9,7 +9,7 @@
 # Experiments, Surjanovic & Bingham).
 #
 # Every notebook of this gallery relies on the test functions of
-# `lkgallery.functions` (after the [Virtual Library of Simulation Experiments](https://www.sfu.ca/~ssurjano/)).
+# `gallery.functions` (after the [Virtual Library of Simulation Experiments](https://www.sfu.ca/~ssurjano/)).
 # A typo in one of them would silently bias every result built on it, so they are
 # checked first, against the reference values published on the library pages
 # (global optima, nominal points) and against the known output ranges.
@@ -19,10 +19,10 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-import lkgallery
-from lkgallery import TESTS, design
+import gallery
+from gallery import TESTS, design
 
-suite = lkgallery.Suite("test-functions-reference-values_no-model_python")
+suite = gallery.Suite("test-functions-reference-values_no-model_python")
 
 # %% [markdown]
 # ## Reference values
@@ -32,7 +32,7 @@ rows = []
 for name, tf in TESTS.items():
     for x, v in tf.known:
         fx = float(tf(x)[0])
-        suite.close(f"{name}: f({np.round(x, 4).tolist()})", fx, v, rtol=1e-4, atol=1e-4)
+        suite.check_close(f"{name}: f({np.round(x, 4).tolist()})", fx, v, rtol=1e-4, atol=1e-4)
         rows.append((name, tf.d, np.round(x, 4).tolist(), v, fx))
 pd.DataFrame(rows, columns=["function", "d", "x", "reference", "computed"])
 
@@ -56,10 +56,10 @@ summary = []
 for name, tf in TESTS.items():
     U = design.uniform(20_000, tf.d, seed=1)
     y = tf.unit(U)
-    suite.finite(f"{name}: finite on the domain", y)
+    suite.check_finite(f"{name}: finite on the domain", y)
     if name in EXPECTED_RANGES:
         lo, hi = EXPECTED_RANGES[name]
-        suite.true(f"{name}: range within [{lo}, {hi}]", lo <= y.min() and y.max() <= hi,
+        suite.check_true(f"{name}: range within [{lo}, {hi}]", lo <= y.min() and y.max() <= hi,
                    detail=f"sampled range [{y.min():.4g}, {y.max():.4g}]")
     summary.append((name, tf.d, ",".join(tf.tags), y.min(), y.max(), y.std()))
 pd.DataFrame(summary, columns=["function", "d", "tags", "min", "max", "std"])
@@ -73,9 +73,9 @@ pd.DataFrame(summary, columns=["function", "d", "tags", "min", "max", "std"])
 
 # %%
 A, B = design.lhs(20, 3, seed=7), design.lhs(20, 3, seed=7)
-suite.close("lhs: reproducible with a seed", A, B, rtol=0, atol=0)
+suite.check_close("lhs: reproducible with a seed", A, B, rtol=0, atol=0)
 strata = np.floor(A * 20).astype(int)
-suite.true("lhs: one point per stratum", all(len(set(strata[:, j])) == 20 for j in range(3)))
+suite.check_true("lhs: one point per stratum", all(len(set(strata[:, j])) == 20 for j in range(3)))
 
 # %%
 fig, axes = plt.subplots(1, 4, figsize=(16, 3.5))

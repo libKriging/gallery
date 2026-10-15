@@ -28,13 +28,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import pylibkriging as lk
 
-import lkgallery
-from lkgallery import TESTS, design, metrics, compat
+import gallery
+from gallery import TESTS, design, metrics, compat
 
-suite = lkgallery.Suite("warpings-categorical-ordinal_WarpKriging_python")
+suite = gallery.Suite("warpings-categorical-ordinal_WarpKriging_python")
 print("pylibkriging", compat.version())
 if not compat.has("WarpKriging"):
-    suite.skip("WarpKriging", "not available in this pylibkriging")
+    suite.check_skip("WarpKriging", "not available in this pylibkriging")
 
 
 def pred(k, X):
@@ -52,13 +52,13 @@ def evaluate(case, label, k, X, y, Xt, yt):
     if label.startswith("Kriging"):
         BASE_NLPD[case] = res["nlpd"]
     else:
-        suite.less(f"{case}/{label}: NLPD - NLPD(Kriging) (overconfident stdev?)", res["nlpd"] - BASE_NLPD[case],
+        suite.check_less(f"{case}/{label}: NLPD - NLPD(Kriging) (overconfident stdev?)", res["nlpd"] - BASE_NLPD[case],
                    2.0, severity="warn", detail=f"min stdev {np.min(s):.3g}, max |error|/stdev "
                    f"{np.max(np.abs(yt - m) / np.maximum(s, 1e-300)):.3g}")
     suite.metric(case, label, ll=float(k.logLikelihood()), **res)
-    suite.finite(f"{case}/{label}: predictions finite", m)
+    suite.check_finite(f"{case}/{label}: predictions finite", m)
     mX, _ = pred(k, X)
-    suite.less(f"{case}/{label}: interpolates (max |m(X)-y| / sd(y))", np.max(np.abs(mX - y)) / np.std(y), 1e-3,
+    suite.check_less(f"{case}/{label}: interpolates (max |m(X)-y| / sd(y))", np.max(np.abs(mX - y)) / np.std(y), 1e-3,
                severity="warn")
     return res
 
@@ -72,9 +72,9 @@ if compat.has("WarpKriging"):
     for kernel in ["gauss", "matern5_2"]:
         kp = lk.Kriging(y, X, kernel)
         kw = lk.WarpKriging(y, X, ["none", "none"], kernel)
-        suite.close(f"{kernel}: WarpKriging(none) LL == Kriging LL", kw.logLikelihood(), kp.logLikelihood(),
+        suite.check_close(f"{kernel}: WarpKriging(none) LL == Kriging LL", kw.logLikelihood(), kp.logLikelihood(),
                     rtol=1e-3, severity="warn")
-        suite.close(f"{kernel}: WarpKriging(none) mean == Kriging mean", pred(kw, Xt)[0], pred(kp, Xt)[0],
+        suite.check_close(f"{kernel}: WarpKriging(none) mean == Kriging mean", pred(kw, Xt)[0], pred(kp, Xt)[0],
                     rtol=1e-2, atol=1e-2 * np.std(y), severity="warn")
 
 # %% [markdown]
@@ -90,12 +90,12 @@ if compat.has("WarpKriging"):
     base = evaluate("gl2012", "Kriging", lk.Kriging(y, X, "matern5_2"), X, y, Xt, yt)
     fits = {}
     for w in WARPS_1D:
-        with suite.runs(f"gl2012/{w}: fit"):
+        with suite.check_runs(f"gl2012/{w}: fit"):
             fits[w] = lk.WarpKriging(y, X, [w], "matern5_2")
             evaluate("gl2012", w, fits[w], X, y, Xt, yt)
     t = suite.table().loc["gl2012"]
     best = t.drop(index="Kriging")["rmse"].min()
-    suite.less("gl2012: best warp RMSE / Kriging RMSE", best / base["rmse"], 1.0, severity="warn")
+    suite.check_less("gl2012: best warp RMSE / Kriging RMSE", best / base["rmse"], 1.0, severity="warn")
     u = np.linspace(0.01, 0.99, 400)[:, None]
     fig, ax = plt.subplots(figsize=(11, 4))
     ax.plot(u, tf.unit(u), "k--", lw=2, label="truth")
@@ -116,10 +116,10 @@ if compat.has("WarpKriging"):
     X = X * 0.98 + 0.01; Xt = Xt * 0.98 + 0.01
     y, yt = tf.unit(X), tf.unit(Xt)
     base = evaluate("gl2008", "Kriging", lk.Kriging(y, X, "matern5_2"), X, y, Xt, yt)
-    with suite.runs("gl2008/kumaraswamy: fit"):
+    with suite.check_runs("gl2008/kumaraswamy: fit"):
         res = evaluate("gl2008", "kumaraswamy", lk.WarpKriging(y, X, ["kumaraswamy"] * 2, "matern5_2"),
                        X, y, Xt, yt)
-        suite.less("gl2008: RMSE(kumaraswamy) / RMSE(Kriging)", res["rmse"] / base["rmse"], 1.0, severity="warn")
+        suite.check_less("gl2008: RMSE(kumaraswamy) / RMSE(Kriging)", res["rmse"] / base["rmse"], 1.0, severity="warn")
 
 # %% [markdown]
 # ## Mixed continuous / categorical
@@ -147,12 +147,12 @@ if compat.has("WarpKriging"):
     X = mixed_design(60, 34); Xt = mixed_design(1000, 35)
     y, yt = mixed(X), mixed(Xt)
     base = evaluate("mixed", "Kriging (level as number)", lk.Kriging(y, X, "matern5_2"), X, y, Xt, yt)
-    with suite.runs("mixed/categorical: fit"):
+    with suite.check_runs("mixed/categorical: fit"):
         kc = lk.WarpKriging(y, X, [f"categorical({L},2)", "none", "none"], "matern5_2")
         res = evaluate("mixed", "categorical(5,2)", kc, X, y, Xt, yt)
-        suite.less("mixed: RMSE(categorical) / RMSE(level as number)", res["rmse"] / base["rmse"], 1.0,
+        suite.check_less("mixed: RMSE(categorical) / RMSE(level as number)", res["rmse"] / base["rmse"], 1.0,
                    severity="warn")
-        suite.greater("mixed/categorical: Q2", res["q2"], 0.8, severity="warn")
+        suite.check_greater("mixed/categorical: Q2", res["q2"], 0.8, severity="warn")
 
 # %% [markdown]
 # ## Mixed continuous / ordinal
@@ -177,10 +177,10 @@ if compat.has("WarpKriging"):
     y, yt = f_ord(X), f_ord(Xt)
     base = evaluate("ordinal", "Kriging (rank as number)", lk.Kriging(y, X / [5, 1, 1], "matern5_2"),
                     X / [5, 1, 1], y, Xt / [5, 1, 1], yt)
-    with suite.runs("ordinal/ordinal(6): fit"):
+    with suite.check_runs("ordinal/ordinal(6): fit"):
         ko = lk.WarpKriging(y, X, ["ordinal(6)", "none", "none"], "matern5_2")
         res = evaluate("ordinal", "ordinal(6)", ko, X, y, Xt, yt)
-        suite.less("ordinal: RMSE(ordinal) / RMSE(rank as number)", res["rmse"] / base["rmse"], 1.1,
+        suite.check_less("ordinal: RMSE(ordinal) / RMSE(rank as number)", res["rmse"] / base["rmse"], 1.1,
                    severity="warn")
 
 # %%
@@ -196,8 +196,8 @@ suite.table().round(4)
 # %%
 if compat.has("WarpKriging"):
     X, y, Xt, yt = design.dataset(TESTS["hartmann3"], 40, n_test=100, seed=61)
-    with suite.runs("WarpKriging: fit (persistence)"):
-        lkgallery.persistence.check(suite, "WarpKriging", lk.WarpKriging(y, X, ["kumaraswamy", "none", "affine"], "matern5_2"), Xt, pred)
+    with suite.check_runs("WarpKriging: fit (persistence)"):
+        gallery.persistence.check(suite, "WarpKriging", lk.WarpKriging(y, X, ["kumaraswamy", "none", "affine"], "matern5_2"), Xt, pred)
 
 # %% [markdown]
 # ## Summary

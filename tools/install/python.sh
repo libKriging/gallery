@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Install pylibkriging, then the notebooks' helpers (tools/lkgallery) and runner.
+# Install pylibkriging, then what the notebooks need besides it (tools/python/requirements.txt;
+# their helpers, tools/python/gallery.py, are loaded from the repository, not installed).
 #   tools/install/python.sh wheel   LIBKRIGING_SRC OUT_DIR   only build a wheel from a libKriging checkout
 #   tools/install/python.sh master  WHEEL_DIR|LIBKRIGING_SRC install the wheel of WHEEL_DIR, or build it first
 #   tools/install/python.sh release                          the last release, from PyPI
@@ -23,5 +24,5 @@ case "$1" in
   release) python -m pip install pylibkriging ;;
   *) echo "usage: $0 wheel SRC OUT | master WHEEL_DIR|SRC | release" >&2; exit 2 ;;
 esac
-python -m pip install -e "${tools}[notebooks]"
+python -m pip install -r "$tools/python/requirements.txt"
 python -c "import pylibkriging as lk; print('pylibkriging', lk.__version__, 'from', lk.__file__)"

@@ -49,10 +49,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import pylibkriging as lk
 
-import lkgallery
-from lkgallery import TESTS, design, metrics, compat
+import gallery
+from gallery import TESTS, design, metrics, compat
 
-suite = lkgallery.Suite("kernels-trends-interpolation_Kriging_python")
+suite = gallery.Suite("kernels-trends-interpolation_Kriging_python")
 print("pylibkriging", compat.version())
 
 KERNELS = ["gauss", "exp", "matern3_2", "matern5_2"]
@@ -86,35 +86,35 @@ for fname, (n, q2_floor) in CASES.items():
                       "quadratic": 1 + 2 * tf.d + tf.d * (tf.d - 1) // 2}[trend]
             case = f"{fname}/{kernel}/{trend}"
             if n_beta >= n - 1:
-                suite.skip(case, f"{n_beta} trend coefficients for n={n}")
+                suite.check_skip(case, f"{n_beta} trend coefficients for n={n}")
                 continue
             t0 = time.time()
             try:
                 k = lk.Kriging(y, X, kernel, regmodel=trend, optim="BFGS")
             except Exception as exc:  # noqa: BLE001
-                suite.true(f"{case}: fit", False, detail=str(exc)[:200])
+                suite.check_true(f"{case}: fit", False, detail=str(exc)[:200])
                 continue
             fit_s = time.time() - t0
             m, s, _ = predict(k, Xt)
             res = metrics.all_metrics(yt, m, s)
             suite.metric(case, "pylibkriging", fit_s=fit_s, **res)
             theta, sigma2 = np.asarray(k.theta()).ravel(), float(k.sigma2())
-            suite.true(f"{case}: theta, sigma2 finite and > 0",
+            suite.check_true(f"{case}: theta, sigma2 finite and > 0",
                        np.all(np.isfinite(theta)) and np.all(theta > 0) and np.isfinite(sigma2) and sigma2 > 0,
                        detail=f"theta={theta}, sigma2={sigma2:.3g}")
             # interpolation at the design points (relative to the spread of y)
             md, sd, _ = predict(k, X)
             scale = np.std(y)
             sev = "warn" if kernel == "gauss" else "error"
-            suite.less(f"{case}: interpolates y (max |m(X)-y| / sd(y))", np.max(np.abs(md - y)) / scale, 1e-4,
+            suite.check_less(f"{case}: interpolates y (max |m(X)-y| / sd(y))", np.max(np.abs(md - y)) / scale, 1e-4,
                        severity=sev)
-            suite.less(f"{case}: stdev(X) ~ 0 (max sd / sd(y))", np.max(sd) / scale, 1e-2, severity=sev)
+            suite.check_less(f"{case}: stdev(X) ~ 0 (max sd / sd(y))", np.max(sd) / scale, 1e-2, severity=sev)
             if kernel == "matern5_2" and trend == "constant":
-                suite.greater(f"{case}: Q2 (single-start BFGS)", res["q2"], q2_floor, severity="warn")
+                suite.check_greater(f"{case}: Q2 (single-start BFGS)", res["q2"], q2_floor, severity="warn")
                 k10 = lk.Kriging(y, X, kernel, regmodel=trend, optim="BFGS10")
                 res10 = metrics.all_metrics(yt, *predict(k10, Xt)[:2])
                 suite.metric(case, "pylibkriging BFGS10", **res10)
-                suite.greater(f"{case}: Q2 (BFGS10)", res10["q2"], q2_floor)
+                suite.check_greater(f"{case}: Q2 (BFGS10)", res10["q2"], q2_floor)
 
 # %%
 tab = suite.table().reset_index()
@@ -131,10 +131,10 @@ pivot.style.format("{:.3f}").background_gradient(axis=None, vmin=0.5, vmax=1, cm
 
 # %%
 q = tab.set_index(["function", "kernel", "trend"])["q2"]
-suite.true("branin: exp is the worst kernel (constant trend)",
+suite.check_true("branin: exp is the worst kernel (constant trend)",
            q["branin", "exp", "constant"] <= min(q["branin", k, "constant"] for k in KERNELS),
            severity="warn")
-suite.greater("lim_polynomial/matern5_2: Q2(quadratic) - Q2(constant)",
+suite.check_greater("lim_polynomial/matern5_2: Q2(quadratic) - Q2(constant)",
               q["lim_polynomial", "matern5_2", "quadratic"] - q["lim_polynomial", "matern5_2", "constant"], -1e-3,
               severity="warn")
 
@@ -147,16 +147,16 @@ X, y, Xt, yt = design.dataset(tf, 30, n_test=50, seed=3)
 k = lk.Kriging(y, X, "matern5_2")
 m, s, cov = predict(k, Xt, return_cov=True)
 cov = np.asarray(cov)
-suite.close("predict: diag(cov) == stdev^2", np.diag(cov), s ** 2, rtol=1e-6, atol=1e-10)
-suite.close("predict: cov symmetric", cov, cov.T, rtol=1e-10, atol=1e-12)
-suite.greater("predict: cov PSD (min eigenvalue / max)", np.linalg.eigvalsh(cov).min() / np.abs(cov).max(), -1e-8)
+suite.check_close("predict: diag(cov) == stdev^2", np.diag(cov), s ** 2, rtol=1e-6, atol=1e-10)
+suite.check_close("predict: cov symmetric", cov, cov.T, rtol=1e-10, atol=1e-12)
+suite.check_greater("predict: cov PSD (min eigenvalue / max)", np.linalg.eigvalsh(cov).min() / np.abs(cov).max(), -1e-8)
 m1 = np.array([predict(k, Xt[i:i + 1])[0][0] for i in range(len(Xt))])
 s1 = np.array([predict(k, Xt[i:i + 1])[1][0] for i in range(len(Xt))])
-suite.close("predict: batch == point by point (mean)", m, m1, rtol=1e-8, atol=1e-10 * np.std(y))
-suite.close("predict: batch == point by point (stdev)", s, s1, rtol=1e-6, atol=1e-10 * np.std(y))
+suite.check_close("predict: batch == point by point (mean)", m, m1, rtol=1e-8, atol=1e-10 * np.std(y))
+suite.check_close("predict: batch == point by point (stdev)", s, s1, rtol=1e-6, atol=1e-10 * np.std(y))
 # the mean is a function of the point only: duplicating/permuting the batch changes nothing
 perm = np.random.default_rng(0).permutation(len(Xt))
-suite.close("predict: invariant to the order of the batch", predict(k, Xt[perm])[0], m[perm], rtol=1e-10, atol=1e-10)
+suite.check_close("predict: invariant to the order of the batch", predict(k, Xt[perm])[0], m[perm], rtol=1e-10, atol=1e-10)
 
 # %% [markdown]
 # ### Derivatives of the predictor
@@ -165,7 +165,7 @@ suite.close("predict: invariant to the order of the batch", predict(k, Xt[perm])
 # compared with central finite differences.
 
 # %%
-with suite.runs("predict(return_deriv=True)"):
+with suite.check_runs("predict(return_deriv=True)"):
     out = k.predict(Xt[:5], True, False, True)
     dm, ds = np.asarray(out[3]), np.asarray(out[4])
     h = 1e-6
@@ -175,8 +175,8 @@ with suite.runs("predict(return_deriv=True)"):
         mp, sp, _ = predict(k, Xt[:5] + e)
         mm, sm, _ = predict(k, Xt[:5] - e)
         fd_m[:, j], fd_s[:, j] = (mp - mm) / (2 * h), (sp - sm) / (2 * h)
-    suite.close("d mean / dx == finite differences", dm, fd_m, rtol=1e-4, atol=1e-4 * np.abs(fd_m).max())
-    suite.close("d stdev / dx == finite differences", ds, fd_s, rtol=1e-3, atol=1e-3 * np.abs(fd_s).max())
+    suite.check_close("d mean / dx == finite differences", dm, fd_m, rtol=1e-4, atol=1e-4 * np.abs(fd_m).max())
+    suite.check_close("d stdev / dx == finite differences", ds, fd_s, rtol=1e-3, atol=1e-3 * np.abs(fd_s).max())
 
 # %% [markdown]
 # ## A look at the 1D fits
