@@ -8,6 +8,9 @@
 # **Reference.** The same model on inputs rescaled by hand, and the known active
 # inputs of the Welch function.
 #
+# **Tags.** class: Kriging · kernel: matern5_2 ·
+# topic: high dimension, normalize, screening
+#
 # | function | d | character |
 # |---|---|---|
 # | OTL circuit | 6 | smooth, inputs on very different scales |

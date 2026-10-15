@@ -8,6 +8,8 @@
 # **Reference.** Published optima and nominal values (Virtual Library of Simulation
 # Experiments, Surjanovic & Bingham).
 #
+# **Tags.** class: none · topic: test functions
+#
 # Every notebook of this gallery relies on the test functions of
 # `gallery.functions` (after the [Virtual Library of Simulation Experiments](https://www.sfu.ca/~ssurjano/)).
 # A typo in one of them would silently bias every result built on it, so they are

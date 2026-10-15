@@ -7,6 +7,8 @@
 %
 % **Reference.** STK (exact equality, then accuracy and cost).
 %
+% **Tags.** class: Kriging · kernel: gauss, matern5_2 · compared to: STK
+%
 % [STK](https://github.com/stk-kriging/stk) (Small Toolbox for Kriging) is the
 % reference kriging toolbox for Octave/MATLAB.
 %

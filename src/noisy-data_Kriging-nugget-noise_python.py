@@ -8,6 +8,9 @@
 # **Reference.** The true noise variance, replicate averaging, and the interpolating
 # (noise-free) fit on the same data.
 #
+# **Tags.** class: Kriging · noise: none, nugget, variances ·
+# topic: noisy data, calibration
+#
 # `Kriging` handles noisy responses through its `noise` argument: `"nugget"`
 # estimates one homogeneous noise variance, a vector gives a known variance per
 # observation (heteroscedastic case).

@@ -7,6 +7,8 @@
 # **Reference.** A model fitted from scratch on all the data, and Monte Carlo moments
 # against the predictive mean and covariance.
 #
+# **Tags.** class: Kriging · topic: update, conditional simulation
+#
 # Sequential use of a fitted model (sequential design, Bayesian optimization):
 #
 # * `update(y_u, X_u, refit=False)` adds observations through a Cholesky

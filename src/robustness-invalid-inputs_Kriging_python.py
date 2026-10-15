@@ -8,6 +8,8 @@
 # **Reference.** Equivariance identities (rescaled inputs / outputs give rescaled
 # results) and the O(q) cost of `predict`.
 #
+# **Tags.** class: Kriging · topic: robustness, invariance, cost
+#
 # What a user eventually feeds a surrogate model, and what must happen:
 #
 # | input | expected behaviour |

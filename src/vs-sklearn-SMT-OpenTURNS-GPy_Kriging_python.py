@@ -7,6 +7,9 @@
 #
 # **Reference.** Scikit-learn, SMT, OpenTURNS and GPy.
 #
+# **Tags.** class: Kriging · kernel: gauss, matern5_2 ·
+# compared to: scikit-learn, SMT, OpenTURNS, GPy
+#
 # Two kinds of comparisons, which should not be confused:
 #
 # 1. **Same model, same hyperparameters → same numbers.** With θ, σ², β fixed,

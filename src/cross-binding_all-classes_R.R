@@ -7,6 +7,10 @@
 # **Reference.** The Python values (`cross-binding-reference_all-
 # classes_python.ipynb`), compared by `tools/report.py`.
 #
+# **Tags.** class: Kriging, NestedKriging, WarpKriging, MLPKriging · kernel: matern5_2 ·
+# objective: LL · method: exact, vecchia, nystrom · noise: none, nugget, variances ·
+# warping: kumaraswamy · aggregation: NK · topic: cross-binding
+#
 # Same protocol as `cross-binding-reference_all-classes_python.ipynb` (see there), on the
 # shared datasets of `data/`; writes `results/xbind_R.csv`, compared with the
 # Python values by `tools/report.py`.

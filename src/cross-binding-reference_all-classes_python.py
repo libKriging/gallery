@@ -8,6 +8,10 @@
 # **Reference.** The R, Octave and Julia notebooks `cross-binding_all-classes_*`,
 # compared by `tools/report.py`.
 #
+# **Tags.** class: Kriging, NestedKriging, WarpKriging, MLPKriging · kernel: matern5_2 ·
+# objective: LL · method: exact, vecchia, nystrom · noise: none, nugget, variances ·
+# warping: kumaraswamy · aggregation: NK · topic: cross-binding
+#
 # All bindings (Python, R, Octave, Julia) wrap the same C++ library: on the
 # same data with the same options they must return the same numbers. Each
 # language runs the protocol below on the shared datasets of `data/` and writes

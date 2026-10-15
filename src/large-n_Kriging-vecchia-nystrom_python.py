@@ -8,6 +8,8 @@
 # **Reference.** The exact model at the same θ (limits m = n − 1 and k = n), and the
 # exact fit.
 #
+# **Tags.** class: Kriging · method: exact, vecchia, nystrom · topic: large n
+#
 # The exact fit costs O(n³). `Kriging` offers:
 #
 # * `method="vecchia(m)"`: Vecchia likelihood with m conditioning neighbours

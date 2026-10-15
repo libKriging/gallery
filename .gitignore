@@ -5,3 +5,5 @@ __pycache__/
 new-baseline/
 executed/
 report.md
+/*.ipynb
+_site/

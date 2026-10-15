@@ -8,6 +8,10 @@
 # **Reference.** Plain `Kriging` on the same data (accuracy and NLPD), and `none`
 # warping = `Kriging`.
 #
+# **Tags.** class: WarpKriging, Kriging ·
+# warping: none, affine, boxcox, kumaraswamy, neural_mono, categorical, ordinal ·
+# topic: non-stationarity, categorical inputs
+#
 # `WarpKriging` learns a transform per input variable jointly with the GP
 # hyperparameters. Problems where a plain stationary GP is the wrong model:
 #

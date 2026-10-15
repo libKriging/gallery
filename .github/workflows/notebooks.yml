@@ -1,10 +1,12 @@
 name: notebooks
 
-# Executes every notebook of the repository root against libKriging, one job per
-# notebook, each job uploading its executed notebook (outputs saved, failures
-# included) and its results as the artifact `executed-<channel>-<notebook>`; then
-# aggregates the checks of all languages into one report per channel
-# (tools/report.py), published as the job summary and as artifacts.
+# Generates every notebook from its source (src/, tools/py2nb.py) and executes it
+# against libKriging, one job per notebook, each job uploading its executed notebook
+# (outputs saved, failures included) and its results as the artifact
+# `executed-<channel>-<notebook>`; then aggregates the checks of all languages into
+# one report per channel (tools/report.py), published as the job summary and as
+# artifacts. Finally builds the gallery site from the executed notebooks of the
+# master channel (tools/site.py), published on the gh-pages branch from main.
 #
 # Channels:
 #   master   libKriging and its bindings built from source at `libkriging_ref`
@@ -78,11 +80,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-      - name: Notebooks in sync with their sources, and listed in the README
+      - name: Notebook sources valid (name, title, idea, reference, tags), and listed in the README
         run: |
           pip install nbformat
           python tools/py2nb.py --check
-          missing=$(for nb in *.ipynb; do grep -qF "($nb)" README.md || echo "$nb"; done)
+          missing=$(for f in src/*; do grep -qF "(src/${f#src/})" README.md || echo "$f"; done)
           if [ -n "$missing" ]; then echo "not linked from README.md: $missing"; exit 1; fi
       - name: Resolve libKriging refs and channels
         id: refs
@@ -113,8 +115,8 @@ jobs:
           channels = os.environ["CHANNELS"].split(",")
           for lang, binding in [("python", "python"), ("r", "R"), ("octave", "octave"), ("julia", "julia")]:
               chans = [c for c in channels if c == "master" or lang != "julia"]  # no Julia release
-              include = [{"channel": c, "notebook": nb.stem} for c in chans
-                         for nb in sorted(Path(".").glob(f"*_{binding}.ipynb"))]
+              include = [{"channel": c, "notebook": src.stem, "source": src.name} for c in chans
+                         for src in sorted(Path("src").glob(f"*_{binding}.*"))]
               print(f"{lang}={json.dumps({'include': include or [{'channel': 'none', 'notebook': 'none'}]})}")
           EOF
           cat "$GITHUB_OUTPUT"
@@ -275,6 +277,10 @@ jobs:
           path: dist
       - name: Install pylibkriging (${{ matrix.channel }})
         run: tools/install/python.sh ${{ matrix.channel }} dist
+      - name: Generate the notebook from src/${{ matrix.source }}
+        run: |
+          python -m pip install --quiet nbformat
+          python tools/py2nb.py "src/${{ matrix.source }}"
       - name: Execute and save the notebook
         run: python tools/run_notebooks.py --inplace --timeout 3600 ${{ matrix.notebook }}.ipynb
       - if: always()
@@ -320,6 +326,10 @@ jobs:
             tools/install/r.sh release "$RUNNER_TEMP/Rlib"
             echo "R_LIBS_USER=$RUNNER_TEMP/Rlib" >> "$GITHUB_ENV"
           fi
+      - name: Generate the notebook from src/${{ matrix.source }}
+        run: |
+          python -m pip install --quiet nbformat
+          python tools/py2nb.py "src/${{ matrix.source }}"
       - name: Execute and save the notebook
         run: python tools/run_notebooks.py --inplace --timeout 3600 ${{ matrix.notebook }}.ipynb
       - if: always()
@@ -354,6 +364,10 @@ jobs:
           sudo apt-get update && sudo apt-get install -y octave liblapack-dev libopenblas-dev
           tools/install/octave.sh mlibkriging mlibkriging   # already built: only the kernel and a smoke test
           echo "OCTAVE_PATH=$PWD/mlibkriging" >> "$GITHUB_ENV"
+      - name: Generate the notebook from src/${{ matrix.source }}
+        run: |
+          python -m pip install --quiet nbformat
+          python tools/py2nb.py "src/${{ matrix.source }}"
       - name: Execute and save the notebook
         run: python tools/run_notebooks.py --inplace --timeout 3600 ${{ matrix.notebook }}.ipynb
       - if: always()
@@ -398,6 +412,10 @@ jobs:
         run: |
           sudo apt-get update && sudo apt-get install -y liblapack-dev libopenblas-dev
           tools/install/julia.sh libKriging
+      - name: Generate the notebook from src/${{ matrix.source }}
+        run: |
+          python -m pip install --quiet nbformat
+          python tools/py2nb.py "src/${{ matrix.source }}"
       - name: Execute and save the notebook
         run: python tools/run_notebooks.py --inplace --timeout 3600 --kernel julia-${{ env.JULIA_VERSION }} ${{ matrix.notebook }}.ipynb
       - if: always()
@@ -463,3 +481,55 @@ jobs:
           name: executed-notebooks-${{ matrix.channel }}
           path: executed/
           retention-days: 90
+
+  # --------------------------------------------------------------------------- site
+  # The gallery site (tools/site.py): one card per notebook, from the executed notebooks
+  # of the master channel (failed ones included: their card shows it). Built on every
+  # run (artifact `site`, for a preview), published as the gh-pages branch (a single
+  # commit, replaced each time) only from main and from libKriging/libKriging itself.
+  site:
+    needs: [setup, python, r, octave, julia]
+    if: always() && needs.setup.result == 'success' && contains(needs.setup.outputs.channels, 'master')
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: executed-master-*
+          path: artifacts
+      - name: Build the site
+        env:
+          SHA: ${{ needs.setup.outputs.sha }}
+        run: |
+          pip install nbformat
+          mkdir -p results executed
+          find artifacts -path '*/results/*' -name '*.checks.csv' -exec cp {} results/ \;
+          find artifacts -maxdepth 2 -name '*.ipynb' -exec cp {} executed/ \;
+          python tools/site.py --notebooks executed --results results --out _site \
+            --repo "${{ github.repository }}" --branch gh-pages \
+            --libkriging "${LIBKRIGING_REPO}@${LIBKRIGING_REF} (${SHA:0:10})"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: _site/
+          include-hidden-files: true
+          retention-days: 30
+      - name: Publish on gh-pages
+        if: >-
+          github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+          && env.LIBKRIGING_REPO == 'libKriging/libKriging'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd _site
+          git init -q -b gh-pages
+          git add -A
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+            commit -q -m "Gallery site, ${{ github.sha }}, libKriging ${LIBKRIGING_REF} (${{ needs.setup.outputs.sha }})"
+          git push -f "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" gh-pages
+          echo "Site published: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> "$GITHUB_STEP_SUMMARY"

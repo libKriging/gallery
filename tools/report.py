@@ -23,8 +23,8 @@ Exit status 1 if any check FAILed, if a cross-binding quantity of error level
 differs, or if --expect lists a suite that produced no output (crashed before
 finalize). The Markdown goes to stdout and, with --summary, is appended to a file
 (e.g. $GITHUB_STEP_SUMMARY). The suite of a notebook is its file name without
-extension; `--expect python,R` expects one suite per `*_python.ipynb` and
-`*_R.ipynb` notebook of the repository root (names are also accepted).
+extension; `--expect python,R` expects one suite per `src/*_python.*` and
+`src/*_R.*` notebook source (names are also accepted).
 
 Usage:
   python tools/report.py [--results results] [--baseline tools/baseline/metrics-master.csv]
@@ -170,7 +170,7 @@ def main(argv=None):
 
     expected = []
     for item in filter(None, args.expect.split(",")):
-        stems = sorted(nb.stem for nb in ROOT.glob(f"*_{item}.ipynb"))
+        stems = sorted(s.stem for s in (ROOT / "src").glob(f"*_{item}.*"))
         expected += stems or [item]
     missing = sorted(set(expected) - set(checks.get("suite", pd.Series(dtype=str))))
     if missing:

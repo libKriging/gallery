@@ -8,6 +8,8 @@
 # **Reference.** Finite differences of each criterion, explicit leave-one-out refits,
 # and the criterion profile around θ̂.
 #
+# **Tags.** class: Kriging · objective: LL, LOO, LMP · topic: gradients, optimization
+#
 # The hyperparameters θ of `Kriging` are estimated by maximizing the
 # log-likelihood (`LL`), maximizing the log marginal posterior (`LMP`), or
 # minimizing the leave-one-out error (`LOO`). This notebook checks the machinery

@@ -7,6 +7,8 @@
 # **Reference.** The native `Kriging` class on the same data (same predictions), and
 # scikit-learn's estimator conventions.
 #
+# **Tags.** class: Kriging · compared to: scikit-learn · topic: scikit-learn API
+#
 # `KrigingRegressor` (the scikit-learn face of `Kriging`) on Hartmann 3:
 # `fit`/`predict` (scikit-learn conventions), the same predictions as the native
 # class, `get_params`/`set_params`/`clone`, use inside `Pipeline`,

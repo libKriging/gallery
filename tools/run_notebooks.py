@@ -12,7 +12,7 @@ to the failing one (the error included): that is the run worth looking at.
 the notebooks of this repository have none and use the libKriging available to the
 kernel (Python: installed; R: library; Octave: `OCTAVE_PATH`; Julia: environment).
 
-Usage:
+Usage (notebooks generated from src/ by tools/py2nb.py):
   python3 tools/run_notebooks.py *_python.ipynb
   python3 tools/run_notebooks.py --inplace --timeout 3600 --kernel julia-1.11 cross-binding_all-classes_julia.ipynb
   python3 tools/run_notebooks.py --skip-cell '^repo_root = ' --prelude 'addpath(...)' nb.ipynb

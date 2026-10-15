@@ -8,6 +8,9 @@
 # **Reference.** The exact predictor at the same θ (limit: 1 group), and the exact
 # fit.
 #
+# **Tags.** class: NestedKriging · aggregation: NK, PoE, gPoE, BCM, rBCM ·
+# topic: large n
+#
 # `NestedKriging` partitions the design into groups, fits one `Kriging`
 # sub-model per group (common hyperparameters), and aggregates the sub-model
 # predictions: `NK` (nested kriging: kriging of the sub-predictors, a proper

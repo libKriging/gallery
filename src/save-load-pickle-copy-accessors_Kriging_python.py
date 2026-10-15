@@ -8,6 +8,9 @@
 # **Reference.** The original model: predictions and hyperparameters must be identical
 # to the last bit (1e-12).
 #
+# **Tags.** class: Kriging · objective: LL, LOO, LMP · method: exact, vecchia, nystrom ·
+# noise: none, nugget, variances · topic: persistence
+#
 # Persistence and introspection of `Kriging`, for each of its variants (noise
 # models, objectives, approximate fit methods):
 #

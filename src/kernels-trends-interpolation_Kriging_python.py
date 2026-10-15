@@ -9,6 +9,9 @@
 # **Reference.** Finite differences of the prediction, the data themselves, and per-
 # function Q² floors.
 #
+# **Tags.** class: Kriging · kernel: gauss, exp, matern3_2, matern5_2 ·
+# trend: constant, linear, interactive, quadratic · topic: interpolation, derivatives
+#
 # Plain noise-free `Kriging`, every kernel (`gauss`, `exp`, `matern3_2`,
 # `matern5_2`) crossed with every trend (`constant`, `linear`, `interactive`,
 # `quadratic`) on functions of different regularity:

@@ -7,6 +7,9 @@
 #
 # **Reference.** DiceKriging (exact equality) and RobustGaSP (accuracy, cost).
 #
+# **Tags.** class: Kriging · kernel: gauss, exp, matern3_2, matern5_2 ·
+# compared to: DiceKriging, RobustGaSP
+#
 # DiceKriging is the reference implementation libKriging's `Kriging` follows
 # (same product-form kernels and range parametrization, same concentrated
 # likelihood). Hence two levels of comparison:

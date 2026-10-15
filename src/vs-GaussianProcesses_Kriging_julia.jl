@@ -6,6 +6,8 @@
 #
 # **Reference.** GaussianProcesses.jl (accuracy and cost).
 #
+# **Tags.** class: Kriging · kernel: matern5_2 · compared to: GaussianProcesses.jl
+#
 # Default fits on the shared datasets of `data/` (Branin, Hartmann 3, Borehole):
 # JLibKriging (`matern5_2`, constant trend, single start and 10 restarts) against
 # [GaussianProcesses.jl](https://github.com/STOR-i/GaussianProcesses.jl)

@@ -7,6 +7,9 @@
 #
 # **Reference.** Plain `Kriging` on the same data.
 #
+# **Tags.** class: MLPKriging, Kriging · kernel: matern5_2 ·
+# topic: deep kernel, dimension reduction
+#
 # f(x) = Branin(Wx) for x ∈ [0,1]¹⁰ and a fixed 2 × 10 projection W: the
 # function only varies in a 2D subspace, which a joint feature map (an MLP from
 # ℝ¹⁰ to ℝ², then a stationary kernel) can find, whereas a per-axis kernel
