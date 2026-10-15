@@ -18,10 +18,6 @@ else
   CC="$(R CMD config CC)" CXX="$(R CMD config CXX)" cmake -S "$src" -B "$src/build-r" -G "Unix Makefiles" \
     -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=off -DSTATIC_LIB=on \
     -DENABLE_OCTAVE_BINDING=off -DENABLE_MATLAB_BINDING=off -DENABLE_PYTHON_BINDING=off
-  # install.lib also installs the bench/bench-* executables, which it does not build: build them
-  # first (without the tests, which the full install target would also build)
-  mapfile -t benches < <(cmake --build "$src/build-r" --target help | sed -n 's/^\.\.\. \(bench-[A-Za-z0-9_-]*\).*/\1/p')
-  cmake --build "$src/build-r" --target "${benches[@]}" -j "$(nproc)"
   cmake --build "$src/build-r" --target install.lib -j "$(nproc)"
   export LIBKRIGING_PATH="$src/build-r/installed"
   cd "$src/bindings/R"
