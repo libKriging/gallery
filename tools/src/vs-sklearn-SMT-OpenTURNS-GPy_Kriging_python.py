@@ -54,11 +54,11 @@ import numpy as np
 import pandas as pd
 import pylibkriging as lk
 
-import lkbench
-from lkbench import TESTS, design, metrics, compat
+import lkgallery
+from lkgallery import TESTS, design, metrics, compat
 
 warnings.filterwarnings("ignore")
-suite = lkbench.Suite("vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python")
+suite = lkgallery.Suite("vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python")
 sk = compat.optional("sklearn.gaussian_process")
 smt = compat.optional("smt.surrogate_models")
 ot = compat.optional("openturns")

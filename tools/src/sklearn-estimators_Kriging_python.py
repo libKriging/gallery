@@ -18,10 +18,10 @@ import numpy as np
 import pandas as pd
 import pylibkriging as lk
 
-import lkbench
-from lkbench import TESTS, design, compat
+import lkgallery
+from lkgallery import TESTS, design, compat
 
-suite = lkbench.Suite("sklearn-estimators_Kriging_python")
+suite = lkgallery.Suite("sklearn-estimators_Kriging_python")
 print("pylibkriging", compat.version())
 
 tf = TESTS["hartmann3"]

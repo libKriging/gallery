@@ -9,7 +9,7 @@ from pathlib import Path
 
 import numpy as np
 
-from lkbench import TESTS, design
+from lkgallery import TESTS, design
 
 DATA = Path(__file__).resolve().parents[1] / "data"
 DATASETS = [("branin", 25), ("hartmann3", 40), ("borehole", 80)]

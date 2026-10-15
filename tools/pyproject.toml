@@ -3,7 +3,7 @@ requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "lkbench"
+name = "lkgallery"
 version = "0.1.0"
 description = "Helpers (test functions, designs, metrics, checks) for the notebooks of the libKriging gallery"
 requires-python = ">=3.9"
@@ -15,4 +15,4 @@ dependencies = ["numpy", "scipy", "pandas", "matplotlib", "jinja2"]  # jinja2: D
 notebooks = ["nbclient", "nbformat", "ipykernel"]
 
 [tool.setuptools]
-packages = ["lkbench"]
+packages = ["lkgallery"]

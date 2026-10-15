@@ -28,10 +28,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pylibkriging as lk
 
-import lkbench
-from lkbench import TESTS, design, compat
+import lkgallery
+from lkgallery import TESTS, design, compat
 
-suite = lkbench.Suite("update-simulate_Kriging_python")
+suite = lkgallery.Suite("update-simulate_Kriging_python")
 print("pylibkriging", compat.version())
 
 

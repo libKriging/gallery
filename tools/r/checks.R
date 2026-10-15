@@ -1,7 +1,7 @@
-# Same CSV outputs as lkbench/checks.py (see there), for the R notebooks.
+# Same CSV outputs as lkgallery/checks.py (see there), for the R notebooks.
 # Statuses: PASS, FAIL (error-level), WARN (warn-level), SKIP, KNOWN (listed in tools/known_issues.csv).
 # Paths are relative to the repository root, where the notebooks are executed.
-results_dir <- Sys.getenv("LKBENCH_RESULTS", "results")
+results_dir <- Sys.getenv("LKGALLERY_RESULTS", "results")
 dir.create(results_dir, showWarnings = FALSE, recursive = TRUE)
 known_file <- file.path("tools", "known_issues.csv")
 if (!file.exists(known_file)) stop("run the notebooks from the repository root (", known_file, " not found)")

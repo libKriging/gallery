@@ -33,21 +33,21 @@ import numpy as np
 
 
 def _find_root():
-    """The repository root: $LKBENCH_ROOT, or the first directory, from the working
+    """The repository root: $LKGALLERY_ROOT, or the first directory, from the working
     directory up, that holds tools/known_issues.csv (notebooks run from the root).
     Not derived from this file's location, which is site-packages for a non-editable
     install: the known issues would then be silently ignored."""
-    if os.environ.get("LKBENCH_ROOT"):
-        return Path(os.environ["LKBENCH_ROOT"]).resolve()
+    if os.environ.get("LKGALLERY_ROOT"):
+        return Path(os.environ["LKGALLERY_ROOT"]).resolve()
     for d in [Path.cwd(), *Path.cwd().parents]:
         if (d / "tools" / "known_issues.csv").is_file():
             return d
     raise RuntimeError("libKriging gallery repository not found from the working directory "
-                       f"{Path.cwd()}: run the notebooks from the repository root, or set LKBENCH_ROOT")
+                       f"{Path.cwd()}: run the notebooks from the repository root, or set LKGALLERY_ROOT")
 
 
 ROOT = _find_root()
-RESULTS_DIR = Path(os.environ.get("LKBENCH_RESULTS", ROOT / "results"))
+RESULTS_DIR = Path(os.environ.get("LKGALLERY_RESULTS", ROOT / "results"))
 KNOWN_ISSUES_FILE = ROOT / "tools" / "known_issues.csv"
 DATA_DIR = ROOT / "data"
 

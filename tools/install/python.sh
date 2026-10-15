@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install pylibkriging, then the notebooks' helpers (tools/lkbench) and runner.
+# Install pylibkriging, then the notebooks' helpers (tools/lkgallery) and runner.
 #   tools/install/python.sh wheel   LIBKRIGING_SRC OUT_DIR   only build a wheel from a libKriging checkout
 #   tools/install/python.sh master  WHEEL_DIR|LIBKRIGING_SRC install the wheel of WHEEL_DIR, or build it first
 #   tools/install/python.sh release                          the last release, from PyPI

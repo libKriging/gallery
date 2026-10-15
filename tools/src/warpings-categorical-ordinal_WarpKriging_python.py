@@ -28,10 +28,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import pylibkriging as lk
 
-import lkbench
-from lkbench import TESTS, design, metrics, compat
+import lkgallery
+from lkgallery import TESTS, design, metrics, compat
 
-suite = lkbench.Suite("warpings-categorical-ordinal_WarpKriging_python")
+suite = lkgallery.Suite("warpings-categorical-ordinal_WarpKriging_python")
 print("pylibkriging", compat.version())
 if not compat.has("WarpKriging"):
     suite.skip("WarpKriging", "not available in this pylibkriging")
@@ -197,7 +197,7 @@ suite.table().round(4)
 if compat.has("WarpKriging"):
     X, y, Xt, yt = design.dataset(TESTS["hartmann3"], 40, n_test=100, seed=61)
     with suite.runs("WarpKriging: fit (persistence)"):
-        lkbench.persistence.check(suite, "WarpKriging", lk.WarpKriging(y, X, ["kumaraswamy", "none", "affine"], "matern5_2"), Xt, pred)
+        lkgallery.persistence.check(suite, "WarpKriging", lk.WarpKriging(y, X, ["kumaraswamy", "none", "affine"], "matern5_2"), Xt, pred)
 
 # %% [markdown]
 # ## Summary

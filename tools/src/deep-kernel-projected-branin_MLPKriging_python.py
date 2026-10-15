@@ -24,10 +24,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pylibkriging as lk
 
-import lkbench
-from lkbench import TESTS, design, metrics, compat
+import lkgallery
+from lkgallery import TESTS, design, metrics, compat
 
-suite = lkbench.Suite("deep-kernel-projected-branin_MLPKriging_python")
+suite = lkgallery.Suite("deep-kernel-projected-branin_MLPKriging_python")
 print("pylibkriging", compat.version())
 
 
@@ -87,7 +87,7 @@ else:
 if compat.has("MLPKriging"):
     X, y, Xt, yt = design.dataset(TESTS["hartmann3"], 40, n_test=100, seed=61)
     with suite.runs("MLPKriging: fit (persistence)"):
-        lkbench.persistence.check(suite, "MLPKriging", lk.MLPKriging(y, X, hidden_dims=[8], d_out=2, activation="tanh",
+        lkgallery.persistence.check(suite, "MLPKriging", lk.MLPKriging(y, X, hidden_dims=[8], d_out=2, activation="tanh",
                                                        kernel="matern5_2"), Xt, pred)
 
 # %% [markdown]

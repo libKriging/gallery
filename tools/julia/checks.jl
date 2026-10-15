@@ -1,8 +1,8 @@
-# Same CSV outputs as lkbench/checks.py (see there), for the Julia notebooks.
+# Same CSV outputs as lkgallery/checks.py (see there), for the Julia notebooks.
 # Paths are relative to the repository root, where the notebooks are executed.
 using DelimitedFiles, Printf
 
-const RESULTS_DIR = get(ENV, "LKBENCH_RESULTS", "results")
+const RESULTS_DIR = get(ENV, "LKGALLERY_RESULTS", "results")
 mkpath(RESULTS_DIR)
 
 function read_known()

@@ -32,10 +32,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pylibkriging as lk
 
-import lkbench
-from lkbench import TESTS, design, compat
+import lkgallery
+from lkgallery import TESTS, design, compat
 
-suite = lkbench.Suite("robustness-invalid-inputs_Kriging_python")
+suite = lkgallery.Suite("robustness-invalid-inputs_Kriging_python")
 print("pylibkriging", compat.version())
 tf = TESTS["branin"]
 X, y, Xt, yt = design.dataset(tf, 20, n_test=200, seed=71)

@@ -49,10 +49,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import pylibkriging as lk
 
-import lkbench
-from lkbench import TESTS, design, metrics, compat
+import lkgallery
+from lkgallery import TESTS, design, metrics, compat
 
-suite = lkbench.Suite("kernels-trends-interpolation_Kriging_python")
+suite = lkgallery.Suite("kernels-trends-interpolation_Kriging_python")
 print("pylibkriging", compat.version())
 
 KERNELS = ["gauss", "exp", "matern3_2", "matern5_2"]

@@ -1,6 +1,6 @@
 function lkb_finalize(s)
   s = lkb_metric(s, "_suite", "_", "elapsed_s", toc(s.t0));
-  d = getenv("LKBENCH_RESULTS"); if isempty(d), d = "results"; end
+  d = getenv("LKGALLERY_RESULTS"); if isempty(d), d = "results"; end
   if ~exist(d, "dir"), mkdir(d); end
   write_csv(fullfile(d, [s.name ".checks.csv"]), {"suite", "lang", "check", "severity", "status", "value", "expected", "detail"}, s.checks);
   write_csv(fullfile(d, [s.name ".metrics.csv"]), {"suite", "lang", "case", "package", "metric", "value"}, s.metrics);

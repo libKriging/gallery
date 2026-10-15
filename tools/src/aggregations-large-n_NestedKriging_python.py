@@ -36,10 +36,10 @@ import numpy as np
 import pandas as pd
 import pylibkriging as lk
 
-import lkbench
-from lkbench import TESTS, design, metrics, compat
+import lkgallery
+from lkgallery import TESTS, design, metrics, compat
 
-suite = lkbench.Suite("aggregations-large-n_NestedKriging_python")
+suite = lkgallery.Suite("aggregations-large-n_NestedKriging_python")
 print("pylibkriging", compat.version())
 if not compat.has("NestedKriging"):
     suite.skip("NestedKriging", "not available in this pylibkriging")
@@ -161,7 +161,7 @@ if compat.has("NestedKriging"):
 if compat.has("NestedKriging"):
     X, y, Xt, yt = design.dataset(TESTS["hartmann3"], 40, n_test=100, seed=61)
     with suite.runs("NestedKriging: fit (persistence)"):
-        lkbench.persistence.check(suite, "NestedKriging", lk.NestedKriging(y, X, "matern5_2", nb_groups=4, seed=1), Xt, pred)
+        lkgallery.persistence.check(suite, "NestedKriging", lk.NestedKriging(y, X, "matern5_2", nb_groups=4, seed=1), Xt, pred)
 
 # %% [markdown]
 # ## Summary

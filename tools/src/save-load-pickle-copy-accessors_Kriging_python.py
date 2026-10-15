@@ -31,10 +31,10 @@ import copy
 import numpy as np
 import pylibkriging as lk
 
-import lkbench
-from lkbench import TESTS, design, compat
+import lkgallery
+from lkgallery import TESTS, design, compat
 
-suite = lkbench.Suite("save-load-pickle-copy-accessors_Kriging_python")
+suite = lkgallery.Suite("save-load-pickle-copy-accessors_Kriging_python")
 print("pylibkriging", compat.version())
 
 tf = TESTS["hartmann3"]
@@ -71,7 +71,7 @@ def predict_any(k, Xn):
 # %%
 for name, make in MODELS.items():
     with suite.runs(f"{name}: fit"):
-        lkbench.persistence.check(suite, name, make(), Xt, predict_any)
+        lkgallery.persistence.check(suite, name, make(), Xt, predict_any)
 
 # %% [markdown]
 # A copy is independent: updating it leaves the original model unchanged.

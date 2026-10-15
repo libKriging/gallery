@@ -92,7 +92,7 @@ Notebooks are named `<theme>_<kriging type>_<binding>.ipynb`. Those comparing
 with another package install it themselves, in their first cells (pip, CRAN,
 `Pkg.add`, or a clone of STK); a package that cannot be installed is reported
 (warn-level) and its comparison skipped. Test functions:
-[`tools/lkbench/functions.py`](tools/lkbench/functions.py), after the
+[`tools/lkgallery/functions.py`](tools/lkgallery/functions.py), after the
 [Virtual Library of Simulation Experiments](https://www.sfu.ca/~ssurjano/)
 (Surjanovic & Bingham). Everything that is not a notebook is under
 [`tools/`](tools) (sources of the notebooks, helpers, installation of the bindings,
@@ -122,7 +122,7 @@ and the installation of rlibkriging (compiled from CRAN sources) and of JLibKrig
 
 ## Checks and statuses
 
-Each notebook records its checks with `lkbench.Suite` (Python) or the small
+Each notebook records its checks with `lkgallery.Suite` (Python) or the small
 equivalents of `tools/r`, `tools/octave` and `tools/julia`, under a suite named
 after the notebook, and writes `results/<notebook>.checks.csv` and
 `results/<notebook>.metrics.csv`.

@@ -37,10 +37,10 @@ import numpy as np
 import pandas as pd
 import pylibkriging as lk
 
-import lkbench
-from lkbench import TESTS, design, metrics, compat
+import lkgallery
+from lkgallery import TESTS, design, metrics, compat
 
-suite = lkbench.Suite("high-dimension-normalize-screening_Kriging_python")
+suite = lkgallery.Suite("high-dimension-normalize-screening_Kriging_python")
 print("pylibkriging", compat.version())
 
 

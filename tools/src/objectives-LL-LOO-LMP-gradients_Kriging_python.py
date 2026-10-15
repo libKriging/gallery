@@ -37,10 +37,10 @@ import numpy as np
 import pandas as pd
 import pylibkriging as lk
 
-import lkbench
-from lkbench import TESTS, design, metrics, compat
+import lkgallery
+from lkgallery import TESTS, design, metrics, compat
 
-suite = lkbench.Suite("objectives-LL-LOO-LMP-gradients_Kriging_python")
+suite = lkgallery.Suite("objectives-LL-LOO-LMP-gradients_Kriging_python")
 print("pylibkriging", compat.version())
 CASES = {"branin": 25, "hartmann3": 40, "ishigami": 60, "friedman": 50}
 KERNELS = ["gauss", "exp", "matern3_2", "matern5_2"]

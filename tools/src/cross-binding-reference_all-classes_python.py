@@ -49,11 +49,11 @@ import numpy as np
 import pandas as pd
 import pylibkriging as lk
 
-import lkbench
-from lkbench import compat
-from lkbench.checks import DATA_DIR as DATA, RESULTS_DIR
+import lkgallery
+from lkgallery import compat
+from lkgallery.checks import DATA_DIR as DATA, RESULTS_DIR
 
-suite = lkbench.Suite("cross-binding-reference_all-classes_python")
+suite = lkgallery.Suite("cross-binding-reference_all-classes_python")
 print("pylibkriging", compat.version())
 DATASETS = ["branin", "hartmann3", "borehole"]
 rows = []

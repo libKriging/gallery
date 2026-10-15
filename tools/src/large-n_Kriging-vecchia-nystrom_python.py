@@ -42,10 +42,10 @@ import numpy as np
 import pandas as pd
 import pylibkriging as lk
 
-import lkbench
-from lkbench import TESTS, design, metrics, compat
+import lkgallery
+from lkgallery import TESTS, design, metrics, compat
 
-suite = lkbench.Suite("large-n_Kriging-vecchia-nystrom_python")
+suite = lkgallery.Suite("large-n_Kriging-vecchia-nystrom_python")
 print("pylibkriging", compat.version())
 HAS_METHOD = compat.has("method")
 if not HAS_METHOD:

@@ -9,7 +9,7 @@
 # Experiments, Surjanovic & Bingham).
 #
 # Every notebook of this gallery relies on the test functions of
-# `lkbench.functions` (after the [Virtual Library of Simulation Experiments](https://www.sfu.ca/~ssurjano/)).
+# `lkgallery.functions` (after the [Virtual Library of Simulation Experiments](https://www.sfu.ca/~ssurjano/)).
 # A typo in one of them would silently bias every result built on it, so they are
 # checked first, against the reference values published on the library pages
 # (global optima, nominal points) and against the known output ranges.
@@ -19,10 +19,10 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-import lkbench
-from lkbench import TESTS, design
+import lkgallery
+from lkgallery import TESTS, design
 
-suite = lkbench.Suite("test-functions-reference-values_no-model_python")
+suite = lkgallery.Suite("test-functions-reference-values_no-model_python")
 
 # %% [markdown]
 # ## Reference values

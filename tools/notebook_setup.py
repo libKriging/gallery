@@ -22,5 +22,5 @@ if not Path("tools/known_issues.csv").is_file():
                 "(PyPI has wheels for CPython 3.10 to 3.12 only). On Colab: Runtime > Change runtime version > "
                 "2026.07 (Python 3.12), then run again.\n" + r.stderr[-500:])
         importlib.invalidate_caches()
-sys.path.insert(0, str(Path("tools").resolve()))  # lkbench, when not installed (Colab, Binder)
+sys.path.insert(0, str(Path("tools").resolve()))  # lkgallery, when not installed (Colab, Binder)
 print("working directory:", os.getcwd())

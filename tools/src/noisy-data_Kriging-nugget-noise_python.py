@@ -39,10 +39,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import pylibkriging as lk
 
-import lkbench
-from lkbench import TESTS, design, metrics, compat
+import lkgallery
+from lkgallery import TESTS, design, metrics, compat
 
-suite = lkbench.Suite("noisy-data_Kriging-nugget-noise_python")
+suite = lkgallery.Suite("noisy-data_Kriging-nugget-noise_python")
 print("pylibkriging", compat.version())
 
 

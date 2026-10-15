@@ -1,5 +1,5 @@
 function s = lkb_suite(name)
-  % Same CSV outputs as lkbench/checks.py (see there), for the Octave notebooks.
+  % Same CSV outputs as lkgallery/checks.py (see there), for the Octave notebooks.
   % A suite is a struct passed around by value: s = lkb_close(s, ...).
   % Paths are relative to the repository root, where the notebooks are executed.
   s.name = name;

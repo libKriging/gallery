@@ -93,7 +93,7 @@ kk = NestedKriging(y, X, "matern5_2", 2, "NK", "kmeans", 1);
 m = kk.predict(Xt); out = put(out, name, "nested_fit_mean", m);
 
 % %%
-d = getenv("LKBENCH_RESULTS"); if isempty(d), d = "results"; end
+d = getenv("LKGALLERY_RESULTS"); if isempty(d), d = "results"; end
 if ~exist(d, "dir"), mkdir(d); end
 fid = fopen(fullfile(d, "xbind_octave.csv"), "w");
 fprintf(fid, "lang,dataset,quantity,index,value\n");
