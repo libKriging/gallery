@@ -60,6 +60,10 @@ env:
   CMAKE_POLICY_VERSION_MINIMUM: "3.5"
   # NestedKriging's OpenMP loop can hang on 2-core runners (same workaround as libKriging's CI)
   OMP_NUM_THREADS: 1
+  # Same OpenBLAS kernels on every runner, whatever its CPU: the cross-binding checks
+  # compare jobs at 1e-8, and nystrom(10) moves by ~1e-8 (LL) / ~1e-4 (mean) between kernels.
+  # Haswell (AVX2) runs on all GitHub x64 runners.
+  OPENBLAS_CORETYPE: Haswell
   PYTHON_VERSION: '3.12'
   JULIA_VERSION: '1.11'
 
