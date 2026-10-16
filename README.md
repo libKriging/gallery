@@ -19,8 +19,8 @@ reported (see [Checks and statuses](#checks-and-statuses)).
 **Gallery site: <https://libkriging.github.io/gallery/>**: one card per notebook
 (first figure, title, idea, tags: language, Kriging class, kernel, objective, method,
 noise/nugget, warping, aggregation, compared packages; status of its checks), tag
-filters; a card opens its notebook, executed by the last CI run on `main`, in Colab
-(Python) or nbviewer (R, Octave, Julia). Built by [`tools/site.py`](tools/site.py),
+filters; a card opens its notebook, executed by the last CI run on `main`, in nbviewer
+(Python cards also link to Colab and Binder). Built by [`tools/site.py`](tools/site.py),
 published on the `gh-pages` branch.
 
 ## The examples
