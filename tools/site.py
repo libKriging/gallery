@@ -7,7 +7,7 @@ kernel, objective, method, noise, warping, aggregation, compared packages, topic
 ``**Tags.**`` paragraph of the source) and the status of its checks
 (``<results>/<stem>.checks.csv``). Clicking the card opens the executed notebook in
 nbviewer; Python cards also link to Colab and Binder (which do not run libKriging for the
-other languages). Tags filter the cards.
+other languages), and every card to the .ipynb itself, to download. Tags filter the cards.
 
 Output (``--out``, published as the ``gh-pages`` branch by CI):
 
@@ -95,8 +95,8 @@ def links(meta, repo, branch):
         return {"open": view,
                 "Colab": f"https://colab.research.google.com/github/{repo}/blob/{branch}/{path}",
                 "Binder": f"https://mybinder.org/v2/gh/{repo}/{branch}?labpath={quote(path, safe='')}",
-                "view": view, "source": src}
-    return {"open": view, "view": view, "source": src}
+                "Notebook": path, "view": view, "source": src}
+    return {"open": view, "Notebook": path, "view": view, "source": src}
 
 
 def card_html(c):
@@ -106,7 +106,8 @@ def card_html(c):
         f'{"" if k in ("language", "class") else html.escape(k) + ": "}{html.escape(v)}</span>'
         for k, v in tags)
     data = html.escape(json.dumps([f"{k}: {v}" for k, v in tags]))
-    others = " ".join(f'<a href="{html.escape(u)}" target="_blank" rel="noopener">{n}</a>'
+    others = " ".join(f'<a href="{html.escape(u)}" download>{n}</a>' if n == "Notebook"  # the .ipynb of this site
+                      else f'<a href="{html.escape(u)}" target="_blank" rel="noopener">{n}</a>'
                       for n, u in c["links"].items() if n != "open")
     status, cls = c["status"]
     lang = html.escape(c["language"])
