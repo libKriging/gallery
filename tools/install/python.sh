@@ -7,7 +7,8 @@
 # The wheel needs BLAS/LAPACK headers (Ubuntu: liblapack-dev libopenblas-dev).
 set -euo pipefail
 tools=$(cd "$(dirname "$0")/.." && pwd)
-build_wheel() {  # SRC OUT
+build_wheel() {  # SRC OUT (absolute paths: pip reads a bare "libKriging" as a package name)
+  set -- "$(cd "$1" && pwd)" "$(mkdir -p "$2" && cd "$2" && pwd)"
   python -m pip install --upgrade pip
   python -m pip install -r "$1/bindings/Python/pylibkriging/requirements.txt" \
     -r "$1/bindings/Python/pylibkriging/dev-requirements.txt" cmake

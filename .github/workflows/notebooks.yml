@@ -319,9 +319,7 @@ jobs:
           if [ "${{ matrix.channel }}" = master ]; then
             tar -C "$RUNNER_TEMP" -xf Rlib.tar
             echo "R_LIBS_USER=$RUNNER_TEMP/Rlib" >> "$GITHUB_ENV"
-            R_LIBS_USER="$RUNNER_TEMP/Rlib" Rscript -e 'library(rlibkriging)'
-            python -m pip install nbclient nbformat ipykernel jupyter_client
-            R_LIBS_USER="$RUNNER_TEMP/Rlib" Rscript -e 'if (!requireNamespace("IRkernel", quietly = TRUE)) install.packages("IRkernel", lib = Sys.getenv("R_LIBS_USER")); IRkernel::installspec(user = TRUE)'
+            tools/install/r.sh kernel "$RUNNER_TEMP/Rlib"
           else
             tools/install/r.sh release "$RUNNER_TEMP/Rlib"
             echo "R_LIBS_USER=$RUNNER_TEMP/Rlib" >> "$GITHUB_ENV"
