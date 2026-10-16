@@ -25,7 +25,7 @@ include("tools/julia/gallery.jl")
 s = Suite("cross-binding_all-classes_julia")
 rows = Vector{Vector{String}}()
 record!(dataset, quantity, values) =
-    for (i, v) in enumerate(vec(Float64.(collect(values))))
+    for (i, v) in enumerate(Float64.(vec(collect(values))))   # vec first: Float64.() of a 0-dim array is a scalar
         push!(rows, ["julia", dataset, quantity, string(i), @sprintf("%.17g", v)])
     end
 
