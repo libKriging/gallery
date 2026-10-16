@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libKriging gallery</title>
+<style>
+:root { --bg:#f6f7f9; --fg:#1d2330; --muted:#5d6676; --card:#fff; --line:#dde1e7; --chip:#eef1f5; --on:#1d2330; --onfg:#fff; }
+@media (prefers-color-scheme: dark) { :root { --bg:#14171c; --fg:#e4e7ec; --muted:#9aa3b2; --card:#1d2129; --line:#2d333d; --chip:#272c35; --on:#e4e7ec; --onfg:#14171c; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+header, main, footer { max-width:1280px; margin:0 auto; padding:16px; }
+header h1 { margin:8px 0 4px; font-size:28px; }
+header p { margin:4px 0; color:var(--muted); }
+a { color:inherit; }
+#filters { margin-top:12px; display:flex; flex-direction:column; gap:6px; }
+#tagbox summary { cursor:pointer; color:var(--muted); font-size:13px; margin:4px 0; }
+#tagbox[open] { display:flex; flex-direction:column; gap:6px; }
+#filters .row { display:flex; flex-wrap:wrap; gap:4px; align-items:center; }
+#filters .key { color:var(--muted); font-size:13px; min-width:92px; }
+#filters button { border:1px solid var(--line); background:var(--chip); color:var(--fg); border-radius:12px; padding:2px 9px; font-size:13px; cursor:pointer; }
+#filters button.on { background:var(--on); color:var(--onfg); border-color:var(--on); }
+#search { width:100%; max-width:360px; padding:6px 10px; border:1px solid var(--line); border-radius:6px; background:var(--card); color:var(--fg); font-size:14px; }
+#count { color:var(--muted); font-size:13px; margin-left:8px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:16px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden; display:flex; flex-direction:column; }
+.card.hidden { display:none; }
+.card .main { display:block; aspect-ratio:16/10; background:#fff; border-bottom:1px solid var(--line); }
+.card img { width:100%; height:100%; object-fit:contain; display:block; }
+.card .main:hover img { opacity:.85; }
+.body { padding:10px 12px 12px; display:flex; flex-direction:column; gap:6px; flex:1; }
+.head { display:flex; justify-content:space-between; align-items:center; }
+.lang { color:#fff; border-radius:4px; padding:1px 7px; font-size:12px; font-weight:600; }
+.status { font-size:12px; border-radius:4px; padding:1px 7px; }
+.s-pass { background:#d9f2df; color:#14532d; } .s-warn { background:#fdf0cf; color:#713f12; }
+.s-fail { background:#fbd9d9; color:#7f1d1d; } .s-none { background:var(--chip); color:var(--muted); }
+h2 { font-size:16px; margin:2px 0; }
+.idea { margin:0; }
+.ref { margin:0; color:var(--muted); font-size:13px; }
+.tags { display:flex; flex-wrap:wrap; gap:4px; margin-top:auto; padding-top:4px; }
+.tag { background:var(--chip); border-radius:10px; padding:1px 8px; font-size:12px; color:var(--muted); }
+.tag.k-class { color:var(--fg); font-weight:600; }
+.tag.k-language { display:none; }
+.links { display:flex; gap:12px; font-size:13px; }
+.links a { color:var(--muted); }
+.links a:hover { color:var(--fg); }
+footer { color:var(--muted); font-size:13px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>libKriging gallery</h1>
+  <p>Notebooks showing <a href="https://github.com/libKriging/libKriging">libKriging</a> at work in Python, R, Octave and Julia,
+  each compared with a reference (another package, an exact model, a known value). Click a card to view the executed
+  notebook; Python notebooks can also be run in Colab or Binder, with the released pylibkriging.</p>
+  <p>Executed in CI against libKriging libKriging/libKriging@master (79ce67c801), 2026-10-16 13:59 UTC · <a href="https://github.com/libKriging/gallery">sources</a> · 21 notebooks, checks: 43 WARN, 10 KNOWN, 1083 PASS</p>
+  <div id="filters"><div class="row"><input id="search" type="search" placeholder="search titles and ideas"><span id="count"></span></div>
+  <details id="tagbox"><summary>filter by tags</summary><div class="row"><span class="key">language</span><button type="button" data-tag="language: Python">Python <small>15</small></button><button type="button" data-tag="language: Julia">Julia <small>2</small></button><button type="button" data-tag="language: Octave">Octave <small>2</small></button><button type="button" data-tag="language: R">R <small>2</small></button></div>
+<div class="row"><span class="key">class</span><button type="button" data-tag="class: Kriging">Kriging <small>19</small></button><button type="button" data-tag="class: MLPKriging">MLPKriging <small>5</small></button><button type="button" data-tag="class: NestedKriging">NestedKriging <small>5</small></button><button type="button" data-tag="class: WarpKriging">WarpKriging <small>5</small></button><button type="button" data-tag="class: none">none <small>1</small></button></div>
+<div class="row"><span class="key">kernel</span><button type="button" data-tag="kernel: matern5_2">matern5_2 <small>11</small></button><button type="button" data-tag="kernel: gauss">gauss <small>4</small></button><button type="button" data-tag="kernel: exp">exp <small>2</small></button><button type="button" data-tag="kernel: matern3_2">matern3_2 <small>2</small></button></div>
+<div class="row"><span class="key">trend</span><button type="button" data-tag="trend: constant">constant <small>1</small></button><button type="button" data-tag="trend: interactive">interactive <small>1</small></button><button type="button" data-tag="trend: linear">linear <small>1</small></button><button type="button" data-tag="trend: quadratic">quadratic <small>1</small></button></div>
+<div class="row"><span class="key">objective</span><button type="button" data-tag="objective: LL">LL <small>6</small></button><button type="button" data-tag="objective: LMP">LMP <small>2</small></button><button type="button" data-tag="objective: LOO">LOO <small>2</small></button></div>
+<div class="row"><span class="key">method</span><button type="button" data-tag="method: exact">exact <small>6</small></button><button type="button" data-tag="method: nystrom">nystrom <small>6</small></button><button type="button" data-tag="method: vecchia">vecchia <small>6</small></button></div>
+<div class="row"><span class="key">noise</span><button type="button" data-tag="noise: none">none <small>6</small></button><button type="button" data-tag="noise: nugget">nugget <small>6</small></button><button type="button" data-tag="noise: variances">variances <small>6</small></button></div>
+<div class="row"><span class="key">warping</span><button type="button" data-tag="warping: kumaraswamy">kumaraswamy <small>5</small></button><button type="button" data-tag="warping: affine">affine <small>1</small></button><button type="button" data-tag="warping: boxcox">boxcox <small>1</small></button><button type="button" data-tag="warping: categorical">categorical <small>1</small></button><button type="button" data-tag="warping: neural_mono">neural_mono <small>1</small></button><button type="button" data-tag="warping: none">none <small>1</small></button><button type="button" data-tag="warping: ordinal">ordinal <small>1</small></button></div>
+<div class="row"><span class="key">aggregation</span><button type="button" data-tag="aggregation: NK">NK <small>5</small></button><button type="button" data-tag="aggregation: BCM">BCM <small>1</small></button><button type="button" data-tag="aggregation: gPoE">gPoE <small>1</small></button><button type="button" data-tag="aggregation: PoE">PoE <small>1</small></button><button type="button" data-tag="aggregation: rBCM">rBCM <small>1</small></button></div>
+<div class="row"><span class="key">compared to</span><button type="button" data-tag="compared to: scikit-learn">scikit-learn <small>2</small></button><button type="button" data-tag="compared to: DiceKriging">DiceKriging <small>1</small></button><button type="button" data-tag="compared to: GaussianProcesses.jl">GaussianProcesses.jl <small>1</small></button><button type="button" data-tag="compared to: GPy">GPy <small>1</small></button><button type="button" data-tag="compared to: OpenTURNS">OpenTURNS <small>1</small></button><button type="button" data-tag="compared to: RobustGaSP">RobustGaSP <small>1</small></button><button type="button" data-tag="compared to: SMT">SMT <small>1</small></button><button type="button" data-tag="compared to: STK">STK <small>1</small></button></div>
+<div class="row"><span class="key">topic</span><button type="button" data-tag="topic: cross-binding">cross-binding <small>4</small></button><button type="button" data-tag="topic: large n">large n <small>2</small></button><button type="button" data-tag="topic: calibration">calibration <small>1</small></button><button type="button" data-tag="topic: categorical inputs">categorical inputs <small>1</small></button><button type="button" data-tag="topic: conditional simulation">conditional simulation <small>1</small></button><button type="button" data-tag="topic: cost">cost <small>1</small></button><button type="button" data-tag="topic: deep kernel">deep kernel <small>1</small></button><button type="button" data-tag="topic: derivatives">derivatives <small>1</small></button><button type="button" data-tag="topic: dimension reduction">dimension reduction <small>1</small></button><button type="button" data-tag="topic: gradients">gradients <small>1</small></button><button type="button" data-tag="topic: high dimension">high dimension <small>1</small></button><button type="button" data-tag="topic: interpolation">interpolation <small>1</small></button><button type="button" data-tag="topic: invariance">invariance <small>1</small></button><button type="button" data-tag="topic: noisy data">noisy data <small>1</small></button><button type="button" data-tag="topic: non-stationarity">non-stationarity <small>1</small></button><button type="button" data-tag="topic: normalize">normalize <small>1</small></button><button type="button" data-tag="topic: optimization">optimization <small>1</small></button><button type="button" data-tag="topic: persistence">persistence <small>1</small></button><button type="button" data-tag="topic: robustness">robustness <small>1</small></button><button type="button" data-tag="topic: scikit-learn API">scikit-learn API <small>1</small></button><button type="button" data-tag="topic: screening">screening <small>1</small></button><button type="button" data-tag="topic: test functions">test functions <small>1</small></button><button type="button" data-tag="topic: update">update <small>1</small></button></div></details></div>
+</header>
+<main class="grid">
+<article class="card" data-tags="[&quot;language: Python&quot;, &quot;class: Kriging&quot;, &quot;kernel: gauss&quot;, &quot;kernel: matern5_2&quot;, &quot;compared to: scikit-learn&quot;, &quot;compared to: SMT&quot;, &quot;compared to: OpenTURNS&quot;, &quot;compared to: GPy&quot;]" data-text="kriging vs scikit-learn, smt, openturns, gpy how does libkriging compare with the python gp packages, first as an implementation (same hyperparameters → same numbers), then as a tool (default fits: accuracy, calibration, cost) on 10 functions?">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.png" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#3572a5">Python</span>
+      <span class="status s-warn">33/36 passed</span></div>
+    <h2>Kriging vs scikit-learn, SMT, OpenTURNS, GPy</h2>
+    <p class="idea">How does libKriging compare with the Python GP packages, first as an implementation (same hyperparameters → same numbers), then as a tool (default fits: accuracy, calibration, cost) on 10 functions?</p>
+    <p class="ref"><b>Reference.</b> Scikit-learn, SMT, OpenTURNS and GPy.</p>
+    <div class="tags"><span class="tag k-language" title="language">Python</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-kernel" title="kernel">kernel: gauss</span><span class="tag k-kernel" title="kernel">kernel: matern5_2</span><span class="tag k-compared-to" title="compared to">compared to: scikit-learn</span><span class="tag k-compared-to" title="compared to">compared to: SMT</span><span class="tag k-compared-to" title="compared to">compared to: OpenTURNS</span><span class="tag k-compared-to" title="compared to">compared to: GPy</span></div>
+    <div class="links"><a href="https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.ipynb" target="_blank" rel="noopener">Colab</a> <a href="https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fvs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.ipynb" target="_blank" rel="noopener">Binder</a> <a href="notebooks/vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.py" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: Python&quot;, &quot;class: Kriging&quot;, &quot;method: exact&quot;, &quot;method: vecchia&quot;, &quot;method: nystrom&quot;, &quot;topic: large n&quot;]" data-text="kriging with method=&quot;vecchia&quot; / &quot;nystrom&quot; — large n vecchia and nyström approximations make kriging affordable for large n; how much accuracy do they cost, and do they converge to the exact model as their size parameter grows?">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/large-n_Kriging-vecchia-nystrom_python.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/large-n_Kriging-vecchia-nystrom_python.png" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#3572a5">Python</span>
+      <span class="status s-warn">68/77 passed</span></div>
+    <h2>Kriging with method=&quot;vecchia&quot; / &quot;nystrom&quot; — large n</h2>
+    <p class="idea">Vecchia and Nyström approximations make Kriging affordable for large n; how much accuracy do they cost, and do they converge to the exact model as their size parameter grows?</p>
+    <p class="ref"><b>Reference.</b> The exact model at the same θ (limits m = n − 1 and k = n), and the exact fit.</p>
+    <div class="tags"><span class="tag k-language" title="language">Python</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-method" title="method">method: exact</span><span class="tag k-method" title="method">method: vecchia</span><span class="tag k-method" title="method">method: nystrom</span><span class="tag k-topic" title="topic">topic: large n</span></div>
+    <div class="links"><a href="https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/large-n_Kriging-vecchia-nystrom_python.ipynb" target="_blank" rel="noopener">Colab</a> <a href="https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Flarge-n_Kriging-vecchia-nystrom_python.ipynb" target="_blank" rel="noopener">Binder</a> <a href="notebooks/large-n_Kriging-vecchia-nystrom_python.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/large-n_Kriging-vecchia-nystrom_python.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/large-n_Kriging-vecchia-nystrom_python.py" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: Python&quot;, &quot;class: Kriging&quot;, &quot;noise: none&quot;, &quot;noise: nugget&quot;, &quot;noise: variances&quot;, &quot;topic: noisy data&quot;, &quot;topic: calibration&quot;]" data-text="kriging with noise (noise=&quot;nugget&quot;, known variances) — noisy observations kriging with noisy observations: an estimated homogeneous nugget, or known (heteroscedastic) noise variances, must recover the noise level and predict the noise-free function with calibrated intervals.">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/noisy-data_Kriging-nugget-noise_python.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/noisy-data_Kriging-nugget-noise_python.png" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#3572a5">Python</span>
+      <span class="status s-warn">20/21 passed</span></div>
+    <h2>Kriging with noise (noise=&quot;nugget&quot;, known variances) — noisy observations</h2>
+    <p class="idea">Kriging with noisy observations: an estimated homogeneous nugget, or known (heteroscedastic) noise variances, must recover the noise level and predict the noise-free function with calibrated intervals.</p>
+    <p class="ref"><b>Reference.</b> The true noise variance, replicate averaging, and the interpolating (noise-free) fit on the same data.</p>
+    <div class="tags"><span class="tag k-language" title="language">Python</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-noise" title="noise">noise: none</span><span class="tag k-noise" title="noise">noise: nugget</span><span class="tag k-noise" title="noise">noise: variances</span><span class="tag k-topic" title="topic">topic: noisy data</span><span class="tag k-topic" title="topic">topic: calibration</span></div>
+    <div class="links"><a href="https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/noisy-data_Kriging-nugget-noise_python.ipynb" target="_blank" rel="noopener">Colab</a> <a href="https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fnoisy-data_Kriging-nugget-noise_python.ipynb" target="_blank" rel="noopener">Binder</a> <a href="notebooks/noisy-data_Kriging-nugget-noise_python.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/noisy-data_Kriging-nugget-noise_python.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/noisy-data_Kriging-nugget-noise_python.py" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: Python&quot;, &quot;class: Kriging&quot;, &quot;kernel: gauss&quot;, &quot;kernel: exp&quot;, &quot;kernel: matern3_2&quot;, &quot;kernel: matern5_2&quot;, &quot;trend: constant&quot;, &quot;trend: linear&quot;, &quot;trend: interactive&quot;, &quot;trend: quadratic&quot;, &quot;topic: interpolation&quot;, &quot;topic: derivatives&quot;]" data-text="kriging — kernels × trends, interpolation, predict (covariance, derivatives) the basic promise of noise-free kriging, over the whole grid of kernels and trends: it interpolates the data, its predictive variance vanishes at the design points, its predicted derivatives are the derivatives of its prediction, and it is accurate on smooth 1d to 3d functions.">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/kernels-trends-interpolation_Kriging_python.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/kernels-trends-interpolation_Kriging_python.png" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#3572a5">Python</span>
+      <span class="status s-warn">393/411 passed</span></div>
+    <h2>Kriging — kernels × trends, interpolation, predict (covariance, derivatives)</h2>
+    <p class="idea">The basic promise of noise-free Kriging, over the whole grid of kernels and trends: it interpolates the data, its predictive variance vanishes at the design points, its predicted derivatives are the derivatives of its prediction, and it is accurate on smooth 1D to 3D functions.</p>
+    <p class="ref"><b>Reference.</b> Finite differences of the prediction, the data themselves, and per-function Q² floors.</p>
+    <div class="tags"><span class="tag k-language" title="language">Python</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-kernel" title="kernel">kernel: gauss</span><span class="tag k-kernel" title="kernel">kernel: exp</span><span class="tag k-kernel" title="kernel">kernel: matern3_2</span><span class="tag k-kernel" title="kernel">kernel: matern5_2</span><span class="tag k-trend" title="trend">trend: constant</span><span class="tag k-trend" title="trend">trend: linear</span><span class="tag k-trend" title="trend">trend: interactive</span><span class="tag k-trend" title="trend">trend: quadratic</span><span class="tag k-topic" title="topic">topic: interpolation</span><span class="tag k-topic" title="topic">topic: derivatives</span></div>
+    <div class="links"><a href="https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/kernels-trends-interpolation_Kriging_python.ipynb" target="_blank" rel="noopener">Colab</a> <a href="https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fkernels-trends-interpolation_Kriging_python.ipynb" target="_blank" rel="noopener">Binder</a> <a href="notebooks/kernels-trends-interpolation_Kriging_python.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/kernels-trends-interpolation_Kriging_python.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/kernels-trends-interpolation_Kriging_python.py" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: Python&quot;, &quot;class: Kriging&quot;, &quot;kernel: matern5_2&quot;, &quot;topic: high dimension&quot;, &quot;topic: normalize&quot;, &quot;topic: screening&quot;]" data-text="kriging — moderate and high dimension: engineering functions, normalize, screening from 6 to 20 inputs on engineering functions: accuracy, the effect of normalize on inputs in physical units, and the ability of the fitted ranges θ to tell influential inputs from inactive ones.">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/high-dimension-normalize-screening_Kriging_python.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/high-dimension-normalize-screening_Kriging_python.png" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#3572a5">Python</span>
+      <span class="status s-warn">21/22 passed</span></div>
+    <h2>Kriging — moderate and high dimension: engineering functions, normalize, screening</h2>
+    <p class="idea">From 6 to 20 inputs on engineering functions: accuracy, the effect of normalize on inputs in physical units, and the ability of the fitted ranges θ to tell influential inputs from inactive ones.</p>
+    <p class="ref"><b>Reference.</b> The same model on inputs rescaled by hand, and the known active inputs of the Welch function.</p>
+    <div class="tags"><span class="tag k-language" title="language">Python</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-kernel" title="kernel">kernel: matern5_2</span><span class="tag k-topic" title="topic">topic: high dimension</span><span class="tag k-topic" title="topic">topic: normalize</span><span class="tag k-topic" title="topic">topic: screening</span></div>
+    <div class="links"><a href="https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/high-dimension-normalize-screening_Kriging_python.ipynb" target="_blank" rel="noopener">Colab</a> <a href="https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fhigh-dimension-normalize-screening_Kriging_python.ipynb" target="_blank" rel="noopener">Binder</a> <a href="notebooks/high-dimension-normalize-screening_Kriging_python.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/high-dimension-normalize-screening_Kriging_python.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/high-dimension-normalize-screening_Kriging_python.py" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: Python&quot;, &quot;class: Kriging&quot;, &quot;objective: LL&quot;, &quot;objective: LOO&quot;, &quot;objective: LMP&quot;, &quot;topic: gradients&quot;, &quot;topic: optimization&quot;]" data-text="kriging — objectives (ll, loo, lmp), their gradients and optima the three estimation criteria (likelihood, leave-one-out, marginal posterior) must be computed and differentiated correctly, and the fitted θ̂ must be an optimum of the criterion it maximises.">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/objectives-LL-LOO-LMP-gradients_Kriging_python.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/objectives-LL-LOO-LMP-gradients_Kriging_python.png" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#3572a5">Python</span>
+      <span class="status s-warn">84/86 passed</span></div>
+    <h2>Kriging — objectives (LL, LOO, LMP), their gradients and optima</h2>
+    <p class="idea">The three estimation criteria (likelihood, leave-one-out, marginal posterior) must be computed and differentiated correctly, and the fitted θ̂ must be an optimum of the criterion it maximises.</p>
+    <p class="ref"><b>Reference.</b> Finite differences of each criterion, explicit leave-one-out refits, and the criterion profile around θ̂.</p>
+    <div class="tags"><span class="tag k-language" title="language">Python</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-objective" title="objective">objective: LL</span><span class="tag k-objective" title="objective">objective: LOO</span><span class="tag k-objective" title="objective">objective: LMP</span><span class="tag k-topic" title="topic">topic: gradients</span><span class="tag k-topic" title="topic">topic: optimization</span></div>
+    <div class="links"><a href="https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/objectives-LL-LOO-LMP-gradients_Kriging_python.ipynb" target="_blank" rel="noopener">Colab</a> <a href="https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fobjectives-LL-LOO-LMP-gradients_Kriging_python.ipynb" target="_blank" rel="noopener">Binder</a> <a href="notebooks/objectives-LL-LOO-LMP-gradients_Kriging_python.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/objectives-LL-LOO-LMP-gradients_Kriging_python.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/objectives-LL-LOO-LMP-gradients_Kriging_python.py" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: Python&quot;, &quot;class: Kriging&quot;, &quot;topic: robustness&quot;, &quot;topic: invariance&quot;, &quot;topic: cost&quot;]" data-text="kriging — robustness: degenerate and adversarial inputs what happens off the happy path: invalid, degenerate or ill-conditioned inputs must be rejected or handled, results must not depend on the units, and the prediction cost must grow linearly with the number of points.">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/robustness-invalid-inputs_Kriging_python.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/robustness-invalid-inputs_Kriging_python.png" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#3572a5">Python</span>
+      <span class="status s-warn">37/41 passed</span></div>
+    <h2>Kriging — robustness: degenerate and adversarial inputs</h2>
+    <p class="idea">What happens off the happy path: invalid, degenerate or ill-conditioned inputs must be rejected or handled, results must not depend on the units, and the prediction cost must grow linearly with the number of points.</p>
+    <p class="ref"><b>Reference.</b> Equivariance identities (rescaled inputs / outputs give rescaled results) and the O(q) cost of predict.</p>
+    <div class="tags"><span class="tag k-language" title="language">Python</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-topic" title="topic">topic: robustness</span><span class="tag k-topic" title="topic">topic: invariance</span><span class="tag k-topic" title="topic">topic: cost</span></div>
+    <div class="links"><a href="https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/robustness-invalid-inputs_Kriging_python.ipynb" target="_blank" rel="noopener">Colab</a> <a href="https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Frobustness-invalid-inputs_Kriging_python.ipynb" target="_blank" rel="noopener">Binder</a> <a href="notebooks/robustness-invalid-inputs_Kriging_python.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/robustness-invalid-inputs_Kriging_python.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/robustness-invalid-inputs_Kriging_python.py" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: Python&quot;, &quot;class: Kriging&quot;, &quot;objective: LL&quot;, &quot;objective: LOO&quot;, &quot;objective: LMP&quot;, &quot;method: exact&quot;, &quot;method: vecchia&quot;, &quot;method: nystrom&quot;, &quot;noise: none&quot;, &quot;noise: nugget&quot;, &quot;noise: variances&quot;, &quot;topic: persistence&quot;]" data-text="kriging — save/load, pickle, copy, accessors a model must survive a round trip (file, pickle, copy) unchanged, and expose its settings and hyperparameters: for every noise model, objective and fit method of kriging.">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/save-load-pickle-copy-accessors_Kriging_python.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/save-load-pickle-copy-accessors_Kriging_python.svg" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#3572a5">Python</span>
+      <span class="status s-warn">97/99 passed</span></div>
+    <h2>Kriging — save/load, pickle, copy, accessors</h2>
+    <p class="idea">A model must survive a round trip (file, pickle, copy) unchanged, and expose its settings and hyperparameters: for every noise model, objective and fit method of Kriging.</p>
+    <p class="ref"><b>Reference.</b> The original model: predictions and hyperparameters must be identical to the last bit (1e-12).</p>
+    <div class="tags"><span class="tag k-language" title="language">Python</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-objective" title="objective">objective: LL</span><span class="tag k-objective" title="objective">objective: LOO</span><span class="tag k-objective" title="objective">objective: LMP</span><span class="tag k-method" title="method">method: exact</span><span class="tag k-method" title="method">method: vecchia</span><span class="tag k-method" title="method">method: nystrom</span><span class="tag k-noise" title="noise">noise: none</span><span class="tag k-noise" title="noise">noise: nugget</span><span class="tag k-noise" title="noise">noise: variances</span><span class="tag k-topic" title="topic">topic: persistence</span></div>
+    <div class="links"><a href="https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/save-load-pickle-copy-accessors_Kriging_python.ipynb" target="_blank" rel="noopener">Colab</a> <a href="https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fsave-load-pickle-copy-accessors_Kriging_python.ipynb" target="_blank" rel="noopener">Binder</a> <a href="notebooks/save-load-pickle-copy-accessors_Kriging_python.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/save-load-pickle-copy-accessors_Kriging_python.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/save-load-pickle-copy-accessors_Kriging_python.py" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: Python&quot;, &quot;class: Kriging&quot;, &quot;compared to: scikit-learn&quot;, &quot;topic: scikit-learn API&quot;]" data-text="kriging — scikit-learn estimators (pylibkriging.sklearn) pylibkriging.sklearn makes kriging a scikit-learn estimator, usable in pipelines, grid searches and cross-validation.">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/sklearn-estimators_Kriging_python.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/sklearn-estimators_Kriging_python.png" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#3572a5">Python</span>
+      <span class="status s-pass">12/12 passed</span></div>
+    <h2>Kriging — scikit-learn estimators (pylibkriging.sklearn)</h2>
+    <p class="idea">pylibkriging.sklearn makes Kriging a scikit-learn estimator, usable in pipelines, grid searches and cross-validation.</p>
+    <p class="ref"><b>Reference.</b> The native Kriging class on the same data (same predictions), and scikit-learn&#x27;s estimator conventions.</p>
+    <div class="tags"><span class="tag k-language" title="language">Python</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-compared-to" title="compared to">compared to: scikit-learn</span><span class="tag k-topic" title="topic">topic: scikit-learn API</span></div>
+    <div class="links"><a href="https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/sklearn-estimators_Kriging_python.ipynb" target="_blank" rel="noopener">Colab</a> <a href="https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fsklearn-estimators_Kriging_python.ipynb" target="_blank" rel="noopener">Binder</a> <a href="notebooks/sklearn-estimators_Kriging_python.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/sklearn-estimators_Kriging_python.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/sklearn-estimators_Kriging_python.py" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: Python&quot;, &quot;class: Kriging&quot;, &quot;topic: update&quot;, &quot;topic: conditional simulation&quot;]" data-text="kriging — update, simulate, update_simulate adding observations (update) and drawing conditional paths (simulate, update_simulate) are shortcuts: they must give what the long way gives.">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/update-simulate_Kriging_python.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/update-simulate_Kriging_python.png" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#3572a5">Python</span>
+      <span class="status s-warn">52/54 passed</span></div>
+    <h2>Kriging — update, simulate, update_simulate</h2>
+    <p class="idea">Adding observations (update) and drawing conditional paths (simulate, update_simulate) are shortcuts: they must give what the long way gives.</p>
+    <p class="ref"><b>Reference.</b> A model fitted from scratch on all the data, and Monte Carlo moments against the predictive mean and covariance.</p>
+    <div class="tags"><span class="tag k-language" title="language">Python</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-topic" title="topic">topic: update</span><span class="tag k-topic" title="topic">topic: conditional simulation</span></div>
+    <div class="links"><a href="https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/update-simulate_Kriging_python.ipynb" target="_blank" rel="noopener">Colab</a> <a href="https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fupdate-simulate_Kriging_python.ipynb" target="_blank" rel="noopener">Binder</a> <a href="notebooks/update-simulate_Kriging_python.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/update-simulate_Kriging_python.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/update-simulate_Kriging_python.py" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: Python&quot;, &quot;class: MLPKriging&quot;, &quot;class: Kriging&quot;, &quot;kernel: matern5_2&quot;, &quot;topic: deep kernel&quot;, &quot;topic: dimension reduction&quot;]" data-text="mlpkriging — deep kernel on a 10d function with a 2d structure a deep kernel (an mlp feature map before the kernel) can find a low-dimensional structure that a per-axis kernel cannot: branin of a 2d projection of 10 inputs.">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/deep-kernel-projected-branin_MLPKriging_python.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/deep-kernel-projected-branin_MLPKriging_python.png" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#3572a5">Python</span>
+      <span class="status s-warn">22/24 passed</span></div>
+    <h2>MLPKriging — deep kernel on a 10D function with a 2D structure</h2>
+    <p class="idea">A deep kernel (an MLP feature map before the kernel) can find a low-dimensional structure that a per-axis kernel cannot: Branin of a 2D projection of 10 inputs.</p>
+    <p class="ref"><b>Reference.</b> Plain Kriging on the same data.</p>
+    <div class="tags"><span class="tag k-language" title="language">Python</span><span class="tag k-class" title="class">MLPKriging</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-kernel" title="kernel">kernel: matern5_2</span><span class="tag k-topic" title="topic">topic: deep kernel</span><span class="tag k-topic" title="topic">topic: dimension reduction</span></div>
+    <div class="links"><a href="https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/deep-kernel-projected-branin_MLPKriging_python.ipynb" target="_blank" rel="noopener">Colab</a> <a href="https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fdeep-kernel-projected-branin_MLPKriging_python.ipynb" target="_blank" rel="noopener">Binder</a> <a href="notebooks/deep-kernel-projected-branin_MLPKriging_python.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/deep-kernel-projected-branin_MLPKriging_python.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/deep-kernel-projected-branin_MLPKriging_python.py" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: Python&quot;, &quot;class: NestedKriging&quot;, &quot;aggregation: NK&quot;, &quot;aggregation: PoE&quot;, &quot;aggregation: gPoE&quot;, &quot;aggregation: BCM&quot;, &quot;aggregation: rBCM&quot;, &quot;topic: large n&quot;]" data-text="nestedkriging — aggregations, large n nestedkriging splits a large design into groups and aggregates their predictions; how far is it from the exact predictor as the number of groups grows, and which aggregation is closest?">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/aggregations-large-n_NestedKriging_python.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/aggregations-large-n_NestedKriging_python.png" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#3572a5">Python</span>
+      <span class="status s-pass">71/71 passed</span></div>
+    <h2>NestedKriging — aggregations, large n</h2>
+    <p class="idea">NestedKriging splits a large design into groups and aggregates their predictions; how far is it from the exact predictor as the number of groups grows, and which aggregation is closest?</p>
+    <p class="ref"><b>Reference.</b> The exact predictor at the same θ (limit: 1 group), and the exact fit.</p>
+    <div class="tags"><span class="tag k-language" title="language">Python</span><span class="tag k-class" title="class">NestedKriging</span><span class="tag k-aggregation" title="aggregation">aggregation: NK</span><span class="tag k-aggregation" title="aggregation">aggregation: PoE</span><span class="tag k-aggregation" title="aggregation">aggregation: gPoE</span><span class="tag k-aggregation" title="aggregation">aggregation: BCM</span><span class="tag k-aggregation" title="aggregation">aggregation: rBCM</span><span class="tag k-topic" title="topic">topic: large n</span></div>
+    <div class="links"><a href="https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/aggregations-large-n_NestedKriging_python.ipynb" target="_blank" rel="noopener">Colab</a> <a href="https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Faggregations-large-n_NestedKriging_python.ipynb" target="_blank" rel="noopener">Binder</a> <a href="notebooks/aggregations-large-n_NestedKriging_python.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/aggregations-large-n_NestedKriging_python.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/aggregations-large-n_NestedKriging_python.py" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: Python&quot;, &quot;class: none&quot;, &quot;topic: test functions&quot;]" data-text="no model — the test functions against their published reference values every example of this gallery is only as good as its test functions: before fitting anything, each of the 21 functions is evaluated at points where its value is published, and its range and shape are plotted.">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/test-functions-reference-values_no-model_python.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/test-functions-reference-values_no-model_python.png" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#3572a5">Python</span>
+      <span class="status s-pass">49/49 passed</span></div>
+    <h2>no model — the test functions against their published reference values</h2>
+    <p class="idea">Every example of this gallery is only as good as its test functions: before fitting anything, each of the 21 functions is evaluated at points where its value is published, and its range and shape are plotted.</p>
+    <p class="ref"><b>Reference.</b> Published optima and nominal values (Virtual Library of Simulation Experiments, Surjanovic &amp; Bingham).</p>
+    <div class="tags"><span class="tag k-language" title="language">Python</span><span class="tag k-class" title="class">none</span><span class="tag k-topic" title="topic">topic: test functions</span></div>
+    <div class="links"><a href="https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/test-functions-reference-values_no-model_python.ipynb" target="_blank" rel="noopener">Colab</a> <a href="https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Ftest-functions-reference-values_no-model_python.ipynb" target="_blank" rel="noopener">Binder</a> <a href="notebooks/test-functions-reference-values_no-model_python.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/test-functions-reference-values_no-model_python.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/test-functions-reference-values_no-model_python.py" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: Python&quot;, &quot;class: WarpKriging&quot;, &quot;class: Kriging&quot;, &quot;warping: none&quot;, &quot;warping: affine&quot;, &quot;warping: boxcox&quot;, &quot;warping: kumaraswamy&quot;, &quot;warping: neural_mono&quot;, &quot;warping: categorical&quot;, &quot;warping: ordinal&quot;, &quot;topic: non-stationarity&quot;, &quot;topic: categorical inputs&quot;]" data-text="warpkriging — non-stationarity, categorical and ordinal inputs input warpings handle non-stationarity and categorical or ordinal inputs; each warping must beat, or at least match, plain kriging where it is meant to help, without making the predictive variance overconfident.">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/warpings-categorical-ordinal_WarpKriging_python.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/warpings-categorical-ordinal_WarpKriging_python.png" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#3572a5">Python</span>
+      <span class="status s-warn">55/61 passed</span></div>
+    <h2>WarpKriging — non-stationarity, categorical and ordinal inputs</h2>
+    <p class="idea">Input warpings handle non-stationarity and categorical or ordinal inputs; each warping must beat, or at least match, plain Kriging where it is meant to help, without making the predictive variance overconfident.</p>
+    <p class="ref"><b>Reference.</b> Plain Kriging on the same data (accuracy and NLPD), and none warping = Kriging.</p>
+    <div class="tags"><span class="tag k-language" title="language">Python</span><span class="tag k-class" title="class">WarpKriging</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-warping" title="warping">warping: none</span><span class="tag k-warping" title="warping">warping: affine</span><span class="tag k-warping" title="warping">warping: boxcox</span><span class="tag k-warping" title="warping">warping: kumaraswamy</span><span class="tag k-warping" title="warping">warping: neural_mono</span><span class="tag k-warping" title="warping">warping: categorical</span><span class="tag k-warping" title="warping">warping: ordinal</span><span class="tag k-topic" title="topic">topic: non-stationarity</span><span class="tag k-topic" title="topic">topic: categorical inputs</span></div>
+    <div class="links"><a href="https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/warpings-categorical-ordinal_WarpKriging_python.ipynb" target="_blank" rel="noopener">Colab</a> <a href="https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fwarpings-categorical-ordinal_WarpKriging_python.ipynb" target="_blank" rel="noopener">Binder</a> <a href="notebooks/warpings-categorical-ordinal_WarpKriging_python.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/warpings-categorical-ordinal_WarpKriging_python.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/warpings-categorical-ordinal_WarpKriging_python.py" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: R&quot;, &quot;class: Kriging&quot;, &quot;kernel: gauss&quot;, &quot;kernel: exp&quot;, &quot;kernel: matern3_2&quot;, &quot;kernel: matern5_2&quot;, &quot;compared to: DiceKriging&quot;, &quot;compared to: RobustGaSP&quot;]" data-text="kriging vs dicekriging and robustgasp libkriging&#x27;s kriging follows dicekriging: at the same hyperparameters it must give dicekriging&#x27;s numbers, and its default fit must be as accurate as the r references.">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/vs-DiceKriging-RobustGaSP_Kriging_R.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/vs-DiceKriging-RobustGaSP_Kriging_R.png" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#198ce7">R</span>
+      <span class="status s-pass">42/42 passed</span></div>
+    <h2>Kriging vs DiceKriging and RobustGaSP</h2>
+    <p class="idea">libKriging&#x27;s Kriging follows DiceKriging: at the same hyperparameters it must give DiceKriging&#x27;s numbers, and its default fit must be as accurate as the R references.</p>
+    <p class="ref"><b>Reference.</b> DiceKriging (exact equality) and RobustGaSP (accuracy, cost).</p>
+    <div class="tags"><span class="tag k-language" title="language">R</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-kernel" title="kernel">kernel: gauss</span><span class="tag k-kernel" title="kernel">kernel: exp</span><span class="tag k-kernel" title="kernel">kernel: matern3_2</span><span class="tag k-kernel" title="kernel">kernel: matern5_2</span><span class="tag k-compared-to" title="compared to">compared to: DiceKriging</span><span class="tag k-compared-to" title="compared to">compared to: RobustGaSP</span></div>
+    <div class="links"><a href="notebooks/vs-DiceKriging-RobustGaSP_Kriging_R.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/vs-DiceKriging-RobustGaSP_Kriging_R.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/vs-DiceKriging-RobustGaSP_Kriging_R.R" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: Octave&quot;, &quot;class: Kriging&quot;, &quot;kernel: gauss&quot;, &quot;kernel: matern5_2&quot;, &quot;compared to: STK&quot;]" data-text="kriging vs stk the octave/matlab reference toolbox, stk: at the same hyperparameters (gaussian kernel) both must give the same predictor, and their default fits are compared.">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/vs-STK_Kriging_octave.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/vs-STK_Kriging_octave.svg" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#0790c0">Octave</span>
+      <span class="status s-pass">12/12 passed</span></div>
+    <h2>Kriging vs STK</h2>
+    <p class="idea">The Octave/MATLAB reference toolbox, STK: at the same hyperparameters (Gaussian kernel) both must give the same predictor, and their default fits are compared.</p>
+    <p class="ref"><b>Reference.</b> STK (exact equality, then accuracy and cost).</p>
+    <div class="tags"><span class="tag k-language" title="language">Octave</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-kernel" title="kernel">kernel: gauss</span><span class="tag k-kernel" title="kernel">kernel: matern5_2</span><span class="tag k-compared-to" title="compared to">compared to: STK</span></div>
+    <div class="links"><a href="notebooks/vs-STK_Kriging_octave.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/vs-STK_Kriging_octave.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/vs-STK_Kriging_octave.m" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: Julia&quot;, &quot;class: Kriging&quot;, &quot;kernel: matern5_2&quot;, &quot;compared to: GaussianProcesses.jl&quot;]" data-text="kriging vs gaussianprocesses.jl jlibkriging against the main julia gp package: default fits on the shared datasets.">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/vs-GaussianProcesses_Kriging_julia.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/vs-GaussianProcesses_Kriging_julia.svg" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#9558b2">Julia</span>
+      <span class="status s-warn">3/6 passed</span></div>
+    <h2>Kriging vs GaussianProcesses.jl</h2>
+    <p class="idea">JLibKriging against the main Julia GP package: default fits on the shared datasets.</p>
+    <p class="ref"><b>Reference.</b> GaussianProcesses.jl (accuracy and cost).</p>
+    <div class="tags"><span class="tag k-language" title="language">Julia</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-kernel" title="kernel">kernel: matern5_2</span><span class="tag k-compared-to" title="compared to">compared to: GaussianProcesses.jl</span></div>
+    <div class="links"><a href="notebooks/vs-GaussianProcesses_Kriging_julia.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/vs-GaussianProcesses_Kriging_julia.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/vs-GaussianProcesses_Kriging_julia.jl" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: Python&quot;, &quot;class: Kriging&quot;, &quot;class: NestedKriging&quot;, &quot;class: WarpKriging&quot;, &quot;class: MLPKriging&quot;, &quot;kernel: matern5_2&quot;, &quot;objective: LL&quot;, &quot;method: exact&quot;, &quot;method: vecchia&quot;, &quot;method: nystrom&quot;, &quot;noise: none&quot;, &quot;noise: nugget&quot;, &quot;noise: variances&quot;, &quot;warping: kumaraswamy&quot;, &quot;aggregation: NK&quot;, &quot;topic: cross-binding&quot;]" data-text="all classes — cross-binding consistency: the python reference all bindings wrap the same c++ library: on the same data with the same options, they must give the same numbers, for every model class and fit method. this notebook writes the python values, the reference of the comparison.">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/cross-binding-reference_all-classes_python.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/cross-binding-reference_all-classes_python.png" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#3572a5">Python</span>
+      <span class="status s-pass">3/3 passed</span></div>
+    <h2>all classes — cross-binding consistency: the Python reference</h2>
+    <p class="idea">All bindings wrap the same C++ library: on the same data with the same options, they must give the same numbers, for every model class and fit method. This notebook writes the Python values, the reference of the comparison.</p>
+    <p class="ref"><b>Reference.</b> The R, Octave and Julia notebooks cross-binding_all-classes_*, compared by tools/report.py.</p>
+    <div class="tags"><span class="tag k-language" title="language">Python</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-class" title="class">NestedKriging</span><span class="tag k-class" title="class">WarpKriging</span><span class="tag k-class" title="class">MLPKriging</span><span class="tag k-kernel" title="kernel">kernel: matern5_2</span><span class="tag k-objective" title="objective">objective: LL</span><span class="tag k-method" title="method">method: exact</span><span class="tag k-method" title="method">method: vecchia</span><span class="tag k-method" title="method">method: nystrom</span><span class="tag k-noise" title="noise">noise: none</span><span class="tag k-noise" title="noise">noise: nugget</span><span class="tag k-noise" title="noise">noise: variances</span><span class="tag k-warping" title="warping">warping: kumaraswamy</span><span class="tag k-aggregation" title="aggregation">aggregation: NK</span><span class="tag k-topic" title="topic">topic: cross-binding</span></div>
+    <div class="links"><a href="https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/cross-binding-reference_all-classes_python.ipynb" target="_blank" rel="noopener">Colab</a> <a href="https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fcross-binding-reference_all-classes_python.ipynb" target="_blank" rel="noopener">Binder</a> <a href="notebooks/cross-binding-reference_all-classes_python.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/cross-binding-reference_all-classes_python.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/cross-binding-reference_all-classes_python.py" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: R&quot;, &quot;class: Kriging&quot;, &quot;class: NestedKriging&quot;, &quot;class: WarpKriging&quot;, &quot;class: MLPKriging&quot;, &quot;kernel: matern5_2&quot;, &quot;objective: LL&quot;, &quot;method: exact&quot;, &quot;method: vecchia&quot;, &quot;method: nystrom&quot;, &quot;noise: none&quot;, &quot;noise: nugget&quot;, &quot;noise: variances&quot;, &quot;warping: kumaraswamy&quot;, &quot;aggregation: NK&quot;, &quot;topic: cross-binding&quot;]" data-text="all classes — cross-binding consistency: the r side the r side of the cross-binding protocol: rlibkriging must give the numbers of pylibkriging on the same data, for every model class and fit method.">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/cross-binding_all-classes_R.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/cross-binding_all-classes_R.png" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#198ce7">R</span>
+      <span class="status s-pass">3/3 passed</span></div>
+    <h2>all classes — cross-binding consistency: the R side</h2>
+    <p class="idea">The R side of the cross-binding protocol: rlibkriging must give the numbers of pylibkriging on the same data, for every model class and fit method.</p>
+    <p class="ref"><b>Reference.</b> The Python values (cross-binding-reference_all-classes_python.ipynb), compared by tools/report.py.</p>
+    <div class="tags"><span class="tag k-language" title="language">R</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-class" title="class">NestedKriging</span><span class="tag k-class" title="class">WarpKriging</span><span class="tag k-class" title="class">MLPKriging</span><span class="tag k-kernel" title="kernel">kernel: matern5_2</span><span class="tag k-objective" title="objective">objective: LL</span><span class="tag k-method" title="method">method: exact</span><span class="tag k-method" title="method">method: vecchia</span><span class="tag k-method" title="method">method: nystrom</span><span class="tag k-noise" title="noise">noise: none</span><span class="tag k-noise" title="noise">noise: nugget</span><span class="tag k-noise" title="noise">noise: variances</span><span class="tag k-warping" title="warping">warping: kumaraswamy</span><span class="tag k-aggregation" title="aggregation">aggregation: NK</span><span class="tag k-topic" title="topic">topic: cross-binding</span></div>
+    <div class="links"><a href="notebooks/cross-binding_all-classes_R.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/cross-binding_all-classes_R.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/cross-binding_all-classes_R.R" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: Octave&quot;, &quot;class: Kriging&quot;, &quot;class: NestedKriging&quot;, &quot;class: WarpKriging&quot;, &quot;class: MLPKriging&quot;, &quot;kernel: matern5_2&quot;, &quot;objective: LL&quot;, &quot;method: exact&quot;, &quot;method: vecchia&quot;, &quot;method: nystrom&quot;, &quot;noise: none&quot;, &quot;noise: nugget&quot;, &quot;noise: variances&quot;, &quot;warping: kumaraswamy&quot;, &quot;aggregation: NK&quot;, &quot;topic: cross-binding&quot;]" data-text="all classes — cross-binding consistency: the octave side the octave side of the cross-binding protocol: mlibkriging must give the numbers of pylibkriging on the same data, for every model class and fit method.">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/cross-binding_all-classes_octave.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/cross-binding_all-classes_octave.svg" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#0790c0">Octave</span>
+      <span class="status s-pass">3/3 passed</span></div>
+    <h2>all classes — cross-binding consistency: the Octave side</h2>
+    <p class="idea">The Octave side of the cross-binding protocol: mLibKriging must give the numbers of pylibkriging on the same data, for every model class and fit method.</p>
+    <p class="ref"><b>Reference.</b> The Python values (cross-binding-reference_all-classes_python.ipynb), compared by tools/report.py.</p>
+    <div class="tags"><span class="tag k-language" title="language">Octave</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-class" title="class">NestedKriging</span><span class="tag k-class" title="class">WarpKriging</span><span class="tag k-class" title="class">MLPKriging</span><span class="tag k-kernel" title="kernel">kernel: matern5_2</span><span class="tag k-objective" title="objective">objective: LL</span><span class="tag k-method" title="method">method: exact</span><span class="tag k-method" title="method">method: vecchia</span><span class="tag k-method" title="method">method: nystrom</span><span class="tag k-noise" title="noise">noise: none</span><span class="tag k-noise" title="noise">noise: nugget</span><span class="tag k-noise" title="noise">noise: variances</span><span class="tag k-warping" title="warping">warping: kumaraswamy</span><span class="tag k-aggregation" title="aggregation">aggregation: NK</span><span class="tag k-topic" title="topic">topic: cross-binding</span></div>
+    <div class="links"><a href="notebooks/cross-binding_all-classes_octave.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/cross-binding_all-classes_octave.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/cross-binding_all-classes_octave.m" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+<article class="card" data-tags="[&quot;language: Julia&quot;, &quot;class: Kriging&quot;, &quot;class: NestedKriging&quot;, &quot;class: WarpKriging&quot;, &quot;class: MLPKriging&quot;, &quot;kernel: matern5_2&quot;, &quot;objective: LL&quot;, &quot;method: exact&quot;, &quot;method: vecchia&quot;, &quot;method: nystrom&quot;, &quot;noise: none&quot;, &quot;noise: nugget&quot;, &quot;noise: variances&quot;, &quot;warping: kumaraswamy&quot;, &quot;aggregation: NK&quot;, &quot;topic: cross-binding&quot;]" data-text="all classes — cross-binding consistency: the julia side the julia side of the cross-binding protocol: jlibkriging must give the numbers of pylibkriging on the same data, for every model class and fit method.">
+  <a class="main" href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/cross-binding_all-classes_julia.ipynb" target="_blank" rel="noopener"
+     title="view the executed notebook">
+    <img src="thumbs/cross-binding_all-classes_julia.svg" alt="" loading="lazy">
+  </a>
+  <div class="body">
+    <div class="head"><span class="lang" style="background:#9558b2">Julia</span>
+      <span class="status s-pass">3/3 passed</span></div>
+    <h2>all classes — cross-binding consistency: the Julia side</h2>
+    <p class="idea">The Julia side of the cross-binding protocol: JLibKriging must give the numbers of pylibkriging on the same data, for every model class and fit method.</p>
+    <p class="ref"><b>Reference.</b> The Python values (cross-binding-reference_all-classes_python.ipynb), compared by tools/report.py.</p>
+    <div class="tags"><span class="tag k-language" title="language">Julia</span><span class="tag k-class" title="class">Kriging</span><span class="tag k-class" title="class">NestedKriging</span><span class="tag k-class" title="class">WarpKriging</span><span class="tag k-class" title="class">MLPKriging</span><span class="tag k-kernel" title="kernel">kernel: matern5_2</span><span class="tag k-objective" title="objective">objective: LL</span><span class="tag k-method" title="method">method: exact</span><span class="tag k-method" title="method">method: vecchia</span><span class="tag k-method" title="method">method: nystrom</span><span class="tag k-noise" title="noise">noise: none</span><span class="tag k-noise" title="noise">noise: nugget</span><span class="tag k-noise" title="noise">noise: variances</span><span class="tag k-warping" title="warping">warping: kumaraswamy</span><span class="tag k-aggregation" title="aggregation">aggregation: NK</span><span class="tag k-topic" title="topic">topic: cross-binding</span></div>
+    <div class="links"><a href="notebooks/cross-binding_all-classes_julia.ipynb" download>Notebook</a> <a href="https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/cross-binding_all-classes_julia.ipynb" target="_blank" rel="noopener">view</a> <a href="https://github.com/libKriging/gallery/blob/main/src/cross-binding_all-classes_julia.jl" target="_blank" rel="noopener">source</a></div>
+  </div>
+</article>
+</main>
+<footer>Built by <code>tools/site.py</code> from the CI artifacts of <a href="https://github.com/libKriging/gallery">libKriging/gallery</a>.</footer>
+<script>
+(function () {
+  var on = new Set(), cards = Array.prototype.slice.call(document.querySelectorAll(".card"));
+  var search = document.getElementById("search"), count = document.getElementById("count");
+  function apply() {
+    var q = search.value.trim().toLowerCase(), n = 0;
+    cards.forEach(function (c) {
+      var tags = JSON.parse(c.dataset.tags), ok = true;
+      on.forEach(function (t) { if (tags.indexOf(t) < 0) ok = false; });
+      if (q && c.dataset.text.indexOf(q) < 0) ok = false;
+      c.classList.toggle("hidden", !ok); if (ok) n++;
+    });
+    count.textContent = n + " / " + cards.length + " notebooks";
+  }
+  document.querySelectorAll("#filters button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var t = b.dataset.tag;
+      if (on.has(t)) on.delete(t); else on.add(t);
+      b.classList.toggle("on"); apply();
+    });
+  });
+  search.addEventListener("input", apply);
+  if (window.innerWidth > 700) document.getElementById("tagbox").open = true;
+  apply();
+})();
+</script>
+</body>
+</html>

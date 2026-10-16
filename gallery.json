@@ -1,0 +1,855 @@
+[
+ {
+  "stem": "vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python",
+  "language": "Python",
+  "binding": "python",
+  "title": "Kriging vs scikit-learn, SMT, OpenTURNS, GPy",
+  "idea": "How does libKriging compare with the Python GP packages, first as an implementation (same hyperparameters \u2192 same numbers), then as a tool (default fits: accuracy, calibration, cost) on 10 functions?",
+  "reference": "Scikit-learn, SMT, OpenTURNS and GPy.",
+  "tags": {
+   "class": [
+    "Kriging"
+   ],
+   "kernel": [
+    "gauss",
+    "matern5_2"
+   ],
+   "compared to": [
+    "scikit-learn",
+    "SMT",
+    "OpenTURNS",
+    "GPy"
+   ]
+  },
+  "ext": ".py",
+  "thumb": "thumbs/vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.png",
+  "executed": true,
+  "checks": {
+   "PASS": 33,
+   "KNOWN": 1,
+   "WARN": 2
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.ipynb",
+   "Colab": "https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.ipynb",
+   "Binder": "https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fvs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.ipynb",
+   "Notebook": "notebooks/vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python.py"
+  },
+  "status": "33/36 passed"
+ },
+ {
+  "stem": "large-n_Kriging-vecchia-nystrom_python",
+  "language": "Python",
+  "binding": "python",
+  "title": "Kriging with method=\"vecchia\" / \"nystrom\" \u2014 large n",
+  "idea": "Vecchia and Nystr\u00f6m approximations make Kriging affordable for large n; how much accuracy do they cost, and do they converge to the exact model as their size parameter grows?",
+  "reference": "The exact model at the same \u03b8 (limits m = n \u2212 1 and k = n), and the exact fit.",
+  "tags": {
+   "class": [
+    "Kriging"
+   ],
+   "method": [
+    "exact",
+    "vecchia",
+    "nystrom"
+   ],
+   "topic": [
+    "large n"
+   ]
+  },
+  "ext": ".py",
+  "thumb": "thumbs/large-n_Kriging-vecchia-nystrom_python.png",
+  "executed": true,
+  "checks": {
+   "KNOWN": 5,
+   "WARN": 4,
+   "PASS": 68
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/large-n_Kriging-vecchia-nystrom_python.ipynb",
+   "Colab": "https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/large-n_Kriging-vecchia-nystrom_python.ipynb",
+   "Binder": "https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Flarge-n_Kriging-vecchia-nystrom_python.ipynb",
+   "Notebook": "notebooks/large-n_Kriging-vecchia-nystrom_python.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/large-n_Kriging-vecchia-nystrom_python.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/large-n_Kriging-vecchia-nystrom_python.py"
+  },
+  "status": "68/77 passed"
+ },
+ {
+  "stem": "noisy-data_Kriging-nugget-noise_python",
+  "language": "Python",
+  "binding": "python",
+  "title": "Kriging with noise (noise=\"nugget\", known variances) \u2014 noisy observations",
+  "idea": "Kriging with noisy observations: an estimated homogeneous nugget, or known (heteroscedastic) noise variances, must recover the noise level and predict the noise-free function with calibrated intervals.",
+  "reference": "The true noise variance, replicate averaging, and the interpolating (noise-free) fit on the same data.",
+  "tags": {
+   "class": [
+    "Kriging"
+   ],
+   "noise": [
+    "none",
+    "nugget",
+    "variances"
+   ],
+   "topic": [
+    "noisy data",
+    "calibration"
+   ]
+  },
+  "ext": ".py",
+  "thumb": "thumbs/noisy-data_Kriging-nugget-noise_python.png",
+  "executed": true,
+  "checks": {
+   "PASS": 20,
+   "WARN": 1
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/noisy-data_Kriging-nugget-noise_python.ipynb",
+   "Colab": "https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/noisy-data_Kriging-nugget-noise_python.ipynb",
+   "Binder": "https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fnoisy-data_Kriging-nugget-noise_python.ipynb",
+   "Notebook": "notebooks/noisy-data_Kriging-nugget-noise_python.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/noisy-data_Kriging-nugget-noise_python.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/noisy-data_Kriging-nugget-noise_python.py"
+  },
+  "status": "20/21 passed"
+ },
+ {
+  "stem": "kernels-trends-interpolation_Kriging_python",
+  "language": "Python",
+  "binding": "python",
+  "title": "Kriging \u2014 kernels \u00d7 trends, interpolation, predict (covariance, derivatives)",
+  "idea": "The basic promise of noise-free Kriging, over the whole grid of kernels and trends: it interpolates the data, its predictive variance vanishes at the design points, its predicted derivatives are the derivatives of its prediction, and it is accurate on smooth 1D to 3D functions.",
+  "reference": "Finite differences of the prediction, the data themselves, and per-function Q\u00b2 floors.",
+  "tags": {
+   "class": [
+    "Kriging"
+   ],
+   "kernel": [
+    "gauss",
+    "exp",
+    "matern3_2",
+    "matern5_2"
+   ],
+   "trend": [
+    "constant",
+    "linear",
+    "interactive",
+    "quadratic"
+   ],
+   "topic": [
+    "interpolation",
+    "derivatives"
+   ]
+  },
+  "ext": ".py",
+  "thumb": "thumbs/kernels-trends-interpolation_Kriging_python.png",
+  "executed": true,
+  "checks": {
+   "PASS": 393,
+   "WARN": 18
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/kernels-trends-interpolation_Kriging_python.ipynb",
+   "Colab": "https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/kernels-trends-interpolation_Kriging_python.ipynb",
+   "Binder": "https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fkernels-trends-interpolation_Kriging_python.ipynb",
+   "Notebook": "notebooks/kernels-trends-interpolation_Kriging_python.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/kernels-trends-interpolation_Kriging_python.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/kernels-trends-interpolation_Kriging_python.py"
+  },
+  "status": "393/411 passed"
+ },
+ {
+  "stem": "high-dimension-normalize-screening_Kriging_python",
+  "language": "Python",
+  "binding": "python",
+  "title": "Kriging \u2014 moderate and high dimension: engineering functions, normalize, screening",
+  "idea": "From 6 to 20 inputs on engineering functions: accuracy, the effect of normalize on inputs in physical units, and the ability of the fitted ranges \u03b8 to tell influential inputs from inactive ones.",
+  "reference": "The same model on inputs rescaled by hand, and the known active inputs of the Welch function.",
+  "tags": {
+   "class": [
+    "Kriging"
+   ],
+   "kernel": [
+    "matern5_2"
+   ],
+   "topic": [
+    "high dimension",
+    "normalize",
+    "screening"
+   ]
+  },
+  "ext": ".py",
+  "thumb": "thumbs/high-dimension-normalize-screening_Kriging_python.png",
+  "executed": true,
+  "checks": {
+   "PASS": 21,
+   "WARN": 1
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/high-dimension-normalize-screening_Kriging_python.ipynb",
+   "Colab": "https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/high-dimension-normalize-screening_Kriging_python.ipynb",
+   "Binder": "https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fhigh-dimension-normalize-screening_Kriging_python.ipynb",
+   "Notebook": "notebooks/high-dimension-normalize-screening_Kriging_python.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/high-dimension-normalize-screening_Kriging_python.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/high-dimension-normalize-screening_Kriging_python.py"
+  },
+  "status": "21/22 passed"
+ },
+ {
+  "stem": "objectives-LL-LOO-LMP-gradients_Kriging_python",
+  "language": "Python",
+  "binding": "python",
+  "title": "Kriging \u2014 objectives (LL, LOO, LMP), their gradients and optima",
+  "idea": "The three estimation criteria (likelihood, leave-one-out, marginal posterior) must be computed and differentiated correctly, and the fitted \u03b8\u0302 must be an optimum of the criterion it maximises.",
+  "reference": "Finite differences of each criterion, explicit leave-one-out refits, and the criterion profile around \u03b8\u0302.",
+  "tags": {
+   "class": [
+    "Kriging"
+   ],
+   "objective": [
+    "LL",
+    "LOO",
+    "LMP"
+   ],
+   "topic": [
+    "gradients",
+    "optimization"
+   ]
+  },
+  "ext": ".py",
+  "thumb": "thumbs/objectives-LL-LOO-LMP-gradients_Kriging_python.png",
+  "executed": true,
+  "checks": {
+   "PASS": 84,
+   "WARN": 2
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/objectives-LL-LOO-LMP-gradients_Kriging_python.ipynb",
+   "Colab": "https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/objectives-LL-LOO-LMP-gradients_Kriging_python.ipynb",
+   "Binder": "https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fobjectives-LL-LOO-LMP-gradients_Kriging_python.ipynb",
+   "Notebook": "notebooks/objectives-LL-LOO-LMP-gradients_Kriging_python.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/objectives-LL-LOO-LMP-gradients_Kriging_python.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/objectives-LL-LOO-LMP-gradients_Kriging_python.py"
+  },
+  "status": "84/86 passed"
+ },
+ {
+  "stem": "robustness-invalid-inputs_Kriging_python",
+  "language": "Python",
+  "binding": "python",
+  "title": "Kriging \u2014 robustness: degenerate and adversarial inputs",
+  "idea": "What happens off the happy path: invalid, degenerate or ill-conditioned inputs must be rejected or handled, results must not depend on the units, and the prediction cost must grow linearly with the number of points.",
+  "reference": "Equivariance identities (rescaled inputs / outputs give rescaled results) and the O(q) cost of predict.",
+  "tags": {
+   "class": [
+    "Kriging"
+   ],
+   "topic": [
+    "robustness",
+    "invariance",
+    "cost"
+   ]
+  },
+  "ext": ".py",
+  "thumb": "thumbs/robustness-invalid-inputs_Kriging_python.png",
+  "executed": true,
+  "checks": {
+   "PASS": 37,
+   "KNOWN": 4
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/robustness-invalid-inputs_Kriging_python.ipynb",
+   "Colab": "https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/robustness-invalid-inputs_Kriging_python.ipynb",
+   "Binder": "https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Frobustness-invalid-inputs_Kriging_python.ipynb",
+   "Notebook": "notebooks/robustness-invalid-inputs_Kriging_python.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/robustness-invalid-inputs_Kriging_python.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/robustness-invalid-inputs_Kriging_python.py"
+  },
+  "status": "37/41 passed"
+ },
+ {
+  "stem": "save-load-pickle-copy-accessors_Kriging_python",
+  "language": "Python",
+  "binding": "python",
+  "title": "Kriging \u2014 save/load, pickle, copy, accessors",
+  "idea": "A model must survive a round trip (file, pickle, copy) unchanged, and expose its settings and hyperparameters: for every noise model, objective and fit method of Kriging.",
+  "reference": "The original model: predictions and hyperparameters must be identical to the last bit (1e-12).",
+  "tags": {
+   "class": [
+    "Kriging"
+   ],
+   "objective": [
+    "LL",
+    "LOO",
+    "LMP"
+   ],
+   "method": [
+    "exact",
+    "vecchia",
+    "nystrom"
+   ],
+   "noise": [
+    "none",
+    "nugget",
+    "variances"
+   ],
+   "topic": [
+    "persistence"
+   ]
+  },
+  "ext": ".py",
+  "thumb": "thumbs/save-load-pickle-copy-accessors_Kriging_python.svg",
+  "executed": true,
+  "checks": {
+   "PASS": 97,
+   "WARN": 2
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/save-load-pickle-copy-accessors_Kriging_python.ipynb",
+   "Colab": "https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/save-load-pickle-copy-accessors_Kriging_python.ipynb",
+   "Binder": "https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fsave-load-pickle-copy-accessors_Kriging_python.ipynb",
+   "Notebook": "notebooks/save-load-pickle-copy-accessors_Kriging_python.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/save-load-pickle-copy-accessors_Kriging_python.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/save-load-pickle-copy-accessors_Kriging_python.py"
+  },
+  "status": "97/99 passed"
+ },
+ {
+  "stem": "sklearn-estimators_Kriging_python",
+  "language": "Python",
+  "binding": "python",
+  "title": "Kriging \u2014 scikit-learn estimators (pylibkriging.sklearn)",
+  "idea": "pylibkriging.sklearn makes Kriging a scikit-learn estimator, usable in pipelines, grid searches and cross-validation.",
+  "reference": "The native Kriging class on the same data (same predictions), and scikit-learn's estimator conventions.",
+  "tags": {
+   "class": [
+    "Kriging"
+   ],
+   "compared to": [
+    "scikit-learn"
+   ],
+   "topic": [
+    "scikit-learn API"
+   ]
+  },
+  "ext": ".py",
+  "thumb": "thumbs/sklearn-estimators_Kriging_python.png",
+  "executed": true,
+  "checks": {
+   "PASS": 12
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/sklearn-estimators_Kriging_python.ipynb",
+   "Colab": "https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/sklearn-estimators_Kriging_python.ipynb",
+   "Binder": "https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fsklearn-estimators_Kriging_python.ipynb",
+   "Notebook": "notebooks/sklearn-estimators_Kriging_python.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/sklearn-estimators_Kriging_python.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/sklearn-estimators_Kriging_python.py"
+  },
+  "status": "12/12 passed"
+ },
+ {
+  "stem": "update-simulate_Kriging_python",
+  "language": "Python",
+  "binding": "python",
+  "title": "Kriging \u2014 update, simulate, update_simulate",
+  "idea": "Adding observations (update) and drawing conditional paths (simulate, update_simulate) are shortcuts: they must give what the long way gives.",
+  "reference": "A model fitted from scratch on all the data, and Monte Carlo moments against the predictive mean and covariance.",
+  "tags": {
+   "class": [
+    "Kriging"
+   ],
+   "topic": [
+    "update",
+    "conditional simulation"
+   ]
+  },
+  "ext": ".py",
+  "thumb": "thumbs/update-simulate_Kriging_python.png",
+  "executed": true,
+  "checks": {
+   "PASS": 52,
+   "WARN": 2
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/update-simulate_Kriging_python.ipynb",
+   "Colab": "https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/update-simulate_Kriging_python.ipynb",
+   "Binder": "https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fupdate-simulate_Kriging_python.ipynb",
+   "Notebook": "notebooks/update-simulate_Kriging_python.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/update-simulate_Kriging_python.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/update-simulate_Kriging_python.py"
+  },
+  "status": "52/54 passed"
+ },
+ {
+  "stem": "deep-kernel-projected-branin_MLPKriging_python",
+  "language": "Python",
+  "binding": "python",
+  "title": "MLPKriging \u2014 deep kernel on a 10D function with a 2D structure",
+  "idea": "A deep kernel (an MLP feature map before the kernel) can find a low-dimensional structure that a per-axis kernel cannot: Branin of a 2D projection of 10 inputs.",
+  "reference": "Plain Kriging on the same data.",
+  "tags": {
+   "class": [
+    "MLPKriging",
+    "Kriging"
+   ],
+   "kernel": [
+    "matern5_2"
+   ],
+   "topic": [
+    "deep kernel",
+    "dimension reduction"
+   ]
+  },
+  "ext": ".py",
+  "thumb": "thumbs/deep-kernel-projected-branin_MLPKriging_python.png",
+  "executed": true,
+  "checks": {
+   "PASS": 22,
+   "WARN": 2
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/deep-kernel-projected-branin_MLPKriging_python.ipynb",
+   "Colab": "https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/deep-kernel-projected-branin_MLPKriging_python.ipynb",
+   "Binder": "https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fdeep-kernel-projected-branin_MLPKriging_python.ipynb",
+   "Notebook": "notebooks/deep-kernel-projected-branin_MLPKriging_python.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/deep-kernel-projected-branin_MLPKriging_python.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/deep-kernel-projected-branin_MLPKriging_python.py"
+  },
+  "status": "22/24 passed"
+ },
+ {
+  "stem": "aggregations-large-n_NestedKriging_python",
+  "language": "Python",
+  "binding": "python",
+  "title": "NestedKriging \u2014 aggregations, large n",
+  "idea": "NestedKriging splits a large design into groups and aggregates their predictions; how far is it from the exact predictor as the number of groups grows, and which aggregation is closest?",
+  "reference": "The exact predictor at the same \u03b8 (limit: 1 group), and the exact fit.",
+  "tags": {
+   "class": [
+    "NestedKriging"
+   ],
+   "aggregation": [
+    "NK",
+    "PoE",
+    "gPoE",
+    "BCM",
+    "rBCM"
+   ],
+   "topic": [
+    "large n"
+   ]
+  },
+  "ext": ".py",
+  "thumb": "thumbs/aggregations-large-n_NestedKriging_python.png",
+  "executed": true,
+  "checks": {
+   "PASS": 71
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/aggregations-large-n_NestedKriging_python.ipynb",
+   "Colab": "https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/aggregations-large-n_NestedKriging_python.ipynb",
+   "Binder": "https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Faggregations-large-n_NestedKriging_python.ipynb",
+   "Notebook": "notebooks/aggregations-large-n_NestedKriging_python.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/aggregations-large-n_NestedKriging_python.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/aggregations-large-n_NestedKriging_python.py"
+  },
+  "status": "71/71 passed"
+ },
+ {
+  "stem": "test-functions-reference-values_no-model_python",
+  "language": "Python",
+  "binding": "python",
+  "title": "no model \u2014 the test functions against their published reference values",
+  "idea": "Every example of this gallery is only as good as its test functions: before fitting anything, each of the 21 functions is evaluated at points where its value is published, and its range and shape are plotted.",
+  "reference": "Published optima and nominal values (Virtual Library of Simulation Experiments, Surjanovic & Bingham).",
+  "tags": {
+   "class": [
+    "none"
+   ],
+   "topic": [
+    "test functions"
+   ]
+  },
+  "ext": ".py",
+  "thumb": "thumbs/test-functions-reference-values_no-model_python.png",
+  "executed": true,
+  "checks": {
+   "PASS": 49
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/test-functions-reference-values_no-model_python.ipynb",
+   "Colab": "https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/test-functions-reference-values_no-model_python.ipynb",
+   "Binder": "https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Ftest-functions-reference-values_no-model_python.ipynb",
+   "Notebook": "notebooks/test-functions-reference-values_no-model_python.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/test-functions-reference-values_no-model_python.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/test-functions-reference-values_no-model_python.py"
+  },
+  "status": "49/49 passed"
+ },
+ {
+  "stem": "warpings-categorical-ordinal_WarpKriging_python",
+  "language": "Python",
+  "binding": "python",
+  "title": "WarpKriging \u2014 non-stationarity, categorical and ordinal inputs",
+  "idea": "Input warpings handle non-stationarity and categorical or ordinal inputs; each warping must beat, or at least match, plain Kriging where it is meant to help, without making the predictive variance overconfident.",
+  "reference": "Plain Kriging on the same data (accuracy and NLPD), and none warping = Kriging.",
+  "tags": {
+   "class": [
+    "WarpKriging",
+    "Kriging"
+   ],
+   "warping": [
+    "none",
+    "affine",
+    "boxcox",
+    "kumaraswamy",
+    "neural_mono",
+    "categorical",
+    "ordinal"
+   ],
+   "topic": [
+    "non-stationarity",
+    "categorical inputs"
+   ]
+  },
+  "ext": ".py",
+  "thumb": "thumbs/warpings-categorical-ordinal_WarpKriging_python.png",
+  "executed": true,
+  "checks": {
+   "WARN": 6,
+   "PASS": 55
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/warpings-categorical-ordinal_WarpKriging_python.ipynb",
+   "Colab": "https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/warpings-categorical-ordinal_WarpKriging_python.ipynb",
+   "Binder": "https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fwarpings-categorical-ordinal_WarpKriging_python.ipynb",
+   "Notebook": "notebooks/warpings-categorical-ordinal_WarpKriging_python.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/warpings-categorical-ordinal_WarpKriging_python.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/warpings-categorical-ordinal_WarpKriging_python.py"
+  },
+  "status": "55/61 passed"
+ },
+ {
+  "stem": "vs-DiceKriging-RobustGaSP_Kriging_R",
+  "language": "R",
+  "binding": "R",
+  "title": "Kriging vs DiceKriging and RobustGaSP",
+  "idea": "libKriging's Kriging follows DiceKriging: at the same hyperparameters it must give DiceKriging's numbers, and its default fit must be as accurate as the R references.",
+  "reference": "DiceKriging (exact equality) and RobustGaSP (accuracy, cost).",
+  "tags": {
+   "class": [
+    "Kriging"
+   ],
+   "kernel": [
+    "gauss",
+    "exp",
+    "matern3_2",
+    "matern5_2"
+   ],
+   "compared to": [
+    "DiceKriging",
+    "RobustGaSP"
+   ]
+  },
+  "ext": ".R",
+  "thumb": "thumbs/vs-DiceKriging-RobustGaSP_Kriging_R.png",
+  "executed": true,
+  "checks": {
+   "PASS": 42
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/vs-DiceKriging-RobustGaSP_Kriging_R.ipynb",
+   "Notebook": "notebooks/vs-DiceKriging-RobustGaSP_Kriging_R.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/vs-DiceKriging-RobustGaSP_Kriging_R.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/vs-DiceKriging-RobustGaSP_Kriging_R.R"
+  },
+  "status": "42/42 passed"
+ },
+ {
+  "stem": "vs-STK_Kriging_octave",
+  "language": "Octave",
+  "binding": "octave",
+  "title": "Kriging vs STK",
+  "idea": "The Octave/MATLAB reference toolbox, STK: at the same hyperparameters (Gaussian kernel) both must give the same predictor, and their default fits are compared.",
+  "reference": "STK (exact equality, then accuracy and cost).",
+  "tags": {
+   "class": [
+    "Kriging"
+   ],
+   "kernel": [
+    "gauss",
+    "matern5_2"
+   ],
+   "compared to": [
+    "STK"
+   ]
+  },
+  "ext": ".m",
+  "thumb": "thumbs/vs-STK_Kriging_octave.svg",
+  "executed": true,
+  "checks": {
+   "PASS": 12
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/vs-STK_Kriging_octave.ipynb",
+   "Notebook": "notebooks/vs-STK_Kriging_octave.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/vs-STK_Kriging_octave.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/vs-STK_Kriging_octave.m"
+  },
+  "status": "12/12 passed"
+ },
+ {
+  "stem": "vs-GaussianProcesses_Kriging_julia",
+  "language": "Julia",
+  "binding": "julia",
+  "title": "Kriging vs GaussianProcesses.jl",
+  "idea": "JLibKriging against the main Julia GP package: default fits on the shared datasets.",
+  "reference": "GaussianProcesses.jl (accuracy and cost).",
+  "tags": {
+   "class": [
+    "Kriging"
+   ],
+   "kernel": [
+    "matern5_2"
+   ],
+   "compared to": [
+    "GaussianProcesses.jl"
+   ]
+  },
+  "ext": ".jl",
+  "thumb": "thumbs/vs-GaussianProcesses_Kriging_julia.svg",
+  "executed": true,
+  "checks": {
+   "PASS": 3,
+   "WARN": 3
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/vs-GaussianProcesses_Kriging_julia.ipynb",
+   "Notebook": "notebooks/vs-GaussianProcesses_Kriging_julia.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/vs-GaussianProcesses_Kriging_julia.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/vs-GaussianProcesses_Kriging_julia.jl"
+  },
+  "status": "3/6 passed"
+ },
+ {
+  "stem": "cross-binding-reference_all-classes_python",
+  "language": "Python",
+  "binding": "python",
+  "title": "all classes \u2014 cross-binding consistency: the Python reference",
+  "idea": "All bindings wrap the same C++ library: on the same data with the same options, they must give the same numbers, for every model class and fit method. This notebook writes the Python values, the reference of the comparison.",
+  "reference": "The R, Octave and Julia notebooks cross-binding_all-classes_*, compared by tools/report.py.",
+  "tags": {
+   "class": [
+    "Kriging",
+    "NestedKriging",
+    "WarpKriging",
+    "MLPKriging"
+   ],
+   "kernel": [
+    "matern5_2"
+   ],
+   "objective": [
+    "LL"
+   ],
+   "method": [
+    "exact",
+    "vecchia",
+    "nystrom"
+   ],
+   "noise": [
+    "none",
+    "nugget",
+    "variances"
+   ],
+   "warping": [
+    "kumaraswamy"
+   ],
+   "aggregation": [
+    "NK"
+   ],
+   "topic": [
+    "cross-binding"
+   ]
+  },
+  "ext": ".py",
+  "thumb": "thumbs/cross-binding-reference_all-classes_python.png",
+  "executed": true,
+  "checks": {
+   "PASS": 3
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/cross-binding-reference_all-classes_python.ipynb",
+   "Colab": "https://colab.research.google.com/github/libKriging/gallery/blob/gh-pages/notebooks/cross-binding-reference_all-classes_python.ipynb",
+   "Binder": "https://mybinder.org/v2/gh/libKriging/gallery/gh-pages?labpath=notebooks%2Fcross-binding-reference_all-classes_python.ipynb",
+   "Notebook": "notebooks/cross-binding-reference_all-classes_python.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/cross-binding-reference_all-classes_python.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/cross-binding-reference_all-classes_python.py"
+  },
+  "status": "3/3 passed"
+ },
+ {
+  "stem": "cross-binding_all-classes_R",
+  "language": "R",
+  "binding": "R",
+  "title": "all classes \u2014 cross-binding consistency: the R side",
+  "idea": "The R side of the cross-binding protocol: rlibkriging must give the numbers of pylibkriging on the same data, for every model class and fit method.",
+  "reference": "The Python values (cross-binding-reference_all-classes_python.ipynb), compared by tools/report.py.",
+  "tags": {
+   "class": [
+    "Kriging",
+    "NestedKriging",
+    "WarpKriging",
+    "MLPKriging"
+   ],
+   "kernel": [
+    "matern5_2"
+   ],
+   "objective": [
+    "LL"
+   ],
+   "method": [
+    "exact",
+    "vecchia",
+    "nystrom"
+   ],
+   "noise": [
+    "none",
+    "nugget",
+    "variances"
+   ],
+   "warping": [
+    "kumaraswamy"
+   ],
+   "aggregation": [
+    "NK"
+   ],
+   "topic": [
+    "cross-binding"
+   ]
+  },
+  "ext": ".R",
+  "thumb": "thumbs/cross-binding_all-classes_R.png",
+  "executed": true,
+  "checks": {
+   "PASS": 3
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/cross-binding_all-classes_R.ipynb",
+   "Notebook": "notebooks/cross-binding_all-classes_R.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/cross-binding_all-classes_R.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/cross-binding_all-classes_R.R"
+  },
+  "status": "3/3 passed"
+ },
+ {
+  "stem": "cross-binding_all-classes_octave",
+  "language": "Octave",
+  "binding": "octave",
+  "title": "all classes \u2014 cross-binding consistency: the Octave side",
+  "idea": "The Octave side of the cross-binding protocol: mLibKriging must give the numbers of pylibkriging on the same data, for every model class and fit method.",
+  "reference": "The Python values (cross-binding-reference_all-classes_python.ipynb), compared by tools/report.py.",
+  "tags": {
+   "class": [
+    "Kriging",
+    "NestedKriging",
+    "WarpKriging",
+    "MLPKriging"
+   ],
+   "kernel": [
+    "matern5_2"
+   ],
+   "objective": [
+    "LL"
+   ],
+   "method": [
+    "exact",
+    "vecchia",
+    "nystrom"
+   ],
+   "noise": [
+    "none",
+    "nugget",
+    "variances"
+   ],
+   "warping": [
+    "kumaraswamy"
+   ],
+   "aggregation": [
+    "NK"
+   ],
+   "topic": [
+    "cross-binding"
+   ]
+  },
+  "ext": ".m",
+  "thumb": "thumbs/cross-binding_all-classes_octave.svg",
+  "executed": true,
+  "checks": {
+   "PASS": 3
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/cross-binding_all-classes_octave.ipynb",
+   "Notebook": "notebooks/cross-binding_all-classes_octave.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/cross-binding_all-classes_octave.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/cross-binding_all-classes_octave.m"
+  },
+  "status": "3/3 passed"
+ },
+ {
+  "stem": "cross-binding_all-classes_julia",
+  "language": "Julia",
+  "binding": "julia",
+  "title": "all classes \u2014 cross-binding consistency: the Julia side",
+  "idea": "The Julia side of the cross-binding protocol: JLibKriging must give the numbers of pylibkriging on the same data, for every model class and fit method.",
+  "reference": "The Python values (cross-binding-reference_all-classes_python.ipynb), compared by tools/report.py.",
+  "tags": {
+   "class": [
+    "Kriging",
+    "NestedKriging",
+    "WarpKriging",
+    "MLPKriging"
+   ],
+   "kernel": [
+    "matern5_2"
+   ],
+   "objective": [
+    "LL"
+   ],
+   "method": [
+    "exact",
+    "vecchia",
+    "nystrom"
+   ],
+   "noise": [
+    "none",
+    "nugget",
+    "variances"
+   ],
+   "warping": [
+    "kumaraswamy"
+   ],
+   "aggregation": [
+    "NK"
+   ],
+   "topic": [
+    "cross-binding"
+   ]
+  },
+  "ext": ".jl",
+  "thumb": "thumbs/cross-binding_all-classes_julia.svg",
+  "executed": true,
+  "checks": {
+   "PASS": 3
+  },
+  "links": {
+   "open": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/cross-binding_all-classes_julia.ipynb",
+   "Notebook": "notebooks/cross-binding_all-classes_julia.ipynb",
+   "view": "https://nbviewer.org/github/libKriging/gallery/blob/gh-pages/notebooks/cross-binding_all-classes_julia.ipynb",
+   "source": "https://github.com/libKriging/gallery/blob/main/src/cross-binding_all-classes_julia.jl"
+  },
+  "status": "3/3 passed"
+ }
+]
