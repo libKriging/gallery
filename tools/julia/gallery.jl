@@ -63,7 +63,7 @@ check_between!(s::Suite, check, value, lo, hi; detail="", severity="error") =
     check!(s, check, isfinite(value) && lo <= value <= hi; value, expected="in [$lo, $hi]", detail, severity)
 
 function check_close!(s::Suite, check, a, b; rtol=1e-6, atol=0.0, detail="", severity="error")
-    a = vec(Float64.(collect(a))); b = vec(Float64.(collect(b)))
+    a = Float64.(vec(collect(a))); b = Float64.(vec(collect(b)))   # vec first: Float64.() of a 0-dim array is a scalar
     length(a) == length(b) || return check!(s, check, false; value="length $(length(a))",
                                             expected="length $(length(b))", detail, severity)
     gap = abs.(a .- b)
