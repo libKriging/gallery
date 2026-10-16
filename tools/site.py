@@ -5,9 +5,9 @@ For every source of ``src/``, the card shows a thumbnail (the first figure of th
 notebook, else a placeholder), the title, the idea, the tags (language, Kriging class,
 kernel, objective, method, noise, warping, aggregation, compared packages, topic: the
 ``**Tags.**`` paragraph of the source) and the status of its checks
-(``<results>/<stem>.checks.csv``). Clicking the card opens the notebook in Colab (Python;
-Binder is the other link) or, for the other languages, which neither service runs with
-libKriging, the executed notebook in nbviewer. Tags filter the cards.
+(``<results>/<stem>.checks.csv``). Clicking the card opens the executed notebook in
+nbviewer; Python cards also link to Colab and Binder (which do not run libKriging for the
+other languages). Tags filter the cards.
 
 Output (``--out``, published as the ``gh-pages`` branch by CI):
 
@@ -92,7 +92,7 @@ def links(meta, repo, branch):
     view = f"https://nbviewer.org/github/{repo}/blob/{branch}/{path}"
     src = f"https://github.com/{repo}/blob/main/src/{meta['stem']}{meta['ext']}"
     if meta["language"] == "Python":
-        return {"open": f"https://colab.research.google.com/github/{repo}/blob/{branch}/{path}",
+        return {"open": view,
                 "Colab": f"https://colab.research.google.com/github/{repo}/blob/{branch}/{path}",
                 "Binder": f"https://mybinder.org/v2/gh/{repo}/{branch}?labpath={quote(path, safe='')}",
                 "view": view, "source": src}
@@ -112,7 +112,7 @@ def card_html(c):
     lang = html.escape(c["language"])
     return f"""<article class="card" data-tags="{data}" data-text="{html.escape((c['title'] + ' ' + c['idea']).lower())}">
   <a class="main" href="{html.escape(c['links']['open'])}" target="_blank" rel="noopener"
-     title="{'open in Colab' if c['language'] == 'Python' else 'view the executed notebook'}">
+     title="view the executed notebook">
     <img src="{html.escape(c['thumb'])}" alt="" loading="lazy">
   </a>
   <div class="body">
@@ -180,8 +180,8 @@ footer { color:var(--muted); font-size:13px; }
 <header>
   <h1>libKriging gallery</h1>
   <p>Notebooks showing <a href="https://github.com/libKriging/libKriging">libKriging</a> at work in Python, R, Octave and Julia,
-  each compared with a reference (another package, an exact model, a known value). Click a card to open the notebook
-  (Python: in Colab, with the released pylibkriging; others: the executed notebook).</p>
+  each compared with a reference (another package, an exact model, a known value). Click a card to view the executed
+  notebook; Python notebooks can also be run in Colab or Binder, with the released pylibkriging.</p>
   <p>Executed in CI against libKriging __LIBKRIGING__, __DATE__ · <a href="https://github.com/__REPO__">sources</a> · __TOTALS__</p>
   <div id="filters"><div class="row"><input id="search" type="search" placeholder="search titles and ideas"><span id="count"></span></div>
   <details id="tagbox"><summary>filter by tags</summary>__FILTERS__</details></div>
