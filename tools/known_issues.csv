@@ -1,0 +1,11 @@
+suite,check,issue
+large-n_Kriging-vecchia-nystrom_python,vecchia(n-1) LL == exact LL (same theta),With m >= n-1 neighbours the Vecchia likelihood should be the exact one; it matches for n=20 but not for n=40 (-111.349 vs -110.834)
+large-n_Kriging-vecchia-nystrom_python,hartmann3/n=1500/nystrom(100): Q2,Nystrom predictor degrades as n grows at fixed k (theta estimates are fine: the exact predictor at the Nystrom theta has Q2 ~ 1)
+large-n_Kriging-vecchia-nystrom_python,hartmann3/n=5000/nystrom(100): Q2,Nystrom predictor degrades as n grows at fixed k (theta estimates are fine: the exact predictor at the Nystrom theta has Q2 ~ 1)
+large-n_Kriging-vecchia-nystrom_python,otl_circuit/n=1500/nystrom(100): Q2,Nystrom predictor degrades as n grows at fixed k (theta estimates are fine: the exact predictor at the Nystrom theta has Q2 ~ 1)
+large-n_Kriging-vecchia-nystrom_python,otl_circuit/n=5000/nystrom(100): Q2,Nystrom predictor degrades as n grows at fixed k (theta estimates are fine: the exact predictor at the Nystrom theta has Q2 ~ 1)
+robustness-invalid-inputs_Kriging_python,NaN in y is rejected,Kriging accepts NaN in y without raising
+robustness-invalid-inputs_Kriging_python,Inf in y is rejected,Kriging accepts Inf in y without raising
+robustness-invalid-inputs_Kriging_python,WarpKriging with 1 spec for 2 columns is rejected,WarpKriging accepts fewer warping specs than columns of X
+robustness-invalid-inputs_Kriging_python,predict(stdev) time growth exponent in q (8000 vs 4000),"predict(return_stdev=True, return_cov=False) is O(q^2) in time and memory (10 000 points: 1.6 GB; 30 000: out of memory)"
+vs-sklearn-SMT-OpenTURNS-GPy_Kriging_python,sklearn RBF == libKriging gauss: simple kriging stdev (beta fixed),With beta fixed (is_beta_estim=False) predict still adds the trend-estimation variance (universal kriging) instead of the simple kriging variance
